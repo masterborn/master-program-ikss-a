@@ -6,18 +6,20 @@
   <p align="center">
     📈
     <br />
+    Hello
     <br />
   </p>
 </div>
 
 ## Table of Contents
 
--   [About the Project](#about-the-project)
-    -   [Built With](#built-with)
--   [Getting Started](#getting-started)
-    -   [Prerequisites](#prerequisites)
-    -   [Installation](#installation)
-    -   [Running the project](#running-the-project)
+- [Table of Contents](#table-of-contents)
+- [About The Project](#about-the-project)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Running the project](#running-the-project)
 
 ## About The Project
 
