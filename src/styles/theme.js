@@ -1,6 +1,49 @@
-export const fontFamily = {};
+export const fontFamily = { primaryFont: 'Mulish' };
 
-export const fontStyles = {};
+export const fontStyles = {
+  h1: {
+    fontSize: '56px',
+    fontWeight: '900',
+    letterSpacing: '-0.015rem',
+    lineHeight: '72px',
+  },
+  h2: {
+    fontSize: '40px',
+    fontWeight: '900',
+    letterSpacing: '-0.015rem',
+    lineHeight: '72px',
+  },
+  h3: {
+    fontSize: '32px',
+    fontWeight: '800',
+    letterSpacing: '-0.015rem',
+    lineHeight: '44px',
+  },
+  h4: {
+    fontSize: '24px',
+    fontWeight: '800',
+    letterSpacing: '-0.015rem',
+    lineHeight: '32px',
+  },
+  h5: {
+    fontSize: '18px',
+    fontWeight: '800',
+    letterSpacing: '-0.015rem',
+    lineHeight: '24px',
+  },
+  body: {
+    fontSize: '16px',
+    fontWeight: '400',
+    letterSpacing: '-0.015rem',
+    lineHeight: '32px',
+  },
+  bodySmall: {
+    fontSize: '14px',
+    fontWeight: '400',
+    letterSpacing: '-0.015rem',
+    lineHeight: '28px',
+  },
+};
 
 export const color = {
   ikssBlue: '#1889E9',
