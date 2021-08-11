@@ -91,10 +91,8 @@ const Input = ({text = 'Placeholder text...', icon, error, name, id, checkbox}) 
         )
     }
     
-    return ( 
-        <>
-        <InputField placeholder={text} type='text' name={name} id={id} />  
-        </>
+    return (  
+        <InputField placeholder={text} type='text' name={name} id={id} />     
      );
 }
  
