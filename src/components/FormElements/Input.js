@@ -95,5 +95,5 @@ const Input = ({text = 'Placeholder text...', icon, error, name, id, checkbox}) 
         <InputField placeholder={text} type='text' name={name} id={id} />     
      );
 }
- 
+
 export default Input;
