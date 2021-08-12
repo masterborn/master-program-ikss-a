@@ -55,7 +55,7 @@ export const color = {
   blue30: '#BADCF8',
   blue20: '#D1E7FB',
   blue10: '#E8F3FD',
-  blue5: 'F5FAFF',
+  blue5: '#F5FAFF',
   steel70: '#90A1AE',
   steel60: '#A0AFB9',
   steel50: '#B0BCC5',
