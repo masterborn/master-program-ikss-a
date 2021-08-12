@@ -8,7 +8,7 @@
     "build": "next build",
     "deploy:master": "node scripts/deployMaster.js",
     "start": "next start",
-    "svg":"svgr -d src/comoponents/icons src/components/icons/svgs",
+    "svg": "svgr -d src/comoponents/icons src/components/icons/svgs",
     "lint": "eslint ./src --ext .ts,.tsx,.js,.jsx --cache",
     "lint:fresh": "eslint",
     "lint:fix": "eslint ./src --ext .ts,.tsx,.js,.jsx --cache --fix",
