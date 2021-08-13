@@ -12,12 +12,15 @@ const Home = ({ homeApiElements, commonApiElements }) => {
   const youtube = socialPages.find((element) => element.fields.identifier === 'social-youtube');
   const linkedin = socialPages.find((element) => element.fields.identifier === 'social-linkedin');
 
-  const socialLinks = {
-    facebookUrl: facebook.fields.linkUrl,
-    instagramUrl: instagram.fields.linkUrl,
-    youtubeUrl: youtube.fields.linkUrl,
-    linkedinUrl: linkedin.fields.linkUrl,
-  };
+  const socialLinks =
+    facebook && instagram && youtube && linkedin
+      ? {
+          facebookUrl: facebook.fields.linkUrl,
+          instagramUrl: instagram.fields.linkUrl,
+          youtubeUrl: youtube.fields.linkUrl,
+          linkedinUrl: linkedin.fields.linkUrl,
+        }
+      : null;
 
   const {
     fields: {

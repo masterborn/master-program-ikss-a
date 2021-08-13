@@ -5,7 +5,7 @@ import { BodyText, H1 } from '../typography/Typography';
 import ImageWrapper from '../wrappers/ImageWrapper';
 
 const Header = ({ title, text, image, socialLinks }) => {
-  const isFetched = title && text && image;
+  const isFetched = title && text && image && socialLinks;
   console.log(socialLinks);
   return (
     <div>
