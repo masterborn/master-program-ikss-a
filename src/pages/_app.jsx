@@ -8,6 +8,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import Head from 'next/head';
 import GlobalStyles from '@styles/GlobalStyles';
 import { theme } from '@styles/theme';
+import Layout from '../components/Layout/Layout';
 
 const App = (props) => {
   const queryClientRef = useRef();
@@ -26,7 +27,9 @@ const App = (props) => {
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClientRef.current}>
           <Hydrate state={pageProps.dehydratedState}>
-            <Component {...pageProps} />
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
           </Hydrate>
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>

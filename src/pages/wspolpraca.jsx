@@ -1,28 +1,24 @@
 import PropTypes from 'prop-types';
+import fetchApiData from '@root/api/api';
 
-const Cooperation = ({ cooperationApiElements }) => {
-  console.log(cooperationApiElements);
-  return <div />;
-};
-
-const client = require('contentful').createClient({
-  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
-});
+const Cooperation = ({ cooperationApiElements, cooperationAssets, commonApiElements }) => <div />;
 
 export const getStaticProps = async () => {
-  const allApiElements = await client.getEntries();
+  const cooperationApiElements = await fetchApiData('about-us');
+  const commonApiElements = await fetchApiData('common');
   return {
     props: {
-      cooperationApiElements: allApiElements.items.filter(
-        (element) => element.fields.page === 'cooperation',
-      ),
+      cooperationApiElements: cooperationApiElements.items,
+      cooperationAssets: cooperationApiElements.includes.Asset,
+      commonApiElements: commonApiElements.items,
     },
   };
 };
 
 Cooperation.propTypes = {
   cooperationApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
+  cooperationAssets: PropTypes.arrayOf(PropTypes.object).isRequired,
+  commonApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Cooperation;
