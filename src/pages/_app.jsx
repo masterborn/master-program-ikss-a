@@ -8,6 +8,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import Head from 'next/head';
 import GlobalStyles from '@styles/GlobalStyles';
 import { theme } from '@styles/theme';
+import fetchApiData from '@root/api/api';
 import Layout from '../components/Layout/Layout';
 
 const App = (props) => {
@@ -15,7 +16,7 @@ const App = (props) => {
   if (!queryClientRef.current) {
     queryClientRef.current = new QueryClient();
   }
-  const { Component, pageProps } = props;
+  const { Component, pageProps, commonApiElements } = props;
 
   return (
     <>
@@ -27,7 +28,7 @@ const App = (props) => {
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClientRef.current}>
           <Hydrate state={pageProps.dehydratedState}>
-            <Layout>
+            <Layout commonApiElements={commonApiElements}>
               <Component {...pageProps} />
             </Layout>
           </Hydrate>
@@ -37,6 +38,13 @@ const App = (props) => {
       </ThemeProvider>
     </>
   );
+};
+
+App.getInitialProps = async () => {
+  const commonApiElements = await fetchApiData('common');
+  return {
+    commonApiElements: commonApiElements.items,
+  };
 };
 
 export default App;
