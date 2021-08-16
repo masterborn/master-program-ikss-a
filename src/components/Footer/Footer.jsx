@@ -35,15 +35,9 @@ const Footer = ({ copyrightText, links, socialMedias }) => {
           ))}
         </FooterLinksWrapper>
         <FooterSocialIconsWrapper>
-          {socialMedias.map((social) => (
-            <a
-              key={social.title}
-              target="_blank"
-              href={social.url}
-              rel="noreferrer"
-              aria-label={social.title}
-            >
-              <Image src={social.logo} />
+          {socialMedias.map(({ title, url, logo }) => (
+            <a key={title} target="_blank" href={url} rel="noreferrer" aria-label={title}>
+              <Image src={logo} />
             </a>
           ))}
         </FooterSocialIconsWrapper>
