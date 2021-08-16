@@ -1,17 +1,19 @@
 import PropTypes from 'prop-types';
-import getSocialLinks from '@root/handlers/getSocialLinks';
-import { findApiElementByIdentifier } from '@root/api/findApiElement';
+import { findApiElementByIdentifier } from '@root/handlers/findApiElement';
+import getSocialMedias from '@root/handlers/getSocialMedias';
+import getPaths from '@root/handlers/getPaths';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 
 const Layout = ({ children, commonApiElements }) => {
-  const socialLinks = getSocialLinks(commonApiElements);
+  const links = getPaths();
+  const socialMedias = getSocialMedias(commonApiElements);
   const copyrightText = findApiElementByIdentifier(commonApiElements, 'footer-text').fields.title;
   return (
     <>
-      <Navbar socialLinks={socialLinks} />
+      <Navbar socialMedias={socialMedias} links={links} />
       {children}
-      <Footer socialLinks={socialLinks} copyrightText={copyrightText} />
+      <Footer links={links} socialMedias={socialMedias} copyrightText={copyrightText} />
     </>
   );
 };
