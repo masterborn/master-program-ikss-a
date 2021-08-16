@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import PropTypes from 'prop-types';
-import logo from '../../../public/logo-background.png';
+import logo from '../../../public/logo-background.svg';
 import ImageWrapper from '../wrappers/ImageWrapper';
 
 const LogoBackground = ({ width, height, margin }) => (
