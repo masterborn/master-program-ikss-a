@@ -28,9 +28,9 @@ const Footer = ({ copyrightText, links, socialMedias }) => {
     <>
       <FooterWrapper height={pathname === '/' ? '728px' : '404px'}>
         <FooterLinksWrapper>
-          {links.map((link) => (
-            <Link key={link.title} href={link.path}>
-              <CustomLink>{link.title}</CustomLink>
+          {links.map(({ title, path }) => (
+            <Link key={title} href={path}>
+              <CustomLink>{title}</CustomLink>
             </Link>
           ))}
         </FooterLinksWrapper>
