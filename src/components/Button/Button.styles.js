@@ -15,13 +15,11 @@ export const BigButton = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 
-    &:disabled {
+    &:disabled, &:disabled:hover {
         background-color: #B9DBF8;
-    }
-
-    &:active {
-        background-color: #167CD2;
+        box-shadow: none;
     }
 
     &:hover {
@@ -29,8 +27,16 @@ export const BigButton = styled.button`
         box-shadow: 0px 4px 8px rgba(24, 137, 233, 0.15);
     }
 
+    &:active {
+        background-color: #167CD2;
+    }
+
     svg {
-        margin-right: 15px;
+        margin-right: 8px;
+    }
+
+    svg path {
+        fill: ${getColor('white')};
     }
 `;
 
@@ -40,9 +46,17 @@ export const SecondaryBigButton = styled(BigButton)`
     background-color: ${getColor('white')};
     color: ${getColor('navy')};
 
-    &:disabled {
+    &:disabled, &:disabled:hover {
         color: #BABEC7;
         border-color: #BABEC7;
+        background-color: ${getColor('white')};
+    }
+
+    &:hover {
+        border-color: #3C4862;
+        color: #3C4862;
+        box-shadow: none;
+        background-color: ${getColor('white')};
     }
 
     &:active {
@@ -50,26 +64,20 @@ export const SecondaryBigButton = styled(BigButton)`
         color: #535E75;
     }
 
-    &:hover {
-        border-color: #3C4862;
-        color: #3C4862;
-        box-shadow: none;
+    svg path {
+        fill: ${getColor('navy')};
     }
 
-    svg {
-        color: ${getColor('navy')};
+    &:disabled svg path, &:disabled:hover svg path {
+        fill: #BABEC7;
     }
 
-    &:disabled svg {
-        color: #BABEC7;
+    &:hover svg path {
+        fill: #3C4862;
     }
 
-    &:active svg {
-        color: #535E75;
-    }
-
-    &:hover svg {
-        color: #3C4862;
+    &:active svg path {
+        fill: #535E75;
     }
 `;
 
@@ -80,7 +88,7 @@ export const SmallButton = styled(BigButton)`
     font-size: ${getFontSize('bodySmall')};
 
     svg {
-        margin-right: 12px;
+        margin-right: 5px;
     }
 `;
 
@@ -91,8 +99,6 @@ export const SecondarySmallButton = styled(SecondaryBigButton)`
     font-size: ${getFontSize('bodySmall')};
 
     svg {
-        margin-right: 12px;
+        margin-right: 5px;
     }
 `;
-
-
