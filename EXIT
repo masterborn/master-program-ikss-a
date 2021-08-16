@@ -1,0 +1,83 @@
+[33mcommit 4e13e243b97caa148805b901a328c3df5e78048a[m[33m ([m[1;36mHEAD -> [m[1;32mia-8-styleguide-form-elements[m[33m)[m
+Author: Konrad Ciepluch <konrad190008@wp.pl>
+Date:   Wed Aug 11 13:23:08 2021 +0200
+
+    Input component moved from Example folder
+
+[33mcommit 62a9e7f249b6fabdab54203f2be8bffd0dd891f8[m
+Author: Konrad Ciepluch <konrad190008@wp.pl>
+Date:   Wed Aug 11 13:13:36 2021 +0200
+
+    Path change
+
+[33mcommit b9ff3b9dccdbb001ec3f6dac0b1adc17b77b61b5[m[33m ([m[1;31morigin/ia-8-styleguide-form-elements[m[33m)[m
+Author: Konrad Ciepluch <konrad190008@wp.pl>
+Date:   Wed Aug 11 07:08:11 2021 +0200
+
+    Input component created, icons added
+
+[33mcommit b5d72467ac0fe4771570cdecd78eb83e26c8cac4[m
+Author: Konrad Ciepluch <konrad190008@wp.pl>
+Date:   Tue Aug 10 16:23:31 2021 +0200
+
+    Buttons are implemented according to design
+
+[33mcommit eaa00fb46f6430eb9928fe748363f20998e47e09[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Mateusz Witkowski <mateusz.w@masterborn.com>
+Date:   Fri Aug 6 15:42:31 2021 +0200
+
+    chore: add deploy to CI
+
+[33mcommit 11a1a88826088984df3900806163a1cdee19a642[m
+Author: Mateusz Witkowski <mateusz.w@masterborn.com>
+Date:   Fri Aug 6 14:15:16 2021 +0200
+
+    chore: add deploy:master npm command
+
+[33mcommit 5ac9a70fbccd9bbd31ab2ef343515f3ba387eb7f[m
+Author: Mateusz Witkowski <mateusz.w@masterborn.com>
+Date:   Fri Aug 6 14:08:15 2021 +0200
+
+    chore: next deploy hook (#4)
+    
+    * chore: remove sentry integration
+    
+    * feat: add missing types declarations
+    
+    * chore: add eslint-config-next
+
+[33mcommit 891f75f6eeef941318554654ed5d368ca48d67e9[m
+Merge: d394d8e effab9c
+Author: Konrad Ciepluch <80113243+KonradCiepluch@users.noreply.github.com>
+Date:   Thu Aug 5 12:04:20 2021 +0200
+
+    Merge pull request #3 from masterborn/ia-3-change-readme
+    
+    IA-3 Changed readme
+
+[33mcommit d394d8ea45f4c5cbe3377ae445ecb3678b5d5988[m
+Merge: 8b2f14e 772aadd
+Author: TechLounge777 <msblanche777@gmail.com>
+Date:   Thu Aug 5 12:01:49 2021 +0200
+
+    Merge pull request #2 from masterborn/IA-4-change-readme
+    
+    [IA-4] Change readme to test gitflow
+
+[33mcommit effab9cbc5590b7fb99e165d1bccb9a958ad8b03[m
+Author: Konrad Ciepluch <konrad190008@wp.pl>
+Date:   Thu Aug 5 11:42:48 2021 +0200
+
+    modified readme
+
+[33mcommit 772aadd320983b06ae756551512c0961894d25f9[m
+Author: Nimavein <michalzygiel00@gmail.com>
+Date:   Thu Aug 5 11:25:44 2021 +0200
+
+    change readme to test gitflow
+
+[33mcommit 8b2f14ec1e0f4d6b8f6c0e5619410888220813b6[m
+Author: Nimavein <michalzygiel00@gmail.com>
+Date:   Thu Aug 5 08:08:25 2021 +0200
+
+    initial commit - add template to repository
