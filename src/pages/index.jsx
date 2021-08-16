@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import fetchApiData from '@root/api/api';
 import Header from '@root/components/Homepage/Header';
-import getSocialLinks from '@root/handlers/getSocialLinks';
-import { findApiElementByIdentifier, findAssetByTitle } from '@root/api/findApiElement';
+import getSocialMedias from '@root/handlers/getSocialMedias';
+import { findApiElementByIdentifier, findAssetByTitle } from '@root/handlers/findApiElement';
 
 const Home = ({ homeApiElements, homeAssets, commonApiElements }) => {
   const homeTopSection = findApiElementByIdentifier(homeApiElements, 'homepage-top-section');
   const topSectionBodyImageUrl = findAssetByTitle(homeAssets, 'image 1').fields.file.url;
-  const socialLinks = getSocialLinks(commonApiElements);
+  const socialMedias = getSocialMedias(commonApiElements);
   const {
     fields: {
       text1: { content },
@@ -24,7 +24,7 @@ const Home = ({ homeApiElements, homeAssets, commonApiElements }) => {
         title={title}
         text={topSectionBodyText}
         image={topSectionBodyImageUrl}
-        socialLinks={socialLinks}
+        socialMedias={socialMedias}
       />
     </>
   );
