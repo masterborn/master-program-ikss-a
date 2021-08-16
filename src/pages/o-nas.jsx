@@ -1,23 +1,24 @@
 import PropTypes from 'prop-types';
-import fetchApiData from '@root/api/api';
+import fetchContentfulApi from '@root/api/ContentfulClient';
 
-const AboutUs = ({ aboutUsApiElements, aboutUsAssets, commonApiElements }) => <div />;
+const AboutUs = ({ aboutUsApiElements, aboutUsApiAssets, commonApiElements }) => <div />;
 
 export const getStaticProps = async () => {
-  const aboutUsApiElements = await fetchApiData('about-us');
-  const commonApiElements = await fetchApiData('common');
+  const aboutUsApiElements = await fetchContentfulApi.getBasicContent('about-us');
+  const aboutUsApiAssets = await fetchContentfulApi.getBasicContentAssets('about-us');
+  const commonApiElements = await fetchContentfulApi.getBasicContent('common');
   return {
     props: {
-      aboutUsApiElements: aboutUsApiElements.items,
-      aboutUsAssets: aboutUsApiElements.includes.Asset,
-      commonApiElements: commonApiElements.items,
+      aboutUsApiElements,
+      aboutUsApiAssets,
+      commonApiElements,
     },
   };
 };
 
 AboutUs.propTypes = {
   aboutUsApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
-  aboutUsAssets: PropTypes.arrayOf(PropTypes.object).isRequired,
+  aboutUsApiAssets: PropTypes.arrayOf(PropTypes.object).isRequired,
   commonApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
