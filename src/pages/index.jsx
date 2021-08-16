@@ -3,6 +3,8 @@ import LogoNoBackground from '@root/components/logos/LogoNoBackground';
 import LogoBackground from '@root/components/logos/LogoBackground';
 import { H1, BodyText } from '@root/components/typography/Typography';
 import { getColor } from '@root/styles/utils';
+import TopSection from '@root/components/TopSection/TopSection';
+
 
 const Home = () => (
   <div>
@@ -13,7 +15,11 @@ const Home = () => (
       Example h1 with adjusted color and margin
     </H1>
     <BodyText>Basic body text</BodyText>
+    <TopSection title="Przykładowy nagłówek IKSS" text="Urna, mi condimentum amet, consectetur mauris tincidunt gravida aenean. Dignissim in sit arcu nam. Ultrices integer odio feugiat vulputate. "/>
+    
   </div>
+  
+     
 );
 
 export default Home;
