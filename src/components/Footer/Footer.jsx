@@ -18,7 +18,7 @@ import ImageWrapper from '../wrappers/ImageWrapper';
 import upArrow from '../icons/svgs/up-arrow.svg';
 
 const Footer = ({ copyrightText, links, socialMedias }) => {
-  const router = useRouter();
+  const { pathname } = useRouter();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -26,7 +26,7 @@ const Footer = ({ copyrightText, links, socialMedias }) => {
 
   return (
     <>
-      <FooterWrapper height={router.pathname === '/' ? '728px' : '404px'}>
+      <FooterWrapper height={pathname === '/' ? '728px' : '404px'}>
         <FooterLinksWrapper>
           {links.map((link) => (
             <Link key={link.title} href={link.path}>
