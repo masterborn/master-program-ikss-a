@@ -1,23 +1,27 @@
 import PropTypes from 'prop-types';
-import fetchApiData from '@root/api/api';
+import fetchContentfulApi from '@root/api/ContentfulClient';
 
-const Cooperation = ({ cooperationApiElements, cooperationAssets, commonApiElements }) => <div />;
+const Cooperation = ({ cooperationApiElements, cooperationApiAssets, commonApiElements }) => (
+  <div />
+);
 
 export const getStaticProps = async () => {
-  const cooperationApiElements = await fetchApiData('about-us');
-  const commonApiElements = await fetchApiData('common');
+  const cooperationApiElements = await fetchContentfulApi.getBasicContent('cooperation');
+  const cooperationApiAssets = await fetchContentfulApi.getBasicContentAssets('cooperation');
+  const commonApiElements = await fetchContentfulApi.getBasicContent('common');
+
   return {
     props: {
-      cooperationApiElements: cooperationApiElements.items,
-      cooperationAssets: cooperationApiElements.includes.Asset,
-      commonApiElements: commonApiElements.items,
+      cooperationApiElements,
+      cooperationApiAssets,
+      commonApiElements,
     },
   };
 };
 
 Cooperation.propTypes = {
   cooperationApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
-  cooperationAssets: PropTypes.arrayOf(PropTypes.object).isRequired,
+  cooperationApiAssets: PropTypes.arrayOf(PropTypes.object).isRequired,
   commonApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

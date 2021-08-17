@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
-import fetchApiData from '@root/api/api';
+import fetchContentfulApi from '@root/api/ContentfulClient';
 import Header from '@root/components/Homepage/Header';
 import getSocialMedias from '@root/handlers/getSocialMedias';
 import { findApiElementByIdentifier, findAssetByTitle } from '@root/handlers/findApiElement';
 
-const Home = ({ homeApiElements, homeAssets, commonApiElements }) => {
+const Home = ({ homeApiElements, homeApiAssets, commonApiElements }) => {
   const homeTopSection = findApiElementByIdentifier(homeApiElements, 'homepage-top-section');
-  const topSectionBodyImageUrl = findAssetByTitle(homeAssets, 'image 1').fields.file.url;
+  const topSectionBodyImageUrl = findAssetByTitle(homeApiAssets, 'image 1').fields.file.url;
   const socialMedias = getSocialMedias(commonApiElements);
   const {
     fields: {
@@ -31,13 +31,14 @@ const Home = ({ homeApiElements, homeAssets, commonApiElements }) => {
 };
 
 export const getStaticProps = async () => {
-  const homeApiElements = await fetchApiData('homepage');
-  const commonApiElements = await fetchApiData('common');
+  const homeApiElements = await fetchContentfulApi.getBasicContent('homepage');
+  const homeApiAssets = await fetchContentfulApi.getBasicContentAssets('homepage');
+  const commonApiElements = await fetchContentfulApi.getBasicContent('common');
   return {
     props: {
-      homeApiElements: homeApiElements.items,
-      homeAssets: homeApiElements.includes.Asset,
-      commonApiElements: commonApiElements.items,
+      homeApiElements,
+      homeApiAssets,
+      commonApiElements,
     },
   };
 };
@@ -45,7 +46,7 @@ export const getStaticProps = async () => {
 Home.propTypes = {
   homeApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
   commonApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
-  homeAssets: PropTypes.arrayOf(PropTypes.object).isRequired,
+  homeApiAssets: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Home;
