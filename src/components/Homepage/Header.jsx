@@ -7,9 +7,7 @@ const Header = ({ title, text, image, socialMedias }) => (
   <>
     <H1>{title}</H1>
     <BodyText>{text}</BodyText>
-    <ImageWrapper>
-      <Image width="808px" height="505px" src={`https:${image}`} alt="top-section-image" />
-    </ImageWrapper>
+    <ImageWrapper></ImageWrapper>
   </>
 );
 
