@@ -1,23 +1,10 @@
-import Image from 'next/image';
-import PropTypes from 'prop-types';
-import { BodyText, H1 } from '../typography/Typography';
-import ImageWrapper from '../wrappers/ImageWrapper';
+import React from 'react'
 
-const Header = ({ title, text, image, socialMedias }) => (
-  <>
-    <H1>{title}</H1>
-    <BodyText>{text}</BodyText>
-    <ImageWrapper>
-      <Image width="808px" height="505px" src={`https:${image}`} alt="top-section-image" />
-    </ImageWrapper>
-  </>
-);
+const Header = () => (
+        
+        <div>
+            Hello
+        </div>
+    )
 
-Header.propTypes = {
-  title: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  socialMedias: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
-
-export default Header;
+export default Header
