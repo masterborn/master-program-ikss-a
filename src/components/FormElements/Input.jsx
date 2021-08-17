@@ -1,22 +1,23 @@
 import styled from "styled-components";
-import { getColor, getFontSize, getFontWeight, getLetterSpacing  } from "@root/styles/utils";
+import { getColor, getFontSize, getFontWeight, getLetterSpacing } from "@root/styles/utils";
+import PropTypes from 'prop-types';
 
 const InputField = styled.input`
     width: 331px;
     height: 48px;
     border-radius: 4px;
-    background-image: ${({error, icon}) => {
-        if(icon){
-        if(error) return `url('/triangle.svg'), url('/exclam.svg'), url('/dotRed.svg')`
-        return `url('/circleBlue.svg'), url('/iBlue.svg'), url('/dotBlue.svg')`
-        }  
+    background-image: ${({ error, icon }) => {
+        if (icon) {
+            if (error) return `url('/triangle.svg'), url('/exclam.svg'), url('/dotRed.svg')`
+            return `url('/circleBlue.svg'), url('/iBlue.svg'), url('/dotBlue.svg')`
+        }
         return 'none'
     }};
     background-repeat: no-repeat;
-    background-position: ${({error}) => error ? `right 14px center, right 7% top 47%, right 22px top 60%` : `right 14px center, right 7% top 55%, right 22px top 42%`};
+    background-position: ${({ error }) => error ? `right 14px center, right 7% top 47%, right 22px top 60%` : `right 14px center, right 7% top 55%, right 22px top 42%`};
     padding: 10px 12px;
     border: 2px solid ;
-    border-color: ${({error}) => error ? getColor('errorRed') : getColor('steel60')};
+    border-color: ${({ error }) => error ? getColor('errorRed') : getColor('steel60')};
     color:${getColor('steel60')} ;
     line-height: 28px;
     font-size: ${getFontSize('bodySmall')};
@@ -27,17 +28,17 @@ const InputField = styled.input`
         color: ${getColor('steel40')};
         background-color: ${getColor('blue5')};
         border-color: ${getColor('steel40')};
-        background-image: ${({icon}) => icon ? `url('/circle.svg'), url('/i.svg'), url('/dot.svg')` : 'none'};
+        background-image: ${({ icon }) => icon ? `url('/circle.svg'), url('/i.svg'), url('/dot.svg')` : 'none'};
+    }
+
+    &:valid {
+        color: ${getColor('steel')};
     }
 
     &:focus {
         color: ${getColor('steel')};
         outline: none;
         border-color: ${getColor('ikssBlue')};
-    }
-
-    &:valid {
-        color: ${getColor('steel')};
     }
 `;
 
@@ -76,24 +77,41 @@ const Wrapper = styled.div`
         background-repeat: no-repeat;
         background-position: center;
     }
-
 `;
 
 
-const Input = ({text = 'Placeholder text...', icon, error, name, id, checkbox}) => {
+const Input = ({ text, icon, error, name, id, checkbox, disabled }) => {
 
-    if(checkbox) {
+    if (checkbox) {
         return (
             <Wrapper>
                 <input type="checkbox" name={name} id={id} />
-                <span></span>
+                <span />
             </Wrapper>
         )
     }
-    
-    return (  
-        <InputField placeholder={text} type='text' name={name} id={id} />     
-     );
+
+    return (
+        <InputField icon={icon} error={error} disabled={disabled} placeholder={text} type='text' name={name} id={id} />
+    );
+}
+
+Input.defaultProps = {
+    text: 'Placeholder text...',
+    checkbox: false,
+    icon: false,
+    error: false,
+    disabled: false
+}
+
+Input.propTypes = {
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    text: PropTypes.string,
+    checkbox: PropTypes.bool,
+    icon: PropTypes.bool,
+    error: PropTypes.bool,
+    disabled: PropTypes.bool,
 }
 
 export default Input;
