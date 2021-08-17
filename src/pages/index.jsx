@@ -3,7 +3,7 @@ import LogoNoBackground from '@root/components/logos/LogoNoBackground';
 import LogoNoBackgroundWhite from '@root/components/logos/LogoNoBackgroundWhite';
 import { H1, BodyText } from '@root/components/typography/Typography';
 import { getColor } from '@root/styles/utils';
-import Header from '@root/components/Header/Header';
+
 
 
 const Home = () => (
@@ -15,7 +15,7 @@ const Home = () => (
       Example h1 with adjusted color and margin
     </H1>
     <BodyText>Basic body text</BodyText>
-    <Header links={links} socialMedias={socialMedias}  title="Przykładowy nagłówek IKSS" text="Urna, mi condimentum amet, consectetur mauris tincidunt gravida aenean. Dignissim in sit arcu nam. Ultrices integer odio feugiat vulputate. "/>
+    
     
   </div>
   

@@ -7,7 +7,6 @@ import { getColor } from '@root/styles/utils';
 import { SecondaryBigButton } from '../Button/Button.styles';
 import { H1, BodyText } from '../typography/Typography' 
 
-import { LinksList, StyledLink, Socials } from "../Navbar/Navbar.styles";
 
 
 
@@ -66,36 +65,14 @@ const SocialMediaBar = styled.div`
           </Link>
         </LeftBlock>
         <Vid autoPlay muted loop>
-        <source src="https://www.youtube.com/watch?v=fGn7cvhH-vc" src={`https:${video}`} alt="top-section-video" />
+        <source src="https://www.youtube.com/watch?v=fGn7cvhH-vc"  alt="top-section-video" />
         
       </Vid>
       
       </MainContent> 
-      <SocialMediaBar>
-      <LinksList>
-                {
-                    links.map(({ title, path }) => (
-                        <li key={title}>
-                            <Link href={path} ><StyledLink active={getActivePath(path, pathname)}>{title}</StyledLink></Link>
-                        </li>))
-                }
-            </LinksList>
-            <Socials visible={visible}>
-                {
-                    socialMedias.map(({ circleLogo, url, title }) => (
-                        <a
-                            href={url}
-                            key={title}
-                            target='_blank'
-                            rel='noreferrer'
-                            aria-label={title}
-                        >
-                            <Image src={circleLogo} />
-                        </a>
-                    ))
-                }
-            </Socials>
-      </SocialMediaBar>
+     <SocialMediaBar>
+       here
+     </SocialMediaBar>
     </HeroSection>
    
     </>
