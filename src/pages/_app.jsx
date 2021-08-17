@@ -8,7 +8,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import Head from 'next/head';
 import GlobalStyles from '@styles/GlobalStyles';
 import { theme } from '@styles/theme';
-import fetchApiData from '@root/api/api';
+import fetchContentfulApi from '@root/api/ContentfulClient';
 import Layout from '../components/Layout/Layout';
 
 const App = (props) => {
@@ -24,6 +24,7 @@ const App = (props) => {
         <title>App Name</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
         <link rel="shortcut icon" href="/favicon.png" />
+        <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
       </Head>
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClientRef.current}>
@@ -41,9 +42,9 @@ const App = (props) => {
 };
 
 App.getInitialProps = async () => {
-  const commonApiElements = await fetchApiData('common');
+  const commonApiElements = await fetchContentfulApi.getBasicContent('common');
   return {
-    commonApiElements: commonApiElements.items,
+    commonApiElements,
   };
 };
 

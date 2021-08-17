@@ -1,9 +1,11 @@
 // import Image from 'next/image';
+import Link from 'next/link'
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { getColor } from '@root/styles/utils';
 import { SecondaryBigButton } from '../Button/Button.styles';
 import { H1, BodyText } from '../typography/Typography'
+import { Socials } from '../Navbar/Navbar.styles';
 
 
  const HeroSection = styled.div`
@@ -56,7 +58,9 @@ const SocialMediaBar = styled.div`
         <LeftBlock>
           <H1 width="416px" height="144px" margin=" 77px 95px 32px 120px" marginLeft="120px" marginTop="77px"  color={getColor('navy')}>{title}</H1>
           <BodyText width="384px" height="96px" margin="0px 127px 32px 120px" color={getColor('steel')}>{text}</BodyText>
-          <SecondaryBigButton width="156px" margin="0px 355px 34px 120px" color={getColor('navy')}>Skontaktuj się</SecondaryBigButton>
+          <Link href="/contact" passHref>
+            <SecondaryBigButton width="156px" margin="0px 355px 34px 120px" color={getColor('navy')}>Skontaktuj się</SecondaryBigButton>
+          </Link>
         </LeftBlock>
         <Vid autoPlay muted loop>
         <source src="https://www.youtube.com/watch?v=fGn7cvhH-vc" alt="niceview" />
@@ -64,7 +68,21 @@ const SocialMediaBar = styled.div`
       </Vid>
       
       </MainContent> 
-     
+      <Socials>
+                {
+                    socialMedias.map(({ circleLogo, url, title }) => (
+                        <a
+                            href={url}
+                            key={title}
+                            target='_blank'
+                            rel='noreferrer'
+                            aria-label={title}
+                        >
+                            <Image src={circleLogo} />
+                        </a>
+                    ))
+                }
+            </Socials>
     </HeroSection>
    
     </>
