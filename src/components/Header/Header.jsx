@@ -1,11 +1,14 @@
-// import Image from 'next/image';
+import Image from 'next/image';
+import React from 'react';
 import Link from 'next/link'
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { getColor } from '@root/styles/utils';
 import { SecondaryBigButton } from '../Button/Button.styles';
-import { H1, BodyText } from '../typography/Typography'
-import { Socials } from '../Navbar/Navbar.styles';
+import { H1, BodyText } from '../typography/Typography' 
+
+import { LinksList, StyledLink, Socials } from "../Navbar/Navbar.styles";
+
 
 
  const HeroSection = styled.div`
@@ -49,26 +52,35 @@ const SocialMediaBar = styled.div`
 
 `;
 
- const TopSection = ({ title, text, socialLinks, socialIcons}) => (
+ const TopSection = ({ title, text, video, socialLinks, socialIcons}) => (
 
     <>
 
     <HeroSection>
       <MainContent>
         <LeftBlock>
-          <H1 width="416px" height="144px" margin=" 77px 95px 32px 120px" marginLeft="120px" marginTop="77px"  color={getColor('navy')}>{title}</H1>
-          <BodyText width="384px" height="96px" margin="0px 127px 32px 120px" color={getColor('steel')}>{text}</BodyText>
+          <H1 color={getColor('navy')}>{title}</H1>
+          <BodyText color={getColor('steel')}>{text}</BodyText>
           <Link href="/contact" passHref>
-            <SecondaryBigButton width="156px" margin="0px 355px 34px 120px" color={getColor('navy')}>Skontaktuj się</SecondaryBigButton>
+            <SecondaryBigButton>Skontaktuj się</SecondaryBigButton>
           </Link>
         </LeftBlock>
         <Vid autoPlay muted loop>
-        <source src="https://www.youtube.com/watch?v=fGn7cvhH-vc" alt="niceview" />
+        <source src="https://www.youtube.com/watch?v=fGn7cvhH-vc" src={`https:${video}`} alt="top-section-video" />
         
       </Vid>
       
       </MainContent> 
-      <Socials>
+      <SocialMediaBar>
+      <LinksList>
+                {
+                    links.map(({ title, path }) => (
+                        <li key={title}>
+                            <Link href={path} ><StyledLink active={getActivePath(path, pathname)}>{title}</StyledLink></Link>
+                        </li>))
+                }
+            </LinksList>
+            <Socials visible={visible}>
                 {
                     socialMedias.map(({ circleLogo, url, title }) => (
                         <a
@@ -83,6 +95,7 @@ const SocialMediaBar = styled.div`
                     ))
                 }
             </Socials>
+      </SocialMediaBar>
     </HeroSection>
    
     </>

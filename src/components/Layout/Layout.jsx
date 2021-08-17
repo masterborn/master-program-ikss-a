@@ -3,6 +3,7 @@ import { findApiElementByIdentifier } from '@root/handlers/findApiElement';
 import getSocialMedias from '@root/handlers/getSocialMedias';
 import getPaths from '@root/handlers/getPaths';
 import Navbar from '../Navbar/Navbar';
+import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
 const Layout = ({ children, commonApiElements }) => {
@@ -14,6 +15,7 @@ const Layout = ({ children, commonApiElements }) => {
       <Navbar socialMedias={socialMedias} links={links} />
       {children}
       <Footer links={links} socialMedias={socialMedias} copyrightText={copyrightText} />
+      <Header links={links} socialMedias={socialMedias}  title="Przykładowy nagłówek IKSS" text="Urna, mi condimentum amet, consectetur mauris tincidunt gravida aenean. Dignissim in sit arcu nam. Ultrices integer odio feugiat vulputate. "/>
     </>
   );
 };
