@@ -3,11 +3,19 @@ import fetchContentfulApi from '@root/api/ContentfulClient';
 import Header from '@root/components/Homepage/Header';
 import getSocialMedias from '@root/handlers/getSocialMedias';
 import { findApiElementByIdentifier, findAssetByTitle } from '@root/handlers/findApiElement';
+import ValuesSection from '@root/components/Homepage/ValuesSection/ValuesSection';
 
 const Home = ({ homeApiElements, homeApiAssets, commonApiElements }) => {
   const homeTopSection = findApiElementByIdentifier(homeApiElements, 'homepage-top-section');
-  const topSectionBodyImageUrl = findAssetByTitle(homeApiAssets, 'image 1').fields.file.url;
+  const topSectionBodyImageUrl = findAssetByTitle(homeApiAssets, 'na strone ikss').fields.file.url;
   const socialMedias = getSocialMedias(commonApiElements);
+
+  const valuesHeader = findApiElementByIdentifier(homeApiElements, 'homepage-values').fields;
+
+  const firstTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-1');
+  const secondTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-2');
+  const thirdTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-3');
+
   const {
     fields: {
       text1: { content },
@@ -25,6 +33,11 @@ const Home = ({ homeApiElements, homeApiAssets, commonApiElements }) => {
         text={topSectionBodyText}
         image={topSectionBodyImageUrl}
         socialMedias={socialMedias}
+      />
+      <ValuesSection
+        valuesHeader={valuesHeader}
+        valuesAssets={homeApiAssets.slice(1, 4)}
+        valuesTiles={[firstTile, secondTile, thirdTile]}
       />
     </>
   );
