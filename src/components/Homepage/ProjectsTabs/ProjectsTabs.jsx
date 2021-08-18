@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import 'react-tabs/style/react-tabs.css';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import PropTypes from 'prop-types';
 import { FacebookIcon } from '@root/components/icons';
 import { BigButton, SmallButton } from '@root/components/Button/Button.styles';
@@ -44,6 +45,7 @@ const ProjectsTabs = ({ projectsApiElements, projectsApiAssets, latestProjectsHe
       homepageProjects[i] = projectsApiElements[i];
     }
   }
+
   homepageProjects.forEach((project) => {
     let imageUrl = '';
     projectsApiAssets.forEach((asset) => {
@@ -54,7 +56,7 @@ const ProjectsTabs = ({ projectsApiElements, projectsApiAssets, latestProjectsHe
     projectsData.push({
       title: project.fields.title,
       date: project.fields.date,
-      description: project.fields.description.content[0].content[0].value,
+      description: documentToReactComponents(project.fields.description),
       linkUrl: project.fields.linkUrl,
       linkCaption: project.fields.linkCaption,
       videoUrl: project.fields.videoUrl,
@@ -62,68 +64,62 @@ const ProjectsTabs = ({ projectsApiElements, projectsApiAssets, latestProjectsHe
     });
   });
 
-  console.log(projectsApiElements);
-  console.log(projectsApiAssets);
-  console.log(homepageProjects);
-  console.log(projectsData);
-
   return (
     <StyledTabs>
       <H3>{latestProjectsHeader}</H3>
       <StyledTabList>
-        {projectsData.map((project) => (
-          <StyledTab key={project.title}>
-            <BigButton className="tab-button">{project.title}</BigButton>
+        {projectsData.map(({ title }) => (
+          <StyledTab key={title}>
+            <BigButton className="tab-button">{title}</BigButton>
           </StyledTab>
         ))}
       </StyledTabList>
 
-      {projectsData.map((project) => (
-        <>
-          <StyledTabPanel key={project.title}>
-            {project.videoUrl ? (
-              <>
-                <StyledVideo
-                  key={project.videoUrl}
-                  title={project.title}
-                  width="100%"
-                  height="579"
-                  src={`${project.videoUrl.replace(
-                    'watch?v=',
-                    'embed/',
-                  )}?rel=0&showinfo=0&autohide=1`}
-                  allow="fullscreen"
+      {projectsData.map(
+        ({ title, date, description, linkUrl, linkCaption, videoUrl, imageUrl }) => (
+          <>
+            <StyledTabPanel key={title}>
+              {videoUrl ? (
+                <>
+                  <StyledVideo
+                    key={videoUrl}
+                    title={title}
+                    width="100%"
+                    height="579"
+                    src={`${videoUrl.replace('watch?v=', 'embed/')}?rel=0&showinfo=0&autohide=1`}
+                    allow="fullscreen"
+                  />
+                </>
+              ) : (
+                <StyledImage
+                  key={imageUrl}
+                  width="997px"
+                  height="579px"
+                  alt={title}
+                  src={imageUrl}
                 />
-              </>
-            ) : (
-              <StyledImage
-                key={project.imageUrl}
-                width="997px"
-                height="579px"
-                alt={project.title}
-                src={project.imageUrl}
-              />
-            )}
-            <StyledTabTextSection>
-              <TitleWithDateContainer>
-                <ProjectTitle>{project.title}</ProjectTitle>
-                <ProjectDate>{project.date}</ProjectDate>
-              </TitleWithDateContainer>
-              <ProjectDescription>{project.description}</ProjectDescription>
-              {project.linkUrl && (
-                <ButtonWrapper>
-                  <a href={project.linkUrl} target="_blank" rel="noreferrer">
-                    <SmallButton icon={project.linkUrl.includes('facebook')}>
-                      {project.linkUrl.includes('facebook') && <FacebookIcon />}
-                      {project.linkCaption}
-                    </SmallButton>
-                  </a>
-                </ButtonWrapper>
               )}
-            </StyledTabTextSection>
-          </StyledTabPanel>
-        </>
-      ))}
+              <StyledTabTextSection>
+                <TitleWithDateContainer>
+                  <ProjectTitle>{title}</ProjectTitle>
+                  <ProjectDate>{date}</ProjectDate>
+                </TitleWithDateContainer>
+                <ProjectDescription>{description}</ProjectDescription>
+                {linkUrl && (
+                  <ButtonWrapper>
+                    <a href={linkUrl} target="_blank" rel="noreferrer">
+                      <SmallButton icon={linkUrl.includes('facebook')}>
+                        {linkUrl.includes('facebook') && <FacebookIcon />}
+                        {linkCaption}
+                      </SmallButton>
+                    </a>
+                  </ButtonWrapper>
+                )}
+              </StyledTabTextSection>
+            </StyledTabPanel>
+          </>
+        ),
+      )}
       <a href="/projekty">
         <TabSecondaryBigButton>Zobacz wszystkie projekty</TabSecondaryBigButton>
       </a>

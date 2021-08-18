@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { Tab, TabList, TabPanel } from 'react-tabs';
 import { getColor } from '@root/styles/utils';
-import { BodyText, H4, H5 } from '@root/components/typography/Typography';
+import { H4, H5 } from '@root/components/typography/Typography';
 import dynamic from 'next/dynamic';
 import { SecondaryBigButton } from '@root/components/Button/Button.styles';
 
@@ -104,9 +104,12 @@ export const ProjectDate = styled(H5)`
   color: ${getColor('steel')};
 `;
 
-export const ProjectDescription = styled(BodyText)`
+export const ProjectDescription = styled.div`
   color: ${getColor('steel')};
   margin-bottom: 32px;
+  font-size: 16px;
+  line-height: 32px;
+  letter-spacing: -0.015px;
 `;
 
 export const TabSecondaryBigButton = styled(SecondaryBigButton)`
