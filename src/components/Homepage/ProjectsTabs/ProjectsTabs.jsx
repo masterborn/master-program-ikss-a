@@ -76,7 +76,11 @@ const ProjectsTabs = ({ projectsApiElements, projectsApiAssets, latestProjectsHe
                   title={project.title}
                   width="100%"
                   height="579"
-                  src={project.videoUrl.replace('watch?v=', 'embed/')}
+                  src={`${project.videoUrl.replace(
+                    'watch?v=',
+                    'embed/',
+                  )}?rel=0&showinfo=0&autohide=1`}
+                  allow="fullscreen"
                 />
               </>
             ) : (
