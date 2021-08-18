@@ -16,9 +16,9 @@ export const StyledTabs = styled(Tabs)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  padding: 0 222px 0 222px;
-  margin-top: 180px;
+  max-width: 997px;
+  margin: 180px auto 0;
+
   a {
     text-decoration: none;
   }
