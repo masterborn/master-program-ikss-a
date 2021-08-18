@@ -24,6 +24,18 @@ const ProjectsTabs = ({ projectsApiElements, projectsApiAssets, latestProjectsHe
   const homepageProjects = [];
   const projectsData = [];
 
+  function compareProjectsOrder(a, b) {
+    if (a.fields.order < b.fields.order) {
+      return 1;
+    }
+    if (a.fields.order > b.fields.order) {
+      return -1;
+    }
+    return 0;
+  }
+
+  projectsApiElements.sort(compareProjectsOrder);
+
   for (let i = 0; i < projectsApiElements.length; i += 1) {
     if (
       projectsApiElements[i].fields.showOnHomepage === true &&
