@@ -1,7 +1,24 @@
 import PropTypes from 'prop-types';
 import fetchContentfulApi from '@root/api/ContentfulClient';
+import { findApiElementByIdentifier, findAssetByTitle } from '@root/handlers/findApiElement';
+import GenericTopSection from '@root/components/GenericTopSection/GenericTopSection';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
-const AboutUs = ({ aboutUsApiElements, aboutUsApiAssets, commonApiElements }) => <div />;
+const AboutUs = ({ aboutUsApiElements, aboutUsApiAssets, commonApiElements }) => {
+  const aboutUsTopSection = findApiElementByIdentifier(aboutUsApiElements, 'about-us-top-section');
+  const aboutUsTopSectionImageUrl = findAssetByTitle(aboutUsApiAssets, 'Group 45').fields.file.url;
+  const aboutUsTitle = aboutUsTopSection.fields.title;
+  const aboutUsDescription = documentToReactComponents(aboutUsTopSection.fields.text1);
+  return (
+    <>
+      <GenericTopSection
+        imageUrl={aboutUsTopSectionImageUrl}
+        title={aboutUsTitle}
+        subpageDescription={aboutUsDescription}
+      />
+    </>
+  );
+};
 
 export const getStaticProps = async () => {
   const aboutUsApiElements = await fetchContentfulApi.getBasicContent('about-us');
