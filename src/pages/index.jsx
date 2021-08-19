@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import PropTypes from 'prop-types';
 import fetchContentfulApi from '@root/api/ContentfulClient';
 import Header from '@root/components/HomePage/Header/Header';
