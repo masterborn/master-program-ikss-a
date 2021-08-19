@@ -5,7 +5,8 @@ import { H1 } from '../typography/Typography';
 export const TopSectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 64px 222px 80px 222px;
+  max-width: 995px;
+  margin: 64px auto 80px auto;
   align-items: center;
   justify-content: center;
 `;
