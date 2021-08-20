@@ -13,9 +13,9 @@ import {
     HeroBodyText,
     HeroSecondaryBigButton
  } from '@root/components/HomePage/Header/Header.styles';
-
+ 
 const Header = ({ headerTitle, text, video, socialMedias }) => {
-    const [visible, setVisible] = React.useState(false);
+    
     const [activeScroll, setActiveScroll] = React.useState(true);
     const { pathname } = useRouter();
 
@@ -37,17 +37,13 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
                     clearInterval(scroll);
                 }
             }, 1);
-        } else {
-            // handling open modal with the form here
-        }
+        } 
     };
 
     const handleScroll = React.useCallback(() => {
         const footer = document.querySelector('footer');
 
-        if (window.scrollY >= window.innerHeight) {
-            setVisible(true);
-        } else setVisible(false)
+        
 
         if (window.scrollY < footer.offsetTop - window.innerHeight) {
             setActiveScroll(true);
@@ -84,7 +80,7 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
           />
      </MainContent>
          <HeaderSocialMediaWrapper>
-            <Socials visible={visible}>
+            <Socials>
                 {socialMedias.map(({ circleLogo, url, title }) => (
                         <a
                             href={url}
