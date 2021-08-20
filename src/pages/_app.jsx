@@ -28,11 +28,11 @@ const App = (props) => {
       </Head>
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClientRef.current}>
-          <Hydrate state={pageProps.dehydratedState}>
+          
             <Layout commonApiElements={commonApiElements}>
               <Component {...pageProps} />
             </Layout>
-          </Hydrate>
+          
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
         <GlobalStyles />

@@ -83,6 +83,7 @@ const Navbar = ({ socialMedias, links }) => {
                             aria-label={title}
                         >
                             <Image src={circleLogo} />
+                            
                         </a>
                     ))
                 }

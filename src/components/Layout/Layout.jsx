@@ -14,6 +14,7 @@ const Layout = ({ children, commonApiElements }) => {
       <Navbar socialMedias={socialMedias} links={links} />
       {children}
       <Footer links={links} socialMedias={socialMedias} copyrightText={copyrightText} />
+      
     </>
   );
 };

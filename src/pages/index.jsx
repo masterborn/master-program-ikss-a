@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import fetchContentfulApi from '@root/api/ContentfulClient';
-import Header from '@root/components/Homepage/Header';
+import Header from '@root/components/HomePage/Header/Header';
 import getSocialMedias from '@root/handlers/getSocialMedias';
+
 import { findApiElementByIdentifier, findAssetByTitle } from '@root/handlers/findApiElement';
 import ProjectsTabs from '@root/components/Homepage/ProjectsTabs/ProjectsTabs';
 import ValuesSection from '@root/components/Homepage/ValuesSection/ValuesSection';
@@ -38,10 +39,11 @@ const Home = ({
   return (
     <>
       <Header
-        title={title}
+        headerTitle={title}
         text={topSectionBodyText}
-        image={topSectionBodyImageUrl}
+        video={topSectionVideoUrl}
         socialMedias={socialMedias}
+        
       />
       <ValuesSection
         valuesHeader={valuesHeader}
