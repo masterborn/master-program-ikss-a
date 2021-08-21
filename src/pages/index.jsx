@@ -1,8 +1,9 @@
 /* eslint-disable import/no-unresolved */
 import PropTypes from 'prop-types';
 import fetchContentfulApi from '@root/api/ContentfulClient';
-import Header from '@root/components/HomePage/Header/Header';
+import Header from '@root/components/Homepage/Header/Header';
 import getSocialMedias from '@root/handlers/getSocialMedias';
+
 import { findApiElementByIdentifier, findAssetByTitle } from '@root/handlers/findApiElement';
 import ProjectsTabs from '@root/components/Homepage/ProjectsTabs/ProjectsTabs';
 import ValuesSection from '@root/components/Homepage/ValuesSection/ValuesSection';
@@ -15,7 +16,7 @@ const Home = ({
   projectsApiElements,
 }) => {
   const homeTopSection = findApiElementByIdentifier(homeApiElements, 'homepage-top-section');
-  const topSectionBodyImageUrl = findAssetByTitle(homeApiAssets, 'na strone ikss').fields.file.url;
+  const topSectionVideoUrl = findAssetByTitle(homeApiAssets, 'na strone ikss').fields.file.url;
   const socialMedias = getSocialMedias(commonApiElements);
   const valuesHeader = findApiElementByIdentifier(homeApiElements, 'homepage-values').fields;
   const firstTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-1');
@@ -35,10 +36,11 @@ const Home = ({
   return (
     <>
       <Header
-        title={title}
+        headerTitle={title}
         text={topSectionBodyText}
-        image={topSectionBodyImageUrl}
+        video={topSectionVideoUrl}
         socialMedias={socialMedias}
+        
       />
       <ValuesSection
         valuesHeader={valuesHeader}
@@ -48,7 +50,7 @@ const Home = ({
       <ProjectsTabs
         projectsApiAssets={projectsApiAssets}
         projectsApiElements={projectsApiElements}
-        latestProjectsHeader={latestProjectsHeader}
+        // latestProjectsHeader={latestProjectsHeader}
       />
     </>
   );
