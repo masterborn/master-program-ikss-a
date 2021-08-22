@@ -12,7 +12,7 @@ import {
     HeroLinks,
     HeroBodyText,
     HeroSecondaryBigButton
- } from '@root/components/Homepage/Header/Header.styles';
+ } from './Header.styles';
  
 const Header = ({ headerTitle, text, video, socialMedias }) => {
     
@@ -70,7 +70,7 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
           <iframe width="808px" height="505px" 
                 src={`https:${video}`}
                 title="YouTube video player" 
-                frameborder="0" 
+                frameBorder="0" 
                 allow="accelerometer; 
                     autoplay; 
                     clipboard-write; 

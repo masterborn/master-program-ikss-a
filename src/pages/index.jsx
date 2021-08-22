@@ -7,6 +7,7 @@ import getSocialMedias from '@root/handlers/getSocialMedias';
 import { findApiElementByIdentifier, findAssetByTitle } from '@root/handlers/findApiElement';
 import ProjectsTabs from '@root/components/Homepage/ProjectsTabs/ProjectsTabs';
 import ValuesSection from '@root/components/Homepage/ValuesSection/ValuesSection';
+import LogosSection from '@root/components/Homepage/LogosSection/LogosSection';
 
 const Home = ({
   homeApiElements,
@@ -23,6 +24,8 @@ const Home = ({
   const firstTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-1');
   const secondTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-2');
   const thirdTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-3');
+  const logosHeader = findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields.title;
+  const logosText= findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields.text1.content.value; 
   
 
   const {
@@ -53,6 +56,10 @@ const Home = ({
         projectsApiAssets={projectsApiAssets}
         projectsApiElements={projectsApiElements}
         latestProjectsHeader={latestProjectsHeader}
+      />
+       <LogosSection
+        logosHeader={logosHeader}
+        logosText={logosText}
       />
     </>
   );
