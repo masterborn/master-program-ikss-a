@@ -15,6 +15,7 @@ const Home = ({
   projectsApiAssets,
   projectsApiElements,
 }) => {
+  const latestProjectsHeader = findApiElementByIdentifier(homeApiElements, 'homepage-projects-title').fields.title;
   const homeTopSection = findApiElementByIdentifier(homeApiElements, 'homepage-top-section');
   const topSectionVideoUrl = findAssetByTitle(homeApiAssets, 'na strone ikss').fields.file.url;
   const socialMedias = getSocialMedias(commonApiElements);
@@ -22,6 +23,7 @@ const Home = ({
   const firstTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-1');
   const secondTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-2');
   const thirdTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-3');
+  
 
   const {
     fields: {
@@ -50,7 +52,7 @@ const Home = ({
       <ProjectsTabs
         projectsApiAssets={projectsApiAssets}
         projectsApiElements={projectsApiElements}
-        // latestProjectsHeader={latestProjectsHeader}
+        latestProjectsHeader={latestProjectsHeader}
       />
     </>
   );
