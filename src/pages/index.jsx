@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import fetchContentfulApi from '@root/api/ContentfulClient';
-import Header from '@root/components/HomePage/Header/Header';
+import Header from '@root/components/Homepage/Header/Header';
 import getSocialMedias from '@root/handlers/getSocialMedias';
 
 import { findApiElementByIdentifier, findAssetByTitle } from '@root/handlers/findApiElement';
