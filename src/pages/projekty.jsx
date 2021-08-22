@@ -1,26 +1,25 @@
 import PropTypes from 'prop-types';
 import fetchContentfulApi from '@root/api/ContentfulClient';
-import { findApiElementByIdentifier, findAssetByTitle } from '@root/handlers/findApiElement';
+import { findApiElementById, findApiAssetById } from '@root/handlers/findApiElement';
 import GenericTopSection from '@root/components/GenericTopSection/GenericTopSection';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import GenericBottomCta from '@root/components/GenericBottomCta/GenericBottomCta';
 
-const Projects = ({ projectsApiElements, projectsApiAssets, commonApiElements }) => {
-  const projectsTopSection = findApiElementByIdentifier(
-    projectsApiElements,
-    'projects-top-section',
-  );
-
-  const projectsTopSectionImageUrl = findAssetByTitle(projectsApiAssets, 'Warstwa 1').fields.file
-    .url;
-  const projectsTitle = projectsTopSection.fields.title;
-  const projectsDescription = documentToReactComponents(projectsTopSection.fields.text1);
+const Projects = ({ projectsApiElements, projectsApiAssets, projectsAssetsList, projectsList }) => {
+  const topSection = findApiElementById(projectsApiElements, '6enfYOcI5KXjAaGsfSNLjd');
+  const bottomCta = findApiElementById(projectsApiElements, '6Fg9VlhBAvzwbwNc0MjqVA').fields;
+  const topSectionImageUrl = findApiAssetById(projectsApiAssets, 'yH2eNUf6Ph8o9Ijo8hke1').fields
+    .file.url;
+  const projectsTitle = topSection.fields.title;
+  const description = documentToReactComponents(topSection.fields.text1);
   return (
     <>
       <GenericTopSection
-        imageUrl={projectsTopSectionImageUrl}
+        imageUrl={topSectionImageUrl}
         title={projectsTitle}
-        subpageDescription={projectsDescription}
+        subpageDescription={description}
       />
+      <GenericBottomCta bottomCta={bottomCta} />
     </>
   );
 };
@@ -29,11 +28,15 @@ export const getStaticProps = async () => {
   const projectsApiElements = await fetchContentfulApi.getBasicContent('projects');
   const projectsApiAssets = await fetchContentfulApi.getBasicContentAssets('projects');
   const commonApiElements = await fetchContentfulApi.getBasicContent('common');
+  const projectsList = await fetchContentfulApi.getProjects();
+  const projectsAssetsList = await fetchContentfulApi.getProjectsAssets();
   return {
     props: {
       projectsApiElements,
       projectsApiAssets,
       commonApiElements,
+      projectsList,
+      projectsAssetsList,
     },
   };
 };
@@ -41,7 +44,8 @@ export const getStaticProps = async () => {
 Projects.propTypes = {
   projectsApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
   projectsApiAssets: PropTypes.arrayOf(PropTypes.object).isRequired,
-  commonApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
+  projectsAssetsList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  projectsList: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Projects;

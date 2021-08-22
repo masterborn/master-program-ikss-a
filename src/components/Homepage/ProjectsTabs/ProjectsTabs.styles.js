@@ -118,7 +118,6 @@ export const TabSecondaryBigButton = styled(SecondaryBigButton)`
 `;
 
 export const StyledVideo = styled.iframe`
-  border: none;
   border-radius: 16px 16px 0 0;
 `;
 

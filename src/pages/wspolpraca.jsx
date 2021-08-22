@@ -1,26 +1,27 @@
 import PropTypes from 'prop-types';
 import fetchContentfulApi from '@root/api/ContentfulClient';
-import { findApiElementByIdentifier, findAssetByTitle } from '@root/handlers/findApiElement';
+import { findApiAssetById, findApiElementById } from '@root/handlers/findApiElement';
 import GenericTopSection from '@root/components/GenericTopSection/GenericTopSection';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import GenericBottomCta from '@root/components/GenericBottomCta/GenericBottomCta';
 
 const Cooperation = ({ cooperationApiElements, cooperationApiAssets, commonApiElements }) => {
-  const cooperationTopSection = findApiElementByIdentifier(
-    cooperationApiElements,
-    'cooperation-top-section',
-  );
+  const topSection = findApiElementById(cooperationApiElements, '36rnMdOGfFdyAiREwfR4ZZ');
 
-  const cooperationTopSectionImageUrl = findAssetByTitle(cooperationApiAssets, 'Group 179').fields
+  const bottomCtaText = findApiElementById(cooperationApiElements, '5RQeRiT8v9ni2ywUNJr0TF').fields;
+
+  const topSectionImageUrl = findApiAssetById(cooperationApiAssets, '6GuujJk5wpDBBocEfbYyDp').fields
     .file.url;
-  const cooperationTitle = cooperationTopSection.fields.title;
-  const cooperationDescription = documentToReactComponents(cooperationTopSection.fields.text1);
+  const cooperationTitle = topSection.fields.title;
+  const description = documentToReactComponents(topSection.fields.text1);
   return (
     <>
       <GenericTopSection
-        imageUrl={cooperationTopSectionImageUrl}
+        imageUrl={topSectionImageUrl}
         title={cooperationTitle}
-        subpageDescription={cooperationDescription}
+        subpageDescription={description}
       />
+      <GenericBottomCta bottomCta={bottomCtaText} />
     </>
   );
 };

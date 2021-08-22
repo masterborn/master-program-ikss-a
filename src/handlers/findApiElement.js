@@ -1,5 +1,5 @@
-export const findApiElementByIdentifier = (objectToSearch, identifierToFind) =>
-  objectToSearch.find((element) => element.fields.identifier === identifierToFind);
+export const findApiElementById = (objectToSearch, idToFind) =>
+  objectToSearch.find((element) => element.sys.id === idToFind);
 
-export const findAssetByTitle = (objectToSearch, titleToFind) =>
-  objectToSearch.find((element) => element.fields.title === titleToFind);
+export const findApiAssetById = (objectToSearch, idToFind) =>
+  objectToSearch.find((element) => element.sys.id === idToFind);

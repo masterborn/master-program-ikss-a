@@ -1,7 +1,7 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import 'react-tabs/style/react-tabs.css';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import PropTypes from 'prop-types';
+import pushProjectsData from '@root/handlers/createProjectsData';
+import compareProjectsOrder from '@root/handlers/compareProjectsOrder';
 import { FacebookIcon } from '@root/components/icons';
 import { BigButton, SmallButton } from '@root/components/Button/Button.styles';
 import { H3 } from '@root/components/typography/Typography';
@@ -25,16 +25,6 @@ const ProjectsTabs = ({ projectsApiElements, projectsApiAssets, latestProjectsHe
   const homepageProjects = [];
   const projectsData = [];
 
-  function compareProjectsOrder(a, b) {
-    if (a.fields.order < b.fields.order) {
-      return 1;
-    }
-    if (a.fields.order > b.fields.order) {
-      return -1;
-    }
-    return 0;
-  }
-
   projectsApiElements.sort(compareProjectsOrder);
 
   for (let i = 0; i < projectsApiElements.length; i += 1) {
@@ -46,23 +36,7 @@ const ProjectsTabs = ({ projectsApiElements, projectsApiAssets, latestProjectsHe
     }
   }
 
-  homepageProjects.forEach((project) => {
-    let imageUrl = '';
-    projectsApiAssets.forEach((asset) => {
-      if (asset.fields.title.toLowerCase() === project.fields.title.toLowerCase()) {
-        imageUrl = `https:${asset.fields.file.url}`;
-      }
-    });
-    projectsData.push({
-      title: project.fields.title,
-      date: project.fields.date,
-      description: documentToReactComponents(project.fields.description),
-      linkUrl: project.fields.linkUrl,
-      linkCaption: project.fields.linkCaption,
-      videoUrl: project.fields.videoUrl,
-      imageUrl,
-    });
-  });
+  pushProjectsData(homepageProjects, projectsApiAssets, projectsData);
 
   return (
     <StyledTabs>
@@ -87,7 +61,13 @@ const ProjectsTabs = ({ projectsApiElements, projectsApiAssets, latestProjectsHe
                     width="100%"
                     height="579"
                     src={`${videoUrl.replace('watch?v=', 'embed/')}?rel=0&showinfo=0&autohide=1`}
-                    allow="fullscreen"
+                    frameBorder="0"
+                    allow="accelerometer; 
+                    autoplay; 
+                    clipboard-write; 
+                    encrypted-media; 
+                    gyroscope; 
+                    picture-in-picture"
                   />
                 </>
               ) : (

@@ -2,8 +2,7 @@ import PropTypes from 'prop-types';
 import fetchContentfulApi from '@root/api/ContentfulClient';
 import Header from '@root/components/Homepage/Header/Header';
 import getSocialMedias from '@root/handlers/getSocialMedias';
-
-import { findApiElementByIdentifier, findAssetByTitle } from '@root/handlers/findApiElement';
+import { findApiElementById, findApiAssetById } from '@root/handlers/findApiElement';
 import ProjectsTabs from '@root/components/Homepage/ProjectsTabs/ProjectsTabs';
 import ValuesSection from '@root/components/Homepage/ValuesSection/ValuesSection';
 
@@ -14,17 +13,16 @@ const Home = ({
   projectsApiAssets,
   projectsApiElements,
 }) => {
-  const homeTopSection = findApiElementByIdentifier(homeApiElements, 'homepage-top-section');
-  const latestProjectsHeader = findApiElementByIdentifier(
-    homeApiElements,
-    'homepage-projects-title',
-  ).fields.title;
-  const topSectionVideoUrl = findAssetByTitle(homeApiAssets, 'na strone ikss').fields.file.url;
+  const homeTopSection = findApiElementById(homeApiElements, '1X1gLNzfpSkhRQtWfWscJ8');
+  const latestProjectsHeader = findApiElementById(homeApiElements, '1eYuiUKWWtSEFUirofk5EX').fields
+    .title;
+  const topSectionVideoUrl = findApiAssetById(homeApiAssets, '4fPIBredtzYNienv1X0MSk').fields.file
+    .url;
   const socialMedias = getSocialMedias(commonApiElements);
-  const valuesHeader = findApiElementByIdentifier(homeApiElements, 'homepage-values').fields;
-  const firstTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-1');
-  const secondTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-2');
-  const thirdTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-3');
+  const valuesHeader = findApiElementById(homeApiElements, '3rCxnIQDqMvFA1gEAuypMM').fields;
+  const firstTile = findApiElementById(homeApiElements, '2TyrLz8qxG5ehklou1Aeu9');
+  const secondTile = findApiElementById(homeApiElements, '6mn9XmULxQHqXcsshOg2xo');
+  const thirdTile = findApiElementById(homeApiElements, '58WFaSdZL4CcpO8zTJRO7E');
 
   const {
     fields: {
@@ -43,7 +41,6 @@ const Home = ({
         text={topSectionBodyText}
         video={topSectionVideoUrl}
         socialMedias={socialMedias}
-        
       />
       <ValuesSection
         valuesHeader={valuesHeader}
