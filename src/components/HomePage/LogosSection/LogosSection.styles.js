@@ -10,13 +10,17 @@ justify-content: center;
 
 export const LogosSectionHeader = styled(H3)`
 display: flex;
-flex-direction: column;
 justify-content: center;
+margin-bottom: 86px;
 `;
 
 export const StyledBodyText = styled(BodyText)`
 display: flex;
-flex-direction: column;
+justify-content: center;
+`;
+
+export const PartnerLogosWrapper = styled.div`
+display: flex;
 justify-content: center;
 `;
 

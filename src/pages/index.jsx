@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import fetchContentfulApi from '@root/api/ContentfulClient';
 import Header from '@root/components/Homepage/Header/Header';
 import getSocialMedias from '@root/handlers/getSocialMedias';
-
 import { findApiElementByIdentifier, findAssetByTitle } from '@root/handlers/findApiElement';
 import ProjectsTabs from '@root/components/Homepage/ProjectsTabs/ProjectsTabs';
 import ValuesSection from '@root/components/Homepage/ValuesSection/ValuesSection';
@@ -15,6 +14,8 @@ const Home = ({
   commonApiElements,
   projectsApiAssets,
   projectsApiElements,
+  partnersLogosApiElements,
+  partnersLogosApiAssets
 }) => {
   const latestProjectsHeader = findApiElementByIdentifier(homeApiElements, 'homepage-projects-title').fields.title;
   const homeTopSection = findApiElementByIdentifier(homeApiElements, 'homepage-top-section');
@@ -25,9 +26,8 @@ const Home = ({
   const secondTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-2');
   const thirdTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-3');
   const logosHeader = findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields.title;
-  const logosText= findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields.text1.content.value; 
+  const logosText= findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields.text1.content.value;
   
-
   const {
     fields: {
       text1: { content },
@@ -60,6 +60,8 @@ const Home = ({
        <LogosSection
         logosHeader={logosHeader}
         logosText={logosText}
+        partnersLogosApiElements={partnersLogosApiElements}
+        partnersLogosApiAssets={partnersLogosApiAssets}
       />
     </>
   );
@@ -71,6 +73,9 @@ export const getStaticProps = async () => {
   const commonApiElements = await fetchContentfulApi.getBasicContent('common');
   const projectsApiElements = await fetchContentfulApi.getProjects();
   const projectsApiAssets = await fetchContentfulApi.getProjectsAssets();
+  const partnerLogosApiElements = await fetchContentfulApi.getPartnerLogos('partner-logos');
+  const partnerLogosApiAssets = await fetchContentfulApi.getPartnerLogosAssets('partner-logos');
+
 
   return {
     props: {
@@ -79,6 +84,8 @@ export const getStaticProps = async () => {
       commonApiElements,
       projectsApiElements,
       projectsApiAssets,
+      partnerLogosApiElements,
+      partnerLogosApiAssets
     },
   };
 };
@@ -89,6 +96,8 @@ Home.propTypes = {
   homeApiAssets: PropTypes.arrayOf(PropTypes.object).isRequired,
   projectsApiAssets: PropTypes.arrayOf(PropTypes.object).isRequired,
   projectsApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
+  partnerLogosApiElements:PropTypes.arrayOf(PropTypes.object).isRequired,
+  partnerLogosApiAssets: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default Home;
