@@ -19,7 +19,7 @@ const Home = ({
     homeApiElements,
     'homepage-projects-title',
   ).fields.title;
-  const topSectionBodyImageUrl = findAssetByTitle(homeApiAssets, 'na strone ikss').fields.file.url;
+  const topSectionVideoUrl = findAssetByTitle(homeApiAssets, 'na strone ikss').fields.file.url;
   const socialMedias = getSocialMedias(commonApiElements);
   const valuesHeader = findApiElementByIdentifier(homeApiElements, 'homepage-values').fields;
   const firstTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-1');
