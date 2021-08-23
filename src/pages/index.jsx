@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes, { oneOfType } from 'prop-types';
 import contentfulClient from '@root/api/contentfulClient';
 import Header from '@root/components/Homepage/Header/Header';
 import getSocialMedias from '@root/handlers/getSocialMedias';
@@ -39,7 +39,7 @@ const Home = ({ homeApiElements, commonApiElements, projectsApiElements }) => {
       />
       <ValuesSection
         valuesHeader={valuesHeader}
-        //  valuesAssets={homeApiAssets.slice(1, 4)}
+        homeApiElements={homeApiElements}
         valuesTiles={[firstTile, secondTile, thirdTile]}
       />
       <ProjectsTabs
@@ -54,6 +54,7 @@ export const getStaticProps = async () => {
   const homeApiElements = await contentfulClient.getBasicContent('homepage');
   const commonApiElements = await contentfulClient.getBasicContent('common');
   const projectsApiElements = await contentfulClient.getProjects();
+  console.log(projectsApiElements);
 
   return {
     props: {
@@ -66,7 +67,9 @@ export const getStaticProps = async () => {
 
 Home.propTypes = {
   homeApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
-  commonApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
+  commonApiElements: PropTypes.objectOf(
+    oneOfType([PropTypes.object, PropTypes.array, PropTypes.number]),
+  ).isRequired,
   projectsApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

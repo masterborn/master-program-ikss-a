@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import 'react-tabs/style/react-tabs.css';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import PropTypes from 'prop-types';
+import getProjectsData from '@root/handlers/getProjectsData';
+import compareProjectsOrder from '@root/handlers/compareProjectsOrder';
 import { FacebookIcon } from '@root/components/icons';
 import { BigButton, SmallButton } from '@root/components/Button/Button.styles';
 import { H3 } from '@root/components/typography/Typography';
@@ -21,19 +22,8 @@ import {
   StyledImage,
 } from './ProjectsTabs.styles';
 
-const ProjectsTabs = ({ projectsApiElements, projectsApiAssets, latestProjectsHeader }) => {
+const ProjectsTabs = ({ projectsApiElements, latestProjectsHeader }) => {
   const homepageProjects = [];
-  const projectsData = [];
-
-  function compareProjectsOrder(a, b) {
-    if (a.fields.order < b.fields.order) {
-      return 1;
-    }
-    if (a.fields.order > b.fields.order) {
-      return -1;
-    }
-    return 0;
-  }
 
   projectsApiElements.sort(compareProjectsOrder);
 
@@ -46,23 +36,7 @@ const ProjectsTabs = ({ projectsApiElements, projectsApiAssets, latestProjectsHe
     }
   }
 
-  homepageProjects.forEach((project) => {
-    let imageUrl = '';
-    projectsApiAssets.forEach((asset) => {
-      if (asset.fields.title.toLowerCase() === project.fields.title.toLowerCase()) {
-        imageUrl = `https:${asset.fields.file.url}`;
-      }
-    });
-    projectsData.push({
-      title: project.fields.title,
-      date: project.fields.date,
-      description: documentToReactComponents(project.fields.description),
-      linkUrl: project.fields.linkUrl,
-      linkCaption: project.fields.linkCaption,
-      videoUrl: project.fields.videoUrl,
-      imageUrl,
-    });
-  });
+  const projectsData = getProjectsData(homepageProjects);
 
   return (
     <StyledTabs>
@@ -128,7 +102,6 @@ const ProjectsTabs = ({ projectsApiElements, projectsApiAssets, latestProjectsHe
 };
 
 ProjectsTabs.propTypes = {
-  projectsApiAssets: PropTypes.arrayOf(PropTypes.object).isRequired,
   projectsApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
   latestProjectsHeader: PropTypes.string.isRequired,
 };

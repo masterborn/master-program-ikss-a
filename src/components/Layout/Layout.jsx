@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes, { oneOfType } from 'prop-types';
 import findApiElementByIdentifier from '@root/handlers/findApiElement';
 import getSocialMedias from '@root/handlers/getSocialMedias';
 import getPaths from '@root/handlers/getPaths';
@@ -21,7 +21,9 @@ const Layout = ({ children, commonApiElements }) => {
 
 Layout.propTypes = {
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
-  commonApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
+  commonApiElements: PropTypes.objectOf(
+    oneOfType([PropTypes.object, PropTypes.array, PropTypes.number]),
+  ).isRequired,
 };
 
 export default Layout;
