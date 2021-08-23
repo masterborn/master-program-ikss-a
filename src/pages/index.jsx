@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import fetchContentfulApi from '@root/api/ContentfulClient';
+import contentfulClient from '@root/api/contentfulClient';
 import Header from '@root/components/Homepage/Header/Header';
 import getSocialMedias from '@root/handlers/getSocialMedias';
 
@@ -43,7 +43,6 @@ const Home = ({
         text={topSectionBodyText}
         video={topSectionVideoUrl}
         socialMedias={socialMedias}
-        
       />
       <ValuesSection
         valuesHeader={valuesHeader}
@@ -60,11 +59,11 @@ const Home = ({
 };
 
 export const getStaticProps = async () => {
-  const homeApiElements = await fetchContentfulApi.getBasicContent('homepage');
-  const homeApiAssets = await fetchContentfulApi.getBasicContentAssets('homepage');
-  const commonApiElements = await fetchContentfulApi.getBasicContent('common');
-  const projectsApiElements = await fetchContentfulApi.getProjects();
-  const projectsApiAssets = await fetchContentfulApi.getProjectsAssets();
+  const homeApiElements = await contentfulClient.getBasicContent('homepage');
+  const homeApiAssets = await contentfulClient.getBasicContentAssets('homepage');
+  const commonApiElements = await contentfulClient.getBasicContent('common');
+  const projectsApiElements = await contentfulClient.getProjects();
+  const projectsApiAssets = await contentfulClient.getProjectsAssets();
 
   return {
     props: {

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import fetchContentfulApi from '@root/api/ContentfulClient';
+import contentfulClient from '@root/api/contentfulClient';
 import { findApiElementByIdentifier, findAssetByTitle } from '@root/handlers/findApiElement';
 import GenericTopSection from '@root/components/GenericTopSection/GenericTopSection';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
@@ -27,8 +27,8 @@ const Projects = ({ projectsApiElements, projectsApiAssets }) => {
 };
 
 export const getStaticProps = async () => {
-  const projectsApiElements = await fetchContentfulApi.getBasicContent('projects');
-  const projectsApiAssets = await fetchContentfulApi.getBasicContentAssets('projects');
+  const projectsApiElements = await contentfulClient.getBasicContent('projects');
+  const projectsApiAssets = await contentfulClient.getBasicContentAssets('projects');
   return {
     props: {
       projectsApiElements,
