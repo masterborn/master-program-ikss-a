@@ -1,7 +1,7 @@
-import { findApiElementByIdentifier } from './findApiElement';
+import findApiElementByIdentifier from './findApiElement';
 
 const getSocialLinks = (apiArray) => {
-  const socialPages = apiArray.filter((element) => element.fields.linkUrl !== undefined);
+  const socialPages = apiArray.items.filter((element) => element.fields.linkUrl !== undefined);
   const hasLinkInProperties = socialPages.every((element) => element.fields.linkUrl !== undefined);
   const socialLinks = hasLinkInProperties
     ? {

@@ -2,24 +2,17 @@ import PropTypes from 'prop-types';
 import contentfulClient from '@root/api/contentfulClient';
 import Header from '@root/components/Homepage/Header/Header';
 import getSocialMedias from '@root/handlers/getSocialMedias';
-
-import { findApiElementByIdentifier, findAssetByTitle } from '@root/handlers/findApiElement';
+import findApiElementByIdentifier from '@root/handlers/findApiElement';
 import ProjectsTabs from '@root/components/Homepage/ProjectsTabs/ProjectsTabs';
 import ValuesSection from '@root/components/Homepage/ValuesSection/ValuesSection';
 
-const Home = ({
-  homeApiElements,
-  homeApiAssets,
-  commonApiElements,
-  projectsApiAssets,
-  projectsApiElements,
-}) => {
+const Home = ({ homeApiElements, commonApiElements, projectsApiElements }) => {
   const homeTopSection = findApiElementByIdentifier(homeApiElements, 'homepage-top-section');
   const latestProjectsHeader = findApiElementByIdentifier(
     homeApiElements,
     'homepage-projects-title',
   ).fields.title;
-  const topSectionVideoUrl = findAssetByTitle(homeApiAssets, 'na strone ikss').fields.file.url;
+  const topSectionVideoUrl = homeTopSection.fields.image1.fields.file.url;
   const socialMedias = getSocialMedias(commonApiElements);
   const valuesHeader = findApiElementByIdentifier(homeApiElements, 'homepage-values').fields;
   const firstTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-1');
@@ -46,11 +39,10 @@ const Home = ({
       />
       <ValuesSection
         valuesHeader={valuesHeader}
-        valuesAssets={homeApiAssets.slice(1, 4)}
+        //  valuesAssets={homeApiAssets.slice(1, 4)}
         valuesTiles={[firstTile, secondTile, thirdTile]}
       />
       <ProjectsTabs
-        projectsApiAssets={projectsApiAssets}
         projectsApiElements={projectsApiElements}
         latestProjectsHeader={latestProjectsHeader}
       />
@@ -60,18 +52,14 @@ const Home = ({
 
 export const getStaticProps = async () => {
   const homeApiElements = await contentfulClient.getBasicContent('homepage');
-  const homeApiAssets = await contentfulClient.getBasicContentAssets('homepage');
   const commonApiElements = await contentfulClient.getBasicContent('common');
   const projectsApiElements = await contentfulClient.getProjects();
-  const projectsApiAssets = await contentfulClient.getProjectsAssets();
 
   return {
     props: {
       homeApiElements,
-      homeApiAssets,
       commonApiElements,
       projectsApiElements,
-      projectsApiAssets,
     },
   };
 };
@@ -79,8 +67,6 @@ export const getStaticProps = async () => {
 Home.propTypes = {
   homeApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
   commonApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
-  homeApiAssets: PropTypes.arrayOf(PropTypes.object).isRequired,
-  projectsApiAssets: PropTypes.arrayOf(PropTypes.object).isRequired,
   projectsApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
