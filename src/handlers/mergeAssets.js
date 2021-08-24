@@ -26,7 +26,7 @@ const mergeAssets = (apiElements) => {
     });
     return items;
   }
-  return apiElements;
+  return apiElements.items;
 };
 
 export default mergeAssets;
