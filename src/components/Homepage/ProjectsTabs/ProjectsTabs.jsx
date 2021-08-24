@@ -28,11 +28,8 @@ const ProjectsTabs = ({ projectsApiElements, latestProjectsHeader }) => {
   projectsApiElements.sort(compareProjectsOrder);
 
   for (let i = 0; i < projectsApiElements.length; i += 1) {
-    if (
-      projectsApiElements[i].fields.showOnHomepage === true &&
-      Object.keys(homepageProjects).length < 3
-    ) {
-      homepageProjects[i] = projectsApiElements[i];
+    if (projectsApiElements[i].fields.showOnHomepage === true && homepageProjects.length < 3) {
+      homepageProjects.push(projectsApiElements[i]);
     }
   }
 
