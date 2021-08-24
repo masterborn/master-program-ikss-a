@@ -9,10 +9,25 @@ const contentfulClient = {
 
   cache: {},
 
-  async getItems(contentType) {
+  async makeRequest(contentType, page) {
+    if (this.cache[contentType]) {
+      return this.cache[contentType];
+    }
+    if (contentType === 'basicContent') {
+      const response = await axios.get(`${this.baseUrl}basicContent&fields.page[in]=${page}`);
+      const mergedData = await mergeAssets(response.data);
+      this.cache[page] = mergedData;
+      return this.cache[page];
+    }
+
     const response = await axios.get(`${this.baseUrl}${contentType}`);
     const mergedData = await mergeAssets(response.data);
-    return mergedData;
+    this.cache[contentType] = mergedData;
+    return this.cache[contentType];
+  },
+
+  async getItems(contentType) {
+    return this.makeRequest(contentType);
   },
   async getProjects() {
     return this.getItems('projects');
@@ -24,9 +39,7 @@ const contentfulClient = {
     return this.getItems('partnerLogos');
   },
   async getBasicContent(page) {
-    const response = await axios.get(`${this.baseUrl}basicContent&fields.page[in]=${page}`);
-    const mergedData = await mergeAssets(response.data);
-    return mergedData;
+    return this.makeRequest('basicContent', page);
   },
 };
 
