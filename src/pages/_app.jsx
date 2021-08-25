@@ -8,7 +8,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import Head from 'next/head';
 import GlobalStyles from '@styles/GlobalStyles';
 import { theme } from '@styles/theme';
-import fetchContentfulApi from '@root/api/ContentfulClient';
+import contentfulClient from '@root/api/contentfulClient';
 import Layout from '../components/Layout/Layout';
 
 const App = (props) => {
@@ -24,15 +24,18 @@ const App = (props) => {
         <title>App Name</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
         <link rel="shortcut icon" href="/favicon.png" />
-        <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800;900&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClientRef.current}>
-          
+          <Hydrate state={pageProps.dehydratedState}>
             <Layout commonApiElements={commonApiElements}>
               <Component {...pageProps} />
             </Layout>
-          
+          </Hydrate>
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
         <GlobalStyles />
@@ -42,7 +45,7 @@ const App = (props) => {
 };
 
 App.getInitialProps = async () => {
-  const commonApiElements = await fetchContentfulApi.getBasicContent('common');
+  const commonApiElements = await contentfulClient.getBasicContent('common');
   return {
     commonApiElements,
   };
