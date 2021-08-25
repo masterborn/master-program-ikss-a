@@ -16,8 +16,8 @@ const contentfulClient = {
     if (contentType === 'basicContent') {
       const response = await axios.get(`${this.baseUrl}basicContent&fields.page[in]=${page}`);
       const mergedData = await mergeAssets(response.data);
-      this.cache[page] = mergedData;
-      return this.cache[page];
+      this.cache[`${contentType}-${page}`] = mergedData;
+      return this.cache[`${contentType}-${page}`];
     }
 
     const response = await axios.get(`${this.baseUrl}${contentType}`);
