@@ -14,8 +14,8 @@ const Home = ({
   commonApiElements,
   projectsApiAssets,
   projectsApiElements,
-  partnersLogosApiElements,
-  partnersLogosApiAssets
+  partnerLogosApiElements,
+  partnerLogosApiAssets
 }) => {
   const latestProjectsHeader = findApiElementByIdentifier(homeApiElements, 'homepage-projects-title').fields.title;
   const homeTopSection = findApiElementByIdentifier(homeApiElements, 'homepage-top-section');
@@ -26,7 +26,7 @@ const Home = ({
   const secondTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-2');
   const thirdTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-3');
   const logosHeader = findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields.title;
-  const logosText= findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields.text1.content.value;
+  const logosText= findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields.text1.content[0].content[0].value;
   
   const {
     fields: {
@@ -60,8 +60,8 @@ const Home = ({
        <LogosSection
         logosHeader={logosHeader}
         logosText={logosText}
-        partnersLogosApiElements={partnersLogosApiElements}
-        partnersLogosApiAssets={partnersLogosApiAssets}
+        partnerLogosApiElements={partnerLogosApiElements}
+        partnerLogosApiAssets={partnerLogosApiAssets}
       />
     </>
   );
