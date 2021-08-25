@@ -43,9 +43,10 @@ max-width: 1134px;
 margin: 0 auto 680px auto; 
 a{
     cursor: pointer;
+    display:flex;
     flex-basis: 20%;
-    margin-bottom: 32px;
-    
+    margin-bottom: 60px;
+    justify-content: center;
 }
 `;
 
