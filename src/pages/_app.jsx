@@ -8,7 +8,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import Head from 'next/head';
 import GlobalStyles from '@styles/GlobalStyles';
 import { theme } from '@styles/theme';
-import fetchContentfulApi from '@root/api/ContentfulClient';
+import contentfulClient from '@root/api/contentfulClient';
 import Layout from '../components/Layout/Layout';
 
 const App = (props) => {
@@ -45,7 +45,7 @@ const App = (props) => {
 };
 
 App.getInitialProps = async () => {
-  const commonApiElements = await fetchContentfulApi.getBasicContent('common');
+  const commonApiElements = await contentfulClient.getBasicContent('common');
   return {
     commonApiElements,
   };

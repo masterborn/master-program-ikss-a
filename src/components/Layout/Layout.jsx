@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { findApiElementByIdentifier } from '@root/handlers/findApiElement';
+import findApiElementByIdentifier from '@root/handlers/findApiElement';
 import getSocialMedias from '@root/handlers/getSocialMedias';
 import getPaths from '@root/handlers/getPaths';
 import Navbar from '../Navbar/Navbar';
@@ -14,7 +14,6 @@ const Layout = ({ children, commonApiElements }) => {
       <Navbar socialMedias={socialMedias} links={links} />
       {children}
       <Footer links={links} socialMedias={socialMedias} copyrightText={copyrightText} />
-      
     </>
   );
 };
