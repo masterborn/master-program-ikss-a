@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+import React from 'react';
 import styled from "styled-components";
 import { getColor, getFontSize, getFontWeight, getLetterSpacing } from "@root/styles/utils";
 import PropTypes from 'prop-types';
