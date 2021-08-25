@@ -33,7 +33,6 @@ width: 635px;
 height: 64px;
 `;
 
-
 export const PartnerLogosWrapper = styled.div`
 display: flex;
 flex-wrap: wrap;

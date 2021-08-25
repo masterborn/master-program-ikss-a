@@ -1,48 +1,43 @@
 import PropTypes from 'prop-types';
-import fetchContentfulApi from '@root/api/ContentfulClient';
-import { findApiElementByIdentifier, findAssetByTitle } from '@root/handlers/findApiElement';
+import contentfulClient from '@root/api/contentfulClient';
+import findApiElementByIdentifier from '@root/handlers/findApiElement';
 import GenericTopSection from '@root/components/GenericTopSection/GenericTopSection';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import GenericBottomCta from '@root/components/GenericBottomCta/GenericBottomCta';
 
-const Cooperation = ({ cooperationApiElements, cooperationApiAssets, commonApiElements }) => {
-  const cooperationTopSection = findApiElementByIdentifier(
+const Cooperation = ({ cooperationApiElements }) => {
+  const topSection = findApiElementByIdentifier(cooperationApiElements, 'cooperation-top-section');
+  const bottomCta = findApiElementByIdentifier(
     cooperationApiElements,
-    'cooperation-top-section',
-  );
-
-  const cooperationTopSectionImageUrl = findAssetByTitle(cooperationApiAssets, 'Group 179').fields
-    .file.url;
-  const cooperationTitle = cooperationTopSection.fields.title;
-  const cooperationDescription = documentToReactComponents(cooperationTopSection.fields.text1);
+    'cooperation-bottom-cta',
+  ).fields;
+  const topSectionImageUrl = topSection.fields.image1.fields.file.url;
+  const cooperationTitle = topSection.fields.title;
+  const description = documentToReactComponents(topSection.fields.text1);
   return (
     <>
       <GenericTopSection
-        imageUrl={cooperationTopSectionImageUrl}
+        imageUrl={topSectionImageUrl}
         title={cooperationTitle}
-        subpageDescription={cooperationDescription}
+        subpageDescription={description}
       />
+      <GenericBottomCta bottomCta={bottomCta} />
     </>
   );
 };
 
 export const getStaticProps = async () => {
-  const cooperationApiElements = await fetchContentfulApi.getBasicContent('cooperation');
-  const cooperationApiAssets = await fetchContentfulApi.getBasicContentAssets('cooperation');
-  const commonApiElements = await fetchContentfulApi.getBasicContent('common');
+  const cooperationApiElements = await contentfulClient.getBasicContent('cooperation');
 
   return {
     props: {
       cooperationApiElements,
-      cooperationApiAssets,
-      commonApiElements,
     },
   };
 };
 
 Cooperation.propTypes = {
   cooperationApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
-  cooperationApiAssets: PropTypes.arrayOf(PropTypes.object).isRequired,
-  commonApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Cooperation;

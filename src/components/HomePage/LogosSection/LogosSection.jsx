@@ -1,8 +1,5 @@
     import Image from 'next/image';
-	import Link from "next/link";
 	import PropTypes from 'prop-types';
-	import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-
 	import
 	{ LogosSectionWrapper,
 	  LogosSectionHeader,
@@ -12,11 +9,7 @@
 	from './LogosSection.styles';
 
 	const LogosSection = ({ logosHeader, logosText, partnerLogosApiAssets, partnerLogosApiElements }) => {
-		// const imageUrl = partnerLogosApiAssets[0].fields.file.url;
-		// const text = partnerLogosApiAssets.name;
-	
 
-		
 		 console.log("elements");
 		 console.log(partnerLogosApiElements);
 		 console.log("assets");
@@ -58,7 +51,7 @@
 			    imageHeight = asset.fields.file.details.image.height;
 			  }
 			});
-
+			
 			logosData.push({
 			  title: logo.fields.name,
 			  linkUrl: logo.fields.linkUrl,
@@ -90,14 +83,8 @@
 							alt={title}
 							width={width}
 							height={height}
-
-							// src={`https://${asset.fields.file.url}`} 
-							// width={logo.fields.file.details.image.width} 
-							// height={logo.fields.file.details.image.height} 
-							// alt={logo.fields.file.details.image.title}
 							/>
 						</a>
-				 
 				 ))
 				 }
 				  </PartnerLogosWrapper>
