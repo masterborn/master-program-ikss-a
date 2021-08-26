@@ -4,7 +4,7 @@ import { SmallButton } from "../Button/Button.styles";
 
 export const Nav = styled.nav`
     position: sticky;
-    z-index: 1;
+    z-index: 2;
     top: 0;
     display: flex;
     height: 88px;
