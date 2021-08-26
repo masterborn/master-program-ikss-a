@@ -8,7 +8,7 @@ import ProjectsTabs from '@root/components/Homepage/ProjectsTabs/ProjectsTabs';
 import ValuesSection from '@root/components/Homepage/ValuesSection/ValuesSection';
 import LogosSection from '@root/components/Homepage/LogosSection/LogosSection';
 
-const Home = ({ homeApiElements, commonApiElements, projectsApiElements }) => {
+const Home = ({ homeApiElements, commonApiElements, projectsApiElements, partnerLogosApiElements }) => {
   const homeTopSection = findApiElementByIdentifier(homeApiElements, 'homepage-top-section');
   const latestProjectsHeader = findApiElementByIdentifier(
     homeApiElements,
@@ -23,6 +23,7 @@ const Home = ({ homeApiElements, commonApiElements, projectsApiElements }) => {
   const logosHeader = findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields.title;
   const logosText= findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields.text1.content[0].content[0].value;
   
+
   const {
     fields: {
       text1: { content },
@@ -53,8 +54,8 @@ const Home = ({ homeApiElements, commonApiElements, projectsApiElements }) => {
        <LogosSection
         logosHeader={logosHeader}
         logosText={logosText}
+        homeApiElements={homeApiElements}
         partnerLogosApiElements={partnerLogosApiElements}
-        partnerLogosApiAssets={partnerLogosApiAssets}
       />
     </>
   );
@@ -64,12 +65,14 @@ export const getStaticProps = async () => {
   const homeApiElements = await contentfulClient.getBasicContent('homepage');
   const commonApiElements = await contentfulClient.getBasicContent('common');
   const projectsApiElements = await contentfulClient.getProjects();
+  const partnerLogosApiElements = await contentfulClient.getPartnerLogos();
 
   return {
     props: {
       homeApiElements,
       commonApiElements,
       projectsApiElements,
+      partnerLogosApiElements
     },
   };
 };
@@ -78,8 +81,7 @@ Home.propTypes = {
   homeApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
   commonApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
   projectsApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
-  partnerLogosApiElements:PropTypes.arrayOf(PropTypes.object).isRequired,
-  partnerLogosApiAssets: PropTypes.arrayOf(PropTypes.object).isRequired
+  partnerLogosApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Home;

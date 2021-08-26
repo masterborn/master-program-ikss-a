@@ -1,5 +1,7 @@
     import Image from 'next/image';
 	import PropTypes from 'prop-types';
+	import compareProjectsOrder from '@root/handlers/compareProjectsOrder';
+	import getLogosData from '@root/handlers/getLogosData';
 	import
 	{ LogosSectionWrapper,
 	  LogosSectionHeader,
@@ -8,63 +10,17 @@
 	  PartnerLogosWrapper } 
 	from './LogosSection.styles';
 
-	const LogosSection = ({ logosHeader, logosText, partnerLogosApiAssets, partnerLogosApiElements }) => {
-
-		 console.log("elements");
-		 console.log(partnerLogosApiElements);
-		 console.log("assets");
-		 console.log(partnerLogosApiAssets);
-		
-
+	const LogosSection = ({ logosHeader, logosText, partnerLogosApiElements }) => {
 		const homepageLogos = [];
-		const logosData = [];
-	  
-		function compareLogosOrder(a, b) {
-		  if (a.fields.order < b.fields.order) {
-			return 1;
-		  }
-		  if (a.fields.order > b.fields.order) {
-			return -1;
-		  }
-		  return 0;
-		}
-		
-		partnerLogosApiElements.sort(compareLogosOrder);
+
+		partnerLogosApiElements.sort(compareProjectsOrder);
 
 		for (let i = 0; i < partnerLogosApiElements.length; i += 1) {
-			if (
-			partnerLogosApiElements[i].fields.showOnHomepage === true 
-			) {
+			if (partnerLogosApiElements[i].fields.showOnHomepage === true) {
 				homepageLogos.push(partnerLogosApiElements[i]);
 			}
-  		}
-		  console.log(homepageLogos);
-		  console.log(partnerLogosApiAssets);
-		  homepageLogos.forEach((logo) => {
-			let imageUrl = '';
-			let imageWidth = '';
-			let imageHeight = '';
-			partnerLogosApiAssets.forEach((asset) => {
-			  if (asset.sys.id === logo.fields.logo.sys.id) {
-				imageUrl = `https:${asset.fields.file.url}`; 
-				imageWidth = asset.fields.file.details.image.width ;
-			    imageHeight = asset.fields.file.details.image.height;
-			  }
-			});
-			
-			logosData.push({
-			  title: logo.fields.name,
-			  linkUrl: logo.fields.linkUrl,
-			  imageUrl,
-			  width: imageWidth,
-			  height: imageHeight
-			});
-		  });
-             console.log(logosData);
-			 logosData.map((logo) => (
-				 console.log(logo)
-			 ))
-
+  		}	
+			const logosData = getLogosData(homepageLogos);
 		return (
 			<LogosSectionWrapper>
 				<LogosTextWrapper>
@@ -79,7 +35,7 @@
 							
 						<a href={linkUrl}>
 							<Image 
-							src={imageUrl}
+							src={`https:${imageUrl}`}
 							alt={title}
 							width={width}
 							height={height}
@@ -96,8 +52,8 @@
 	LogosSection.propTypes = {
 	  logosHeader: PropTypes.string.isRequired,
 	  logosText: PropTypes.string.isRequired,
-	  partnerLogosApiAssets: PropTypes.arrayOf(PropTypes.object).isRequired,
 	  partnerLogosApiElements: PropTypes.arrayOf(PropTypes.object).isRequired
+
 	};
 	
 

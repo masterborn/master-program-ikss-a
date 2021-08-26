@@ -6,8 +6,7 @@ export const LogosSectionWrapper = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
-height: 556px;
-margin-bottom: 32px;
+margin-bottom: 148px;
 `;
 
 export const LogosTextWrapper=styled.div`
@@ -39,7 +38,7 @@ flex-wrap: wrap;
 align-items: center;
 justify-content: space-around;
 max-width: 1134px;
-margin: 0 auto 680px auto; 
+margin: 0 auto 0 auto; 
 a{
     cursor: pointer;
     display:flex;
