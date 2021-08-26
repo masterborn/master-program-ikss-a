@@ -12,7 +12,7 @@ margin-bottom: 148px;
 export const LogosTextWrapper=styled.div`
 display: flex;
 flex-direction: column;
-flex: flex-wrap;
+flex-wrap: wrap;
 justify-content: center;
 align-items: center;
 max-width: 635px;  
@@ -36,7 +36,7 @@ export const PartnerLogosWrapper = styled.div`
 display: flex;
 flex-wrap: wrap;
 align-items: center;
-justify-content: space-around;
+justify-content: center;
 max-width: 1134px;
 margin: 0 auto 0 auto; 
 a{

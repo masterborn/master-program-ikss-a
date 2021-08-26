@@ -55,7 +55,7 @@ const Home = ({ homeApiElements, commonApiElements, projectsApiElements, partner
         logosHeader={logosHeader}
         logosText={logosText}
         homeApiElements={homeApiElements}
-        partnerLogosApiElements={partnerLogosApiElements}
+        partnerLogos={partnerLogosApiElements}
       />
     </>
   );
