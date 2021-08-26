@@ -11,15 +11,10 @@
 	from './LogosSection.styles';
 
 	const LogosSection = ({ logosHeader, logosText, partnerLogos }) => {
-		// const homepageLogos = [];
+		
 
 		partnerLogos.sort(compareProjectsOrder);
 
-		// for (let i = 0; i < partnerLogosApiElements.length; i += 1) {
-			// if (partnerLogosApiElements[i].fields.showOnHomepage === true) {
-				// homepageLogos.push(partnerLogosApiElements[i]);
-			//}
-  		// }
 		const homepageLogos = partnerLogos.filter(element => element.fields.showOnHomepage ===true);	
 			const logosData = getLogosData(homepageLogos);
 		return (

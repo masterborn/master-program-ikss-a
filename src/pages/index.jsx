@@ -7,6 +7,9 @@ import findApiElementByIdentifier from '@root/handlers/findApiElement';
 import ProjectsTabs from '@root/components/Homepage/ProjectsTabs/ProjectsTabs';
 import ValuesSection from '@root/components/Homepage/ValuesSection/ValuesSection';
 import LogosSection from '@root/components/Homepage/LogosSection/LogosSection';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+
+
 
 const Home = ({ homeApiElements, commonApiElements, projectsApiElements, partnerLogosApiElements }) => {
   const homeTopSection = findApiElementByIdentifier(homeApiElements, 'homepage-top-section');
@@ -21,7 +24,7 @@ const Home = ({ homeApiElements, commonApiElements, projectsApiElements, partner
   const secondTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-2');
   const thirdTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-3');
   const logosHeader = findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields.title;
-  const logosText= findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields.text1.content[0].content[0].value;
+  const logosText= documentToReactComponents(findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields.text1);
   
 
   const {
