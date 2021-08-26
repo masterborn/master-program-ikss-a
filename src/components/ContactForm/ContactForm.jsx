@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
@@ -10,15 +10,13 @@ import Input from '../FormElements/Input';
 import { CloseIcon, LoaderIcon, ErrorIcon, SuccessIcon } from '../icons';
 
 
-const ContactForm = ({ contactFormText: { fields: { title, text1 } } }) => {
+const ContactForm = ({ formText: { fields: { title, text1: description } }, formTooltip: { fields: { text1: tooltip } } }) => {
 
     const { modalOpen, handleModal } = useModal();
 
-    const description = documentToReactComponents(text1);
-
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-    const [request, setRequest] = React.useState({ loading: false, correct: false, failure: false });
+    const [request, setRequest] = useState({ loading: false, correct: false, failure: false });
 
     const { loading, correct, failure } = request;
 
@@ -33,11 +31,9 @@ const ContactForm = ({ contactFormText: { fields: { title, text1 } } }) => {
 
         const { name, surname, email, topic, content, consent, userCode } = data;
 
-        console.log(data);
-
         if (!userCode) {
             setRequest({ ...request, loading: true, correct: false, failure: false });
-            console.log('bez honeypot')
+
             setTimeout(() => {
                 axios.post('https://formcarry.com/s/D_0rPBQNVQl', {
                     name,
@@ -48,7 +44,6 @@ const ContactForm = ({ contactFormText: { fields: { title, text1 } } }) => {
                     consent,
                 })
                     .then((res) => {
-                        console.log(res);
                         if (res.status === 200) {
                             setRequest({ ...request, correct: true, loading: false, failure: false });
                             reset();
@@ -56,8 +51,7 @@ const ContactForm = ({ contactFormText: { fields: { title, text1 } } }) => {
                             throw new Error('Request failed')
                         }
                     })
-                    .catch((err) => {
-                        console.log(err);
+                    .catch(() => {
                         setRequest({ ...request, failure: true, correct: false, loading: false })
                     })
             }, 500);
@@ -74,7 +68,6 @@ const ContactForm = ({ contactFormText: { fields: { title, text1 } } }) => {
                     gotcha: userCode
                 })
                     .then((res) => {
-                        console.log(res);
                         if (res.status === 200) {
                             setRequest({ ...request, correct: true, loading: false, failure: false });
                             reset();
@@ -82,8 +75,7 @@ const ContactForm = ({ contactFormText: { fields: { title, text1 } } }) => {
                             throw new Error('Request failed')
                         }
                     })
-                    .catch((err) => {
-                        console.log(err);
+                    .catch(() => {
                         setRequest({ ...request, failure: true, correct: false, loading: false })
                     })
             }, 500);
@@ -94,7 +86,7 @@ const ContactForm = ({ contactFormText: { fields: { title, text1 } } }) => {
         <FormWrapper modalOpen={modalOpen}>
             <Form modalOpen={modalOpen} onSubmit={handleSubmit(onFormSubmit)} >
                 <StyledH3>{title}</StyledH3>
-                <Description as='div'>{description}</Description>
+                <Description as='div'>{documentToReactComponents(description)}</Description>
                 <Names>
                     <NameField>
                         <Label htmlFor='name' as='label'>Imię</Label>
@@ -167,9 +159,7 @@ const ContactForm = ({ contactFormText: { fields: { title, text1 } } }) => {
                         icon={!!errors.consent && true} />
                     <Label htmlFor='consent' as='label'>Zapoznałem się z</Label>
                     <PrivacyLink as='a' href="/">informacją o administratorze i przetwarzaniu danych.
-                        <Info>
-                            Gravida convallis risus adipiscing non enim. Consectetur quam facilisis tincidunt vitae. Sed id a vestibulum est. A malesuada massa ultrices proin tempor tempus vestibulum. At eros, lacus viverra lacinia eget suspendisse habitasse.
-                        </Info>
+                        <Info>{documentToReactComponents(tooltip)}</Info>
                     </PrivacyLink>
                 </Declaration>
                 <UserCode
@@ -198,7 +188,8 @@ const ContactForm = ({ contactFormText: { fields: { title, text1 } } }) => {
 }
 
 ContactForm.propTypes = {
-    contactFormText: PropTypes.objectOf(PropTypes.any).isRequired,
+    formText: PropTypes.objectOf(PropTypes.any).isRequired,
+    formTooltip: PropTypes.objectOf(PropTypes.any).isRequired,
 }
 
 export default ContactForm

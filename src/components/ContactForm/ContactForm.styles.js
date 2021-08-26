@@ -36,7 +36,6 @@ export const Form = styled.form`
     border-radius: 16px;
     box-shadow: 3.38443px 55.8976px 80px rgba(97, 121, 139, 0.07), 1.71337px 28.2982px 34.875px rgba(97, 121, 139, 0.04725), 0.676885px 11.1795px 13px rgba(97, 121, 139, 0.035), 0.148069px 2.44552px 4.625px rgba(97, 121, 139, 0.02275);
     background-color: ${getColor('white')};
-  
 `;
 
 export const StyledH3 = styled(H3)`
@@ -49,6 +48,7 @@ export const Description = styled(BodyText)`
     color: ${getColor('steel')};
     text-align: center;
     margin-bottom: 37px;
+    padding: 0 10px;
 `;
 
 export const Names = styled.div`
@@ -100,7 +100,6 @@ export const Info = styled.div`
     bottom: calc(100% + 6px);
     z-index: 1;
     width: 347px;
-    height: 104px;
     padding: 13px 17px 19px 19px;
     border-radius: 4px;
     background-color: #E8F3FD;
@@ -116,8 +115,7 @@ export const Info = styled.div`
 export const FormSubmit = styled(BigButton)`
     align-self: flex-end;
     width: ${({process, correct, failure}) => {
-        if(failure) return '100%'
-        if(correct) return '100%'
+        if(failure || correct) return '100%'
         if(process) return '157px'    
         return 'auto'
     }};
@@ -143,7 +141,6 @@ export const FormSubmit = styled(BigButton)`
     }
     svg {
         margin-right: ${({process}) => process ? 0 : '12px'};
-        margin-right: 12px;
     }
     svg path {
         stroke: ${({failure}) => failure ?  'none' : getColor('white')};
@@ -162,7 +159,6 @@ export const CloseBtn = styled.button`
     height: 14px;
     background-color: transparent;
     border: none;
-    overflow: hidden;
     cursor: pointer;
 `;
 

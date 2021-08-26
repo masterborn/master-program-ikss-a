@@ -64,4 +64,8 @@ export const ButtonCircle = styled.button`
   right: 126px;
   cursor: pointer;
   border: none;
+
+  @media(max-width: 1200px) {
+    right: 60px;
+  }
 `;
