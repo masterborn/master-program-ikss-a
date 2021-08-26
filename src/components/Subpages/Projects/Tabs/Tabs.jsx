@@ -24,9 +24,8 @@ import {
 } from './Tabs.styles';
 
 const Tabs = ({ projectsList, middleCta }) => {
-  let projectsData = [];
   projectsList.sort(compareProjectsOrder);
-  projectsData = getProjectsData(projectsList);
+  const projectsData = getProjectsData(projectsList);
 
   const academicProjectsYears = projectsData.map((project) => {
     if (parseInt(project.date.slice(5, 7), 10) > 9) {
