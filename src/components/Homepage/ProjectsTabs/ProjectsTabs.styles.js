@@ -4,12 +4,15 @@ import { Tab, TabList, TabPanel } from 'react-tabs';
 import { getColor } from '@root/styles/utils';
 import { H4, H5 } from '@root/components/typography/Typography';
 import dynamic from 'next/dynamic';
-import { SecondaryBigButton } from '@root/components/Button/Button.styles';
+import { SecondaryBigButton, SecondarySmallButton } from '@root/components/Button/Button.styles';
+import { medias } from '@root/styles/theme';
 
 const Tabs = dynamic(
   import('react-tabs').then((mod) => mod.Tabs),
   { ssr: false },
 );
+
+const { small } = medias;
 
 export const StyledTabs = styled(Tabs)`
   display: flex;
@@ -22,25 +25,55 @@ export const StyledTabs = styled(Tabs)`
   a {
     text-decoration: none;
   }
+
+  @media ${small} {
+    padding: 0 24px;
+    margin-top: 80px;
+  }
 `;
 
 export const StyledTab = styled(Tab)`
-  cursor: pointer;
+  pointer-events: none;
   color: ${getColor('navy')};
 
   .tab-button {
+    pointer-events: auto;
     background: none;
     color: ${getColor('navy')};
   }
 
   &.react-tabs__tab--selected {
     display: block;
-    background-color: ${getColor('ikssBlue')};
     border-radius: 26px;
     color: ${getColor('white')};
+    background-color: ${getColor('ikssBlue')};
     .tab-button {
       background: none;
       color: ${getColor('white')};
+    }
+    @media ${small} {
+      &.react-tabs__tab--selected {
+        background: none;
+      }
+      .tab-button {
+        background-color: ${getColor('ikssBlue')};
+      }
+      &:first-child {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+  @media ${small} {
+    .tab-button {
+      background-color: ${getColor('blue10')};
+    }
+
+    &:first-child {
+      display: flex;
+      width: 100%;
+      justify-content: center;
     }
   }
 `;
@@ -51,6 +84,15 @@ export const StyledTabList = styled(TabList)`
   background-color: ${getColor('blue10')};
   margin: 32px 0 64px 0;
   border-radius: 26px;
+
+  @media ${small} {
+    margin: 24px 0;
+    gap: 12px;
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: center;
+    background: none;
+  }
 `;
 
 export const StyledTabPanel = styled(TabPanel)`
@@ -81,7 +123,11 @@ export const StyledTabPanel = styled(TabPanel)`
 export const StyledTabTextSection = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 64px 10%;
+  padding: 64px 102px;
+
+  @media ${small} {
+    padding: 32px 24px 32px 24px;
+  }
 `;
 
 export const ButtonWrapper = styled.div`
@@ -89,19 +135,39 @@ export const ButtonWrapper = styled.div`
   img {
     filter: invert(100%) sepia(94%) saturate(0%) hue-rotate(248deg) brightness(106%) contrast(106%);
   }
+
+  @media ${small} {
+    margin: 0 auto 0 auto;
+  }
 `;
 
 export const TitleWithDateContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 32px;
+
+  @media ${small} {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
 `;
 export const ProjectTitle = styled(H4)`
   margin: 0 24px 0 0;
+  @media ${small} {
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0 0 8px 0;
+  }
 `;
 
 export const ProjectDate = styled(H5)`
   color: ${getColor('steel')};
+
+  @media ${small} {
+    font-size: 14px;
+    line-height: 18px;
+  }
 `;
 
 export const ProjectDescription = styled.div`
@@ -110,6 +176,12 @@ export const ProjectDescription = styled.div`
   font-size: 16px;
   line-height: 32px;
   letter-spacing: -0.015px;
+
+  @media ${small} {
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 28px;
+  }
 `;
 
 export const TabSecondaryBigButton = styled(SecondaryBigButton)`
@@ -117,11 +189,28 @@ export const TabSecondaryBigButton = styled(SecondaryBigButton)`
   text-decoration: none;
 `;
 
+export const TabSecondarySmallButton = styled(SecondarySmallButton)`
+  margin: 32px 0 80px 0;
+  text-decoration: none;
+`;
+
 export const StyledVideo = styled.iframe`
   border: none;
   border-radius: 16px 16px 0 0;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 `;
 
 export const StyledImage = styled(Image)`
   border-radius: 16px 16px 0 0;
+`;
+
+export const VideoResponsive = styled.div`
+  overflow: hidden;
+  padding-bottom: 58%;
+  position: relative;
+  height: 0;
 `;
