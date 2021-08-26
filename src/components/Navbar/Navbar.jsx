@@ -3,57 +3,23 @@ import Link from "next/link";
 import PropTypes from 'prop-types';
 import { useRouter } from "next/router";
 import Image from 'next/image';
+import { useModal } from '@root/hooks/useModal';
+import { useScroll } from '@root/hooks/useScroll';
 import PrimaryLogo from "../logos/PrimaryLogo";
 import { Nav, LinksList, ContactButton, StyledLink, Socials } from "./Navbar.styles";
 
 const Navbar = ({ socialMedias, links }) => {
 
-    const [visible, setVisible] = React.useState(false);
-
-    const [activeScroll, setActiveScroll] = React.useState(true);
-
     const { pathname } = useRouter();
 
+    const { handleModal } = useModal();
+
+    const { visible, scrollToForm } = useScroll();
+
     const handleClick = () => {
-        if (pathname === '/') {
-            // form doesn't exist so this function provide scrolling to footer for now
-            const footer = document.querySelector('footer');
-            let counter = window.scrollY;
-
-            if (counter === 0) setActiveScroll(true);
-
-            const scroll = setInterval(() => {
-                if (activeScroll) {
-                    counter += 60;
-                    window.scrollTo(0, counter);
-                }
-                if (counter > footer.offsetTop - window.innerHeight) {
-                    setActiveScroll(false);
-                    clearInterval(scroll);
-                }
-            }, 1);
-        } else {
-            // handling open modal with form here
-        }
+        if (pathname === '/') scrollToForm();
+        else handleModal('open');
     };
-
-    const handleScroll = React.useCallback(() => {
-        const footer = document.querySelector('footer');
-
-        if (window.scrollY >= window.innerHeight) {
-            setVisible(true);
-        } else setVisible(false)
-
-        if (window.scrollY < footer.offsetTop - window.innerHeight) {
-            setActiveScroll(true);
-        }
-    }, []);
-
-    React.useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [handleScroll]);
 
     const getActivePath = (requiredPath, currentPath) => requiredPath === currentPath ? true : '';
 
@@ -83,7 +49,7 @@ const Navbar = ({ socialMedias, links }) => {
                             aria-label={title}
                         >
                             <Image src={circleLogo} />
-                            
+
                         </a>
                     ))
                 }

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import PropTypes from 'prop-types';
-import contentfulClient from '@root/api/contentfulClient';
+import contentfulClient from '@root/api/ContentfulClient';
 import Header from '@root/components/Homepage/Header/Header';
 import getSocialMedias from '@root/handlers/getSocialMedias';
 import findApiElementByIdentifier from '@root/handlers/findApiElement';
@@ -16,6 +16,7 @@ const Home = ({ homeApiElements, commonApiElements, projectsApiElements }) => {
   const topSectionVideoUrl = homeTopSection.fields.image1.fields.file.url;
   const socialMedias = getSocialMedias(commonApiElements);
   const valuesHeader = findApiElementByIdentifier(homeApiElements, 'homepage-values').fields;
+
   const firstTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-1');
   const secondTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-2');
   const thirdTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-3');
@@ -40,7 +41,6 @@ const Home = ({ homeApiElements, commonApiElements, projectsApiElements }) => {
       />
       <ValuesSection
         valuesHeader={valuesHeader}
-        homeApiElements={homeApiElements}
         valuesTiles={[firstTile, secondTile, thirdTile]}
       />
       <ProjectsTabs

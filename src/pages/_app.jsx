@@ -1,22 +1,17 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
-import { useRef } from 'react';
-import { ThemeProvider } from 'styled-components';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import React from 'react';
 import { Hydrate } from 'react-query/hydration';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import Head from 'next/head';
-import GlobalStyles from '@styles/GlobalStyles';
-import { theme } from '@styles/theme';
-import contentfulClient from '@root/api/contentfulClient';
+import contentfulClient from '@root/api/ContentfulClient';
+import findApiElementByIdentifier from '@root/handlers/findApiElement';
+import AppProviders from '@root/contextProviders/AppProviders';
 import Layout from '../components/Layout/Layout';
 
 const App = (props) => {
-  const queryClientRef = useRef();
-  if (!queryClientRef.current) {
-    queryClientRef.current = new QueryClient();
-  }
-  const { Component, pageProps, commonApiElements } = props;
+
+  const { Component, pageProps, commonApiElements, contactFormText, contactFormTooltip } = props;
 
   return (
     <>
@@ -29,25 +24,27 @@ const App = (props) => {
           rel="stylesheet"
         />
       </Head>
-      <ThemeProvider theme={theme}>
-        <QueryClientProvider client={queryClientRef.current}>
-          <Hydrate state={pageProps.dehydratedState}>
-            <Layout commonApiElements={commonApiElements}>
-              <Component {...pageProps} />
-            </Layout>
-          </Hydrate>
-          <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
-        <GlobalStyles />
-      </ThemeProvider>
+      <AppProviders>
+        <Hydrate state={pageProps.dehydratedState}>
+          <Layout commonApiElements={commonApiElements} formContent={[contactFormText, contactFormTooltip]}>
+            <Component {...pageProps} />
+          </Layout>
+        </Hydrate>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </AppProviders>
     </>
   );
 };
 
 App.getInitialProps = async () => {
   const commonApiElements = await contentfulClient.getBasicContent('common');
+  const contactFormText = findApiElementByIdentifier(commonApiElements, 'contact-form-text');
+  const contactFormTooltip = findApiElementByIdentifier(commonApiElements, 'contact-form-tooltip');
+
   return {
     commonApiElements,
+    contactFormText,
+    contactFormTooltip
   };
 };
 
