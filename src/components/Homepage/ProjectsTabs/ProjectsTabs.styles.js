@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 import { Tab, TabList, TabPanel } from 'react-tabs';
-import { getColor } from '@root/styles/utils';
-import { H4, H5 } from '@root/components/typography/Typography';
+import {
+  getColor,
+  getFontSize,
+  getFontWeight,
+  getLetterSpacing,
+  getLineHeight,
+} from '@root/styles/utils';
+import { H3, H4, H5 } from '@root/components/typography/Typography';
 import dynamic from 'next/dynamic';
-import { SecondaryBigButton, SecondarySmallButton } from '@root/components/Button/Button.styles';
+import { BigButton, SecondaryBigButton } from '@root/components/Button/Button.styles';
 import { medias } from '@root/styles/theme';
 
 const Tabs = dynamic(
@@ -33,11 +39,9 @@ export const StyledTabs = styled(Tabs)`
 `;
 
 export const StyledTab = styled(Tab)`
-  pointer-events: none;
   color: ${getColor('navy')};
 
   .tab-button {
-    pointer-events: auto;
     background: none;
     color: ${getColor('navy')};
   }
@@ -184,16 +188,6 @@ export const ProjectDescription = styled.div`
   }
 `;
 
-export const TabSecondaryBigButton = styled(SecondaryBigButton)`
-  margin: 56px 0 148px 0;
-  text-decoration: none;
-`;
-
-export const TabSecondarySmallButton = styled(SecondarySmallButton)`
-  margin: 32px 0 80px 0;
-  text-decoration: none;
-`;
-
 export const StyledVideo = styled.iframe`
   border: none;
   border-radius: 16px 16px 0 0;
@@ -213,4 +207,34 @@ export const VideoResponsive = styled.div`
   padding-bottom: 58%;
   position: relative;
   height: 0;
+`;
+
+export const ResponsiveHeader = styled(H3)`
+  @media ${small} {
+    font-weight: ${getFontWeight('h4')};
+    font-size: ${getFontSize('h4')};
+    line-height: ${getLineHeight('h4')};
+    letter-spacing: ${getLetterSpacing('h4')};
+  }
+`;
+
+export const ResponsiveButton = styled(BigButton)`
+  @media ${small} {
+    height: 36px;
+    padding: 9px 16px;
+    line-height: 18px;
+    font-size: ${getFontSize('bodySmall')};
+  }
+`;
+
+export const SeeProjectsButton = styled(SecondaryBigButton)`
+  margin: 56px 0 148px 0;
+  text-decoration: none;
+  @media ${small} {
+    height: 36px;
+    padding: 9px 16px;
+    line-height: 18px;
+    font-size: ${getFontSize('bodySmall')};
+    margin: 32px 0 80px 0;
+  }
 `;

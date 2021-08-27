@@ -4,10 +4,7 @@ import PropTypes from 'prop-types';
 import getProjectsData from '@root/handlers/getProjectsData';
 import compareProjectsOrder from '@root/handlers/compareProjectsOrder';
 import { FacebookIcon } from '@root/components/icons';
-import { BigButton, SmallButton } from '@root/components/Button/Button.styles';
-import { H3, H4 } from '@root/components/typography/Typography';
-import { useWindowSize } from '@root/hooks/useWindowSize';
-import { size } from '@root/styles/theme';
+import { SmallButton } from '@root/components/Button/Button.styles';
 import {
   StyledTabs,
   StyledTab,
@@ -18,21 +15,19 @@ import {
   ProjectTitle,
   ProjectDate,
   ProjectDescription,
-  TabSecondaryBigButton,
+  SeeProjectsButton,
   ButtonWrapper,
   StyledVideo,
   StyledImage,
   VideoResponsive,
-  TabSecondarySmallButton,
+  ResponsiveHeader,
+  ResponsiveButton,
 } from './ProjectsTabs.styles';
 
 const ProjectsTabs = ({ projectsApiElements, latestProjectsHeader }) => {
-  const { windowWidth } = useWindowSize();
-  const { small } = size;
+  const sortedProjectsList = [...projectsApiElements].sort(compareProjectsOrder);
 
-  projectsApiElements.sort(compareProjectsOrder);
-
-  const homepageProjects = projectsApiElements.filter(
+  const homepageProjects = sortedProjectsList.filter(
     (element) => element.fields.showOnHomepage === true,
   );
 
@@ -40,15 +35,11 @@ const ProjectsTabs = ({ projectsApiElements, latestProjectsHeader }) => {
 
   return (
     <StyledTabs>
-      {windowWidth > small ? <H3>{latestProjectsHeader}</H3> : <H4>{latestProjectsHeader}</H4>}
+      <ResponsiveHeader>{latestProjectsHeader}</ResponsiveHeader>
       <StyledTabList>
         {projectsData.map(({ title }) => (
           <StyledTab key={title}>
-            {windowWidth > small ? (
-              <BigButton className="tab-button">{title}</BigButton>
-            ) : (
-              <SmallButton className="tab-button">{title}</SmallButton>
-            )}
+            <ResponsiveButton className="tab-button">{title}</ResponsiveButton>
           </StyledTab>
         ))}
       </StyledTabList>
@@ -98,11 +89,7 @@ const ProjectsTabs = ({ projectsApiElements, latestProjectsHeader }) => {
         ),
       )}
       <a href="/projekty">
-        {windowWidth > small ? (
-          <TabSecondaryBigButton>Zobacz wszystkie projekty</TabSecondaryBigButton>
-        ) : (
-          <TabSecondarySmallButton>Zobacz wszystkie projekty</TabSecondarySmallButton>
-        )}
+        <SeeProjectsButton>Zobacz wszystkie projekty</SeeProjectsButton>
       </a>
     </StyledTabs>
   );
