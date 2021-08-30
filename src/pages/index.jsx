@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import contentfulClient from '@root/api/ContentfulClient';
+import contentfulClient from '@root/api/contentfulClient';
 import Header from '@root/components/Homepage/Header/Header';
 import getSocialMedias from '@root/handlers/getSocialMedias';
 import findApiElementByIdentifier from '@root/handlers/findApiElement';
@@ -38,10 +38,7 @@ const Home = ({ homeApiElements, commonApiElements, projectsApiElements }) => {
         video={topSectionVideoUrl}
         socialMedias={socialMedias}
       />
-      <ValuesSection
-        valuesHeader={valuesHeader}
-        valuesTiles={[firstTile, secondTile, thirdTile]}
-      />
+      <ValuesSection valuesHeader={valuesHeader} valuesTiles={[firstTile, secondTile, thirdTile]} />
       <ProjectsTabs
         projectsApiElements={projectsApiElements}
         latestProjectsHeader={latestProjectsHeader}

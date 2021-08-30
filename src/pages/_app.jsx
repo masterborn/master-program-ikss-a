@@ -4,13 +4,12 @@ import React from 'react';
 import { Hydrate } from 'react-query/hydration';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import Head from 'next/head';
-import contentfulClient from '@root/api/ContentfulClient';
+import contentfulClient from '@root/api/contentfulClient';
 import findApiElementByIdentifier from '@root/handlers/findApiElement';
 import AppProviders from '@root/contextProviders/AppProviders';
 import Layout from '../components/Layout/Layout';
 
 const App = (props) => {
-
   const { Component, pageProps, commonApiElements, contactFormText, contactFormTooltip } = props;
 
   return (
@@ -26,7 +25,10 @@ const App = (props) => {
       </Head>
       <AppProviders>
         <Hydrate state={pageProps.dehydratedState}>
-          <Layout commonApiElements={commonApiElements} formContent={[contactFormText, contactFormTooltip]}>
+          <Layout
+            commonApiElements={commonApiElements}
+            formContent={[contactFormText, contactFormTooltip]}
+          >
             <Component {...pageProps} />
           </Layout>
         </Hydrate>
@@ -44,7 +46,7 @@ App.getInitialProps = async () => {
   return {
     commonApiElements,
     contactFormText,
-    contactFormTooltip
+    contactFormTooltip,
   };
 };
 
