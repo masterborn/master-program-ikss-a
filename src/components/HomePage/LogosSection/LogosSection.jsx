@@ -13,10 +13,6 @@
 	const LogosSection = ({ logosHeader, logosText, partnerLogos }) => {
 		const sortedPartnerLogos = [...partnerLogos].sort(compareProjectsOrder);
 
-		// partnerLogos.sort(compareProjectsOrder);
-		console.log(partnerLogos);
-		
-
 		const homepageLogos = sortedPartnerLogos.filter(element => element.fields.showOnHomepage ===true);	
 			const logosData = getLogosData(homepageLogos);
 		return (
@@ -27,10 +23,7 @@
 				</LogosTextWrapper>
 				<PartnerLogosWrapper>
 				 {logosData.map(
-        		({ width, height, imageUrl, linkUrl, title }) => (
-				
-					
-							
+        		({ width, height, imageUrl, linkUrl, title }) => (				
 						<a href={linkUrl}>
 							<Image 
 							src={`https:${imageUrl}`}
@@ -45,7 +38,6 @@
 			</LogosSectionWrapper>
 		)	
 	}
-
 
 	LogosSection.propTypes = {
 	  logosHeader: PropTypes.string.isRequired,
