@@ -1,11 +1,5 @@
 import styled from 'styled-components';
-import {
-  getColor,
-  getFontSize,
-  getFontWeight,
-  getLineHeight,
-  getLetterSpacing,
-} from '@root/styles/utils';
+import { getColor } from '@root/styles/utils';
 import { medias } from '@root/styles/theme';
 import { H1 } from '../typography/Typography';
 
@@ -32,10 +26,8 @@ export const StyledHeader = styled(H1)`
 
   @media ${small} {
     margin: 8px 0 16px 0;
-    font-weight: ${getFontWeight('h2')};
-    font-size: ${getFontSize('h2')};
-    line-height: ${getLineHeight('h2')};
-    letter-spacing: ${getLetterSpacing('h2')};
+    font-size: 32px;
+    line-height: 44px;
   }
 `;
 
