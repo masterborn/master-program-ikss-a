@@ -10,21 +10,93 @@ export const Nav = styled.nav`
     height: 88px;
     padding: 20px 120px;
     align-items: center;
+    justify-content: space-between;
     background-color: ${getColor('white')};
     box-shadow: 0px 4px 16px rgba(97, 121, 139, 0.1);
+
+    @media(max-width: 1200px) {
+        padding: 20px 80px;
+    }
+
+    @media(max-width: 1024px) {
+        height: 56px;
+        padding: 10px 27px 10px 24px;
+    }
+`;
+
+export const MenuWrapper = styled.div`
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 126px;
+
+    @media(max-width: 1200px) {
+        margin-left: 60px;
+    }
+
+    @media(max-width: 1024px) {
+        display: none;
+    }
+`;
+
+
+export const MobileMenuWrapper = styled.div`
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        width: 301px;
+        height: 100vh;
+        border-radius: 16px 0px 0px 0px;
+        background-color: #fff;
+        box-shadow: 0px 4px 16px rgba(97, 121, 139, 0.1);
+        transform: ${({active}) => active ? 'translateX(0)' : 'translateX(100%)'};
+        transition: transform .3s ;
+
+        @media(max-width: 1024px) {
+            display: block;
+        }
 `;
 
 export const LinksList = styled.ul`
+    width: 413px;
     display: flex;
-    list-style: none;
-    margin-left: 126px;
-    flex-basis: 413px;
     justify-content: space-between;
+    list-style: none;
+
+    @media(max-width: 1024px) {
+        width: 100%;
+        flex-direction: column;
+        justify-content: flex-start;
+        
+        li {
+        flex-basis: 56px;
+        box-shadow: inset 0px 1.5px 0px #EAF5FF;
+        
+        &:last-child {
+           box-shadow: inset 0px 1.5px 0px #EAF5FF, inset 0px -1.5px 0px #EAF5FF;
+        }}
+    }
 `;
 
 export const ContactButton = styled(SmallButton)`
-    position: absolute;
-    right: 120px;
+    @media(max-width: 1024px) {
+        margin: 40px auto;
+    }
+`;
+
+export const StyledIcon = styled.a`
+    text-decoration: none;
+    cursor: pointer;
+
+    @media(max-width: 1024px) {
+        img {
+            width:56px;
+            height: 35px;
+        }
+    }
 `;
 
 export const StyledLink = styled.a`
@@ -32,11 +104,14 @@ export const StyledLink = styled.a`
     color: ${({active}) => active ? getColor('navy') : getColor('steel')};
     font-weight: 700;
     cursor: pointer;
+
+    @media(max-width: 1024px) {
+        padding-left: 24px;
+        line-height: 56px;
+    }
 `;
 
 export const Socials = styled.div`
-    position: absolute;
-    right: 336px;
     display: flex;
     justify-content: space-between;
     width: 168px;
@@ -45,7 +120,64 @@ export const Socials = styled.div`
     pointer-events: ${({visible}) => visible ? 'auto' : 'none'};
     transition: opacity .1s;
 
+    @media(max-width: 1200px) {
+        width: 148px;
+    }
+
+    @media(max-width: 1024px) {
+        width: 200px;
+        height: 32px;
+        margin: 0 auto;
+        opacity: 1;
+        pointer-events: auto; 
+    }
+
     a {
         cursor: pointer;
+
+        @media(max-width: 1024px) {
+            img {
+                width: 32px;
+            }
+        }
     }
+`;
+
+export const CloseBrgBtn = styled.button` 
+    display: none;
+    width: 14px;
+    height: 14px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 21px 29px 21px auto;
+
+    @media(max-width: 1024px) {
+        display: block;
+    }
+`;
+
+export const BrgBtn = styled.button`
+    display: none;
+    width: 18px;
+    height: 12px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    @media(max-width: 1024px) {
+        display: block;
+    }
+`;
+
+export const Layer = styled.div`
+        position: fixed;
+        visibility: ${({active}) => active ? 'visible' : 'hidden'};
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #1A2847;
+        opacity: ${({active}) => active ? '0.6' : '0'};
+        transition: opacity .3s, visibility .3s;
 `;

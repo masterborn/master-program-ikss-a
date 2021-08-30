@@ -35,13 +35,18 @@ export const ScrollProvider = ({ children }) => {
             const formWrapper = document.querySelector('.ContactFormstyles__FormWrapper-sc-5ntnha-0');
             const socials = document.querySelector('.Headerstyles__Socials-sc-16385vz-5');
 
-            if (window.scrollY >= socials.offsetTop + socials.offsetHeight / 2) {
+            if (socials && window.scrollY >= socials.offsetTop + socials.offsetHeight / 2) {
                 setVisible(true);
             } else setVisible(false)
 
-            if (window.scrollY < formWrapper.offsetTop - window.innerHeight / 4) {
+            if (formWrapper && window.scrollY < formWrapper.offsetTop - window.innerHeight / 4) {
                 setActiveScroll(true);
             }
+        } else if (pathname !== '/') {
+            if (window.scrollY >= window.innerHeight / 2) {
+                setVisible(true)
+            }
+            else setVisible(false)
         }
     }, [pathname]);
 
@@ -64,7 +69,7 @@ export const useScroll = () => {
     const scrollContext = useContext(ScrollContext);
 
     if (!scrollContext) {
-        throw Error('useModal needs to be used inside ErrorContext')
+        throw Error('useScroll needs to be used inside ScrollProvider')
     }
 
     return scrollContext
