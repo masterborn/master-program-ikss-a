@@ -14,6 +14,7 @@
 		const sortedPartnerLogos = [...partnerLogos].sort(compareProjectsOrder);
 
 		// partnerLogos.sort(compareProjectsOrder);
+		console.log(partnerLogos);
 		
 
 		const homepageLogos = sortedPartnerLogos.filter(element => element.fields.showOnHomepage ===true);	
@@ -49,9 +50,26 @@
 	LogosSection.propTypes = {
 	  logosHeader: PropTypes.string.isRequired,
 	  logosText: PropTypes.string.isRequired,
-	  partnerLogos: PropTypes.arrayOf(PropTypes.object).isRequired
-
+	  partnerLogos: PropTypes.shape({
+		  width: PropTypes.number.isRequired,
+		  height: PropTypes.number.isRequired,
+		  title: PropTypes.string.isRequired,
+		  alt: PropTypes.string.isRequired,
+		  linkUrl: PropTypes.string.isRequired,
+		  imageUrl: PropTypes.string.isRequired,
+		  order: PropTypes.number.isRequired,
+	})
 	};
 	
+	LogosSection.defaultProps = {
+		partnerLogos: {
+		width: '180px',
+		height: '40px',
+		title: 'title',
+		alt: 'logo',
+		linkUrl: "link",
+		imageUrl:"image",
+		}
+	  };
 
 	export default LogosSection;
