@@ -11,11 +11,12 @@
 	from './LogosSection.styles';
 
 	const LogosSection = ({ logosHeader, logosText, partnerLogos }) => {
+		const sortedPartnerLogos = [...partnerLogos].sort(compareProjectsOrder);
+
+		// partnerLogos.sort(compareProjectsOrder);
 		
 
-		partnerLogos.sort(compareProjectsOrder);
-
-		const homepageLogos = partnerLogos.filter(element => element.fields.showOnHomepage ===true);	
+		const homepageLogos = sortedPartnerLogos.filter(element => element.fields.showOnHomepage ===true);	
 			const logosData = getLogosData(homepageLogos);
 		return (
 			<LogosSectionWrapper>
