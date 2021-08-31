@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
+// I had to disable eslint because react-hook-form requires props spreading
 import React from 'react';
 import styled from "styled-components";
 import { getColor, getFontSize, getFontWeight, getLetterSpacing } from "@root/styles/utils";
@@ -39,6 +40,7 @@ const Wrapper = styled.div`
     width: 24px;
     height: 24px;
     border-radius: 4px;
+    flex-shrink: 0;
 
     span {
         position: absolute;
@@ -78,16 +80,19 @@ const FormField = styled.div`
     position: relative;
     width: ${({ contact }) => contact ? '100%' : '331px'};
 
-    img {
+    button {
+        background-color: transparent;
+        border: none;
+        width: 20px;
+        height: 20px;
         position: absolute;
         right: 14px;
         bottom: 14px;
         cursor: pointer;
     }
-
     span {
         position: absolute;
-        z-index: 1;
+        z-index: -1;
         right: 36px;
         bottom: ${({ isTextArea }) => isTextArea ? '14px' : '50%'};
         transform: ${({ isTextArea }) => isTextArea ? 'none' : 'translateY(50%)'};
@@ -101,10 +106,16 @@ const FormField = styled.div`
         letter-spacing: -0.015em;
         opacity: 0;
         transition: opacity .2s;
+
+        @media(max-width: 1024px) {
+            opacity: ${({ activeMessage }) => activeMessage ? 1 : 0};
+            z-index: ${({ activeMessage }) => activeMessage ? 1 : -1};
+        }
     }
 
-    img:hover+span {
+    button:hover+span {
         opacity: 1;
+        z-index: 1;
     }
 `;
 
@@ -112,10 +123,14 @@ const TextArea = styled(InputField)`
     height: 221px;
     resize: none;
     padding: 10px 12px;
+
+    @media(max-width: 1024px) {
+        height: 125px;
+    }
 `;
 
 
-const Input = React.forwardRef(({ text, icon, error, name, id, checkbox, disabled, contact, isTextArea, message, ...props }, ref) => {
+const Input = React.forwardRef(({ text, icon, error, name, id, checkbox, disabled, contact, isTextArea, message, activeMessage, displayTooltip, ...props }, ref) => {
 
     const getIcon = () => {
         if (disabled) return '/disabledInfo.svg'
@@ -134,10 +149,10 @@ const Input = React.forwardRef(({ text, icon, error, name, id, checkbox, disable
 
     if (isTextArea) {
         return (
-            <FormField isTextArea={isTextArea} contact={contact}>
+            <FormField isTextArea={isTextArea} contact={contact} activeMessage={activeMessage}>
                 <TextArea as='textarea' contact={contact} icon={icon} error={error} disabled={disabled} placeholder={text} type='text' name={name} id={id} {...props} ref={ref} />
                 {icon ?
-                    <img src={getIcon()} alt='icon' />
+                    <button type='button' onClick={() => displayTooltip(name)}><img src={getIcon()} alt='icon' /></button>
                     : null}
                 <span>{message}</span>
             </FormField>
@@ -145,10 +160,10 @@ const Input = React.forwardRef(({ text, icon, error, name, id, checkbox, disable
     }
 
     return (
-        <FormField contact={contact}>
+        <FormField contact={contact} activeMessage={activeMessage}>
             <InputField icon={icon} error={error} disabled={disabled} placeholder={text} type='text' name={name} id={id} {...props} ref={ref} />
             {icon ?
-                <img src={getIcon()} alt='icon' />
+                <button type='button' onClick={() => displayTooltip(name)}><img src={getIcon()} alt='icon' /></button>
                 : null}
             <span>{message}</span>
         </FormField>
@@ -164,6 +179,8 @@ Input.defaultProps = {
     contact: false,
     isTextArea: false,
     message: '',
+    activeMessage: false,
+    displayTooltip: () => { }
 }
 
 Input.propTypes = {
@@ -176,7 +193,9 @@ Input.propTypes = {
     disabled: PropTypes.bool,
     contact: PropTypes.bool,
     isTextArea: PropTypes.bool,
-    message: PropTypes.string
+    message: PropTypes.string,
+    activeMessage: PropTypes.bool,
+    displayTooltip: PropTypes.func
 }
 
 export default Input;

@@ -1,13 +1,17 @@
 /* eslint-disable react/jsx-props-no-spreading */
+// I had to disable eslint because react-hook-form requires props spreading
 import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { useModal } from '@root/hooks/useModal';
 import { useForm } from 'react-hook-form';
+import CloseIcon from '../icons/svgs/coolicon.svg';
+import LoaderIcon from '../icons/svgs/loader.svg';
+import SuccessIcon from '../icons/svgs/formSuccess.svg';
+import ErrorIcon from '../icons/svgs/formError.svg';
 import { FormWrapper, Form, StyledH3, Description, Names, NameField, FormField, Label, Declaration, PrivacyLink, Info, FormSubmit, Layer, CloseBtn, UserCode } from './ContactForm.styles';
 import Input from '../FormElements/Input';
-import { CloseIcon, LoaderIcon, ErrorIcon, SuccessIcon } from '../icons';
 
 
 const ContactForm = ({ formText: { fields: { title, text1: description } }, formTooltip: { fields: { text1: tooltip } } }) => {
@@ -20,12 +24,28 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
 
     const { loading, correct, failure } = request;
 
+    const [closed, setClosed] = useState(false);
+
+    const [messages, setMessages] = useState({ name: false, surname: false, email: false, topic: false, content: false });
+
+    const displayTooltip = (name) => {
+        setMessages(prevState => ({ ...prevState, [name]: !messages[name] }));
+        setTimeout(() => setMessages(prevState => (
+            { ...prevState, [name]: false }
+        )), 5000);
+    };
+
     const getBtnContent = () => {
-        if (failure) return <><ErrorIcon />Coś poszło nie tak. Spróbuj jeszcze raz.</>
-        if (correct) return <><SuccessIcon />Wiadomość wysłana! Odpowiemy wkrótce.</>
-        if (loading) return <LoaderIcon />
+        if (failure) return <><img src={ErrorIcon.src} alt='error-icon' /><span>Coś poszło nie tak. Spróbuj jeszcze raz.</span><span>Spróbuj jeszcze raz.</span></>
+        if (correct) return <><img src={SuccessIcon.src} alt='success-icon' /><span>Wiadomość wysłana! Odpowiemy wkrótce.</span><span>Wiadomość wysłana!</span></>
+        if (loading) return <img src={LoaderIcon.src} alt='loader-icon' />
         return 'Wyślij wiadomość'
     };
+
+    const closeModal = () => {
+        setClosed(true);
+        setTimeout(() => handleModal('close'), 400);
+    }
 
     const onFormSubmit = (data) => {
 
@@ -33,7 +53,6 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
 
         if (!userCode) {
             setRequest({ ...request, loading: true, correct: false, failure: false });
-
             setTimeout(() => {
                 axios.post('https://formcarry.com/s/D_0rPBQNVQl', {
                     name,
@@ -84,7 +103,7 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
 
     return (
         <FormWrapper modalOpen={modalOpen}>
-            <Form modalOpen={modalOpen} onSubmit={handleSubmit(onFormSubmit)} >
+            <Form modalOpen={modalOpen} closed={closed} onSubmit={handleSubmit(onFormSubmit)} >
                 <StyledH3>{title}</StyledH3>
                 <Description as='div'>{documentToReactComponents(description)}</Description>
                 <Names>
@@ -98,6 +117,8 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                             error={!!errors.name}
                             icon={!!errors.name && true}
                             message='Wpisz imię'
+                            activeMessage={messages.name}
+                            displayTooltip={displayTooltip}
                         />
                     </NameField>
                     <NameField>
@@ -110,6 +131,8 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                             error={!!errors.surname}
                             icon={!!errors.surname && true}
                             message='Wpisz nazwisko'
+                            activeMessage={messages.surname}
+                            displayTooltip={displayTooltip}
                         />
                     </NameField>
                 </Names>
@@ -123,6 +146,8 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                         error={!!errors.email}
                         icon={!!errors.email && true}
                         message='Wpisz adres e-mail'
+                        activeMessage={messages.email}
+                        displayTooltip={displayTooltip}
                     />
                 </FormField>
                 <FormField>
@@ -135,6 +160,8 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                         error={!!errors.topic}
                         icon={!!errors.topic && true}
                         message='Wpisz temat'
+                        activeMessage={messages.topic}
+                        displayTooltip={displayTooltip}
                     />
                 </FormField>
                 <FormField>
@@ -148,6 +175,8 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                         error={!!errors.content}
                         icon={!!errors.content && true}
                         message='Wpisz treść wiadomości'
+                        activeMessage={messages.content}
+                        displayTooltip={displayTooltip}
                     />
                 </FormField>
                 <Declaration>
@@ -157,10 +186,10 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                         {...register('consent', { required: true })}
                         error={!!errors.consent}
                         icon={!!errors.consent && true} />
-                    <Label htmlFor='consent' as='label'>Zapoznałem się z</Label>
-                    <PrivacyLink as='a' href="/">informacją o administratorze i przetwarzaniu danych.
+                    <Label htmlFor='consent' as='label'>Zapoznałem się z
+                        <PrivacyLink as='a' href="/">informacją o administratorze i przetwarzaniu danych.</PrivacyLink>
                         <Info>{documentToReactComponents(tooltip)}</Info>
-                    </PrivacyLink>
+                    </Label>
                 </Declaration>
                 <UserCode
                     type='text'
@@ -171,18 +200,18 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                     process={loading}
                     correct={correct}
                     failure={failure}
-                    onClick={() => { if (correct) handleModal('close') }}
+                    onClick={() => { if (correct) closeModal() }}
                 >
                     {
                         getBtnContent()
                     }
                 </FormSubmit>
                 {modalOpen ?
-                    <CloseBtn type='button' onClick={() => handleModal('close')} ><CloseIcon /></CloseBtn> :
+                    <CloseBtn type='button' onClick={closeModal} ><img src={CloseIcon.src} alt="close-icon" /> </CloseBtn> :
                     null
                 }
             </Form>
-            {modalOpen ? <Layer /> : null}
+            {modalOpen ? <Layer closed={closed} /> : null}
         </FormWrapper>
     )
 }
