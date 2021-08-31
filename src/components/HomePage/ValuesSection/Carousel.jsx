@@ -48,8 +48,8 @@ const Carousel = ({ tiles }) => {
                   },
                 },
               }) => (
-                <EmblaSlide key={shortid.generate()}>
-                  <Tile key={heading}>
+                <EmblaSlide key={heading}>
+                  <Tile>
                     <img src={`https://${url}`} alt="value" />
                     <TileHeading>{heading}</TileHeading>
                     <TileDescription as="div">
@@ -65,7 +65,7 @@ const Carousel = ({ tiles }) => {
       <EmblaDots>
         {scrollSnaps.map((_, index) => (
           <EmblaDot
-            key={shortid.generate()}
+            key={index}
             className={index === selectedIndex && 'is-selected'}
             type="button"
             onClick={() => scrollTo(index)}
