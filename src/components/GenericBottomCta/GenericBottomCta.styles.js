@@ -7,7 +7,7 @@ import {
   getLetterSpacing,
 } from '@root/styles/utils';
 import { BigButton } from '@root/components/Button/Button.styles';
-import { H3, H4 } from '../typography/Typography';
+import { H3 } from '../typography/Typography';
 import { medias } from '@root/styles/theme';
 
 const { small } = medias;
