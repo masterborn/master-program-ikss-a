@@ -1,7 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import shortid from 'shortid';
 import { useEmblaCarousel } from 'embla-carousel/react';
 import {
   Embla,
@@ -65,6 +64,7 @@ const Carousel = ({ tiles }) => {
       <EmblaDots>
         {scrollSnaps.map((_, index) => (
           <EmblaDot
+            // eslint-disable-next-line react/no-array-index-key
             key={index}
             className={index === selectedIndex && 'is-selected'}
             type="button"
