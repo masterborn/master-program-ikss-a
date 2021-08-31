@@ -15,6 +15,8 @@ import {
 
 const ProjectTile = ({ projectData }) => {
   const { title, date, description, linkUrl, linkCaption, imageUrl } = projectData;
+  const linkContainsFacebook = linkUrl.includes('facebook');
+
   return (
     <ProjectWrapper>
       <StyledImage key={imageUrl} width="997px" height="579px" alt={title} src={imageUrl} />
@@ -27,7 +29,7 @@ const ProjectTile = ({ projectData }) => {
         {linkUrl && (
           <ButtonWrapper>
             <a href={linkUrl} target="_blank" rel="noreferrer">
-              <SmallButton icon={linkUrl.includes('facebook')}>
+              <SmallButton icon={linkContainsFacebook}>
                 {linkUrl.includes('facebook') && <FacebookIcon />}
                 {linkCaption}
               </SmallButton>

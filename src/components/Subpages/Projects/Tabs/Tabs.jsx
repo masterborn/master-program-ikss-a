@@ -31,35 +31,33 @@ const Tabs = ({ projectsList, middleCta }) => {
   }
 
   return (
-    <>
-      <StyledTabs>
-        <StyledTabList>
-          {uniqueProjectsYears.map((year) => (
-            <StyledTab>
-              <ResponsiveButton className="tab-button">{year}</ResponsiveButton>
-            </StyledTab>
-          ))}
-        </StyledTabList>
+    <StyledTabs>
+      <StyledTabList>
         {uniqueProjectsYears.map((year) => (
-          <>
-            <StyledTabPanel>
-              <FirstProjectsSection>
-                {projectsByYear[year].slice(0, 4).map((project) => (
-                  <ProjectTile projectData={project} />
-                ))}
-              </FirstProjectsSection>
-
-              {projectsByYear[year].length >= 3 && <Cta middleCta={middleCta} />}
-              <SecondProjectsSection>
-                {projectsByYear[year].slice(4).map((project) => (
-                  <ProjectTile projectData={project} />
-                ))}
-              </SecondProjectsSection>
-            </StyledTabPanel>
-          </>
+          <StyledTab>
+            <ResponsiveButton className="tab-button">{year}</ResponsiveButton>
+          </StyledTab>
         ))}
-      </StyledTabs>
-    </>
+      </StyledTabList>
+      {uniqueProjectsYears.map((year) => (
+        <>
+          <StyledTabPanel>
+            <FirstProjectsSection>
+              {projectsByYear[year].slice(0, 4).map((project) => (
+                <ProjectTile projectData={project} />
+              ))}
+            </FirstProjectsSection>
+
+            {projectsByYear[year].length >= 3 && <Cta middleCta={middleCta} />}
+            <SecondProjectsSection>
+              {projectsByYear[year].slice(4).map((project) => (
+                <ProjectTile projectData={project} />
+              ))}
+            </SecondProjectsSection>
+          </StyledTabPanel>
+        </>
+      ))}
+    </StyledTabs>
   );
 };
 
