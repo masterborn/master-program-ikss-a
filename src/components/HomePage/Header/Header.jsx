@@ -8,10 +8,14 @@ import {
   LeftBlock,
   HeaderSocialMediaWrapper,
   Socials,
+  StyledSocials,
+  StyledMobileSocials,
+  Vid,
   HeroHeading,
   HeroLinks,
   HeroBodyText,
   HeroSecondaryBigButton,
+  HeroSmallButton,
 } from './Header.styles';
 
 const Header = ({ headerTitle, text, video, socialMedias }) => {
@@ -63,28 +67,45 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
             <HeroSecondaryBigButton alt="CTA" onClick={handleClick}>
               Skontaktuj się
             </HeroSecondaryBigButton>
+            <HeroSmallButton alt="CTA" onClick={handleClick}>
+              Skontaktuj się
+            </HeroSmallButton>
           </LeftBlock>
-          <iframe
-            width="808px"
-            height="505px"
-            src={`https:${video}`}
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; 
+          <Vid>
+            <iframe
+              width="808px"
+              height="505px"
+              src={`https:${video}`}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; 
                     autoplay; 
                     clipboard-write; 
                     encrypted-media; 
                     gyroscope; 
                     picture-in-picture"
-          />
+            />
+          </Vid>
         </MainContent>
         <HeaderSocialMediaWrapper>
           <Socials>
             {socialMedias.map(({ circleLogo, url, title }) => (
-              <a href={url} key={title} target="_blank" rel="noreferrer" aria-label={title}>
-                <Image src={circleLogo} alt={title} width={48} height={48} />
-                <HeroLinks>{title}</HeroLinks>
-              </a>
+              <>
+                <StyledSocials
+                  href={url}
+                  key={title}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={title}
+                >
+                  <Image src={circleLogo} alt={title} width={48} height={48} />
+                  <HeroLinks>{title}</HeroLinks>
+                </StyledSocials>
+
+                <StyledMobileSocials href={url} key={url} rel="noreferrer" aria-label={title}>
+                  <Image src={circleLogo} alt={title} width={24} height={24} />
+                </StyledMobileSocials>
+              </>
             ))}
           </Socials>
         </HeaderSocialMediaWrapper>

@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import { getColor } from '@root/styles/utils';
 import { H1, H5, BodyText } from '@root/components/typography/Typography';
-import { SecondaryBigButton } from '@root/components/Button/Button.styles';
+import { SecondaryBigButton, SmallButton } from '@root/components/Button/Button.styles';
+import { medias } from '@root/styles/theme';
+
+const { small } = medias;
 
 export const HeroSection = styled.div`
   display: flex;
@@ -15,6 +18,11 @@ export const MainContent = styled.div`
   justify-content: center;
   align-items: center;
   width: 1440px;
+  @media ${small} {
+    flex-direction: column-reverse;
+    width: 375px;
+    margin: 0 0 40 0;
+  }
 `;
 
 export const LeftBlock = styled.div`
@@ -22,6 +30,11 @@ export const LeftBlock = styled.div`
   flex-direction: column;
   align-items: flex-start;
   width: 50%;
+  @media ${small} {
+    width: 375px;
+    height: 234px;
+    margin: 0 0 40px 24px;
+  }
 `;
 
 export const Vid = styled.div`
@@ -29,6 +42,62 @@ export const Vid = styled.div`
   height: 505px;
   margin-top: 0px;
   margin-right: 0px;
+  @media ${small} {
+    height: 234px;
+    iframe {
+      position: absolute;
+      width: 808px;
+      height: 234px;
+    }
+  }
+`;
+
+export const HeroHeading = styled(H1)`
+  margin-top: 77px;
+  margin-left: 120px;
+  @media ${small} {
+    font-size: 32px;
+    line-height: 44px;
+    width: 327px;
+    margin-left: 24px;
+    margin-top: 40px;
+  }
+`;
+
+export const HeroLinks = styled(H5)`
+  margin-left: 14px;
+  color: ${getColor('navy')};
+`;
+
+export const HeroBodyText = styled(BodyText)`
+  margin-top: 32px;
+  margin-left: 120px;
+  width: 384px;
+  @media ${small} {
+    width: 327px;
+    font-size: 14px;
+    line-height: 28px;
+    margin-left: 24px;
+  }
+`;
+
+export const HeroSecondaryBigButton = styled(SecondaryBigButton)`
+  margin-top: 32px;
+  margin-left: 120px;
+  margin-bottom: 42px;
+  @media ${small} {
+    display: none;
+  }
+`;
+
+export const HeroSmallButton = styled(SmallButton)`
+  display: none;
+  @media ${small} {
+    display: block;
+    margin-top: 24px;
+    margin-bottom: 40px;
+    margin-left: 24px;
+  }
 `;
 
 export const HeaderSocialMediaWrapper = styled.div`
@@ -46,6 +115,12 @@ export const HeaderSocialMediaWrapper = styled.div`
     0.148069px 2.44552px 4.625px rgba(97, 121, 139, 0.02275);
   border-radius: 16px 0px 0px 16px;
   margin-bottom: 32px;
+  @media ${small} {
+    width: 327px;
+    height: 80px;
+    margin: 100px 24px 0px 24px;
+    border-radius: 0px;
+  }
 `;
 
 export const Socials = styled.div`
@@ -65,26 +140,25 @@ export const Socials = styled.div`
     text-decoration: none;
     cursor: pointer;
   }
+  @media ${small} {
+    width: 375px;
+    height: 187px;
+    margin: 0 0 80px 0;
+    a {
+      display: none;
+    }
+  }
 `;
 
-export const HeroHeading = styled(H1)`
-  margin-top: 77px;
-  margin-left: 120px;
+export const StyledSocials = styled.a`
+  @media ${small} {
+    display: none;
+  }
 `;
 
-export const HeroLinks = styled(H5)`
-  margin-left: 14px;
-  color: ${getColor('navy')};
-`;
-
-export const HeroBodyText = styled(BodyText)`
-  margin-top: 32px;
-  margin-left: 120px;
-  width: 384px;
-`;
-
-export const HeroSecondaryBigButton = styled(SecondaryBigButton)`
-  margin-top: 32px;
-  margin-left: 120px;
-  margin-bottom: 42px;
+export const StyledMobileSocials = styled.a`
+  display: none !important;
+  @media ${small} {
+    display: inline-block;
+  }
 `;
