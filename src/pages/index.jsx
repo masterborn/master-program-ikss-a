@@ -1,13 +1,20 @@
 /* eslint-disable import/no-unresolved */
 import PropTypes from 'prop-types';
-import contentfulClient from '@root/api/ContentfulClient';
+import contentfulClient from '@root/api/contentfulClient';
 import Header from '@root/components/Homepage/Header/Header';
 import getSocialMedias from '@root/handlers/getSocialMedias';
 import findApiElementByIdentifier from '@root/handlers/findApiElement';
 import ProjectsTabs from '@root/components/Homepage/ProjectsTabs/ProjectsTabs';
 import ValuesSection from '@root/components/Homepage/ValuesSection/ValuesSection';
+import LogosSection from '@root/components/Homepage/LogosSection/LogosSection';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
-const Home = ({ homeApiElements, commonApiElements, projectsApiElements }) => {
+const Home = ({
+  homeApiElements,
+  commonApiElements,
+  projectsApiElements,
+  partnerLogosApiElements,
+}) => {
   const homeTopSection = findApiElementByIdentifier(homeApiElements, 'homepage-top-section');
   const latestProjectsHeader = findApiElementByIdentifier(
     homeApiElements,
@@ -20,6 +27,11 @@ const Home = ({ homeApiElements, commonApiElements, projectsApiElements }) => {
   const firstTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-1');
   const secondTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-2');
   const thirdTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-3');
+  const logosHeader = findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields
+    .title;
+  const logosText = documentToReactComponents(
+    findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields.text1,
+  );
 
   const {
     fields: {
@@ -39,13 +51,16 @@ const Home = ({ homeApiElements, commonApiElements, projectsApiElements }) => {
         video={topSectionVideoUrl}
         socialMedias={socialMedias}
       />
-      <ValuesSection
-        valuesHeader={valuesHeader}
-        valuesTiles={[firstTile, secondTile, thirdTile]}
-      />
+      <ValuesSection valuesHeader={valuesHeader} valuesTiles={[firstTile, secondTile, thirdTile]} />
       <ProjectsTabs
         projectsApiElements={projectsApiElements}
-        // latestProjectsHeader={latestProjectsHeader}
+        latestProjectsHeader={latestProjectsHeader}
+      />
+      <LogosSection
+        logosHeader={logosHeader}
+        logosText={logosText}
+        homeApiElements={homeApiElements}
+        partnerLogos={partnerLogosApiElements}
       />
     </>
   );
@@ -55,12 +70,14 @@ export const getStaticProps = async () => {
   const homeApiElements = await contentfulClient.getBasicContent('homepage');
   const commonApiElements = await contentfulClient.getBasicContent('common');
   const projectsApiElements = await contentfulClient.getProjects();
+  const partnerLogosApiElements = await contentfulClient.getPartnerLogos();
 
   return {
     props: {
       homeApiElements,
       commonApiElements,
       projectsApiElements,
+      partnerLogosApiElements,
     },
   };
 };
@@ -69,6 +86,7 @@ Home.propTypes = {
   homeApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
   commonApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
   projectsApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
+  partnerLogosApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Home;
