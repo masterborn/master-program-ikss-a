@@ -54,6 +54,7 @@ export const TilesWrapper = styled.div`
 
   @media ${small} {
     margin-top: 0;
+    display: none;
   }
 `;
 
