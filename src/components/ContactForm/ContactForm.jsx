@@ -3,14 +3,17 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { useModal } from '@root/hooks/useModal';
+import { useModal } from '@root/contextProviders/useModal';
 import { useForm } from 'react-hook-form';
+import { useScroll } from '@root/contextProviders/useScroll';
 import { FormWrapper, Form, StyledH3, Description, Names, NameField, FormField, Label, Declaration, PrivacyLink, Info, FormSubmit, Layer, CloseBtn, UserCode } from './ContactForm.styles';
 import Input from '../FormElements/Input';
 import { CloseIcon, LoaderIcon, ErrorIcon, SuccessIcon } from '../icons';
 
 
 const ContactForm = ({ formText: { fields: { title, text1: description } }, formTooltip: { fields: { text1: tooltip } } }) => {
+
+    const { formRef } = useScroll();
 
     const { modalOpen, handleModal } = useModal();
 
@@ -83,7 +86,7 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
     };
 
     return (
-        <FormWrapper modalOpen={modalOpen}>
+        <FormWrapper ref={formRef} modalOpen={modalOpen}>
             <Form modalOpen={modalOpen} onSubmit={handleSubmit(onFormSubmit)} >
                 <StyledH3>{title}</StyledH3>
                 <Description as='div'>{documentToReactComponents(description)}</Description>

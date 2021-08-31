@@ -3,11 +3,14 @@ import Link from "next/link";
 import PropTypes from 'prop-types';
 import { useRouter } from "next/router";
 import Image from 'next/image';
-import { useModal } from '@root/hooks/useModal';
-import { useScroll } from '@root/hooks/useScroll';
+import { useModal } from '@root/contextProviders/useModal';
+import { useScroll } from '@root/contextProviders/useScroll';
+import routes from '@root/handlers/routes';
 import PrimaryLogo from "../logos/PrimaryLogo";
-import { Nav, LinksList, ContactButton, StyledLink, StyledIcon, Socials, MenuWrapper, BrgBtn, CloseBrgBtn, Layer, MobileMenuWrapper } from "./Navbar.styles";
-import { Bars, Coolicon } from '../icons';
+import Coolicon from '../icons/svgs/coolicon.svg';
+import Bars from '../icons/svgs/bars.svg';
+import { Nav, LinksList, ContactButton, StyledLink, StyledIcon, Socials, MenuWrapper, BrgButton, CloseBrgButton, Layer, MobileMenuWrapper } from "./Navbar.styles";
+
 
 const Navbar = ({ socialMedias, links }) => {
 
@@ -19,15 +22,14 @@ const Navbar = ({ socialMedias, links }) => {
 
     const { visible, scrollToForm } = useScroll();
 
-    const handleClick = () => {
-        if (pathname === '/') {
-            setActive(false);
-            scrollToForm();
-        }
-        else {
-            setActive(false);
-            handleModal('open');
-        }
+    const goToForm = () => {
+        setActive(false);
+        scrollToForm();
+    };
+
+    const openContactModal = () => {
+        setActive(false);
+        handleModal('open');
     };
 
     const getActivePath = (requiredPath, currentPath) => requiredPath === currentPath ? true : '';
@@ -49,7 +51,7 @@ const Navbar = ({ socialMedias, links }) => {
 
     return (
         <Nav >
-            <Link href='/'>
+            <Link href={routes.homepage}>
                 <StyledIcon>
                     <PrimaryLogo />
                 </StyledIcon>
@@ -61,15 +63,15 @@ const Navbar = ({ socialMedias, links }) => {
                 <Socials visible={visible}>
                     {menuSocials}
                 </Socials>
-                <ContactButton onClick={handleClick}>Skontaktuj się</ContactButton>
+                <ContactButton onClick={pathname === routes.homepage ? goToForm : openContactModal}>Skontaktuj się</ContactButton>
             </MenuWrapper>
-            <BrgBtn onClick={() => setActive(true)}><Bars /></BrgBtn>
+            <BrgButton onClick={() => setActive(true)}><img src={Bars.src} alt='bars icon' /></BrgButton>
             <MobileMenuWrapper active={active}>
-                <CloseBrgBtn onClick={() => setActive(false)}><Coolicon /></CloseBrgBtn>
+                <CloseBrgButton onClick={() => setActive(false)}><img src={Coolicon.src} alt='close icon' /></CloseBrgButton>
                 <LinksList>
                     {menuLinks}
                 </LinksList>
-                <ContactButton onClick={handleClick}>Skontaktuj się</ContactButton>
+                <ContactButton onClick={pathname === routes.homepage ? goToForm : openContactModal}>Skontaktuj się</ContactButton>
                 <Socials>
                     {menuSocials}
                 </Socials>

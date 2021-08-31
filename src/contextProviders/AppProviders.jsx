@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { theme } from "@root/styles/theme";
 import { ThemeProvider } from "styled-components";
-import { ModalProvider } from "@root/hooks/useModal";
-import { ScrollProvider } from "@root/hooks/useScroll";
+import { ModalProvider } from "@root/contextProviders/useModal";
+import { ScrollProvider } from "@root/contextProviders/useScroll";
 import { QueryClient, QueryClientProvider } from "react-query";
 import GlobalStyles from '@root/styles/GlobalStyles';
 import PropTypes from 'prop-types';
