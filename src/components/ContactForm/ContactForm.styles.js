@@ -63,7 +63,7 @@ export const FormWrapper = styled.div`
     transform: ${({modalOpen}) => modalOpen ? 'none' : 'translateX(-50%)'} ;
     z-index: ${({modalOpen}) => modalOpen ? '3' : '1'};
 
-    @media(max-width: 1024px) {
+    @media ${({ theme }) => theme.medias.medium} {
         bottom: ${({modalOpen}) => modalOpen ? '0' : '-148px'};
     }
 `;
@@ -97,7 +97,7 @@ export const Form = styled.form`
         return 'none'
     } };
 
-    @media(max-width: 1024px) {
+    @media ${({ theme }) => theme.medias.medium} {
         width: 327px;
         height: ${({modalOpen}) => modalOpen ? '861px' : '837px'};
         margin: ${({modalOpen}) => modalOpen ? '32px auto' : 0};
@@ -110,7 +110,7 @@ export const StyledH3 = styled(H3)`
     text-align: center;
     margin-bottom: 25px;
 
-    @media(max-width: 1024px) {
+    @media ${({ theme }) => theme.medias.medium} {
         font-size: ${getFontSize('h5')};
         line-height: ${getLineHeight('h5')};
         margin-bottom: 24px;
@@ -123,7 +123,7 @@ export const Description = styled(BodyText)`
     margin-bottom: 37px;
     padding: 0 10px;
 
-    @media(max-width: 1024px) {
+    @media ${({ theme }) => theme.medias.medium} {
         font-size: ${getFontSize('bodySmall')};
         line-height: ${getLineHeight('bodySmall')};
         margin-bottom: 24px;
@@ -138,13 +138,13 @@ export const Names = styled.div`
     div:first-child {
         margin-right: 24px;
 
-        @media(max-width: 1024px) {
+        @media ${({ theme }) => theme.medias.medium} {
             margin-right: 0;
             margin-bottom: 12px;
         }
     }
 
-    @media(max-width: 1024px) {
+    @media ${({ theme }) => theme.medias.medium} {
         flex-wrap: wrap;
         margin-bottom: 12px;
     }
@@ -164,7 +164,7 @@ export const Label = styled(SmallBodyText)`
         color: ${getColor('steel70')};
         margin-left: 16px;
     }
-    @media(max-width: 1024px) {
+    @media ${({ theme }) => theme.medias.medium} {
         &:first-child {
             margin-bottom: 2px;
         }        
@@ -184,7 +184,7 @@ export const Declaration = styled.div`
     margin: 16px 0 37px;
     align-items: center;
 
-    @media(max-width:1024px) {
+    @media ${({ theme }) => theme.medias.medium} {
         margin: 0 0 24px 3.5px;
 
         label, a {
@@ -220,9 +220,9 @@ export const Info = styled.div`
     font-weight: 400;
     letter-spacing: -0.015em;
     opacity: 0;
-    transition: opacity 0.2s;
+    transition: opacity 0.2s, z-index .2s;
 
-    @media(max-width: 1024px){
+    @media ${({ theme }) => theme.medias.medium} {
         width: 223px;
         bottom: 132px;
         left: auto;
@@ -243,7 +243,7 @@ export const FormSubmit = styled(BigButton)`
         return getColor('ikssBlue') 
     }};
 
-    @media(max-width: 1024px) {
+    @media ${({ theme }) => theme.medias.medium} {
         align-self: center;
         height: 36px;
         padding: 9px 16px;
@@ -272,7 +272,7 @@ export const FormSubmit = styled(BigButton)`
     span:nth-of-type(2) {
         display: none;
 
-        @media(max-width: 1024px) {
+        @media ${({ theme }) => theme.medias.medium} {
             display: block;
         }
     }
@@ -282,14 +282,14 @@ export const FormSubmit = styled(BigButton)`
         width: 24px;
         height: 24px;
 
-        @media(max-width: 1024px) {
+        @media ${({ theme }) => theme.medias.medium} {
             width: 20px;
             height: 20px;
         }
     }
 `;
 
-export const CloseBtn = styled.button`
+export const CloseButton = styled.button`
     position: absolute;
     top: 37px;
     right: 37px;
@@ -303,7 +303,7 @@ export const CloseBtn = styled.button`
         width: 100%;
     }
 
-    @media(max-width: 1024px) {
+    @media ${({ theme }) => theme.medias.medium} {
         top: 20px;
         right: 24px;
         width: 12px;

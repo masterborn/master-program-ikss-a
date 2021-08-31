@@ -105,9 +105,9 @@ const FormField = styled.div`
         font-weight: 400;
         letter-spacing: -0.015em;
         opacity: 0;
-        transition: opacity .2s;
+        transition: opacity .2s, z-index .2s;
 
-        @media(max-width: 1024px) {
+        @media ${({ theme }) => theme.medias.medium} {
             opacity: ${({ activeMessage }) => activeMessage ? 1 : 0};
             z-index: ${({ activeMessage }) => activeMessage ? 1 : -1};
         }
@@ -124,7 +124,7 @@ const TextArea = styled(InputField)`
     resize: none;
     padding: 10px 12px;
 
-    @media(max-width: 1024px) {
+    @media ${({ theme }) => theme.medias.medium} {
         height: 125px;
     }
 `;

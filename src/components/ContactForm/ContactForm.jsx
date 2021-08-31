@@ -4,17 +4,20 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { useModal } from '@root/hooks/useModal';
+import { useModal } from '@root/contextProviders/useModal';
 import { useForm } from 'react-hook-form';
+import { useScroll } from '@root/contextProviders/useScroll';
 import CloseIcon from '../icons/svgs/coolicon.svg';
 import LoaderIcon from '../icons/svgs/loader.svg';
 import SuccessIcon from '../icons/svgs/formSuccess.svg';
 import ErrorIcon from '../icons/svgs/formError.svg';
-import { FormWrapper, Form, StyledH3, Description, Names, NameField, FormField, Label, Declaration, PrivacyLink, Info, FormSubmit, Layer, CloseBtn, UserCode } from './ContactForm.styles';
+import { FormWrapper, Form, StyledH3, Description, Names, NameField, FormField, Label, Declaration, PrivacyLink, Info, FormSubmit, Layer, CloseButton, UserCode } from './ContactForm.styles';
 import Input from '../FormElements/Input';
 
 
 const ContactForm = ({ formText: { fields: { title, text1: description } }, formTooltip: { fields: { text1: tooltip } } }) => {
+
+    const { formRef } = useScroll();
 
     const { modalOpen, handleModal } = useModal();
 
@@ -102,7 +105,7 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
     };
 
     return (
-        <FormWrapper modalOpen={modalOpen}>
+        <FormWrapper ref={formRef} modalOpen={modalOpen}>
             <Form modalOpen={modalOpen} closed={closed} onSubmit={handleSubmit(onFormSubmit)} >
                 <StyledH3>{title}</StyledH3>
                 <Description as='div'>{documentToReactComponents(description)}</Description>
@@ -187,7 +190,7 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                         error={!!errors.consent}
                         icon={!!errors.consent && true} />
                     <Label htmlFor='consent' as='label'>Zapoznałem się z
-                        <PrivacyLink as='a' href="/">informacją o administratorze i przetwarzaniu danych.</PrivacyLink>
+                        <PrivacyLink as='a' target='_blank' href="https://www.freeprivacypolicy.com/free-privacy-policy-generator/">informacją o administratorze i przetwarzaniu danych.</PrivacyLink>
                         <Info>{documentToReactComponents(tooltip)}</Info>
                     </Label>
                 </Declaration>
@@ -207,7 +210,7 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                     }
                 </FormSubmit>
                 {modalOpen ?
-                    <CloseBtn type='button' onClick={closeModal} ><img src={CloseIcon.src} alt="close-icon" /> </CloseBtn> :
+                    <CloseButton type='button' onClick={closeModal} ><img src={CloseIcon.src} alt="close-icon" /> </CloseButton> :
                     null
                 }
             </Form>
