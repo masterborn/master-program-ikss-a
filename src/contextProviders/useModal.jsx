@@ -25,7 +25,7 @@ export const useModal = () => {
     const modalContext = useContext(ModalContext);
 
     if (!modalContext) {
-        throw Error('useModal needs to be used inside ErrorContext')
+        throw Error('useModal needs to be used inside ModalProvider')
     }
 
     return modalContext
