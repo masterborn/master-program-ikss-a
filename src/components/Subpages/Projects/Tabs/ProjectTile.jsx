@@ -30,7 +30,7 @@ const ProjectTile = ({ projectData }) => {
           <ButtonWrapper>
             <a href={linkUrl} target="_blank" rel="noreferrer">
               <SmallButton icon={linkContainsFacebook}>
-                {linkUrl.includes('facebook') && <FacebookIcon />}
+                {linkContainsFacebook && <FacebookIcon />}
                 {linkCaption}
               </SmallButton>
             </a>
