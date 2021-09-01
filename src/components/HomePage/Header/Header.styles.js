@@ -150,6 +150,7 @@ export const Socials = styled.div`
     a {
       display: block;
       margin-top: 71px;
+    }
   }
 `;
 
