@@ -1,19 +1,25 @@
 import Image from 'next/image';
 import PropTypes from 'prop-types';
+import { useRouter } from 'next/dist/client/router';
 import {
   TopSectionWrapper,
   StyledHeader,
-  StyledSubpageDecription,
+  StyledSubpageDescription,
+  ImageContainer,
 } from './GenericTopSecion.styles';
 
-const GenericTopSection = ({ title, imageUrl, subpageDescription }) => (
-  <TopSectionWrapper>
-    <Image src={`https:${imageUrl}`} height="142px" width="230px" />
-    <StyledHeader>{title}</StyledHeader>
-    <StyledSubpageDecription>{subpageDescription}</StyledSubpageDecription>
-  </TopSectionWrapper>
-);
-
+const GenericTopSection = ({ title, imageUrl, subpageDescription }) => {
+  const { pathname } = useRouter();
+  return (
+    <TopSectionWrapper projectsSubpage={pathname === '/projekty'}>
+      <ImageContainer>
+        <Image src={`https:${imageUrl}`} layout="fill" objectFit="cover" />
+      </ImageContainer>
+      <StyledHeader>{title}</StyledHeader>
+      <StyledSubpageDescription>{subpageDescription}</StyledSubpageDescription>
+    </TopSectionWrapper>
+  );
+};
 GenericTopSection.propTypes = {
   title: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
