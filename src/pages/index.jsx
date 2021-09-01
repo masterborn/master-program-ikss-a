@@ -9,9 +9,12 @@ import ValuesSection from '@root/components/Homepage/ValuesSection/ValuesSection
 import LogosSection from '@root/components/Homepage/LogosSection/LogosSection';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
-
-
-const Home = ({ homeApiElements, commonApiElements, projectsApiElements, partnerLogosApiElements }) => {
+const Home = ({
+  homeApiElements,
+  commonApiElements,
+  projectsApiElements,
+  partnerLogosApiElements,
+}) => {
   const homeTopSection = findApiElementByIdentifier(homeApiElements, 'homepage-top-section');
   const latestProjectsHeader = findApiElementByIdentifier(
     homeApiElements,
@@ -24,9 +27,11 @@ const Home = ({ homeApiElements, commonApiElements, projectsApiElements, partner
   const firstTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-1');
   const secondTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-2');
   const thirdTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-3');
-  const logosHeader = findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields.title;
-  const logosText= documentToReactComponents(findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields.text1);
-  
+  const logosHeader = findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields
+    .title;
+  const logosText = documentToReactComponents(
+    findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields.text1,
+  );
 
   const {
     fields: {
@@ -51,7 +56,7 @@ const Home = ({ homeApiElements, commonApiElements, projectsApiElements, partner
         projectsApiElements={projectsApiElements}
         latestProjectsHeader={latestProjectsHeader}
       />
-       <LogosSection
+      <LogosSection
         logosHeader={logosHeader}
         logosText={logosText}
         homeApiElements={homeApiElements}
@@ -72,7 +77,7 @@ export const getStaticProps = async () => {
       homeApiElements,
       commonApiElements,
       projectsApiElements,
-      partnerLogosApiElements
+      partnerLogosApiElements,
     },
   };
 };
