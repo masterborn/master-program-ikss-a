@@ -29,7 +29,7 @@
     "@svgr/cli": "^5.5.0",
     "axios": "0.21.1",
     "contentful": "^8.4.2",
-    "embla-carousel": "4.5.3",
+    "embla-carousel": "^4.5.3",
     "next": "^11.1.0",
     "next-compose-plugins": "2.2.1",
     "next-svgr": "0.0.2",
