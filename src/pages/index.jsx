@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import PropTypes from 'prop-types';
-import contentfulClient from '@root/api/contentfulClient';
+import contentfulClient from '@root/api/ContentfulClient';
 import Header from '@root/components/Homepage/Header/Header';
 import getSocialMedias from '@root/handlers/getSocialMedias';
 import findApiElementByIdentifier from '@root/handlers/findApiElement';
