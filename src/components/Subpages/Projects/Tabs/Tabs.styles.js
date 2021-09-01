@@ -1,15 +1,24 @@
-import styled from "styled-components";
-import Image from "next/image";
-import { Tab, TabList, TabPanel } from "react-tabs";
-import { getColor } from "@root/styles/utils";
-import { H4, H5 } from "@root/components/typography/Typography";
-import dynamic from "next/dynamic";
-import { BigButton } from "@root/components/Button/Button.styles";
+import styled from 'styled-components';
+import Image from 'next/image';
+import { Tab, TabList, TabPanel } from 'react-tabs';
+import {
+  getColor,
+  getFontSize,
+  getFontWeight,
+  getLetterSpacing,
+  getLineHeight,
+} from '@root/styles/utils';
+import { H3, H4, H5 } from '@root/components/typography/Typography';
+import dynamic from 'next/dynamic';
+import { BigButton } from '@root/components/Button/Button.styles';
+import { medias } from '@root/styles/theme';
 
 const Tabs = dynamic(
-  import("react-tabs").then((mod) => mod.Tabs),
-  { ssr: false }
+  import('react-tabs').then((mod) => mod.Tabs),
+  { ssr: false },
 );
+
+const { small } = medias;
 
 export const StyledTabs = styled(Tabs)`
   display: flex;
@@ -17,47 +26,60 @@ export const StyledTabs = styled(Tabs)`
   align-items: center;
   justify-content: center;
   max-width: 1200px;
-  margin: 0 auto 92px;
+  margin: 0 auto 0;
 
   a {
     text-decoration: none;
   }
-`;
 
-export const StyledTab = styled(Tab)`
-  cursor: pointer;
-  color: ${getColor("navy")};
-
-  .tab-button {
-    background: none;
-    color: ${getColor("navy")};
-  }
-
-  &.react-tabs__tab--selected {
-    display: block;
-    background-color: ${getColor("ikssBlue")};
-    border-radius: 26px;
-    color: ${getColor("white")};
-    .tab-button {
-      background: none;
-      color: ${getColor("white")};
-    }
+  @media ${small} {
+    padding: 0 24px;
   }
 `;
 
 export const StyledTabList = styled(TabList)`
   display: flex;
   list-style-type: none;
-  background-color: ${getColor("blue10")};
-  margin: 32px 0 64px 0;
+  background-color: ${getColor('blue10')};
+  margin: 0 0 48px 0;
   border-radius: 26px;
+
+  @media ${small} {
+    margin: 0 0 60px 0;
+  }
+`;
+
+export const StyledTab = styled(Tab)`
+  cursor: pointer;
+  color: ${getColor('navy')};
+
+  .tab-button {
+    background: none;
+    color: ${getColor('navy')};
+  }
+
+  &.react-tabs__tab--selected {
+    display: block;
+    background-color: ${getColor('ikssBlue')};
+    border-radius: 26px;
+    color: ${getColor('white')};
+    .tab-button {
+      background: none;
+      color: ${getColor('white')};
+    }
+  }
+`;
+
+export const ResponsiveButton = styled(BigButton)`
+  @media ${small} {
+    height: 36px;
+    padding: 9px 16px;
+    line-height: 18px;
+    font-size: ${getFontSize('bodySmall')};
+  }
 `;
 
 export const StyledTabPanel = styled(TabPanel)`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 24px;
-
   &.react-tabs__tab-panel--selected {
     animation-name: fadeIn;
     animation-duration: 800ms;
@@ -77,14 +99,20 @@ export const StyledTabPanel = styled(TabPanel)`
 export const StyledTabTextSection = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 64px 10%;
+  padding: 32px 32px 40px 32px;
+
+  @media ${small} {
+    padding: 24px 24px 32px 24px;
+  }
 `;
 
 export const ButtonWrapper = styled.div`
   display: flex;
   img {
-    filter: invert(100%) sepia(94%) saturate(0%) hue-rotate(248deg)
-      brightness(106%) contrast(106%);
+    filter: invert(100%) sepia(94%) saturate(0%) hue-rotate(248deg) brightness(106%) contrast(106%);
+  }
+  @media ${small} {
+    margin: 0 auto 0 auto;
   }
 `;
 
@@ -92,21 +120,44 @@ export const TitleWithDateContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 32px;
+
+  @media ${small} {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
 `;
 export const ProjectTitle = styled(H4)`
   margin: 0 24px 0 0;
+
+  @media ${small} {
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0 0 8px 0;
+  }
 `;
 
 export const ProjectDate = styled(H5)`
-  color: ${getColor("steel")};
+  color: ${getColor('steel')};
+
+  @media ${small} {
+    font-size: 14px;
+    line-height: 18px;
+  }
 `;
 
 export const ProjectDescription = styled.div`
-  color: ${getColor("steel")};
+  color: ${getColor('steel')};
   margin-bottom: 32px;
   font-size: 16px;
   line-height: 32px;
   letter-spacing: -0.015px;
+
+  @media ${small} {
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 28px;
+  }
 `;
 
 export const StyledImage = styled(Image)`
@@ -114,18 +165,25 @@ export const StyledImage = styled(Image)`
 `;
 
 export const ProjectWrapper = styled.div`
-  background: ${getColor("white")};
+  background: ${getColor('white')};
   box-shadow: 3.38443px 55.8976px 80px rgba(97, 121, 139, 0.07),
     1.71337px 28.2982px 34.875px rgba(97, 121, 139, 0.04725),
     0.676885px 11.1795px 13px rgba(97, 121, 139, 0.035),
     0.148069px 2.44552px 4.625px rgba(97, 121, 139, 0.02275);
   border-radius: 16px;
-  grid-auto-rows: min-content;
+  break-inside: avoid;
+  transform: translateZ(0);
+  margin-bottom: 24px;
+
+  @media ${small} {
+    &:nth-child(4) {
+      margin-bottom: 0;
+    }
+  }
 `;
 
-export const SimiliarProject = styled.section`
-  grid-column: 1 / -1;
-  background-color: ${getColor("blue10")};
+export const StyledCtaSection = styled.section`
+  background-color: ${getColor('blue10')};
   height: 352px;
   border-radius: 16px;
   display: flex;
@@ -134,8 +192,38 @@ export const SimiliarProject = styled.section`
   align-items: center;
   margin: 92px 0;
   text-align: center;
+
+  @media ${small} {
+    height: 220px;
+    margin: 32px 0;
+    padding: 0 31px 0 31px;
+  }
 `;
 
-export const StyledBigButton = styled(BigButton)`
+export const StyledCtaText = styled(H3)`
+  @media ${small} {
+    font-weight: ${getFontWeight('h5')};
+    font-size: ${getFontSize('h5')};
+    line-height: ${getLineHeight('h5')};
+    letter-spacing: ${getLetterSpacing('h5')};
+  }
+`;
+
+export const FirstProjectsSection = styled.div`
+  column-count: 2;
+  column-gap: 24px;
+  width: 100%;
+
+  @media ${small} {
+    column-count: 1;
+  }
+`;
+
+export const SecondProjectsSection = styled(FirstProjectsSection)``;
+
+export const CtaButton = styled(ResponsiveButton)`
   margin-top: 32px;
+  @media ${small} {
+    margin-top: 24px;
+  }
 `;
