@@ -67,6 +67,9 @@ export const HeroHeading = styled(H1)`
 export const HeroLinks = styled(H5)`
   margin-left: 14px;
   color: ${getColor('navy')};
+  @media ${small} {
+    display: none;
+  }
 `;
 
 export const HeroBodyText = styled(BodyText)`
@@ -119,7 +122,7 @@ export const HeaderSocialMediaWrapper = styled.div`
     width: 327px;
     height: 80px;
     margin: 100px 24px 0px 24px;
-    border-radius: 0px;
+    border-radius: 16px;
   }
 `;
 
@@ -145,14 +148,17 @@ export const Socials = styled.div`
     height: 187px;
     margin: 0 0 80px 0;
     a {
-      display: none;
-    }
+      display: block;
+      margin-top: 71px;
   }
 `;
 
 export const StyledSocials = styled.a`
+  display: block;
   @media ${small} {
     display: none;
+    width: 24px;
+    height: 24px;
   }
 `;
 

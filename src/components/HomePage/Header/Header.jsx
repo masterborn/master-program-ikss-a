@@ -91,18 +91,11 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
           <Socials>
             {socialMedias.map(({ circleLogo, url, title }) => (
               <>
-                <StyledSocials
-                  href={url}
-                  key={title}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={title}
-                >
+                <StyledSocials href={url} key={title} rel="noreferrer" aria-label={title}>
                   <Image src={circleLogo} alt={title} width={48} height={48} />
                   <HeroLinks>{title}</HeroLinks>
                 </StyledSocials>
-
-                <StyledMobileSocials href={url} key={url} rel="noreferrer" aria-label={title}>
+                <StyledMobileSocials href={url} key={url} rel="noreferrer">
                   <Image src={circleLogo} alt={title} width={24} height={24} />
                 </StyledMobileSocials>
               </>
