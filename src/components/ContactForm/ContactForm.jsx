@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import { useMutation } from 'react-query';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { useModal } from '@root/contextProviders/useModal';
 import { useForm } from 'react-hook-form';
@@ -21,15 +22,28 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
 
     const { modalOpen, handleModal } = useModal();
 
-    const { register, handleSubmit, formState: { errors }, reset } = useForm();
-
-    const [request, setRequest] = useState({ loading: false, correct: false, failure: false });
-
-    const { loading, correct, failure } = request;
-
     const [closed, setClosed] = useState(false);
 
     const [messages, setMessages] = useState({ name: false, surname: false, email: false, topic: false, content: false });
+
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+
+    const { isLoading, isError, isSuccess, mutate } = useMutation(async (mail) => {
+        const response = await axios.post('https://formcarry.com/s/D_0rPBQNVQl', {
+            name: mail.name,
+            surname: mail.surname,
+            email: mail.email,
+            topic: mail.topic,
+            content: mail.content,
+            consent: mail.consent,
+            ...(mail.userCode ? { _gotcha: mail.userCode } : {})
+        });
+        if (response.status === 200) reset();
+    }, {
+        retry: false
+    });
+
+    const onFormSubmit = (data) => mutate(data);
 
     const displayTooltip = (name) => {
         setMessages(prevState => ({ ...prevState, [name]: !messages[name] }));
@@ -39,9 +53,9 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
     };
 
     const getBtnContent = () => {
-        if (failure) return <><img src={ErrorIcon.src} alt='error-icon' /><span>Coś poszło nie tak. Spróbuj jeszcze raz.</span><span>Spróbuj jeszcze raz.</span></>
-        if (correct) return <><img src={SuccessIcon.src} alt='success-icon' /><span>Wiadomość wysłana! Odpowiemy wkrótce.</span><span>Wiadomość wysłana!</span></>
-        if (loading) return <img src={LoaderIcon.src} alt='loader-icon' />
+        if (isError) return <><img src={ErrorIcon.src} alt='error-icon' /><span>Coś poszło nie tak. Spróbuj jeszcze raz.</span><span>Spróbuj jeszcze raz.</span></>
+        if (isSuccess) return <><img src={SuccessIcon.src} alt='success-icon' /><span>Wiadomość wysłana! Odpowiemy wkrótce.</span><span>Wiadomość wysłana!</span></>
+        if (isLoading) return <img src={LoaderIcon.src} alt='loader-icon' />
         return 'Wyślij wiadomość'
     };
 
@@ -49,60 +63,6 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
         setClosed(true);
         setTimeout(() => handleModal('close'), 400);
     }
-
-    const onFormSubmit = (data) => {
-
-        const { name, surname, email, topic, content, consent, userCode } = data;
-
-        if (!userCode) {
-            setRequest({ ...request, loading: true, correct: false, failure: false });
-            setTimeout(() => {
-                axios.post('https://formcarry.com/s/D_0rPBQNVQl', {
-                    name,
-                    surname,
-                    email,
-                    topic,
-                    content,
-                    consent,
-                })
-                    .then((res) => {
-                        if (res.status === 200) {
-                            setRequest({ ...request, correct: true, loading: false, failure: false });
-                            reset();
-                        } else {
-                            throw new Error('Request failed')
-                        }
-                    })
-                    .catch(() => {
-                        setRequest({ ...request, failure: true, correct: false, loading: false })
-                    })
-            }, 500);
-        } else {
-            setRequest({ ...request, loading: true, correct: false, failure: false });
-            setTimeout(() => {
-                axios.post('https://formcarry.com/s/D_0rPBQNVQl', {
-                    name,
-                    surname,
-                    email,
-                    topic,
-                    content,
-                    consent,
-                    gotcha: userCode
-                })
-                    .then((res) => {
-                        if (res.status === 200) {
-                            setRequest({ ...request, correct: true, loading: false, failure: false });
-                            reset();
-                        } else {
-                            throw new Error('Request failed')
-                        }
-                    })
-                    .catch(() => {
-                        setRequest({ ...request, failure: true, correct: false, loading: false })
-                    })
-            }, 500);
-        }
-    };
 
     return (
         <FormWrapper ref={formRef} modalOpen={modalOpen}>
@@ -118,7 +78,7 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                             text='Wpisz swoje imię'
                             {...register("name", { required: true })}
                             error={!!errors.name}
-                            icon={!!errors.name && true}
+                            icon={!!errors.name}
                             message='Wpisz imię'
                             activeMessage={messages.name}
                             displayTooltip={displayTooltip}
@@ -132,7 +92,7 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                             text='Wpisz swoje nazwisko'
                             {...register("surname", { required: true })}
                             error={!!errors.surname}
-                            icon={!!errors.surname && true}
+                            icon={!!errors.surname}
                             message='Wpisz nazwisko'
                             activeMessage={messages.surname}
                             displayTooltip={displayTooltip}
@@ -147,7 +107,7 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                         text='Wpisz swój adres e-mail'
                         {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
                         error={!!errors.email}
-                        icon={!!errors.email && true}
+                        icon={!!errors.email}
                         message='Wpisz adres e-mail'
                         activeMessage={messages.email}
                         displayTooltip={displayTooltip}
@@ -161,7 +121,7 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                         text='Temat wiadomości'
                         {...register("topic", { required: true })}
                         error={!!errors.topic}
-                        icon={!!errors.topic && true}
+                        icon={!!errors.topic}
                         message='Wpisz temat'
                         activeMessage={messages.topic}
                         displayTooltip={displayTooltip}
@@ -176,7 +136,7 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                         isTextArea
                         {...register("content", { required: true })}
                         error={!!errors.content}
-                        icon={!!errors.content && true}
+                        icon={!!errors.content}
                         message='Wpisz treść wiadomości'
                         activeMessage={messages.content}
                         displayTooltip={displayTooltip}
@@ -188,7 +148,7 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                         name='consent'
                         {...register('consent', { required: true })}
                         error={!!errors.consent}
-                        icon={!!errors.consent && true} />
+                        icon={!!errors.consent} />
                     <Label htmlFor='consent' as='label'>Zapoznałem się z
                         <PrivacyLink as='a' target='_blank' href="https://www.freeprivacypolicy.com/free-privacy-policy-generator/">informacją o administratorze i przetwarzaniu danych.</PrivacyLink>
                         <Info>{documentToReactComponents(tooltip)}</Info>
@@ -200,10 +160,10 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                     id='userCode'
                     {...register('userCode')} />
                 <FormSubmit type='submit'
-                    process={loading}
-                    correct={correct}
-                    failure={failure}
-                    onClick={() => { if (correct) closeModal() }}
+                    process={isLoading}
+                    correct={isSuccess}
+                    failure={isError}
+                    onClick={() => { if (isSuccess) closeModal() }}
                 >
                     {
                         getBtnContent()
