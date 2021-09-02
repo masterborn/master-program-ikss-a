@@ -18,7 +18,7 @@ export const Nav = styled.nav`
         padding: 20px 80px;
     }
 
-    @media(max-width: 1024px) {
+    @media ${({theme}) => theme.medias.medium} {
         height: 56px;
         padding: 10px 27px 10px 24px;
     }
@@ -35,7 +35,7 @@ export const MenuWrapper = styled.div`
         margin-left: 60px;
     }
 
-    @media(max-width: 1024px) {
+    @media ${({theme}) => theme.medias.medium} {
         display: none;
     }
 `;
@@ -55,7 +55,7 @@ export const MobileMenuWrapper = styled.div`
         transform: ${({active}) => active ? 'translateX(0)' : 'translateX(100%)'};
         transition: transform .3s ;
 
-        @media(max-width: 1024px) {
+        @media ${({theme}) => theme.medias.medium} {
             display: block;
         }
 `;
@@ -66,7 +66,7 @@ export const LinksList = styled.ul`
     justify-content: space-between;
     list-style: none;
 
-    @media(max-width: 1024px) {
+    @media ${({theme}) => theme.medias.medium} {
         width: 100%;
         flex-direction: column;
         justify-content: flex-start;
@@ -82,7 +82,7 @@ export const LinksList = styled.ul`
 `;
 
 export const ContactButton = styled(SmallButton)`
-    @media(max-width: 1024px) {
+    @media ${({theme}) => theme.medias.medium} {
         margin: 40px auto;
     }
 `;
@@ -91,7 +91,7 @@ export const StyledIcon = styled.a`
     text-decoration: none;
     cursor: pointer;
 
-    @media(max-width: 1024px) {
+    @media ${({theme}) => theme.medias.medium} {
         img {
             width:56px;
             height: 35px;
@@ -105,7 +105,7 @@ export const StyledLink = styled.a`
     font-weight: 700;
     cursor: pointer;
 
-    @media(max-width: 1024px) {
+    @media ${({theme}) => theme.medias.medium} {
         padding-left: 24px;
         line-height: 56px;
     }
@@ -124,7 +124,7 @@ export const Socials = styled.div`
         width: 148px;
     }
 
-    @media(max-width: 1024px) {
+    @media ${({theme}) => theme.medias.medium} {
         width: 200px;
         height: 32px;
         margin: 0 auto;
@@ -135,7 +135,7 @@ export const Socials = styled.div`
     a {
         cursor: pointer;
 
-        @media(max-width: 1024px) {
+        @media ${({theme}) => theme.medias.medium} {
             img {
                 width: 32px;
             }
@@ -143,7 +143,7 @@ export const Socials = styled.div`
     }
 `;
 
-export const CloseBrgBtn = styled.button` 
+export const CloseBrgButton = styled.button` 
     display: none;
     width: 14px;
     height: 14px;
@@ -152,12 +152,12 @@ export const CloseBrgBtn = styled.button`
     cursor: pointer;
     margin: 21px 29px 21px auto;
 
-    @media(max-width: 1024px) {
+    @media ${({theme}) => theme.medias.medium} {
         display: block;
     }
 `;
 
-export const BrgBtn = styled.button`
+export const BrgButton = styled.button`
     display: none;
     width: 18px;
     height: 12px;
@@ -165,7 +165,7 @@ export const BrgBtn = styled.button`
     background-color: transparent;
     cursor: pointer;
 
-    @media(max-width: 1024px) {
+    @media ${({theme}) => theme.medias.medium} {
         display: block;
     }
 `;

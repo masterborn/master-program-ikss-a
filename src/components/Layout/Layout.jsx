@@ -4,7 +4,7 @@ import findApiElementByIdentifier from '@root/handlers/findApiElement';
 import getSocialMedias from '@root/handlers/getSocialMedias';
 import getPaths from '@root/handlers/getPaths';
 import { useRouter } from 'next/router';
-import { useModal } from '@root/hooks/useModal';
+import { useModal } from '@root/contextProviders/useModal';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import ContactForm from '../ContactForm/ContactForm';

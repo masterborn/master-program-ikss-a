@@ -67,16 +67,10 @@ export const color = {
   backgroundGradient: 'linear-gradient(180deg, #F4FAFF 0%, rgba(255, 255, 255, 0) 100%);',
 };
 
-const size = {
-  small: '768px',
-  medium: '1024px',
-  large: '1600px',
-};
-
 export const medias = {
-  small: `(max-width: ${size.small})`,
-  medium: `(max-width: ${size.medium})`,
-  large: `(max-width: ${size.large})`,
+  small: '(max-width: 768px)',
+  medium: '(max-width: 1024px)',
+  large: '(max-width: 1600px)',
 };
 
 export const theme = {

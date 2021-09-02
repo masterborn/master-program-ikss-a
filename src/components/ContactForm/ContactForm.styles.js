@@ -148,12 +148,13 @@ export const Names = styled.div`
         flex-wrap: wrap;
         margin-bottom: 12px;
     }
+
 `;
 
 export const NameField = styled.div`
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 `;
 
 export const Label = styled(SmallBodyText)`
@@ -230,17 +231,38 @@ export const Info = styled.div`
 `;
 
 export const FormSubmit = styled(BigButton)`
-    align-self: flex-end;
-    width: ${({process, correct, failure}) => {
-        if(failure || correct) return '100%'
-        if(process) return '157px'    
-        return 'auto'
+  align-self: flex-end;
+  width: ${({ process, correct, failure }) => {
+    if (failure || correct) return '100%';
+    if (process) return '157px';
+    return 'auto';
+  }}`;
+
+/* export const FormSubmit = styled(BigButton)`
+  align-self: flex-end;
+  width: ${({ process, correct, failure }) => {
+    if (failure || correct) return '100%';
+    if (process) return '157px';
+    return 'auto';
+  }};
+  text-align: center;
+  background-color: ${({ correct, failure }) => {
+    if (correct) return '#18D4A7';
+    if (failure) return getColor('errorRed');
+    return getColor('ikssBlue');
+  }};
+  &:hover {
+    background-color: ${({ correct, failure }) => {
+      if (correct) return '#18D4A7';
+      if (failure) return getColor('errorRed');
+      return '#2F95EB';
     }};
-    text-align: center;
-    background-color: ${({correct, failure}) => {
-        if(correct) return '#18D4A7'
-        if(failure) return getColor('errorRed')
-        return getColor('ikssBlue') 
+  }
+  &:active {
+    background-color: ${({ correct, failure }) => {
+      if (correct) return '#18D4A7';
+      if (failure) return getColor('errorRed');
+      return '#167CD2';
     }};
 
     @media ${({ theme }) => theme.medias.medium} {
@@ -286,8 +308,8 @@ export const FormSubmit = styled(BigButton)`
             width: 20px;
             height: 20px;
         }
-    }
-`;
+    }  
+    `; */
 
 export const CloseButton = styled.button`
     position: absolute;
@@ -312,11 +334,11 @@ export const CloseButton = styled.button`
 `;
 
 export const UserCode = styled.input`
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 0;
-    width: 0;
-    z-index: -1;
-    visibility: hidden;
-`; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 0;
+  z-index: -1;
+  visibility: hidden;
+`;
