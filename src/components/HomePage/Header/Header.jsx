@@ -19,7 +19,6 @@ import {
 } from './Header.styles';
 
 const Header = ({ headerTitle, text, video, socialMedias }) => {
-
   const { socialsRef, scrollToForm } = useScroll();
 
   return (
@@ -32,9 +31,7 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
             <HeroSecondaryBigButton alt="CTA" onClick={scrollToForm}>
               Skontaktuj się
             </HeroSecondaryBigButton>
-            <HeroSmallButton alt="CTA" onClick={handleClick}>
-              Skontaktuj się
-            </HeroSmallButton>
+            <HeroSmallButton alt="CTA">Skontaktuj się</HeroSmallButton>
           </LeftBlock>
           <Vid>
             <iframe
