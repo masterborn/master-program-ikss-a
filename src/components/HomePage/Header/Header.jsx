@@ -19,6 +19,7 @@ import {
 } from './Header.styles';
 
 const Header = ({ headerTitle, text, video, socialMedias }) => {
+
   const { socialsRef, scrollToForm } = useScroll();
 
   return (
