@@ -19,7 +19,7 @@ export const ScrollProvider = ({ children }) => {
 
     const handleScroll = useCallback(() => {
         if (pathname === routes.homepage) {
-            if (socialsRef.current && window.scrollY >= socialsRef.current.offsetTop + socialsRef.current.offsetHeight / 2) {
+            if (socialsRef.current && window.scrollY >= socialsRef.current.offsetTop + socialsRef.current.offsetHeight / 2 + 10) {
                 setVisible(true);
             } else setVisible(false)
 
