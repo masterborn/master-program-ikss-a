@@ -1,9 +1,11 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import contentfulClient from '@root/api/contentfulClient';
 import findApiElementByIdentifier from '@root/handlers/findApiElement';
 import GenericTopSection from '@root/components/GenericTopSection/GenericTopSection';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import GenericBottomCta from '@root/components/GenericBottomCta/GenericBottomCta';
+import TeamSection from '@root/components/Subpages/AboutUs/TeamSection';
 
 const AboutUs = ({ aboutUsApiElements }) => {
   const topSection = findApiElementByIdentifier(aboutUsApiElements, 'about-us-top-section');
@@ -11,6 +13,7 @@ const AboutUs = ({ aboutUsApiElements }) => {
   const subpageTitle = topSection.fields.title;
   const subpageDescription = documentToReactComponents(topSection.fields.text1);
   const bottomCta = findApiElementByIdentifier(aboutUsApiElements, 'about-us-bottom-cta').fields;
+  const teamContent = findApiElementByIdentifier(aboutUsApiElements, 'about-us-content-3');
 
   return (
     <>
@@ -19,6 +22,7 @@ const AboutUs = ({ aboutUsApiElements }) => {
         title={subpageTitle}
         subpageDescription={subpageDescription}
       />
+      <TeamSection teamContent={teamContent} />
       <GenericBottomCta bottomCta={bottomCta} />
     </>
   );
