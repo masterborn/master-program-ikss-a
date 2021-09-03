@@ -31,7 +31,9 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
             <HeroSecondaryBigButton alt="CTA" onClick={scrollToForm}>
               Skontaktuj się
             </HeroSecondaryBigButton>
-            <HeroSmallButton alt="CTA">Skontaktuj się</HeroSmallButton>
+            <HeroSmallButton alt="CTA" onClick={scrollToForm}>
+              Skontaktuj się
+            </HeroSmallButton>
           </LeftBlock>
           <Vid>
             <iframe
