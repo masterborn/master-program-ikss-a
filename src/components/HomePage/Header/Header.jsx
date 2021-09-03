@@ -32,7 +32,7 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
             <HeroSecondaryBigButton alt="CTA" onClick={scrollToForm}>
               Skontaktuj się
             </HeroSecondaryBigButton>
-            <HeroSmallButton alt="CTA" onClick={handleClick}>
+            <HeroSmallButton alt="CTA" onClick={scrollToForm}>
               Skontaktuj się
             </HeroSmallButton>
           </LeftBlock>
