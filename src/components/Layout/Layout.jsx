@@ -5,9 +5,11 @@ import getSocialMedias from '@root/handlers/getSocialMedias';
 import getPaths from '@root/handlers/getPaths';
 import { useRouter } from 'next/router';
 import { useModal } from '@root/contextProviders/useModal';
+import smoothscroll from 'smoothscroll-polyfill';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import ContactForm from '../ContactForm/ContactForm';
+
 
 const Layout = ({ children, commonApiElements, formContent }) => {
 
@@ -19,6 +21,10 @@ const Layout = ({ children, commonApiElements, formContent }) => {
   const copyrightText = findApiElementByIdentifier(commonApiElements, 'footer-text').fields.title;
 
   const [formText, formTooltip] = formContent;
+
+  React.useEffect(() => {
+    smoothscroll.polyfill();
+  }, []);
 
   return (
     <>
