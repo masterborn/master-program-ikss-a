@@ -36,7 +36,7 @@ const Navbar = ({ socialMedias, links }) => {
 
     const menuLinks = links.map(({ title, path }) => (
         <li key={title}>
-            <Link href={path} ><StyledLink active={getActivePath(path, pathname)}>{title}</StyledLink></Link>
+            <Link href={path} ><StyledLink onClick={() => { if (active) setActive(false) }} active={getActivePath(path, pathname)}>{title}</StyledLink></Link>
         </li>));
 
     const menuSocials = socialMedias.map(({ circleLogo, url, title }) => (

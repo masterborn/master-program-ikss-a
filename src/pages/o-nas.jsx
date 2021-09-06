@@ -29,11 +29,11 @@ const AboutUs = ({ aboutUsApiElements, boardMembersApiElements }) => {
         title={subpageTitle}
         subpageDescription={subpageDescription}
       />
-      <TeamSection teamContent={teamContent} />
       <ManagementSection
         boardMembers={boardMembersApiElements}
         boardMembersText={boardMembersText}
       />
+      <TeamSection teamContent={teamContent} />
       <GenericBottomCta bottomCta={bottomCta} />
     </>
   );

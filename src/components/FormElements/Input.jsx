@@ -93,8 +93,8 @@ const FormField = styled.div`
     span {
         position: absolute;
         z-index: -1;
-        right: 36px;
-        bottom: ${({ isTextArea }) => isTextArea ? '14px' : '50%'};
+        right: 42px;
+        bottom: ${({ isTextArea }) => isTextArea ? '12px' : '50%'};
         transform: ${({ isTextArea }) => isTextArea ? 'none' : 'translateY(50%)'};
         padding: 5px;
         border-radius: 4px;

@@ -22,11 +22,10 @@ const Home = ({
   ).fields.title;
   const topSectionVideoUrl = homeTopSection.fields.image1.fields.file.url;
   const socialMedias = getSocialMedias(commonApiElements);
-  const valuesHeader = findApiElementByIdentifier(homeApiElements, 'homepage-values').fields;
 
-  const firstTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-1');
-  const secondTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-2');
-  const thirdTile = findApiElementByIdentifier(homeApiElements, 'homepage-tile-3');
+  const valuesHeader = findApiElementByIdentifier(homeApiElements, 'homepage-values').fields;
+  const valuesTiles = ['homepage-tile-1', 'homepage-tile-2', 'homepage-tile-3'].map(tile => findApiElementByIdentifier(homeApiElements, tile));
+
   const logosHeader = findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields
     .title;
   const logosText = documentToReactComponents(
@@ -51,7 +50,7 @@ const Home = ({
         video={topSectionVideoUrl}
         socialMedias={socialMedias}
       />
-      <ValuesSection valuesHeader={valuesHeader} valuesTiles={[firstTile, secondTile, thirdTile]} />
+      <ValuesSection valuesHeader={valuesHeader} valuesTiles={valuesTiles} />
       <ProjectsTabs
         projectsApiElements={projectsApiElements}
         latestProjectsHeader={latestProjectsHeader}

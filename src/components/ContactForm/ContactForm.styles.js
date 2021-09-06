@@ -230,15 +230,7 @@ export const Info = styled.div`
     }
 `;
 
-export const FormSubmit = styled(BigButton)`
-  align-self: flex-end;
-  width: ${({ process, correct, failure }) => {
-    if (failure || correct) return '100%';
-    if (process) return '157px';
-    return 'auto';
-  }}`;
-
-/* export const FormSubmit = styled(BigButton)`
+ export const FormSubmit = styled(BigButton)`
   align-self: flex-end;
   width: ${({ process, correct, failure }) => {
     if (failure || correct) return '100%';
@@ -263,7 +255,7 @@ export const FormSubmit = styled(BigButton)`
       if (correct) return '#18D4A7';
       if (failure) return getColor('errorRed');
       return '#167CD2';
-    }};
+    }}};
 
     @media ${({ theme }) => theme.medias.medium} {
         align-self: center;
@@ -308,8 +300,7 @@ export const FormSubmit = styled(BigButton)`
             width: 20px;
             height: 20px;
         }
-    }  
-    `; */
+    }`;   
 
 export const CloseButton = styled.button`
     position: absolute;
