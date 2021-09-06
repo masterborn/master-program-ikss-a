@@ -27,11 +27,9 @@ export const StyledTabs = styled(Tabs)`
   justify-content: center;
   max-width: 1200px;
   margin: 0 auto 0;
-
   a {
     text-decoration: none;
   }
-
   @media ${small} {
     padding: 0 24px;
   }
@@ -43,7 +41,6 @@ export const StyledTabList = styled(TabList)`
   background-color: ${getColor('blue10')};
   margin: 0 0 48px 0;
   border-radius: 26px;
-
   @media ${small} {
     margin: 0 0 60px 0;
   }
@@ -52,12 +49,10 @@ export const StyledTabList = styled(TabList)`
 export const StyledTab = styled(Tab)`
   cursor: pointer;
   color: ${getColor('navy')};
-
   .tab-button {
     background: none;
     color: ${getColor('navy')};
   }
-
   &.react-tabs__tab--selected {
     display: block;
     background-color: ${getColor('ikssBlue')};
@@ -85,7 +80,6 @@ export const StyledTabPanel = styled(TabPanel)`
     animation-duration: 800ms;
     animation-timing-function: linear;
   }
-
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -100,7 +94,6 @@ export const StyledTabTextSection = styled.div`
   display: flex;
   flex-direction: column;
   padding: 32px 32px 40px 32px;
-
   @media ${small} {
     padding: 24px 24px 32px 24px;
   }
@@ -120,7 +113,6 @@ export const TitleWithDateContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 32px;
-
   @media ${small} {
     flex-direction: column;
     align-items: flex-start;
@@ -129,7 +121,6 @@ export const TitleWithDateContainer = styled.div`
 `;
 export const ProjectTitle = styled(H4)`
   margin: 0 24px 0 0;
-
   @media ${small} {
     font-size: 18px;
     line-height: 24px;
@@ -139,7 +130,6 @@ export const ProjectTitle = styled(H4)`
 
 export const ProjectDate = styled(H5)`
   color: ${getColor('steel')};
-
   @media ${small} {
     font-size: 14px;
     line-height: 18px;
@@ -152,7 +142,6 @@ export const ProjectDescription = styled.div`
   font-size: 16px;
   line-height: 32px;
   letter-spacing: -0.015px;
-
   @media ${small} {
     margin-bottom: 16px;
     font-size: 14px;
@@ -174,7 +163,6 @@ export const ProjectWrapper = styled.div`
   break-inside: avoid;
   transform: translateZ(0);
   margin-bottom: 24px;
-
   @media ${small} {
     &:nth-child(4) {
       margin-bottom: 0;
@@ -192,7 +180,6 @@ export const StyledCtaSection = styled.section`
   align-items: center;
   margin: 92px 0;
   text-align: center;
-
   @media ${small} {
     height: 220px;
     margin: 32px 0;
@@ -213,7 +200,6 @@ export const FirstProjectsSection = styled.div`
   column-count: 2;
   column-gap: 24px;
   width: 100%;
-
   @media ${small} {
     column-count: 1;
   }

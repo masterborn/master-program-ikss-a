@@ -27,9 +27,9 @@ import {
 const ProjectsTabs = ({ projectsApiElements, latestProjectsHeader }) => {
   const sortedProjectsList = [...projectsApiElements].sort(compareProjectsOrder);
 
-  const homepageProjects = sortedProjectsList.filter(
-    (element) => element.fields.showOnHomepage === true,
-  );
+  const homepageProjects = sortedProjectsList
+    .filter((element) => element.fields.showOnHomepage === true)
+    .slice(0, 3);
 
   const projectsData = getProjectsData(homepageProjects);
 
