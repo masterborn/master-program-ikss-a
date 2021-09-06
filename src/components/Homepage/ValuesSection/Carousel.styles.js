@@ -12,6 +12,7 @@ export const Embla = styled.div`
     0.148069px 2.44552px 4.625px rgba(97, 121, 139, 0.02275);
   border-radius: 16px;
   display: none;
+  width: 100%;
 
   @media ${small} {
     display: block;

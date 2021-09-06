@@ -76,7 +76,7 @@ export const NameWithRole = styled.div`
     align-items: ${({ isTileOpen }) => (isTileOpen ? 'center' : 'flex-start')};
     text-align: ${({ isTileOpen }) => (isTileOpen ? 'center' : 'start')};
     margin-left: ${({ isTileOpen }) => (isTileOpen ? '0' : '24px')};
-    max-width: ${({ isTileOpen }) => (isTileOpen ? 'auto' : '60%')};
+    max-width: ${({ isTileOpen }) => (isTileOpen ? 'auto' : '50%')};
   }
 `;
 
