@@ -1,9 +1,11 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import contentfulClient from '@root/api/contentfulClient';
 import findApiElementByIdentifier from '@root/handlers/findApiElement';
 import GenericTopSection from '@root/components/GenericTopSection/GenericTopSection';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import GenericBottomCta from '@root/components/GenericBottomCta/GenericBottomCta';
+import TeamSection from '@root/components/Subpages/AboutUs/TeamSection';
 import ManagementSection from '@root/components/Subpages/AboutUs/ManagementSection/ManagementSection';
 
 const AboutUs = ({ aboutUsApiElements, boardMembersApiElements }) => {
@@ -12,6 +14,9 @@ const AboutUs = ({ aboutUsApiElements, boardMembersApiElements }) => {
   const subpageTitle = topSection.fields.title;
   const subpageDescription = documentToReactComponents(topSection.fields.text1);
   const bottomCta = findApiElementByIdentifier(aboutUsApiElements, 'about-us-bottom-cta').fields;
+
+  const teamContent = findApiElementByIdentifier(aboutUsApiElements, 'about-us-content-3');
+
   const boardMembersText = findApiElementByIdentifier(
     aboutUsApiElements,
     'about-us-board-members-text',
@@ -24,6 +29,7 @@ const AboutUs = ({ aboutUsApiElements, boardMembersApiElements }) => {
         title={subpageTitle}
         subpageDescription={subpageDescription}
       />
+      <TeamSection teamContent={teamContent} />
       <ManagementSection
         boardMembers={boardMembersApiElements}
         boardMembersText={boardMembersText}
