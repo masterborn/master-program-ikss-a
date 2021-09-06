@@ -11,14 +11,11 @@ import {
 import { H3, H4, H5 } from '@root/components/typography/Typography';
 import dynamic from 'next/dynamic';
 import { BigButton, SecondaryBigButton } from '@root/components/Button/Button.styles';
-import { medias } from '@root/styles/theme';
 
 const Tabs = dynamic(
   import('react-tabs').then((mod) => mod.Tabs),
   { ssr: false },
 );
-
-const { small } = medias;
 
 export const StyledTabs = styled(Tabs)`
   display: flex;
@@ -32,7 +29,7 @@ export const StyledTabs = styled(Tabs)`
     text-decoration: none;
   }
 
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     padding: 0 24px;
     margin-top: 80px;
   }
@@ -55,7 +52,7 @@ export const StyledTab = styled(Tab)`
       background: none;
       color: ${getColor('white')};
     }
-    @media ${small} {
+    @media ${({ theme }) => theme.medias.medium} {
       &.react-tabs__tab--selected {
         background: none;
       }
@@ -69,7 +66,7 @@ export const StyledTab = styled(Tab)`
       }
     }
   }
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     .tab-button {
       background-color: ${getColor('blue10')};
     }
@@ -89,7 +86,7 @@ export const StyledTabList = styled(TabList)`
   margin: 32px 0 64px 0;
   border-radius: 26px;
 
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     margin: 24px 0;
     gap: 12px;
     flex-flow: wrap;
@@ -129,7 +126,7 @@ export const StyledTabTextSection = styled.div`
   flex-direction: column;
   padding: 64px 102px;
 
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     padding: 32px 24px 32px 24px;
   }
 `;
@@ -140,7 +137,7 @@ export const ButtonWrapper = styled.div`
     filter: invert(100%) sepia(94%) saturate(0%) hue-rotate(248deg) brightness(106%) contrast(106%);
   }
 
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     margin: 0 auto 0 auto;
   }
 `;
@@ -150,7 +147,7 @@ export const TitleWithDateContainer = styled.div`
   align-items: center;
   margin-bottom: 32px;
 
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 16px;
@@ -158,7 +155,7 @@ export const TitleWithDateContainer = styled.div`
 `;
 export const ProjectTitle = styled(H4)`
   margin: 0 24px 0 0;
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     font-size: 18px;
     line-height: 24px;
     margin: 0 0 8px 0;
@@ -168,7 +165,7 @@ export const ProjectTitle = styled(H4)`
 export const ProjectDate = styled(H5)`
   color: ${getColor('steel')};
 
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     font-size: 14px;
     line-height: 18px;
   }
@@ -181,7 +178,7 @@ export const ProjectDescription = styled.div`
   line-height: 32px;
   letter-spacing: -0.015px;
 
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     margin-bottom: 16px;
     font-size: 14px;
     line-height: 28px;
@@ -210,7 +207,7 @@ export const VideoResponsive = styled.div`
 `;
 
 export const ResponsiveHeader = styled(H3)`
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     font-weight: ${getFontWeight('h4')};
     font-size: ${getFontSize('h4')};
     line-height: ${getLineHeight('h4')};
@@ -219,7 +216,7 @@ export const ResponsiveHeader = styled(H3)`
 `;
 
 export const ResponsiveButton = styled(BigButton)`
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     height: 36px;
     padding: 9px 16px;
     line-height: 18px;
@@ -230,7 +227,7 @@ export const ResponsiveButton = styled(BigButton)`
 export const SeeProjectsButton = styled(SecondaryBigButton)`
   margin: 56px 0 148px 0;
   text-decoration: none;
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     height: 36px;
     padding: 9px 16px;
     line-height: 18px;

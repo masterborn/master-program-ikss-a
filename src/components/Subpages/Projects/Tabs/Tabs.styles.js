@@ -11,14 +11,11 @@ import {
 import { H3, H4, H5 } from '@root/components/typography/Typography';
 import dynamic from 'next/dynamic';
 import { BigButton } from '@root/components/Button/Button.styles';
-import { medias } from '@root/styles/theme';
 
 const Tabs = dynamic(
   import('react-tabs').then((mod) => mod.Tabs),
   { ssr: false },
 );
-
-const { small } = medias;
 
 export const StyledTabs = styled(Tabs)`
   display: flex;
@@ -30,7 +27,7 @@ export const StyledTabs = styled(Tabs)`
   a {
     text-decoration: none;
   }
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     padding: 0 24px;
   }
 `;
@@ -41,7 +38,7 @@ export const StyledTabList = styled(TabList)`
   background-color: ${getColor('blue10')};
   margin: 0 0 48px 0;
   border-radius: 26px;
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     margin: 0 0 60px 0;
   }
 `;
@@ -66,7 +63,7 @@ export const StyledTab = styled(Tab)`
 `;
 
 export const ResponsiveButton = styled(BigButton)`
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     height: 36px;
     padding: 9px 16px;
     line-height: 18px;
@@ -94,7 +91,7 @@ export const StyledTabTextSection = styled.div`
   display: flex;
   flex-direction: column;
   padding: 32px 32px 40px 32px;
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     padding: 24px 24px 32px 24px;
   }
 `;
@@ -104,7 +101,7 @@ export const ButtonWrapper = styled.div`
   img {
     filter: invert(100%) sepia(94%) saturate(0%) hue-rotate(248deg) brightness(106%) contrast(106%);
   }
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     margin: 0 auto 0 auto;
   }
 `;
@@ -113,7 +110,7 @@ export const TitleWithDateContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 32px;
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 16px;
@@ -121,7 +118,7 @@ export const TitleWithDateContainer = styled.div`
 `;
 export const ProjectTitle = styled(H4)`
   margin: 0 24px 0 0;
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     font-size: 18px;
     line-height: 24px;
     margin: 0 0 8px 0;
@@ -130,7 +127,7 @@ export const ProjectTitle = styled(H4)`
 
 export const ProjectDate = styled(H5)`
   color: ${getColor('steel')};
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     font-size: 14px;
     line-height: 18px;
   }
@@ -142,7 +139,7 @@ export const ProjectDescription = styled.div`
   font-size: 16px;
   line-height: 32px;
   letter-spacing: -0.015px;
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     margin-bottom: 16px;
     font-size: 14px;
     line-height: 28px;
@@ -163,7 +160,7 @@ export const ProjectWrapper = styled.div`
   break-inside: avoid;
   transform: translateZ(0);
   margin-bottom: 24px;
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     &:nth-child(4) {
       margin-bottom: 0;
     }
@@ -180,7 +177,7 @@ export const StyledCtaSection = styled.section`
   align-items: center;
   margin: 92px 0;
   text-align: center;
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     height: 220px;
     margin: 32px 0;
     padding: 0 31px 0 31px;
@@ -188,7 +185,7 @@ export const StyledCtaSection = styled.section`
 `;
 
 export const StyledCtaText = styled(H3)`
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     font-weight: ${getFontWeight('h5')};
     font-size: ${getFontSize('h5')};
     line-height: ${getLineHeight('h5')};
@@ -200,7 +197,7 @@ export const FirstProjectsSection = styled.div`
   column-count: 2;
   column-gap: 24px;
   width: 100%;
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     column-count: 1;
   }
 `;
@@ -209,7 +206,7 @@ export const SecondProjectsSection = styled(FirstProjectsSection)``;
 
 export const CtaButton = styled(ResponsiveButton)`
   margin-top: 32px;
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     margin-top: 24px;
   }
 `;

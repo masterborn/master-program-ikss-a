@@ -7,9 +7,6 @@ import {
   getLineHeight,
 } from '@root/styles/utils';
 import { H3, H5, BodyText } from '@root/components/typography/Typography';
-import { medias } from '@root/styles/theme';
-
-const { small } = medias;
 
 export const ValuesWrapper = styled.section`
   display: flex;
@@ -17,7 +14,7 @@ export const ValuesWrapper = styled.section`
   align-items: center;
   margin: 157px auto 0;
 
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     margin: 80px 24px 0 24px;
   }
 `;
@@ -26,7 +23,7 @@ export const Heading = styled(H3)`
   color: ${getColor('navy')};
   margin-bottom: 32px;
   text-align: center;
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     font-weight: ${getFontWeight('h4')};
     font-size: ${getFontSize('h4')};
     line-height: ${getLineHeight('h4')};
@@ -40,7 +37,7 @@ export const Description = styled(BodyText)`
   width: 551px;
   text-align: center;
 
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     width: 100%;
     margin-bottom: 40px;
   }
@@ -52,7 +49,7 @@ export const TilesWrapper = styled.div`
   margin-top: 102px;
   width: 100%;
 
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     margin-top: 0;
     display: none;
   }
@@ -86,7 +83,7 @@ export const Tile = styled.div`
     transform: translateX(-50%);
   }
 
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -107,7 +104,7 @@ export const TileHeading = styled(H5)`
   color: ${getColor('navy')};
   margin: 186px 0 16px;
 
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     margin-top: 192px;
   }
 `;
