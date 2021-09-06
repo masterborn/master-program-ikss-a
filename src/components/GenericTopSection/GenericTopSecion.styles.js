@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 import { getColor } from '@root/styles/utils';
-import { medias } from '@root/styles/theme';
 import { H1 } from '../typography/Typography';
-
-const { small } = medias;
 
 export const TopSectionWrapper = styled.div`
   display: flex;
@@ -14,7 +11,7 @@ export const TopSectionWrapper = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     margin: ${({ projectsSubpage }) =>
       projectsSubpage ? '32px auto 40px auto' : '32px auto 80px auto'};
     padding: 0 24px;
@@ -24,7 +21,7 @@ export const TopSectionWrapper = styled.div`
 export const StyledHeader = styled(H1)`
   margin: 16px 0 32px 0;
 
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     margin: 8px 0 16px 0;
     font-size: 32px;
     line-height: 44px;
@@ -38,7 +35,7 @@ export const StyledSubpageDescription = styled.div`
   letter-spacing: -0.015px;
   text-align: center;
 
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     font-size: 14px;
     line-height: 28px;
   }
@@ -49,7 +46,7 @@ export const ImageContainer = styled.div`
   height: 142px;
   width: 230px;
 
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     height: 112px;
     width: 181px;
   }
