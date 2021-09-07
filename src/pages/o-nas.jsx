@@ -6,6 +6,7 @@ import GenericTopSection from '@root/components/GenericTopSection/GenericTopSect
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import GenericBottomCta from '@root/components/GenericBottomCta/GenericBottomCta';
 import MissionSection from '@root/components/Subpages/AboutUs/MissionSection/MissionSection';
+import HistorySection from '@root/components/Subpages/AboutUs/HistorySection/HistorySection';
 import TeamSection from '@root/components/Subpages/AboutUs/TeamSection';
 import ManagementSection from '@root/components/Subpages/AboutUs/ManagementSection/ManagementSection';
 
@@ -23,6 +24,11 @@ const AboutUs = ({ aboutUsApiElements, boardMembersApiElements }) => {
     'about-us-content-1',
   ).fields;
 
+  const historyContent = findApiElementByIdentifier(
+    aboutUsApiElements,
+    'about-us-content-2',
+  ).fields;
+
   const boardMembersText = findApiElementByIdentifier(
     aboutUsApiElements,
     'about-us-board-members-text',
@@ -36,6 +42,7 @@ const AboutUs = ({ aboutUsApiElements, boardMembersApiElements }) => {
         subpageDescription={subpageDescription}
       />
       <MissionSection missionContent={missionContent} />
+      <HistorySection historyContent={historyContent} />
       <ManagementSection
         boardMembers={boardMembersApiElements}
         boardMembersText={boardMembersText}
