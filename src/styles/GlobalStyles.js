@@ -13,6 +13,15 @@ const GlobalStyles = createGlobalStyle`
     background-attachment: fixed;
   }
 
+  .bordermission {
+    border-radius: 16px;
+  }
+
+  .bordermissionmobile{ 
+    border-radius: 8px;
+  }
+
+
   * {
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
