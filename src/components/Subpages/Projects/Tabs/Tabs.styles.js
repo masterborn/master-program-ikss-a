@@ -117,6 +117,7 @@ export const TitleWithDateContainer = styled.div`
   }
 `;
 export const ProjectTitle = styled(H4)`
+  color: ${getColor('navy')};
   margin: 0 24px 0 0;
   @media ${({ theme }) => theme.medias.medium} {
     font-size: 18px;
@@ -197,6 +198,7 @@ export const FirstProjectsSection = styled.div`
   column-count: 2;
   column-gap: 24px;
   width: 100%;
+
   @media ${({ theme }) => theme.medias.medium} {
     column-count: 1;
   }

@@ -26,6 +26,7 @@ export const CtaWrapper = styled.div`
 `;
 
 export const StyledHeader = styled(H3)`
+  color: ${getColor('navy')};
   @media ${({ theme }) => theme.medias.medium} {
     font-weight: ${getFontWeight('h4')};
     font-size: ${getFontSize('h4')};

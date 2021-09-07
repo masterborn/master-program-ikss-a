@@ -154,6 +154,7 @@ export const TitleWithDateContainer = styled.div`
   }
 `;
 export const ProjectTitle = styled(H4)`
+  color: ${getColor('navy')};
   margin: 0 24px 0 0;
   @media ${({ theme }) => theme.medias.medium} {
     font-size: 18px;
@@ -207,6 +208,8 @@ export const VideoResponsive = styled.div`
 `;
 
 export const ResponsiveHeader = styled(H3)`
+  color: ${getColor('navy')};
+
   @media ${({ theme }) => theme.medias.medium} {
     font-weight: ${getFontWeight('h4')};
     font-size: ${getFontSize('h4')};
