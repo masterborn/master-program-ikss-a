@@ -8,7 +8,6 @@ export const HistorySectionWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  position: relative;
   margin-left: 120px;
   margin-right: 123px;
   @media ${small} {

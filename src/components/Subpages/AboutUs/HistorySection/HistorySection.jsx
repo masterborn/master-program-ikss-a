@@ -14,35 +14,26 @@ import {
   BottomImageWrapper,
 } from '@root/components/Subpages/AboutUs/HistorySection/HistorySection.styles';
 
-const HistorySection = ({ historyContent }) => {
-  const historyTitle = historyContent.title;
-  const historyText1 = historyContent.text1;
-  const historyText2 = historyContent.text2;
-  const url1 = historyContent.image1.fields.file.url;
-  const url2 = historyContent.image2.fields.file.url;
+const HistorySection = ({ historyContent: { title, text1, text2, image1, image2 } }) => (
+  <HistorySectionWrapper>
+    <TopSection>
+      <StyledTopSectionText>
+        <StyledHeader>{title}</StyledHeader>
+        <StyledHistoryTextTop>{documentToReactComponents(text1)}</StyledHistoryTextTop>
+      </StyledTopSectionText>
+      <TopImageWrapper>
+        <Image src={`https:${image1.fields.file.url}`} width={483} height={352} alt="team" />
+      </TopImageWrapper>
+    </TopSection>
 
-  return (
-    <HistorySectionWrapper>
-      <TopSection>
-        <StyledTopSectionText>
-          <StyledHeader>{historyTitle}</StyledHeader>
-          <StyledHistoryTextTop>{documentToReactComponents(historyText1)}</StyledHistoryTextTop>
-        </StyledTopSectionText>
-        <TopImageWrapper>
-          <Image src={`https:${url1}`} width={483} height={352} alt="team" />
-        </TopImageWrapper>
-      </TopSection>
-
-      <BottomSection>
-        <StyledHistoryTextBottom>{documentToReactComponents(historyText2)}</StyledHistoryTextBottom>
-        <BottomImageWrapper>
-          <Image src={`https:${url2}`} width={483} height={265} alt="team" />
-        </BottomImageWrapper>
-      </BottomSection>
-    </HistorySectionWrapper>
-  );
-};
-
+    <BottomSection>
+      <StyledHistoryTextBottom>{documentToReactComponents(text2)}</StyledHistoryTextBottom>
+      <BottomImageWrapper>
+        <Image src={`https:${image2.fields.file.url}`} width={483} height={265} alt="team" />
+      </BottomImageWrapper>
+    </BottomSection>
+  </HistorySectionWrapper>
+);
 export default HistorySection;
 
 HistorySection.propTypes = {
