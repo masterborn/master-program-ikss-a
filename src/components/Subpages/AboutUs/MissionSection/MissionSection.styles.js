@@ -38,6 +38,7 @@ export const StyledHeader = styled(H2)`
   margin-left: 56px;
   @media ${small} {
     margin-left: 24px;
+    color: ${getColor('navy')};
     font-weight: ${getFontWeight('h4')};
     font-size: ${getFontSize('h4')};
     line-height: ${getLineHeight('h4')};
