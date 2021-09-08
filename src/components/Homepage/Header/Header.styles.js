@@ -55,7 +55,7 @@ export const HeroHeading = styled(H1)`
 `;
 
 export const HeroLinks = styled(H5)`
-  margin-left: 14px;
+  margin-left: 16px;
   color: ${getColor('navy')};
   @media ${({ theme }) => theme.medias.medium} {
     display: none;
