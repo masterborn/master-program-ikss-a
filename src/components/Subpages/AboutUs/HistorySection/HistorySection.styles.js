@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 import { H2, BodyText } from '@root/components/typography/Typography';
 import { medias } from '@root/styles/theme';
+import {
+  getColor,
+  getFontSize,
+  getFontWeight,
+  getLetterSpacing,
+  getLineHeight,
+} from '@root/styles/utils';
 
 const { small } = medias;
 
@@ -45,8 +52,8 @@ export const StyledHistoryTextTop = styled(BodyText)`
   @media ${small} {
     width: 327px;
     margin-bottom: 40px;
-    font-size: 14px;
-    line-height: 28px;
+    color: ${getColor('steel')};
+    font-size: ${getFontSize('bodySmall')};
   }
 `;
 
@@ -80,8 +87,8 @@ export const StyledHistoryTextBottom = styled(BodyText)`
   margin-top: -60px;
   @media ${small} {
     width: 327px;
-    font-size: 14px;
-    line-height: 28px;
+    color: ${getColor('steel')};
+    font-size: ${getFontSize('bodySmall')};
     margin-top: 32px;
     text-indent: 0px;
   }
@@ -108,8 +115,10 @@ export const StyledHeader = styled(H2)`
   @media ${small} {
     margin-top: 32px;
     margin-bottom: 16px;
-    font-size: 24px;
-    line-height: 32px;
-    margin-top: 32px;
+    color: ${getColor('navy')};
+    font-weight: ${getFontWeight('h4')};
+    font-size: ${getFontSize('h4')};
+    line-height: ${getLineHeight('h4')};
+    letter-spacing: ${getLetterSpacing('h4')};
   }
 `;
