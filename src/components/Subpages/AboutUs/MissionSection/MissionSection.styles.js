@@ -18,7 +18,10 @@ export const MissionSectionWrapper = styled.div`
 `;
 
 export const ImageWrapper = styled.div`
+  border-radius: 16px;
+  overflow: hidden;
   @media ${small} {
+    border-radius: 8px;
     width: 327px;
     height: 201px;
   }
