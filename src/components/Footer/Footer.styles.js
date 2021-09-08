@@ -6,7 +6,7 @@ export const FooterWrapper = styled.footer`
   position: relative;
   display: flex;
   flex-direction: column;
-  height: ${({ homepage }) => homepage && '728px'};
+  height: ${({ homepage }) => (homepage ? '728px' : 'auto')};
   background-color: ${getColor('ikssBlue')};
   color: ${getColor('white')};
   align-items: center;

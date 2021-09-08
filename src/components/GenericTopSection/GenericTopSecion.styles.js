@@ -19,6 +19,7 @@ export const TopSectionWrapper = styled.div`
 `;
 
 export const StyledHeader = styled(H1)`
+  color: ${getColor('navy')};
   margin: 16px 0 32px 0;
 
   @media ${({ theme }) => theme.medias.medium} {

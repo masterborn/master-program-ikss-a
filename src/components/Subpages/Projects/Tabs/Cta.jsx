@@ -14,7 +14,7 @@ const Cta = ({ middleCta }) => {
   return (
     <StyledCtaSection>
       <StyledCtaText>{middleCta.title}</StyledCtaText>
-      <CtaButton onClick={() => openForm()}>{middleCta.linkCaption}</CtaButton>
+      <CtaButton onClick={openForm}>{middleCta.linkCaption}</CtaButton>
     </StyledCtaSection>
   );
 };

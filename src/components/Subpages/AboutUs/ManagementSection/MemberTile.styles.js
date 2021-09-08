@@ -81,6 +81,7 @@ export const NameWithRole = styled.div`
 `;
 
 export const MemberName = styled(H4)`
+  color: ${getColor('navy')};
   display: flex;
   gap: 8px;
 
