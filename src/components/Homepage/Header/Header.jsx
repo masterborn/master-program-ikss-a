@@ -10,7 +10,7 @@ import {
   Socials,
   StyledSocials,
   StyledMobileSocials,
-  Vid,
+  StyledVideo,
   HeroHeading,
   HeroLinks,
   HeroBodyText,
@@ -35,21 +35,7 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
               Skontaktuj się
             </HeroSmallButton>
           </LeftBlock>
-          <Vid>
-            <iframe
-              width="808px"
-              height="505px"
-              src={`https:${video}`}
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; 
-                    autoplay; 
-                    clipboard-write; 
-                    encrypted-media; 
-                    gyroscope; 
-                    picture-in-picture"
-            />
-          </Vid>
+          <StyledVideo src={`https:${video}`} muted autoPlay loop />
         </MainContent>
         <HeaderSocialMediaWrapper>
           <Socials ref={socialsRef}>
@@ -60,7 +46,7 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
                   <HeroLinks>{title}</HeroLinks>
                 </StyledSocials>
                 <StyledMobileSocials href={url} key={url} rel="noreferrer">
-                  <Image src={circleLogo} alt={title} width={24} height={24} />
+                  <Image src={circleLogo} alt={title} width={32} height={32} />
                 </StyledMobileSocials>
               </>
             ))}

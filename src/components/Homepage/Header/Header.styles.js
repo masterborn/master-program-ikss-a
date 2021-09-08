@@ -1,27 +1,24 @@
 import styled from 'styled-components';
 import { getColor } from '@root/styles/utils';
 import { H1, H5, BodyText } from '@root/components/typography/Typography';
-import { SecondaryBigButton, SmallButton } from '@root/components/Button/Button.styles';
-import { medias } from '@root/styles/theme';
-
-const { small } = medias;
+import { SecondaryBigButton, SecondarySmallButton } from '@root/components/Button/Button.styles';
 
 export const HeroSection = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  position: relative;
+  max-width: 1440px;
+  margin: 0 auto 0 auto;
 `;
 
 export const MainContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1440px;
-  @media ${small} {
+
+  @media ${({ theme }) => theme.medias.medium} {
     flex-direction: column-reverse;
-    width: 375px;
-    margin: 0 0 40 0;
+    padding: 0 0 40px 0;
   }
 `;
 
@@ -29,37 +26,30 @@ export const LeftBlock = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 50%;
-  @media ${small} {
-    width: 375px;
-    height: 234px;
-    margin: 0 0 40px 24px;
+  max-height: 454px;
+
+  @media ${({ theme }) => theme.medias.medium} {
+    padding: 0 24px 0 24px;
+    margin-left: 0;
+    max-height: auto;
   }
 `;
 
-export const Vid = styled.div`
-  width: 808px;
-  height: 505px;
-  margin-top: 0px;
-  margin-right: 0px;
-  @media ${small} {
-    height: 234px;
-    iframe {
-      position: absolute;
-      width: 808px;
-      height: 234px;
-    }
+export const StyledVideo = styled.video`
+  max-width: 808px;
+
+  @media ${({ theme }) => theme.medias.medium} {
+    max-width: 100%;
   }
 `;
 
 export const HeroHeading = styled(H1)`
+  color: ${getColor('navy')};
   margin-top: 77px;
-  margin-left: 120px;
-  @media ${small} {
+
+  @media ${({ theme }) => theme.medias.medium} {
     font-size: 32px;
     line-height: 44px;
-    width: 327px;
-    margin-left: 24px;
     margin-top: 40px;
   }
 `;
@@ -67,62 +57,57 @@ export const HeroHeading = styled(H1)`
 export const HeroLinks = styled(H5)`
   margin-left: 14px;
   color: ${getColor('navy')};
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     display: none;
   }
 `;
 
 export const HeroBodyText = styled(BodyText)`
   margin-top: 32px;
-  margin-left: 120px;
-  width: 384px;
-  @media ${small} {
-    width: 327px;
+  max-width: 416px;
+  @media ${({ theme }) => theme.medias.medium} {
+    max-width: 100%;
     font-size: 14px;
     line-height: 28px;
-    margin-left: 24px;
   }
 `;
 
 export const HeroSecondaryBigButton = styled(SecondaryBigButton)`
   margin-top: 32px;
-  margin-left: 120px;
+
   margin-bottom: 42px;
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     display: none;
   }
 `;
 
-export const HeroSmallButton = styled(SmallButton)`
+export const HeroSmallButton = styled(SecondarySmallButton)`
   display: none;
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     display: block;
     margin-top: 24px;
-    margin-bottom: 40px;
-    margin-left: 24px;
   }
 `;
 
 export const HeaderSocialMediaWrapper = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  width: 1038px;
-  height: 137px;
-  margin-right: 0px;
-  margin-left: 402px;
-  background-color: #ffffff;
+  padding: 44px 120px 44px 56px;
+  max-width: 1038px;
+  margin-left: auto;
+  background-color: ${getColor('white')};
   box-shadow: 3.38443px 55.8976px 80px rgba(97, 121, 139, 0.07),
     1.71337px 28.2982px 34.875px rgba(97, 121, 139, 0.04725),
     0.676885px 11.1795px 13px rgba(97, 121, 139, 0.035),
     0.148069px 2.44552px 4.625px rgba(97, 121, 139, 0.02275);
   border-radius: 16px 0px 0px 16px;
-  margin-bottom: 32px;
-  @media ${small} {
-    width: 327px;
-    height: 80px;
-    margin: 100px 24px 0px 24px;
+
+  @media ${({ theme }) => theme.medias.medium} {
+    margin: 0 24px 0 24px;
+    padding: 24px 40px 24px 40px;
     border-radius: 16px;
+    width: 100%;
   }
 `;
 
@@ -131,11 +116,6 @@ export const Socials = styled.div`
   justify-content: space-around;
   align-items: center;
   width: 835px;
-  height: 120px;
-  margin-left: 56px;
-  margin-right: 120px;
-  margin-top: 44px;
-  margin-bottom: 45px;
 
   a {
     display: flex;
@@ -143,29 +123,26 @@ export const Socials = styled.div`
     text-decoration: none;
     cursor: pointer;
   }
-  @media ${small} {
-    width: 375px;
-    height: 187px;
-    margin: 0 0 80px 0;
+  @media ${({ theme }) => theme.medias.medium} {
+    width: 100%;
     a {
       display: block;
-      margin-top: 71px;
     }
   }
 `;
 
 export const StyledSocials = styled.a`
   display: block;
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     display: none;
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
   }
 `;
 
 export const StyledMobileSocials = styled.a`
   display: none !important;
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     display: inline-block;
   }
 `;
