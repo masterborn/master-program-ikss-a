@@ -9,13 +9,13 @@ import {
   HeaderSocialMediaWrapper,
   Socials,
   StyledSocials,
-  StyledMobileSocials,
   StyledVideo,
   HeroHeading,
-  HeroLinks,
+  HeroLink,
   HeroBodyText,
-  HeroSecondaryBigButton,
-  HeroSmallButton,
+  HeroButton,
+  SocialIconWrapper,
+  SocialLinkWrapper
 } from './Header.styles';
 
 const Header = ({ headerTitle, text, video, socialMedias }) => {
@@ -28,12 +28,9 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
           <LeftBlock>
             <HeroHeading>{headerTitle}</HeroHeading>
             <HeroBodyText>{text}</HeroBodyText>
-            <HeroSecondaryBigButton alt="CTA" onClick={scrollToForm}>
+            <HeroButton alt="CTA" onClick={scrollToForm}>
               Skontaktuj się
-            </HeroSecondaryBigButton>
-            <HeroSmallButton alt="CTA" onClick={scrollToForm}>
-              Skontaktuj się
-            </HeroSmallButton>
+            </HeroButton>
           </LeftBlock>
           <StyledVideo src={`https:${video}`} muted autoPlay loop />
         </MainContent>
@@ -42,12 +39,11 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
             {socialMedias.map(({ circleLogo, url, title }) => (
               <>
                 <StyledSocials href={url} key={title} rel="noreferrer" aria-label={title}>
-                  <Image src={circleLogo} alt={title} width={48} height={48} />
-                  <HeroLinks>{title}</HeroLinks>
+                  <SocialLinkWrapper>
+                    <SocialIconWrapper><Image src={circleLogo} alt={title} layout="fill" /></SocialIconWrapper> 
+                  <HeroLink>{title}</HeroLink>
+                  </SocialLinkWrapper>
                 </StyledSocials>
-                <StyledMobileSocials href={url} key={url} rel="noreferrer">
-                  <Image src={circleLogo} alt={title} width={32} height={32} />
-                </StyledMobileSocials>
               </>
             ))}
           </Socials>

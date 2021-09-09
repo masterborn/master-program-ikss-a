@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { getColor } from '@root/styles/utils';
+import { getColor, getFontSize, getLineHeight, getLetterSpacing, getFontWeight } from '@root/styles/utils';
 import { H1, H5, BodyText } from '@root/components/typography/Typography';
-import { SecondaryBigButton, SecondarySmallButton } from '@root/components/Button/Button.styles';
+import { SecondaryBigButton } from '@root/components/Button/Button.styles';
 
 export const HeroSection = styled.div`
   display: flex;
@@ -28,6 +28,20 @@ export const LeftBlock = styled.div`
   align-items: flex-start;
   max-height: 454px;
 
+  @media (max-width: 1520px) {
+  margin-left:56px;
+    max-height: 372px;
+    margin-right: 100px;
+
+
+  }
+
+   @media (max-width: 1200px) {
+    max-height: 316px;
+        margin-right: 40px;
+
+  }
+
   @media ${({ theme }) => theme.medias.medium} {
     padding: 0 24px 0 24px;
     margin-left: 0;
@@ -36,16 +50,30 @@ export const LeftBlock = styled.div`
 `;
 
 export const StyledVideo = styled.video`
-  max-width: 808px;
+  max-width: 56%;
 
   @media ${({ theme }) => theme.medias.medium} {
     max-width: 100%;
   }
+
+
 `;
 
 export const HeroHeading = styled(H1)`
   color: ${getColor('navy')};
   margin-top: 77px;
+
+  @media (max-width: 1520px) {
+    margin-top:36px;
+    font-weight: ${getFontWeight('h2')};
+  font-size: ${getFontSize('h2')};
+  line-height: ${getLineHeight('h2')};
+  letter-spacing: ${getLetterSpacing('h2')};
+  }
+
+   @media (max-width: 1200px) {
+     margin-top: 26px;
+  }
 
   @media ${({ theme }) => theme.medias.medium} {
     font-size: 32px;
@@ -54,9 +82,23 @@ export const HeroHeading = styled(H1)`
   }
 `;
 
-export const HeroLinks = styled(H5)`
+export const HeroLink = styled(H5)`
   margin-left: 16px;
   color: ${getColor('navy')};
+
+  @media (max-width: 1380px) {
+      margin-left: 12px;
+
+  font-size: 16px;
+  }
+
+ @media (max-width: 1200px) {
+     margin-left: 10px;
+
+  font-size: 14px;
+  }
+
+  
   @media ${({ theme }) => theme.medias.medium} {
     display: none;
   }
@@ -65,6 +107,10 @@ export const HeroLinks = styled(H5)`
 export const HeroBodyText = styled(BodyText)`
   margin-top: 32px;
   max-width: 416px;
+
+  @media (max-width: 1520px) {
+    margin-top:12px;
+  }
   @media ${({ theme }) => theme.medias.medium} {
     max-width: 100%;
     font-size: 14px;
@@ -72,22 +118,22 @@ export const HeroBodyText = styled(BodyText)`
   }
 `;
 
-export const HeroSecondaryBigButton = styled(SecondaryBigButton)`
+export const HeroButton = styled(SecondaryBigButton)`
   margin-top: 32px;
 
-  margin-bottom: 42px;
+  @media (max-width: 1520px) {
+margin-top: 24px;
+
+  }
+
   @media ${({ theme }) => theme.medias.medium} {
-    display: none;
+      height: 36px;
+  padding: ${({ icon }) => (icon ? `9px 16px 9px 12px` : `9px 16px`)};
+  line-height: 18px;
+  font-size: ${getFontSize('bodySmall')};
   }
 `;
 
-export const HeroSmallButton = styled(SecondarySmallButton)`
-  display: none;
-  @media ${({ theme }) => theme.medias.medium} {
-    display: block;
-    margin-top: 24px;
-  }
-`;
 
 export const HeaderSocialMediaWrapper = styled.div`
   display: flex;
@@ -101,7 +147,17 @@ export const HeaderSocialMediaWrapper = styled.div`
     1.71337px 28.2982px 34.875px rgba(97, 121, 139, 0.04725),
     0.676885px 11.1795px 13px rgba(97, 121, 139, 0.035),
     0.148069px 2.44552px 4.625px rgba(97, 121, 139, 0.02275);
-  border-radius: 16px 0px 0px 16px;
+  border-radius: 16px 0 0 16px;
+
+   @media (max-width: 1380px) {
+  width: 70%;
+padding: 36px 60px 36px 16px;
+  }
+
+  @media (max-width: 1200px) {
+      border-radius: 0 0 0 16px;
+     width:56%;
+  }
 
   @media ${({ theme }) => theme.medias.medium} {
     margin: 0 24px 0 24px;
@@ -119,12 +175,15 @@ export const Socials = styled.div`
 
   a {
     display: flex;
-    align-items: center;
     text-decoration: none;
     cursor: pointer;
   }
-  @media ${({ theme }) => theme.medias.medium} {
+
+@media (max-width: 1200px) {
     width: 100%;
+}
+
+  @media ${({ theme }) => theme.medias.medium} {
     a {
       display: block;
     }
@@ -133,16 +192,27 @@ export const Socials = styled.div`
 
 export const StyledSocials = styled.a`
   display: block;
-  @media ${({ theme }) => theme.medias.medium} {
+  
+  @media (max-width: 1200px) {
     display: none;
     width: 32px;
     height: 32px;
   }
 `;
 
-export const StyledMobileSocials = styled.a`
-  display: none !important;
-  @media ${({ theme }) => theme.medias.medium} {
-    display: inline-block;
+
+export const SocialLinkWrapper = styled.div`
+  display:flex;
+  align-items: center;
+`;
+
+export const SocialIconWrapper = styled.div`
+  position:relative;
+  width:48px;
+  height:48px;
+
+  @media (max-width:1200px) {
+    width:32px;
+    height:32px;
   }
 `;
