@@ -15,7 +15,7 @@ import {
   HeroBodyText,
   HeroButton,
   SocialIconWrapper,
-  SocialLinkWrapper
+  SocialLinkWrapper,
 } from './Header.styles';
 
 const Header = ({ headerTitle, text, video, socialMedias }) => {
@@ -40,8 +40,10 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
               <>
                 <StyledSocials href={url} key={title} rel="noreferrer" aria-label={title}>
                   <SocialLinkWrapper>
-                    <SocialIconWrapper><Image src={circleLogo} alt={title} layout="fill" /></SocialIconWrapper> 
-                  <HeroLink>{title}</HeroLink>
+                    <SocialIconWrapper>
+                      <Image src={circleLogo} alt={title} layout="fill" />
+                    </SocialIconWrapper>
+                    <HeroLink>{title}</HeroLink>
                   </SocialLinkWrapper>
                 </StyledSocials>
               </>

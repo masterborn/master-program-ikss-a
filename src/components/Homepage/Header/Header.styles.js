@@ -1,5 +1,11 @@
 import styled from 'styled-components';
-import { getColor, getFontSize, getLineHeight, getLetterSpacing, getFontWeight } from '@root/styles/utils';
+import {
+  getColor,
+  getFontSize,
+  getLineHeight,
+  getLetterSpacing,
+  getFontWeight,
+} from '@root/styles/utils';
 import { H1, H5, BodyText } from '@root/components/typography/Typography';
 import { SecondaryBigButton } from '@root/components/Button/Button.styles';
 
@@ -29,17 +35,14 @@ export const LeftBlock = styled.div`
   max-height: 454px;
 
   @media (max-width: 1520px) {
-  margin-left:56px;
+    margin-left: 56px;
     max-height: 372px;
     margin-right: 100px;
-
-
   }
 
-   @media (max-width: 1200px) {
+  @media (max-width: 1200px) {
     max-height: 316px;
-        margin-right: 40px;
-
+    margin-right: 40px;
   }
 
   @media ${({ theme }) => theme.medias.medium} {
@@ -55,8 +58,6 @@ export const StyledVideo = styled.video`
   @media ${({ theme }) => theme.medias.medium} {
     max-width: 100%;
   }
-
-
 `;
 
 export const HeroHeading = styled(H1)`
@@ -64,15 +65,15 @@ export const HeroHeading = styled(H1)`
   margin-top: 77px;
 
   @media (max-width: 1520px) {
-    margin-top:36px;
+    margin-top: 36px;
     font-weight: ${getFontWeight('h2')};
-  font-size: ${getFontSize('h2')};
-  line-height: ${getLineHeight('h2')};
-  letter-spacing: ${getLetterSpacing('h2')};
+    font-size: ${getFontSize('h2')};
+    line-height: ${getLineHeight('h2')};
+    letter-spacing: ${getLetterSpacing('h2')};
   }
 
-   @media (max-width: 1200px) {
-     margin-top: 26px;
+  @media (max-width: 1200px) {
+    margin-top: 26px;
   }
 
   @media ${({ theme }) => theme.medias.medium} {
@@ -87,18 +88,17 @@ export const HeroLink = styled(H5)`
   color: ${getColor('navy')};
 
   @media (max-width: 1380px) {
-      margin-left: 12px;
+    margin-left: 12px;
 
-  font-size: 16px;
+    font-size: 16px;
   }
 
- @media (max-width: 1200px) {
-     margin-left: 10px;
+  @media (max-width: 1200px) {
+    margin-left: 10px;
 
-  font-size: 14px;
+    font-size: 14px;
   }
 
-  
   @media ${({ theme }) => theme.medias.medium} {
     display: none;
   }
@@ -109,7 +109,7 @@ export const HeroBodyText = styled(BodyText)`
   max-width: 416px;
 
   @media (max-width: 1520px) {
-    margin-top:12px;
+    margin-top: 12px;
   }
   @media ${({ theme }) => theme.medias.medium} {
     max-width: 100%;
@@ -122,18 +122,16 @@ export const HeroButton = styled(SecondaryBigButton)`
   margin-top: 32px;
 
   @media (max-width: 1520px) {
-margin-top: 24px;
-
+    margin-top: 24px;
   }
 
   @media ${({ theme }) => theme.medias.medium} {
-      height: 36px;
-  padding: ${({ icon }) => (icon ? `9px 16px 9px 12px` : `9px 16px`)};
-  line-height: 18px;
-  font-size: ${getFontSize('bodySmall')};
+    height: 36px;
+    padding: ${({ icon }) => (icon ? `9px 16px 9px 12px` : `9px 16px`)};
+    line-height: 18px;
+    font-size: ${getFontSize('bodySmall')};
   }
 `;
-
 
 export const HeaderSocialMediaWrapper = styled.div`
   display: flex;
@@ -149,14 +147,14 @@ export const HeaderSocialMediaWrapper = styled.div`
     0.148069px 2.44552px 4.625px rgba(97, 121, 139, 0.02275);
   border-radius: 16px 0 0 16px;
 
-   @media (max-width: 1380px) {
-  width: 70%;
-padding: 36px 60px 36px 16px;
+  @media (max-width: 1380px) {
+    width: 70%;
+    padding: 36px 60px 36px 16px;
   }
 
   @media (max-width: 1200px) {
-      border-radius: 0 0 0 16px;
-     width:56%;
+    border-radius: 0 0 0 16px;
+    width: 56%;
   }
 
   @media ${({ theme }) => theme.medias.medium} {
@@ -179,9 +177,9 @@ export const Socials = styled.div`
     cursor: pointer;
   }
 
-@media (max-width: 1200px) {
+  @media (max-width: 1200px) {
     width: 100%;
-}
+  }
 
   @media ${({ theme }) => theme.medias.medium} {
     a {
@@ -192,7 +190,7 @@ export const Socials = styled.div`
 
 export const StyledSocials = styled.a`
   display: block;
-  
+
   @media (max-width: 1200px) {
     display: none;
     width: 32px;
@@ -200,19 +198,18 @@ export const StyledSocials = styled.a`
   }
 `;
 
-
 export const SocialLinkWrapper = styled.div`
-  display:flex;
+  display: flex;
   align-items: center;
 `;
 
 export const SocialIconWrapper = styled.div`
-  position:relative;
-  width:48px;
-  height:48px;
+  position: relative;
+  width: 48px;
+  height: 48px;
 
-  @media (max-width:1200px) {
-    width:32px;
-    height:32px;
+  @media (max-width: 1200px) {
+    width: 32px;
+    height: 32px;
   }
 `;
