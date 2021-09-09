@@ -49,6 +49,7 @@ export const LeftBlock = styled.div`
     padding: 0 24px 0 24px;
     margin-left: 0;
     max-height: auto;
+    margin-bottom: 40px;
   }
 `;
 
