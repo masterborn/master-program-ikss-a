@@ -6,6 +6,7 @@ import getPaths from '@root/handlers/getPaths';
 import { useRouter } from 'next/router';
 import { useModal } from '@root/contextProviders/useModal';
 import smoothscroll from 'smoothscroll-polyfill';
+import routes from '@root/handlers/routes';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import ContactForm from '../ContactForm/ContactForm';
@@ -31,11 +32,15 @@ const Layout = ({ children, commonApiElements, formContent }) => {
       <Navbar socialMedias={socialMedias} links={links} />
       {children}
       {
-        pathname === '/' || modalOpen ?
+        pathname === routes.homepage || modalOpen ?
           <ContactForm formText={formText} formTooltip={formTooltip} />
           : null
       }
-      <Footer links={links} socialMedias={socialMedias} copyrightText={copyrightText} />
+      {
+        pathname !== routes.errorPage ?
+          <Footer links={links} socialMedias={socialMedias} copyrightText={copyrightText} />
+          : null
+      }
     </>
   );
 };
