@@ -50,6 +50,7 @@ export const TilesWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 102px;
+  padding: 0 24px;
   width: 100%;
 
   @media ${small} {
@@ -68,7 +69,6 @@ export const Tile = styled.div`
   border-radius: 16px;
   padding: 0 24px 48px;
   text-align: center;
-  cursor: pointer;
   transition: transform 0.2s;
 
   &:nth-child(2) {

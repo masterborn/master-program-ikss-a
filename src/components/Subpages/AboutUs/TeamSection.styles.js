@@ -10,6 +10,10 @@ export const TeamWrapper = styled.section`
       img {
         width: 100%;
         border-radius: 16px; 
+
+        @media ${({theme}) => theme.medias.medium} {
+        border-radius: 8px; 
+    }
     }
 
     @media ${({theme}) => theme.medias.medium} {

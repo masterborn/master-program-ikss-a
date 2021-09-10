@@ -54,17 +54,16 @@ const slideUp = keyframes`
 `;
 
 export const FormWrapper = styled.div`
-    display: inline-flex;
-    position: ${({modalOpen}) => modalOpen ? 'absolute' : 'relative'} ;
+    position: absolute ;
     top: ${({modalOpen}) => modalOpen ? '0' : 'auto'};
-    bottom: ${({modalOpen}) => modalOpen ? '0' : '-277px'};
+    bottom: ${({modalOpen}) => modalOpen ? '0' : '449px'};
     left: ${({modalOpen}) => modalOpen ? '0' : '50%'} ;
     right: ${({modalOpen}) => modalOpen ? '0' : 'auto'};
     transform: ${({modalOpen}) => modalOpen ? 'none' : 'translateX(-50%)'} ;
     z-index: ${({modalOpen}) => modalOpen ? '3' : '1'};
 
     @media ${({ theme }) => theme.medias.medium} {
-        bottom: ${({modalOpen}) => modalOpen ? '0' : '-148px'};
+        bottom: ${({modalOpen}) => modalOpen ? '0' : '578px'};
     }
 `;
 
