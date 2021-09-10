@@ -75,7 +75,7 @@ const ProjectsTabs = ({ projectsApiElements, latestProjectsHeader }) => {
                 <ProjectDescription>{description}</ProjectDescription>
                 {linkUrl && (
                   <ButtonWrapper>
-                    <a href={linkUrl} target="_blank" rel="noreferrer">
+                    <a href={linkUrl}>
                       <SmallButton icon={linkUrl.includes('facebook')}>
                         {linkUrl.includes('facebook') && <FacebookIcon />}
                         {linkCaption}
