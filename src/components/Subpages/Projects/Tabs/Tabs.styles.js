@@ -161,6 +161,7 @@ export const ProjectWrapper = styled.div`
   break-inside: avoid;
   transform: translateZ(0);
   margin-bottom: 24px;
+
   @media ${({ theme }) => theme.medias.medium} {
     &:nth-child(4) {
       margin-bottom: 0;
@@ -195,12 +196,14 @@ export const StyledCtaText = styled(H3)`
 `;
 
 export const FirstProjectsSection = styled.div`
-  column-count: 2;
+  column-count: ${({ oneProject }) => (oneProject ? 'auto' : '2')};
+  display: ${({ oneProject }) => (oneProject ? 'flex' : 'block')};
   column-gap: 24px;
-  width: 100%;
+  width: ${({ oneProject }) => (oneProject ? '50%' : '100%')};
 
   @media ${({ theme }) => theme.medias.medium} {
     column-count: 1;
+    width: 100%;
   }
 `;
 
