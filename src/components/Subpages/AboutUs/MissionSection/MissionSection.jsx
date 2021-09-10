@@ -11,31 +11,19 @@ import {
   StyledHeader,
 } from '@root/components/Subpages/AboutUs/MissionSection/MissionSection.styles';
 
-const MissionSection = ({ missionContent }) => {
-  const missionTitle = missionContent.title;
-  const missionText = missionContent.text1;
-  const missionUrl = missionContent.image1.fields.file.url;
-
-  return (
-    <div>
-      <MissionSectionWrapper>
-        <ImageWrapper>
-          <Image
-            className="bordermissionmobile"
-            src={`https:${missionUrl}`}
-            width={483}
-            height={245}
-            alt="team"
-          />
-        </ImageWrapper>
-        <RightSection>
-          <StyledHeader>{missionTitle}</StyledHeader>
-          <StyledMissionText as="div">{documentToReactComponents(missionText)}</StyledMissionText>
-        </RightSection>
-      </MissionSectionWrapper>
-    </div>
-  );
-};
+const MissionSection = ({ missionContent: { title, text1, image1 } }) => (
+  <div>
+    <MissionSectionWrapper>
+      <ImageWrapper>
+        <Image src={`https:${image1.fields.file.url}`} width={483} height={245} alt="team" />
+      </ImageWrapper>
+      <RightSection>
+        <StyledHeader>{title}</StyledHeader>
+        <StyledMissionText as="div">{documentToReactComponents(text1)}</StyledMissionText>
+      </RightSection>
+    </MissionSectionWrapper>
+  </div>
+);
 export default MissionSection;
 
 MissionSection.propTypes = {

@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 import { H2, BodyText } from '@root/components/typography/Typography';
 import { medias } from '@root/styles/theme';
+import {
+  getColor,
+  getFontSize,
+  getFontWeight,
+  getLetterSpacing,
+  getLineHeight,
+} from '@root/styles/utils';
 
 const { small } = medias;
 
@@ -18,7 +25,10 @@ export const MissionSectionWrapper = styled.div`
 `;
 
 export const ImageWrapper = styled.div`
+  border-radius: 16px;
+  overflow: hidden;
   @media ${small} {
+    border-radius: 8px;
     width: 327px;
     height: 201px;
   }
@@ -28,8 +38,11 @@ export const StyledHeader = styled(H2)`
   margin-left: 56px;
   @media ${small} {
     margin-left: 24px;
-    font-size: 24px;
-    line-height: 32px;
+    color: ${getColor('navy')};
+    font-weight: ${getFontWeight('h4')};
+    font-size: ${getFontSize('h4')};
+    line-height: ${getLineHeight('h4')};
+    letter-spacing: ${getLetterSpacing('h4')};
   }
 `;
 
@@ -52,8 +65,8 @@ export const StyledMissionText = styled(BodyText)`
   margin-top: 24px;
   margin-left: 56px;
   @media ${small} {
-    font-size: 14px;
-    line-height: 28px;
+    color: ${getColor('steel')};
+    font-size: ${getFontSize('bodySmall')};
     width: 327px;
     height: 196px;
     margin-bottom: 80px;
