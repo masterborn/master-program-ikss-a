@@ -108,7 +108,7 @@ export const ButtonWrapper = styled.div`
 
 export const TitleWithDateContainer = styled.div`
   display: flex;
-  align-items: center;
+  align-items: baseline;
   margin-bottom: 32px;
   @media ${({ theme }) => theme.medias.medium} {
     flex-direction: column;
