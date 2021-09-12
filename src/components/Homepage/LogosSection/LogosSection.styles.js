@@ -67,7 +67,6 @@ export const PartnerLogosWrapper = styled.div`
     padding-left: 24px;
     padding-right: 24px;
     margin: 0 auto 0 auto;
-
     a {
       flex-basis: 30%;
       padding: 20px;
