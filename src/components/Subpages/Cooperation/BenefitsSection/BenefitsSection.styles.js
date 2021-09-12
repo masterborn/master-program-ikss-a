@@ -69,7 +69,7 @@ export const BenefitsTile = styled.div`
     margin: 24px 24px 0 0;
   }
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
   img {
     position: absolute;
