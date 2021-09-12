@@ -27,8 +27,6 @@ const Cooperation = ({ cooperationApiElements }) => {
     'cooperation-tile-5',
   ].map((tile) => findApiElementByIdentifier(cooperationApiElements, tile));
 
-  console.log(cooperationApiElements);
-
   return (
     <>
       <GenericTopSection

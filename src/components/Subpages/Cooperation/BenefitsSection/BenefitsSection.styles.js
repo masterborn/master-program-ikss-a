@@ -36,7 +36,7 @@ export const BenefitsTilesWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 148px;
+  margin-top: 64px;
   width: 100%;
   @media ${({ theme }) => theme.medias.medium} {
     display: flex;
@@ -75,15 +75,13 @@ export const BenefitsTile = styled.div`
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 32px;
   }
   @media ${({ theme }) => theme.medias.medium} {
     display: flex;
-    width: 327px;
-    flex-direction: column;
     width: 100%;
+    flex-direction: column;
     margin-top: 78px;
-    padding: 32px 24px;
+    padding: 32px 24px 24px 24px;
     box-shadow: none;
     &:hover {
       transform: none;
@@ -98,14 +96,11 @@ export const BenefitsTileHeading = styled(H5)`
   color: ${getColor('navy')};
   margin: 194px 0 24px;
   @media ${({ theme }) => theme.medias.medium} {
-    margin-top: 173px;
   }
 `;
 
 export const BenefitsTileDescription = styled(BodyText)`
   color: ${getColor('steel')};
   @media ${({ theme }) => theme.medias.medium} {
-    margin-left: 24px;
-    margin-right: 24px;
   }
 `;
