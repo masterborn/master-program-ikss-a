@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 import { getColor } from '@root/styles/utils';
-import { medias } from '@root/styles/theme';
-
-const { small } = medias;
 
 export const Embla = styled.div`
   overflow: hidden;
@@ -12,8 +9,9 @@ export const Embla = styled.div`
     0.148069px 2.44552px 4.625px rgba(97, 121, 139, 0.02275);
   border-radius: 16px;
   display: none;
+  width: 100%;
 
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     display: block;
   }
 `;
@@ -37,7 +35,7 @@ export const EmblaDots = styled.div`
   padding-top: 10px;
   display: none;
 
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     display: flex;
   }
 `;

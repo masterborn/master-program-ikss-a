@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { useRouter } from 'next/router';
+import { useModal } from '@root/contextProviders/useModal';
 import {
   CtaWrapper,
   StyledBodyText,
@@ -10,12 +11,19 @@ import {
 } from './GenericBottomCta.styles';
 
 const GenericBottomCta = ({ bottomCta }) => {
+  const { handleModal } = useModal();
   const { pathname } = useRouter();
+
+  const openForm = () => {
+    handleModal('open');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <CtaWrapper projectsSubpage={pathname === '/projekty'}>
       <StyledHeader>{bottomCta.title}</StyledHeader>
       <StyledBodyText>{documentToReactComponents(bottomCta.text1)}</StyledBodyText>
-      <ResponsiveButton>{bottomCta.linkCaption}</ResponsiveButton>
+      <ResponsiveButton onClick={openForm}>{bottomCta.linkCaption}</ResponsiveButton>
     </CtaWrapper>
   );
 };

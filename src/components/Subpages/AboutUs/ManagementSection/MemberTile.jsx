@@ -34,7 +34,10 @@ const MemberTile = ({ memberInfo }) => {
   };
 
   return (
-    <TileContainer className={isTileOpen ? 'opened' : 'closed'}>
+    <TileContainer
+      className={isTileOpen ? 'opened' : 'closed'}
+      onClick={!isTileOpen ? handleTile : undefined}
+    >
       {memberInfo.image ? (
         <ImageWrapper isTileOpen={isTileOpen}>
           <Image src={`https:${memberInfo.image.fields.file.url}`} layout="fill" />
@@ -86,7 +89,8 @@ const MemberTile = ({ memberInfo }) => {
 };
 
 MemberTile.propTypes = {
-  memberInfo: PropTypes.objectOf(oneOfType([PropTypes.string, PropTypes.object])).isRequired,
+  memberInfo: PropTypes.objectOf(oneOfType([PropTypes.string, PropTypes.object, PropTypes.number]))
+    .isRequired,
 };
 
 export default MemberTile;

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { H2, BodyText } from '@root/components/typography/Typography';
-import { medias } from '@root/styles/theme';
 import {
   getColor,
   getFontSize,
@@ -9,101 +8,104 @@ import {
   getLineHeight,
 } from '@root/styles/utils';
 
-const { small } = medias;
-
 export const HistorySectionWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-left: 120px;
-  margin-right: 123px;
-  @media ${small} {
+  padding-left: 24px;
+  padding-right: 24px;
+  margin: 0 auto 0 auto;
+  @media ${({ theme }) => theme.medias.medium} {
     display: flex;
     flex-direction: column;
-    width: 327px;
-    margin-top: 80px;
-    margin-left: 24px;
   }
 `;
 
 export const TopSection = styled.div`
   display: flex;
-  width: 1197px;
-  height: 352px;
-  margin-bottom: 32px;
+  padding-left: 24px;
+  padding-right: 24px;
+  margin: 0 auto 0 auto;
 
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     display: flex;
     flex-direction: column-reverse;
-    width: 327px;
-    height: 803px;
   }
 `;
 
 export const StyledTopSectionText = styled.div`
-  height: 483px;
-  @media ${small} {
-    width: 327px;
+  @media ${({ theme }) => theme.medias.medium} {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 `;
 
 export const StyledHistoryTextTop = styled(BodyText)`
-  width: 658px;
-  @media ${small} {
-    width: 327px;
+  max-width: 658px;
+  color: ${getColor('steel')};
+  @media ${({ theme }) => theme.medias.medium} {
     margin-bottom: 40px;
-    color: ${getColor('steel')};
     font-size: ${getFontSize('bodySmall')};
   }
 `;
 
 export const TopImageWrapper = styled.div`
-  width: 483px;
-  height: 265px;
-  margin-left: 56px;
+  margin: 0 0 32px 56px;
+  height: 352px;
   border-radius: 16px;
   overflow: hidden;
-  @media ${small} {
-    width: 327px;
+
+  @media ${({ theme }) => theme.medias.medium} {
+    margin: 0 auto 0 auto;
     height: 238px;
-    margin-left: 0px;
     border-radius: 8px;
   }
 `;
 
 export const BottomSection = styled.div`
   display: flex;
-  width: 1197px;
-  @media ${small} {
+  padding-left: 24px;
+  padding-right: 24px;
+  margin: 0 auto 0 auto;
+  @media ${({ theme }) => theme.medias.medium} {
     flex-direction: column-reverse;
-    width: 327px;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
   }
 `;
 
 export const StyledHistoryTextBottom = styled(BodyText)`
-  width: 658px;
-  height: 483px;
+  max-width: 658px;
+  margin: 0 auto 0 auto;
   text-indent: 25px;
-  margin-top: -60px;
-  @media ${small} {
-    width: 327px;
-    color: ${getColor('steel')};
+  margin-top: -55px;
+  margin-bottom: 148px;
+  color: ${getColor('steel')};
+  @media ${({ theme }) => theme.medias.medium} {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
     font-size: ${getFontSize('bodySmall')};
     margin-top: 32px;
+    margin-bottom: 70px;
     text-indent: 0px;
   }
 `;
 
 export const BottomImageWrapper = styled.div`
+  height: 265px;
+  margin: 0 0 0 56px;
   border-radius: 16px;
   overflow: hidden;
-  width: 483px;
-  height: 265px;
-  margin-left: 56px;
-  margin-top: -30px;
-  @media ${small} {
-    width: 327px;
-    height: 190px;
+
+  @media ${({ theme }) => theme.medias.medium} {
     border-radius: 8px;
     margin-left: 0px;
   }
@@ -112,10 +114,10 @@ export const BottomImageWrapper = styled.div`
 export const StyledHeader = styled(H2)`
   margin-left: 0px;
   margin-top: 0px;
-  @media ${small} {
+  color: ${getColor('navy')};
+  @media ${({ theme }) => theme.medias.medium} {
     margin-top: 32px;
     margin-bottom: 16px;
-    color: ${getColor('navy')};
     font-weight: ${getFontWeight('h4')};
     font-size: ${getFontSize('h4')};
     line-height: ${getLineHeight('h4')};

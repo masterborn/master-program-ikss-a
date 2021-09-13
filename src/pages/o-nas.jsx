@@ -5,6 +5,8 @@ import findApiElementByIdentifier from '@root/handlers/findApiElement';
 import GenericTopSection from '@root/components/GenericTopSection/GenericTopSection';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import GenericBottomCta from '@root/components/GenericBottomCta/GenericBottomCta';
+import MissionSection from '@root/components/Subpages/AboutUs/MissionSection/MissionSection';
+import HistorySection from '@root/components/Subpages/AboutUs/HistorySection/HistorySection';
 import TeamSection from '@root/components/Subpages/AboutUs/TeamSection';
 import ManagementSection from '@root/components/Subpages/AboutUs/ManagementSection/ManagementSection';
 
@@ -16,6 +18,16 @@ const AboutUs = ({ aboutUsApiElements, boardMembersApiElements }) => {
   const bottomCta = findApiElementByIdentifier(aboutUsApiElements, 'about-us-bottom-cta').fields;
 
   const teamContent = findApiElementByIdentifier(aboutUsApiElements, 'about-us-content-3');
+
+  const missionContent = findApiElementByIdentifier(
+    aboutUsApiElements,
+    'about-us-content-1',
+  ).fields;
+
+  const historyContent = findApiElementByIdentifier(
+    aboutUsApiElements,
+    'about-us-content-2',
+  ).fields;
 
   const boardMembersText = findApiElementByIdentifier(
     aboutUsApiElements,
@@ -29,6 +41,8 @@ const AboutUs = ({ aboutUsApiElements, boardMembersApiElements }) => {
         title={subpageTitle}
         subpageDescription={subpageDescription}
       />
+      <MissionSection missionContent={missionContent} />
+      <HistorySection historyContent={historyContent} />
       <ManagementSection
         boardMembers={boardMembersApiElements}
         boardMembersText={boardMembersText}
