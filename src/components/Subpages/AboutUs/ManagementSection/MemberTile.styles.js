@@ -10,6 +10,7 @@ import { H4, H5 } from '@root/components/typography/Typography';
 import { SecondarySmallButton } from '@root/components/Button/Button.styles';
 
 export const TileContainer = styled.div`
+  background-color: ${getColor('white')};
   position: relative;
   display: flex;
   flex-direction: column;
@@ -25,7 +26,7 @@ export const TileContainer = styled.div`
   transition: transform 0.2s;
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 
   @media ${({ theme }) => theme.medias.medium} {
