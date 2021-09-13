@@ -1,14 +1,11 @@
 import styled from 'styled-components';
 import { H3, BodyText } from '@root/components/typography/Typography';
-import { medias } from '@root/styles/theme';
-
-const { small } = medias;
+import { getColor, getFontSize, getFontWeight, getLineHeight } from '@root/styles/utils';
 
 export const LogosSectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 148px;
 `;
 
 export const LogosTextWrapper = styled.div`
@@ -18,37 +15,39 @@ export const LogosTextWrapper = styled.div`
   justify-content: center;
   align-items: center;
   max-width: 635px;
-  margin: 0 auto 86px auto;
+  margin: 0 auto 42px auto;
 
-  @media ${small} {
+  @media ${({ theme }) => theme.medias.medium} {
     line-height: 32px;
-    width: 327px;
+    margin-left: 24px;
+    margin-right: 24px;
   }
 `;
 
 export const LogosSectionHeader = styled(H3)`
   display: flex;
   margin-bottom: 32px;
-
-  @media ${small} {
+  color: ${getColor('navy')};
+  @media ${({ theme }) => theme.medias.medium} {
+    margin-bottom: 16px;
     font-size: 24px;
     line-height: 32px;
-    width: 327px;
     justify-content: center;
+    font-weight: ${getFontWeight('h4')};
+    font-size: ${getFontSize('h4')};
+    line-height: ${getLineHeight('h4')};
   }
 `;
 
 export const StyledBodyText = styled(BodyText)`
   display: flex;
   justify-content: center;
-  width: 635px;
-  height: 64px;
-
-  @media ${small} {
+  color: ${getColor('steel')};
+  @media ${({ theme }) => theme.medias.medium} {
     font-size: 14px;
     line-height: 28px;
-    width: 327px;
     text-align: center;
+    font-size: ${getFontSize('bodySmall')};
   }
 `;
 
@@ -60,28 +59,21 @@ export const PartnerLogosWrapper = styled.div`
   max-width: 1134px;
   margin: 0 auto 0 auto;
   a {
-    cursor: pointer;
     display: flex;
     flex-basis: 20%;
     margin-bottom: 60px;
     justify-content: center;
   }
 
-  @media ${small} {
-    max-width: 327px;
-    font-size: 24px;
-    line-height: 32px;
-
+  @media ${({ theme }) => theme.medias.medium} {
+    padding-left: 24px;
+    padding-right: 24px;
+    margin: 0 auto 0 auto;
     a {
       flex-basis: 30%;
       padding: 20px;
       margin-bottom: 60px;
       justify-content: center;
     }
-  }
-
-  @media (max-width: 1024px) {
-    margin-left: 24px;
-    margin-right: 24px;
   }
 `;
