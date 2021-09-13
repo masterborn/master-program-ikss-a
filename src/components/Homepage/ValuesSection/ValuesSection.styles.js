@@ -76,7 +76,7 @@ export const Tile = styled.div`
   }
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 
   img {

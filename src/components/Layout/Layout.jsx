@@ -4,7 +4,6 @@ import findApiElementByIdentifier from '@root/handlers/findApiElement';
 import getSocialMedias from '@root/handlers/getSocialMedias';
 import getPaths from '@root/handlers/getPaths';
 import { useRouter } from 'next/router';
-import { useModal } from '@root/contextProviders/useModal';
 import smoothscroll from 'smoothscroll-polyfill';
 import routes from '@root/handlers/routes';
 import Navbar from '../Navbar/Navbar';
@@ -14,7 +13,6 @@ import ContactForm from '../ContactForm/ContactForm';
 
 const Layout = ({ children, commonApiElements, formContent }) => {
 
-  const { modalOpen } = useModal();
   const { pathname } = useRouter();
 
   const links = getPaths();
@@ -31,11 +29,7 @@ const Layout = ({ children, commonApiElements, formContent }) => {
     <>
       <Navbar socialMedias={socialMedias} links={links} />
       {children}
-      {
-        pathname === routes.homepage || modalOpen ?
-          <ContactForm formText={formText} formTooltip={formTooltip} />
-          : null
-      }
+      <ContactForm formText={formText} formTooltip={formTooltip} isModal={pathname !== routes.homepage} />
       {
         pathname !== routes.errorPage ?
           <Footer links={links} socialMedias={socialMedias} copyrightText={copyrightText} />

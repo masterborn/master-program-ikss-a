@@ -61,6 +61,9 @@ export const ButtonCircle = styled.button`
   right: 126px;
   cursor: pointer;
   border: none;
+  box-shadow: 0px 16px 31px rgba(26, 40, 71, 0.1), 0px 6.16296px 9.87407px rgba(26, 40, 71, 0.0607407), 0px 1.3037px 2.52593px rgba(26, 40, 71, 0.0392593);
+  z-index: 1;
+  
   @media (max-width: 1200px) {
     right: 60px;
   }
