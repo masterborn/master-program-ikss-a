@@ -6,27 +6,36 @@ import {
   getLineHeight,
   getLetterSpacing,
 } from '@root/styles/utils';
-import { BigButton } from '@root/components/Button/Button.styles';
-import { H3 } from '../typography/Typography';
+import { H3 } from '@root/components/typography/Typography';
 
-export const CtaWrapper = styled.div`
+export const SectionWrapper = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 164px auto 148px auto;
-  text-align: center;
-  max-width: 635px;
+  max-width: 1188px;
+  margin: 0 auto 0 auto;
 
   @media ${({ theme }) => theme.medias.medium} {
     padding: 0 24px 0 24px;
-    margin: ${({ projectsSubpage }) =>
-      projectsSubpage ? '80px auto 103px auto' : '104px auto 131px auto'};
+  }
+`;
+
+export const TextSection = styled.div`
+  max-width: 635px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 64px;
+
+  @media ${({ theme }) => theme.medias.medium} {
+    margin-bottom: 32px;
   }
 `;
 
 export const StyledHeader = styled(H3)`
   color: ${getColor('navy')};
+
   @media ${({ theme }) => theme.medias.medium} {
     font-weight: ${getFontWeight('h4')};
     font-size: ${getFontSize('h4')};
@@ -44,14 +53,31 @@ export const StyledBodyText = styled.div`
 
   @media ${({ theme }) => theme.medias.medium} {
     margin: 16px 0 16px 0;
+    line-height: 28px;
+    font-size: 14px;
   }
 `;
 
-export const ResponsiveButton = styled(BigButton)`
+export const LogosContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  a {
+    cursor: pointer;
+    display: flex;
+    flex-basis: 20%;
+    margin-bottom: 48px;
+    justify-content: center;
+  }
+
   @media ${({ theme }) => theme.medias.medium} {
-    height: 36px;
-    padding: 9px 16px;
-    line-height: 18px;
-    font-size: ${getFontSize('bodySmall')};
+    a {
+      flex-basis: 30%;
+      padding: 20px;
+      margin-bottom: 24px;
+      justify-content: center;
+    }
   }
 `;

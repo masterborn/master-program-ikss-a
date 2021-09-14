@@ -19,6 +19,9 @@ export const LogosTextWrapper = styled.div`
 
   @media ${({ theme }) => theme.medias.medium} {
     line-height: 32px;
+    margin-left: 24px;
+    margin-right: 24px;
+
   }
 `;
 
@@ -67,7 +70,6 @@ export const PartnerLogosWrapper = styled.div`
     padding-left: 24px;
     padding-right: 24px;
     margin: 0 auto 0 auto;
-
     a {
       flex-basis: 30%;
       padding: 20px;

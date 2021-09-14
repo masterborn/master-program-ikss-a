@@ -14,8 +14,10 @@ export const BenefitsSectionWrapper = styled.section`
   align-items: center;
   max-width: 1199px;
   margin: 119px auto 0;
+  margin-bottom: 156px;
   @media ${({ theme }) => theme.medias.medium} {
     margin: 24px;
+    margin-bottom: 100px;
   }
 `;
 
@@ -45,6 +47,7 @@ export const BenefitsTilesWrapper = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 0;
+    gap: 24px;
   }
 `;
 
@@ -80,9 +83,17 @@ export const BenefitsTile = styled.div`
     display: flex;
     width: 100%;
     flex-direction: column;
-    margin-top: 78px;
     padding: 32px 24px 24px 24px;
-    box-shadow: none;
+    background-color: ${getColor('white')};
+    &:nth-child(2) {
+      margin: 0;
+    }
+    &:nth-child(4) {
+      margin: 0;
+    }
+    &:nth-child(5) {
+      margin: 0;
+    }
     &:hover {
       transform: none;
     }

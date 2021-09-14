@@ -1,5 +1,6 @@
 import PropTypes, { oneOfType } from 'prop-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import compareProjectsOrder from '@root/handlers/compareProjectsOrder';
 import MemberTile from './MemberTile';
 import {
   SectionWrapper,
@@ -10,6 +11,7 @@ import {
 } from './ManagementSection.styles';
 
 const ManagementSection = ({ boardMembers, boardMembersText }) => {
+  const sortedBoardMembers = [...boardMembers].sort(compareProjectsOrder);
   const sectionTitle = boardMembersText.title;
   const sectionDescription = documentToReactComponents(boardMembersText.text1);
   return (
@@ -19,7 +21,7 @@ const ManagementSection = ({ boardMembers, boardMembersText }) => {
         <StyledBodyText>{sectionDescription}</StyledBodyText>
       </TextSection>
       <TilesWrapper>
-        {boardMembers.map((member) => (
+        {sortedBoardMembers.map((member) => (
           <MemberTile key={member.fields.name} memberInfo={member.fields} />
         ))}
       </TilesWrapper>
