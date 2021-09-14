@@ -46,9 +46,6 @@ export const FooterSocialIconsWrapper = styled.div`
   margin-top: 48px;
   justify-content: space-between;
   align-items: center;
-  img {
-    filter: invert(100%) sepia(94%) saturate(0%) hue-rotate(248deg) brightness(106%) contrast(106%);
-  }
 
   @media ${({ theme }) => theme.medias.medium} {
     margin-top: 40px;

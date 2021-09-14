@@ -15,7 +15,7 @@ export const Nav = styled.nav`
     box-shadow: 0px 4px 16px rgba(97, 121, 139, 0.1);
 
     @media(max-width: 1200px) {
-        padding: 20px 80px;
+        padding: 20px 65px;
     }
 
     @media ${({theme}) => theme.medias.medium} {
@@ -28,8 +28,11 @@ export const MenuWrapper = styled.div`
     display: flex;
     flex-grow: 1;
     align-items: center;
-    justify-content: space-between;
     margin-left: 126px;
+
+    @media(max-width: 1300px) {
+        margin-left: 80px;
+    }
 
     @media(max-width: 1200px) {
         margin-left: 60px;
@@ -48,7 +51,7 @@ export const MobileMenuWrapper = styled.div`
         right: 0;
         z-index: 1;
         width: 301px;
-        height: 100vh;
+        height: 100%;
         border-radius: 16px 0px 0px 0px;
         background-color: #fff;
         box-shadow: 0px 4px 16px rgba(97, 121, 139, 0.1);
@@ -108,17 +111,23 @@ export const StyledLink = styled.a`
     @media ${({theme}) => theme.medias.medium} {
         padding-left: 24px;
         line-height: 56px;
+        display: inline-block;
     }
 `;
 
 export const Socials = styled.div`
     display: flex;
     justify-content: space-between;
+    margin: 0 89px 0 auto;
     width: 168px;
     height: 24px;
     opacity: ${({visible}) => visible ? '1' : '0'} ;
     pointer-events: ${({visible}) => visible ? 'auto' : 'none'};
     transition: opacity .1s;
+
+     @media(max-width: 1300px) {
+        margin-right: 50px;
+    }
 
     @media(max-width: 1200px) {
         width: 148px;

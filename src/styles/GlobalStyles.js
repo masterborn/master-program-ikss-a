@@ -11,6 +11,7 @@ const GlobalStyles = createGlobalStyle`
     background: ${getColor('backgroundGradient')};
     background-repeat: no-repeat;
     background-attachment: fixed;
+    position: relative;
   }
 
   * {

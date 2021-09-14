@@ -24,7 +24,7 @@ const App = (props) => {
         />
       </Head>
       <AppProviders>
-        <Hydrate state={pageProps.dehydratedState}>
+        <Hydrate state={pageProps ? pageProps.dehydratedState : null}>
           <Layout
             commonApiElements={commonApiElements}
             formContent={[contactFormText, contactFormTooltip]}

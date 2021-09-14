@@ -6,6 +6,11 @@ export const LogosSectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 760px;
+
+  @media ${({theme}) => theme.medias.medium} {
+    margin-bottom: 675px;
+  }
 `;
 
 export const LogosTextWrapper = styled.div`
