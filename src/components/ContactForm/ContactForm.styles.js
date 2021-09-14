@@ -55,15 +55,21 @@ const slideUp = keyframes`
 
 export const FormWrapper = styled.div`
     position: absolute ;
-    top: ${({modalOpen}) => modalOpen ? '0' : 'auto'};
-    bottom: ${({modalOpen}) => modalOpen ? '0' : '449px'};
-    left: ${({modalOpen}) => modalOpen ? '0' : '50%'} ;
-    right: ${({modalOpen}) => modalOpen ? '0' : 'auto'};
-    transform: ${({modalOpen}) => modalOpen ? 'none' : 'translateX(-50%)'} ;
-    z-index: ${({modalOpen}) => modalOpen ? '3' : '1'};
+    top: ${({isModal}) => isModal ? '0' : 'auto'};
+    bottom: ${({isModal}) => isModal ? '0' : '449px'};
+    left: 0;
+    right: 0;
+    transform: ${({isModal, modalOpen}) => {
+        if(modalOpen) return 'translateY(0)'
+        if(isModal) return 'translateY(-100%)' 
+        return 'none'
+    }};
+    padding: 0 24px;
+    z-index: ${({isModal}) => isModal ? '3' : '1'};
+    overflow: hidden;
 
     @media ${({ theme }) => theme.medias.medium} {
-        bottom: ${({modalOpen}) => modalOpen ? '0' : '578px'};
+        bottom: ${({isModal}) => isModal ? '0' : '578px'};
     }
 `;
 
@@ -75,12 +81,13 @@ export const Layer = styled.div`
         width: 100%;
         height: 100%;
         background-color: #1A2847;
+        cursor: pointer;
         animation: ${({closed}) => closed ? css`${disappear} .3s .1s both` : css`${appear} .3s both` };
 `;
 
 export const Form = styled.form`
     position: relative;
-    margin: ${({modalOpen}) => modalOpen ? '184px auto' : 0};
+    margin: ${({isModal}) => isModal ? '184px auto' : '0 auto' };
     display: flex;
     flex-direction: column;
     width: 748px;
@@ -97,10 +104,12 @@ export const Form = styled.form`
     } };
 
     @media ${({ theme }) => theme.medias.medium} {
-        width: 327px;
-        height: ${({modalOpen}) => modalOpen ? '861px' : '837px'};
-        margin: ${({modalOpen}) => modalOpen ? '32px auto' : 0};
-        padding: ${({modalOpen}) => modalOpen ? '56px 16px 32px' : '32px 16px'};
+        width: auto;
+        max-width: 550px;
+        height: ${({isModal}) => isModal ? '861px' : '837px'};
+        height: auto;
+        margin: ${({isModal}) => isModal ? '33px auto' : '0 auto'};
+        padding: ${({isModal}) => isModal ? '56px 16px 32px' : '32px 16px'};
     }
 `;
 
@@ -144,10 +153,9 @@ export const Names = styled.div`
     }
 
     @media ${({ theme }) => theme.medias.medium} {
-        flex-wrap: wrap;
+        flex-direction: column;
         margin-bottom: 12px;
     }
-
 `;
 
 export const NameField = styled.div`
@@ -202,6 +210,11 @@ export const PrivacyLink = styled(SmallBodyText)`
     &:hover + div {
         opacity: 1;
         z-index: 1;
+
+        @media ${({theme}) => theme.medias.medium} {
+            opacity: 0;
+            z-index: -1;
+        }
     }
 `;
 

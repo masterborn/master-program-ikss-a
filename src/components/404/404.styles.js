@@ -9,9 +9,11 @@ export const Wrapper = styled.div`
     align-items: center;
     background-image: ${getColor('backgroundGradient')};
     text-align: center;
+    min-height: calc(100vh - 88px) ;
 
      @media ${({theme}) => theme.medias.medium} {
         margin: 0 25px;
+        min-height: calc(100vh - 56px) ;
     }
 `;
 

@@ -117,6 +117,11 @@ const FormField = styled.div`
         opacity: 1;
         z-index: 1;
     }
+    button:hover {
+        @media ${({ theme }) => theme.medias.medium} {
+            pointer-events: none;
+        }
+    }
 `;
 
 const TextArea = styled(InputField)`

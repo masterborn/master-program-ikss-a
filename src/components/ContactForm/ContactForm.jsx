@@ -16,7 +16,7 @@ import { FormWrapper, Form, StyledH3, Description, Names, NameField, FormField, 
 import Input from '../FormElements/Input';
 
 
-const ContactForm = ({ formText: { fields: { title, text1: description } }, formTooltip: { fields: { text1: tooltip } } }) => {
+const ContactForm = ({ formText: { fields: { title, text1: description } }, formTooltip: { fields: { text1: tooltip } }, isModal }) => {
 
     const { formRef } = useScroll();
 
@@ -61,12 +61,15 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
 
     const closeModal = () => {
         setClosed(true);
-        setTimeout(() => handleModal('close'), 400);
+        setTimeout(() => {
+            handleModal('close');
+            setClosed(false);
+        }, 400);
     }
 
     return (
-        <FormWrapper ref={formRef} modalOpen={modalOpen}>
-            <Form modalOpen={modalOpen} closed={closed} onSubmit={handleSubmit(onFormSubmit)} >
+        <FormWrapper ref={formRef} modalOpen={modalOpen} isModal={isModal} >
+            <Form modalOpen={modalOpen} isModal={isModal} closed={closed} onSubmit={handleSubmit(onFormSubmit)} >
                 <StyledH3>{title}</StyledH3>
                 <Description as='div'>{documentToReactComponents(description)}</Description>
                 <Names>
@@ -174,7 +177,7 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                     null
                 }
             </Form>
-            {modalOpen ? <Layer closed={closed} /> : null}
+            {modalOpen ? <Layer closed={closed} onClick={closeModal} /> : null}
         </FormWrapper>
     )
 }
@@ -182,6 +185,7 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
 ContactForm.propTypes = {
     formText: PropTypes.objectOf(PropTypes.any).isRequired,
     formTooltip: PropTypes.objectOf(PropTypes.any).isRequired,
+    isModal: PropTypes.bool.isRequired
 }
 
 export default ContactForm
