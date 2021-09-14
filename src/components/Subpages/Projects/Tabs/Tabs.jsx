@@ -42,14 +42,14 @@ const Tabs = ({ projectsList, middleCta }) => {
       {uniqueProjectsYears.map((year) => (
         <>
           <StyledTabPanel>
-            <FirstProjectsSection>
+            <FirstProjectsSection oneProject={projectsByYear[year].length === 1}>
               {projectsByYear[year].slice(0, 4).map((project) => (
                 <ProjectTile projectData={project} />
               ))}
             </FirstProjectsSection>
 
             {projectsByYear[year].length >= 3 && <Cta middleCta={middleCta} />}
-            <SecondProjectsSection>
+            <SecondProjectsSection oneProject={projectsByYear[year].length === 5}>
               {projectsByYear[year].slice(4).map((project) => (
                 <ProjectTile projectData={project} />
               ))}
