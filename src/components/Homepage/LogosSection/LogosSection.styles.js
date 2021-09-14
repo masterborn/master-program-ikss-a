@@ -21,6 +21,7 @@ export const LogosTextWrapper = styled.div`
     line-height: 32px;
     margin-left: 24px;
     margin-right: 24px;
+
   }
 `;
 
