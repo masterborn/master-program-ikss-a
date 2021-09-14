@@ -13,11 +13,10 @@ export const BenefitsSectionWrapper = styled.section`
   flex-direction: column;
   align-items: center;
   max-width: 1199px;
-  margin: 119px auto 0;
-  margin-bottom: 156px;
+  margin: 0 auto 156px;
   @media ${({ theme }) => theme.medias.medium} {
-    margin: 24px;
     margin-bottom: 100px;
+    padding: 0 24px 0 24px;
   }
 `;
 
@@ -38,22 +37,20 @@ export const BenefitsTilesWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 64px;
   width: 100%;
+  gap: 24px;
   @media ${({ theme }) => theme.medias.medium} {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-top: 0;
-    gap: 24px;
   }
 `;
 
 export const BenefitsTile = styled.div`
-  position: relative;
-  width: 384px;
+  background-color: ${getColor('white')};
+  width: 30%;
   box-shadow: 3.38443px 55.8976px 80px rgba(97, 121, 139, 0.07),
     1.71337px 28.2982px 34.875px rgba(97, 121, 139, 0.04725),
     0.676885px 11.1795px 13px rgba(97, 121, 139, 0.035),
@@ -62,38 +59,17 @@ export const BenefitsTile = styled.div`
   padding: 32px 24px;
   text-align: center;
   transition: transform 0.2s;
-  &:nth-child(2) {
-    margin: 0 auto;
-  }
-  &:nth-child(4) {
-    margin: 24px 24px 0 0;
-  }
-  &:nth-child(5) {
-    margin: 24px 24px 0 0;
-  }
+
   &:hover {
     transform: scale(1.05);
   }
-  img {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+
   @media ${({ theme }) => theme.medias.medium} {
     display: flex;
     width: 100%;
     flex-direction: column;
     padding: 32px 24px 24px 24px;
-    background-color: ${getColor('white')};
-    &:nth-child(2) {
-      margin: 0;
-    }
-    &:nth-child(4) {
-      margin: 0;
-    }
-    &:nth-child(5) {
-      margin: 0;
-    }
+    
     &:hover {
       transform: none;
     }
@@ -105,13 +81,15 @@ export const BenefitsTile = styled.div`
 
 export const BenefitsTileHeading = styled(H5)`
   color: ${getColor('navy')};
-  margin: 194px 0 24px;
-  @media ${({ theme }) => theme.medias.medium} {
-  }
+  margin: 12px 0 20px 0;
 `;
 
 export const BenefitsTileDescription = styled(BodyText)`
   color: ${getColor('steel')};
   @media ${({ theme }) => theme.medias.medium} {
+    font-weight: ${getFontWeight('bodySmall')};
+    font-size: ${getFontSize('bodySmall')};
+    line-height: ${getLineHeight('bodySmall')};
+    letter-spacing: ${getLetterSpacing('bodySmall')};
   }
 `;
