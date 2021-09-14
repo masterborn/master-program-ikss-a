@@ -12,6 +12,8 @@ import {
   BottomSection,
   StyledHistoryTextBottom,
   BottomImageWrapper,
+  TopImageMobileWrapper,
+  BottomImageMobileWrapper,
 } from '@root/components/Subpages/AboutUs/HistorySection/HistorySection.styles';
 
 const HistorySection = ({ historyContent: { title, text1, text2, image1, image2 } }) => (
@@ -19,18 +21,24 @@ const HistorySection = ({ historyContent: { title, text1, text2, image1, image2 
     <TopSection>
       <StyledTopSectionText>
         <StyledHeader>{title}</StyledHeader>
-        <StyledHistoryTextTop>{documentToReactComponents(text1)}</StyledHistoryTextTop>
+        <StyledHistoryTextTop as="div">{documentToReactComponents(text1)}</StyledHistoryTextTop>
       </StyledTopSectionText>
       <TopImageWrapper>
         <Image src={`https:${image1.fields.file.url}`} width={483} height={352} alt="team" />
       </TopImageWrapper>
+      <TopImageMobileWrapper>
+        <Image src={`https:${image1.fields.file.url}`} width={976} height={708} alt="team" />
+      </TopImageMobileWrapper>
     </TopSection>
 
     <BottomSection>
-      <StyledHistoryTextBottom>{documentToReactComponents(text2)}</StyledHistoryTextBottom>
+      <StyledHistoryTextBottom as="div">{documentToReactComponents(text2)}</StyledHistoryTextBottom>
       <BottomImageWrapper>
         <Image src={`https:${image2.fields.file.url}`} width={483} height={265} alt="team" />
       </BottomImageWrapper>
+      <BottomImageMobileWrapper>
+        <Image src={`https:${image2.fields.file.url}`} width={976} height={534} alt="team" />
+      </BottomImageMobileWrapper>
     </BottomSection>
   </HistorySectionWrapper>
 );
