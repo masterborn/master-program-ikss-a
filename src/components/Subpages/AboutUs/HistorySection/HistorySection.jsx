@@ -27,7 +27,7 @@ const HistorySection = ({ historyContent: { title, text1, text2, image1, image2 
         <Image src={`https:${image1.fields.file.url}`} width={483} height={352} alt="team" />
       </TopImageWrapper>
       <TopImageMobileWrapper>
-        <Image src={`https:${image1.fields.file.url}`} width={966} height={704} alt="team" />
+        <Image src={`https:${image1.fields.file.url}`} width={976} height={708} alt="team" />
       </TopImageMobileWrapper>
     </TopSection>
 
@@ -37,7 +37,7 @@ const HistorySection = ({ historyContent: { title, text1, text2, image1, image2 
         <Image src={`https:${image2.fields.file.url}`} width={483} height={265} alt="team" />
       </BottomImageWrapper>
       <BottomImageMobileWrapper>
-        <Image src={`https:${image2.fields.file.url}`} width={966} height={530} alt="team" />
+        <Image src={`https:${image2.fields.file.url}`} width={976} height={534} alt="team" />
       </BottomImageMobileWrapper>
     </BottomSection>
   </HistorySectionWrapper>
