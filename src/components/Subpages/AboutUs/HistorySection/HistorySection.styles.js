@@ -59,7 +59,6 @@ export const StyledHistoryTextTop = styled(BodyText)`
 
 export const TopImageWrapper = styled.div`
   margin-bottom: 32px;
-  border-radius: 16px;
   overflow: hidden;
 
   div {
