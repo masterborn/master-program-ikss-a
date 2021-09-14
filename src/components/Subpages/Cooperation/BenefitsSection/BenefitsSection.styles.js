@@ -69,7 +69,7 @@ export const BenefitsTile = styled.div`
     width: 100%;
     flex-direction: column;
     padding: 32px 24px 24px 24px;
-
+    
     &:hover {
       transform: none;
     }
