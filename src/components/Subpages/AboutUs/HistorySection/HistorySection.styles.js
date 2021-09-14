@@ -12,19 +12,18 @@ export const HistorySectionWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-left: 24px;
-  padding-right: 24px;
-  margin: 0 auto 0 auto;
+  padding: 0 24px 0 24px;
+  margin: 0 auto 148px auto;
+
   @media ${({ theme }) => theme.medias.medium} {
     display: flex;
     flex-direction: column;
+    margin-bottom: 70px;
   }
 `;
 
 export const TopSection = styled.div`
   display: flex;
-  padding-left: 24px;
-  padding-right: 24px;
   margin: 0 auto 0 auto;
 
   @media ${({ theme }) => theme.medias.medium} {
@@ -34,87 +33,105 @@ export const TopSection = styled.div`
 `;
 
 export const StyledTopSectionText = styled.div`
+  margin-right: 56px;
   @media ${({ theme }) => theme.medias.medium} {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    text-align: justify;
-    padding-left: 24px;
-    padding-right: 24px;
+    margin-right: 0;
   }
 `;
 
 export const StyledHistoryTextTop = styled(BodyText)`
   max-width: 658px;
   color: ${getColor('steel')};
+
+  @media (max-width: 1300px) {
+    max-width: 448px;
+  }
+
   @media ${({ theme }) => theme.medias.medium} {
     margin-bottom: 40px;
     font-size: ${getFontSize('bodySmall')};
+    max-width: 100%;
   }
 `;
 
 export const TopImageWrapper = styled.div`
-  margin: 0 0 32px 56px;
-  height: 352px;
+  margin-bottom: 32px;
   border-radius: 16px;
   overflow: hidden;
 
+  div {
+    border-radius: 16px;
+  }
+
   @media ${({ theme }) => theme.medias.medium} {
-    margin: 0 auto 0 auto;
-    height: 238px;
-    border-radius: 8px;
+    display: none;
+    margin: 32px auto 0 auto;
+
+    div {
+      border-radius: 8px;
+    }
   }
 `;
 
 export const BottomSection = styled.div`
   display: flex;
-  padding-left: 24px;
-  padding-right: 24px;
   margin: 0 auto 0 auto;
   @media ${({ theme }) => theme.medias.medium} {
     flex-direction: column-reverse;
     justify-content: center;
-    align-items: center;
-    text-align: justify;
   }
 `;
 
 export const StyledHistoryTextBottom = styled(BodyText)`
   max-width: 658px;
-  margin: 0 auto 0 auto;
+  margin: 0 56px 0 auto;
   text-indent: 25px;
   margin-top: -55px;
-  margin-bottom: 148px;
   color: ${getColor('steel')};
+
+  @media (max-width: 1300px) {
+    max-width: 448px;
+    margin-top: 20px;
+  }
+
   @media ${({ theme }) => theme.medias.medium} {
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
-    text-align: justify;
     font-size: ${getFontSize('bodySmall')};
-    margin-top: 32px;
-    margin-bottom: 70px;
+    margin: 32px 0 0 0;
     text-indent: 0px;
+    max-width: 100%;
   }
 `;
 
 export const BottomImageWrapper = styled.div`
-  height: 265px;
-  margin: 0 0 0 56px;
-  border-radius: 16px;
   overflow: hidden;
 
+  div {
+    border-radius: 16px;
+  }
+
+  @media (max-width: 1300px) {
+    margin-top: 36px;
+  }
+
   @media ${({ theme }) => theme.medias.medium} {
-    border-radius: 8px;
-    margin-left: 0px;
+    display: none;
+    margin: 0 auto 0 auto;
+    div {
+      border-radius: 8px;
+    }
   }
 `;
 
 export const StyledHeader = styled(H2)`
-  margin-left: 0px;
-  margin-top: 0px;
   color: ${getColor('navy')};
+  margin-bottom: 24px;
+
   @media ${({ theme }) => theme.medias.medium} {
     margin-top: 32px;
     margin-bottom: 16px;
@@ -122,5 +139,19 @@ export const StyledHeader = styled(H2)`
     font-size: ${getFontSize('h4')};
     line-height: ${getLineHeight('h4')};
     letter-spacing: ${getLetterSpacing('h4')};
+  }
+`;
+
+export const TopImageMobileWrapper = styled(TopImageWrapper)`
+  display: none;
+  @media ${({ theme }) => theme.medias.medium} {
+    display: flex;
+  }
+`;
+
+export const BottomImageMobileWrapper = styled(BottomImageWrapper)`
+  display: none;
+  @media ${({ theme }) => theme.medias.medium} {
+    display: flex;
   }
 `;
