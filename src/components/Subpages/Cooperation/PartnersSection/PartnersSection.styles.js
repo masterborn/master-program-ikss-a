@@ -15,10 +15,7 @@ export const SectionWrapper = styled.section`
   align-items: center;
   max-width: 1188px;
   margin: 0 auto 0 auto;
-
-  @media ${({ theme }) => theme.medias.medium} {
-    padding: 0 24px 0 24px;
-  }
+  padding: 0 24px;
 `;
 
 export const TextSection = styled.div`
@@ -65,7 +62,6 @@ export const LogosContainer = styled.div`
   justify-content: center;
 
   a {
-    cursor: pointer;
     display: flex;
     flex-basis: 20%;
     margin-bottom: 48px;

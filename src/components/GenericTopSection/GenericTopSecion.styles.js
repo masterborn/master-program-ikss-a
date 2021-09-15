@@ -10,11 +10,10 @@ export const TopSectionWrapper = styled.div`
     projectsSubpage ? '64px auto 80px auto' : '64px auto 148px auto'};
   align-items: center;
   justify-content: center;
-
+  padding: 0 24px;
   @media ${({ theme }) => theme.medias.medium} {
     margin: ${({ projectsSubpage }) =>
       projectsSubpage ? '32px auto 40px auto' : '32px auto 80px auto'};
-    padding: 0 24px;
   }
 `;
 

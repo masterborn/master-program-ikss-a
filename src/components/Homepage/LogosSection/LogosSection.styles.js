@@ -8,7 +8,7 @@ export const LogosSectionWrapper = styled.div`
   align-items: center;
   margin-bottom: 760px;
 
-  @media ${({theme}) => theme.medias.medium} {
+  @media ${({ theme }) => theme.medias.medium} {
     margin-bottom: 675px;
   }
 `;
@@ -23,10 +23,8 @@ export const LogosTextWrapper = styled.div`
   margin: 0 auto 42px auto;
 
   @media ${({ theme }) => theme.medias.medium} {
+    padding: 0 24px;
     line-height: 32px;
-    margin-left: 24px;
-    margin-right: 24px;
-
   }
 `;
 
@@ -64,6 +62,7 @@ export const PartnerLogosWrapper = styled.div`
   justify-content: center;
   max-width: 1134px;
   margin: 0 auto 0 auto;
+  padding: 0 24px;
   a {
     display: flex;
     flex-basis: 20%;
@@ -72,8 +71,6 @@ export const PartnerLogosWrapper = styled.div`
   }
 
   @media ${({ theme }) => theme.medias.medium} {
-    padding-left: 24px;
-    padding-right: 24px;
     margin: 0 auto 0 auto;
     a {
       flex-basis: 30%;

@@ -24,11 +24,9 @@ export const StyledTabs = styled(Tabs)`
   justify-content: center;
   max-width: 1200px;
   margin: 0 auto 0;
+  padding: 0 24px;
   a {
     text-decoration: none;
-  }
-  @media ${({ theme }) => theme.medias.medium} {
-    padding: 0 24px;
   }
 `;
 
