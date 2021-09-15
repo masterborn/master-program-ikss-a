@@ -31,7 +31,7 @@ const ProjectTile = ({ projectData }) => {
             <a href={linkUrl}>
               <SmallButton icon={linkContainsFacebook}>
                 {linkContainsFacebook && <FacebookIcon />}
-                {linkCaption || 'Przejdź do wydarzenia'}
+                {linkCaption || 'Zobacz więcej'}
               </SmallButton>
             </a>
           </ButtonWrapper>

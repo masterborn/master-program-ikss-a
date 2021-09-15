@@ -29,9 +29,13 @@ export const StyledTabs = styled(Tabs)`
     text-decoration: none;
   }
 
-  @media ${({ theme }) => theme.medias.medium} {
+  @media (max-width: 1080px) {
     padding: 0 24px;
+  }
+
+  @media ${({ theme }) => theme.medias.medium} {
     margin-top: 80px;
+    max-width: 100%;
   }
 `;
 
