@@ -14,16 +14,36 @@ const contentfulClient = {
       return this.cache[contentType];
     }
     if (contentType === 'basicContent') {
-      const response = await axios.get(`${this.baseUrl}basicContent&fields.page[in]=${page}`);
-      const mergedData = await mergeAssets(response.data);
-      this.cache[`${contentType}-${page}`] = mergedData;
-      return this.cache[`${contentType}-${page}`];
+      try {
+        const response = await axios.get(`${this.baseUrl}basicContent&fields.page[in]=${page}`);
+        if (typeof response.data === 'string') {
+          throw new Error('Response data type is not valid.');
+        }
+        if (response.status !== 200) {
+          throw new Error('Invalid response status code.');
+        }
+        const mergedData = await mergeAssets(response.data);
+        this.cache[`${contentType}-${page}`] = mergedData;
+        return this.cache[`${contentType}-${page}`];
+      } catch (error) {
+        throw new Error(error.message);
+      }
     }
 
-    const response = await axios.get(`${this.baseUrl}${contentType}`);
-    const mergedData = await mergeAssets(response.data);
-    this.cache[contentType] = mergedData;
-    return this.cache[contentType];
+    try {
+      const response = await axios.get(`${this.baseUrl}${contentType}`);
+      if (typeof response.data === 'string') {
+        throw new Error('Response data type is not valid.');
+      }
+      if (response.status !== 200) {
+        throw new Error('Invalid response status code.');
+      }
+      const mergedData = await mergeAssets(response.data);
+      this.cache[contentType] = mergedData;
+      return this.cache[contentType];
+    } catch (error) {
+      throw new Error(error.message);
+    }
   },
 
   async getItems(contentType) {
