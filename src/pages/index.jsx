@@ -1,5 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import PropTypes from 'prop-types';
+import Head from 'next/head';
 import contentfulClient from '@root/api/contentfulClient';
 import Header from '@root/components/Homepage/Header/Header';
 import getSocialMedias from '@root/handlers/getSocialMedias';
@@ -8,6 +9,7 @@ import ProjectsTabs from '@root/components/Homepage/ProjectsTabs/ProjectsTabs';
 import ValuesSection from '@root/components/Homepage/ValuesSection/ValuesSection';
 import LogosSection from '@root/components/Homepage/LogosSection/LogosSection';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 
 const Home = ({
   homeApiElements,
@@ -24,7 +26,9 @@ const Home = ({
   const socialMedias = getSocialMedias(commonApiElements);
 
   const valuesHeader = findApiElementByIdentifier(homeApiElements, 'homepage-values').fields;
-  const valuesTiles = ['homepage-tile-1', 'homepage-tile-2', 'homepage-tile-3'].map(tile => findApiElementByIdentifier(homeApiElements, tile));
+  const valuesTiles = ['homepage-tile-1', 'homepage-tile-2', 'homepage-tile-3'].map((tile) =>
+    findApiElementByIdentifier(homeApiElements, tile),
+  );
 
   const logosHeader = findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields
     .title;
@@ -42,8 +46,17 @@ const Home = ({
   const [firstSection] = content;
   const topSectionBodyText = firstSection.content[0].value;
 
+  const metaTitleHomepage = findApiElementByIdentifier(homeApiElements, 'homepage-meta').fields
+    .title;
+  const metaDescriptionHomepage = findApiElementByIdentifier(homeApiElements, 'homepage-meta')
+    .fields.text1;
+
   return (
     <>
+      <Head>
+        <title>{metaTitleHomepage}</title>
+        <meta name="description" content={documentToPlainTextString(metaDescriptionHomepage)} />
+      </Head>
       <Header
         headerTitle={title}
         text={topSectionBodyText}
