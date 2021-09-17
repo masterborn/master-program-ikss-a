@@ -9,45 +9,36 @@ const contentfulClient = {
 
   cache: {},
 
-  async makeRequest(contentType, page) {
-    if (this.cache[contentType]) {
-      return this.cache[contentType];
+  async makeRequest(url) {
+    if (this.cache[url]) {
+      return this.cache[url];
     }
-    if (contentType === 'basicContent') {
-      try {
-        const response = await axios.get(`${this.baseUrl}basicContent&fields.page[in]=${page}`);
-        if (typeof response.data === 'string') {
-          throw new Error('Response data type is not valid.');
-        }
-        if (response.status !== 200) {
-          throw new Error('Invalid response status code.');
-        }
-        const mergedData = await mergeAssets(response.data);
-        this.cache[`${contentType}-${page}`] = mergedData;
-        return this.cache[`${contentType}-${page}`];
-      } catch (error) {
-        throw new Error(error.message);
-      }
-    }
-
+    let response;
     try {
-      const response = await axios.get(`${this.baseUrl}${contentType}`);
-      if (typeof response.data === 'string') {
-        throw new Error('Response data type is not valid.');
-      }
-      if (response.status !== 200) {
-        throw new Error('Invalid response status code.');
-      }
-      const mergedData = await mergeAssets(response.data);
-      this.cache[contentType] = mergedData;
-      return this.cache[contentType];
+      response = await axios.get(url);
     } catch (error) {
-      throw new Error(error.message);
+      throw new Error(`Contentful API: Exception while making request: ${JSON.stringify(error, null, 2)}`);
     }
+    if (typeof response.data === 'string') {
+      throw new Error('Response data type is not valid.');
+    }
+    if (response.status !== 200) {
+      throw new Error('Invalid response status code.');
+    }
+    this.cache[url] = await mergeAssets(response.data);
+    return this.cache[url];
+  },
+
+  async getData(contentType, page) {
+    return this.makeRequest(
+      contentType === 'basicContent' ?
+        `${this.baseUrl}basicContent&fields.page[in]=${page}` :
+        `${this.baseUrl}${contentType}`
+    );
   },
 
   async getItems(contentType) {
-    return this.makeRequest(contentType);
+    return this.getData(contentType);
   },
   async getProjects() {
     return this.getItems('projects');
@@ -59,7 +50,7 @@ const contentfulClient = {
     return this.getItems('partnerLogos');
   },
   async getBasicContent(page) {
-    return this.makeRequest('basicContent', page);
+    return this.getData('basicContent', page);
   },
 };
 
