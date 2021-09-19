@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { useRouter } from 'next/router';
 import { useModal } from '@root/contextProviders/useModal';
+import routes from '@root/handlers/routes';
 import {
   CtaWrapper,
   StyledBodyText,
@@ -20,7 +21,10 @@ const GenericBottomCta = ({ bottomCta }) => {
   };
 
   return (
-    <CtaWrapper projectsSubpage={pathname === '/projekty'} aboutUsSubpage={pathname === '/o-nas'}>
+    <CtaWrapper
+      projectsSubpage={pathname === routes.projects}
+      aboutUsSubpage={pathname === routes.aboutUs}
+    >
       <StyledHeader>{bottomCta.title}</StyledHeader>
       <StyledBodyText>{documentToReactComponents(bottomCta.text1)}</StyledBodyText>
       <ResponsiveButton onClick={openForm}>{bottomCta.linkCaption}</ResponsiveButton>
