@@ -35,11 +35,10 @@ const AboutUs = ({ aboutUsApiElements, boardMembersApiElements }) => {
     aboutUsApiElements,
     'about-us-board-members-text',
   ).fields;
-
-  const metaTitleAboutUs = findApiElementByIdentifier(aboutUsApiElements, 'about-us-meta').fields
-    .title;
-  const metaDescriptionAboutUs = findApiElementByIdentifier(aboutUsApiElements, 'about-us-meta')
-    .fields.text1;
+  const { title: metaTitleAboutUs, text1: metaDescriptionAboutUs } = findApiElementByIdentifier(
+    aboutUsApiElements,
+    'about-us-meta',
+  ).fields;
 
   return (
     <>

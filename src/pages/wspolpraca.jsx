@@ -33,14 +33,8 @@ const Cooperation = ({ cooperationApiElements, partnerLogosApiElements }) => {
   const logosSection = findApiElementByIdentifier(cooperationApiElements, 'cooperation-logos-text');
   const logosTitle = logosSection.fields.title;
   const logosDescription = documentToReactComponents(logosSection.fields.text1);
-  const metaTitleCooperation = findApiElementByIdentifier(
-    cooperationApiElements,
-    'cooperation-meta',
-  ).fields.title;
-  const metaDescriptionCooperation = findApiElementByIdentifier(
-    cooperationApiElements,
-    'cooperation-meta',
-  ).fields.text1;
+  const { title: metaTitleCooperation, text1: metaDescriptionCooperation } =
+    findApiElementByIdentifier(cooperationApiElements, 'cooperation-meta').fields;
   return (
     <>
       <Head>

@@ -45,11 +45,10 @@ const Home = ({
 
   const [firstSection] = content;
   const topSectionBodyText = firstSection.content[0].value;
-
-  const metaTitleHomepage = findApiElementByIdentifier(homeApiElements, 'homepage-meta').fields
-    .title;
-  const metaDescriptionHomepage = findApiElementByIdentifier(homeApiElements, 'homepage-meta')
-    .fields.text1;
+  const { title: metaTitleHomepage, text1: metaDescriptionHomepage } = findApiElementByIdentifier(
+    homeApiElements,
+    'homepage-meta',
+  ).fields;
 
   return (
     <>

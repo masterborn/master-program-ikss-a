@@ -21,10 +21,10 @@ const Projects = ({ projectsApiElements, projectsList }) => {
   const topSectionImageUrl = topSection.fields.image1.fields.file.url;
   const subpageTitle = topSection.fields.title;
   const subpageDescription = documentToReactComponents(topSection.fields.text1);
-  const metaTitleProjects = findApiElementByIdentifier(projectsApiElements, 'projects-meta').fields
-    .title;
-  const metaDescriptionProjects = findApiElementByIdentifier(projectsApiElements, 'projects-meta')
-    .fields.text1;
+  const { title: metaTitleProjects, text1: metaDescriptionProjects } = findApiElementByIdentifier(
+    projectsApiElements,
+    'projects-meta',
+  ).fields;
 
   return (
     <>
