@@ -20,7 +20,7 @@ const GenericBottomCta = ({ bottomCta }) => {
   };
 
   return (
-    <CtaWrapper projectsSubpage={pathname === '/projekty'}>
+    <CtaWrapper projectsSubpage={pathname === '/projekty'} aboutUsSubpage={pathname === '/o-nas'}>
       <StyledHeader>{bottomCta.title}</StyledHeader>
       <StyledBodyText>{documentToReactComponents(bottomCta.text1)}</StyledBodyText>
       <ResponsiveButton onClick={openForm}>{bottomCta.linkCaption}</ResponsiveButton>

@@ -14,14 +14,20 @@ export const CtaWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 164px auto 148px auto;
+  margin: ${({ projectsSubpage }) => {
+    if (projectsSubpage) return '140px auto 148px auto';
+    return '148px auto 148px auto';
+  }};
   text-align: center;
   max-width: 635px;
 
   @media ${({ theme }) => theme.medias.medium} {
     padding: 0 24px 0 24px;
-    margin: ${({ projectsSubpage }) =>
-      projectsSubpage ? '80px auto 103px auto' : '104px auto 131px auto'};
+    margin: ${({ projectsSubpage, aboutUsSubpage }) => {
+      if (aboutUsSubpage) return '104px auto 131px auto';
+      if (projectsSubpage) return '56px auto 103px auto';
+      return '100px auto 131px auto';
+    }};
   }
 `;
 
