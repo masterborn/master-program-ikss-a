@@ -22,6 +22,7 @@ import {
   VideoResponsive,
   ResponsiveHeader,
   ResponsiveButton,
+  Wrapper,
 } from './ProjectsTabs.styles';
 
 const ProjectsTabs = ({ projectsApiElements, latestProjectsHeader }) => {
@@ -46,8 +47,8 @@ const ProjectsTabs = ({ projectsApiElements, latestProjectsHeader }) => {
 
       {projectsData.map(
         ({ title, date, description, linkUrl, linkCaption, videoUrl, imageUrl }) => (
-          <>
-            <StyledTabPanel key={title}>
+          <Wrapper key={title}>
+            <StyledTabPanel>
               {videoUrl ? (
                 <VideoResponsive>
                   <StyledVideo
@@ -85,7 +86,7 @@ const ProjectsTabs = ({ projectsApiElements, latestProjectsHeader }) => {
                 )}
               </StyledTabTextSection>
             </StyledTabPanel>
-          </>
+          </Wrapper>
         ),
       )}
       <a href="/projekty">

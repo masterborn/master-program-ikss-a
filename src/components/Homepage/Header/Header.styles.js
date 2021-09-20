@@ -172,6 +172,9 @@ export const Socials = styled.div`
   align-items: center;
   width: 835px;
 
+  svg {
+  }
+
   a {
     display: flex;
     text-decoration: none;
@@ -214,3 +217,5 @@ export const SocialIconWrapper = styled.div`
     height: 32px;
   }
 `;
+
+export const Wrapper = styled.div``;

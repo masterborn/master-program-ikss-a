@@ -37,27 +37,32 @@ const Footer = ({ copyrightText, links, socialMedias }) => {
       <FooterSocialIconsWrapper>
         {socialMedias.map(({ title, url, logo }) => (
           <a key={title} href={url} aria-label={title}>
-            <Image src={logo} />
+            <Image src={logo} alt={title} />
           </a>
         ))}
       </FooterSocialIconsWrapper>
       <Link href={routes.homepage}>
-        <a href={routes.homepage}>
+        <a href={routes.homepage} aria-label="Redirect to homepage">
           <LogoWrapper>
-            <Image src={ikssLogo} layout="fill" />
+            <Image src={ikssLogo} layout="fill" alt="Ikss logo" />
           </LogoWrapper>
         </a>
       </Link>
       <SmallBodyText>{copyrightText}</SmallBodyText>
-      <NoDecorationLink href="https://masterborn.com/">
+      <NoDecorationLink href="https://masterborn.com/" rel="noreferrer">
         <SmallBodyText>Made with</SmallBodyText>
         <HeartWrapper>
-          <Image src={heartIcon} />
+          <Image src={heartIcon} alt="Heart icon" />
         </HeartWrapper>
         <SmallBodyText>by MasterBorn Software</SmallBodyText>
       </NoDecorationLink>
-      <ButtonCircle homepage={pathname === routes.homepage} type="button" onClick={scrollToTop}>
-        <Image src={upArrow} />
+      <ButtonCircle
+        homepage={pathname === routes.homepage}
+        name="scroll-up-button"
+        type="button"
+        onClick={scrollToTop}
+      >
+        <Image src={upArrow} alt="Scroll up" />
       </ButtonCircle>
     </FooterWrapper>
   );
