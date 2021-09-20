@@ -172,9 +172,6 @@ export const Socials = styled.div`
   align-items: center;
   width: 835px;
 
-  svg {
-  }
-
   a {
     display: flex;
     text-decoration: none;
@@ -205,6 +202,34 @@ export const StyledSocials = styled.a`
 export const SocialLinkWrapper = styled.div`
   display: flex;
   align-items: center;
+  position: relative;
+
+  div::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    background-color: ${getColor('ikssBlue')};
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  &:hover div::after {
+    opacity: 0.15;
+  }
+
+  @media ${({ theme }) => theme.medias.medium} {
+    &:hover div::after {
+      opacity: 0;
+    }
+
+    &:active div::after {
+      opacity: 0.15;
+    }
+  }
 `;
 
 export const SocialIconWrapper = styled.div`
