@@ -14,6 +14,7 @@ export const HistorySectionWrapper = styled.div`
   justify-content: center;
   padding: 0 24px 0 24px;
   margin: 0 auto 148px auto;
+  max-width: 1197px;
 
   @media ${({ theme }) => theme.medias.medium} {
     display: flex;
