@@ -67,6 +67,7 @@ export const Tile = styled.div`
   padding: 0 24px 48px;
   text-align: center;
   transition: transform 0.2s;
+  background-color: ${getColor('white')};
 
   &:nth-child(2) {
     margin: 0 24px;
