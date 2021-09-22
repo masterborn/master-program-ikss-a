@@ -32,7 +32,7 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
               Skontaktuj się
             </HeroButton>
           </LeftBlock>
-          <StyledVideo src={`https:${video}`} muted autoPlay loop />
+          <StyledVideo src={`https:${video}`} muted autoPlay playsInline loop />
         </MainContent>
         <HeaderSocialMediaWrapper>
           <Socials ref={socialsRef}>
