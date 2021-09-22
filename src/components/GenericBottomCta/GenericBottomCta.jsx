@@ -27,7 +27,9 @@ const GenericBottomCta = ({ bottomCta }) => {
     >
       <StyledHeader>{bottomCta.title}</StyledHeader>
       <StyledBodyText>{documentToReactComponents(bottomCta.text1)}</StyledBodyText>
-      <ResponsiveButton onClick={openForm}>{bottomCta.linkCaption}</ResponsiveButton>
+      <ResponsiveButton name="open-form" onClick={openForm}>
+        {bottomCta.linkCaption}
+      </ResponsiveButton>
     </CtaWrapper>
   );
 };
