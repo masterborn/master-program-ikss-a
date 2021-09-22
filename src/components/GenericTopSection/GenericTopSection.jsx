@@ -13,7 +13,7 @@ const GenericTopSection = ({ title, imageUrl, subpageDescription }) => {
   return (
     <TopSectionWrapper projectsSubpage={pathname === '/projekty'}>
       <ImageContainer>
-        <Image src={`https:${imageUrl}`} layout="fill" objectFit="cover" />
+        <Image src={`https:${imageUrl}`} layout="fill" objectFit="cover" alt="subpage-icon" />
       </ImageContainer>
       <StyledHeader>{title}</StyledHeader>
       <StyledSubpageDescription>{subpageDescription}</StyledSubpageDescription>

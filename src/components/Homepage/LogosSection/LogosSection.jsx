@@ -25,7 +25,7 @@ const LogosSection = ({ logosHeader, logosText, partnerLogos }) => {
       </LogosTextWrapper>
       <PartnerLogosWrapper>
         {logosData.map(({ width, height, imageUrl, linkUrl, title }) => (
-          <a href={linkUrl}>
+          <a href={linkUrl} key={title}>
             <Image src={`https:${imageUrl}`} alt={title} width={width} height={height} />
           </a>
         ))}
