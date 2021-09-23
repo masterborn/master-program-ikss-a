@@ -25,9 +25,9 @@ import {
   ButtonPlaceholder,
 } from './MemberTile.styles';
 
-const MemberTile = ({ memberInfo }) => {
+const MemberTile = ({ memberInfo, isHoneycomb }) => {
   const [isTileOpen, setIsTileOpen] = useState(false);
-  const nameSplitted = memberInfo.name.split(' ');
+  const nameSplitted = { ...memberInfo }.name.split(' ');
 
   const handleTile = () => {
     setIsTileOpen(!isTileOpen);
@@ -37,6 +37,7 @@ const MemberTile = ({ memberInfo }) => {
     <TileContainer
       className={isTileOpen ? 'opened' : 'closed'}
       onClick={!isTileOpen ? handleTile : undefined}
+      isHoneycomb={isHoneycomb}
     >
       {memberInfo.image ? (
         <ImageWrapper isTileOpen={isTileOpen}>
@@ -91,6 +92,7 @@ const MemberTile = ({ memberInfo }) => {
 MemberTile.propTypes = {
   memberInfo: PropTypes.objectOf(oneOfType([PropTypes.string, PropTypes.object, PropTypes.number]))
     .isRequired,
+  isHoneycomb: PropTypes.bool.isRequired
 };
 
 export default MemberTile;

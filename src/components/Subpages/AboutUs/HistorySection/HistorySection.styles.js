@@ -91,6 +91,10 @@ export const StyledHistoryTextBottom = styled(BodyText)`
   margin-top: -55px;
   color: ${getColor('steel')};
 
+  & p:first-child {
+    margin-bottom: 32px;
+  }
+
   @media (max-width: 1300px) {
     max-width: 448px;
     margin-top: 20px;

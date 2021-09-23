@@ -34,19 +34,16 @@ const Home = ({
 
   const {
     fields: {
-      text1: { content },
+      text1,
       title,
     },
   } = homeTopSection;
-
-  const [firstSection] = content;
-  const topSectionBodyText = firstSection.content[0].value;
 
   return (
     <>
       <Header
         headerTitle={title}
-        text={topSectionBodyText}
+        text={text1}
         video={topSectionVideoUrl}
         socialMedias={socialMedias}
       />
