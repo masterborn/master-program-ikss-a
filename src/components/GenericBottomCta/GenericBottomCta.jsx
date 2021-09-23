@@ -14,10 +14,7 @@ const GenericBottomCta = ({ bottomCta }) => {
   const { handleModal } = useModal();
   const { pathname } = useRouter();
 
-  const openForm = () => {
-    handleModal('open');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const openForm = () => handleModal('open');
 
   return (
     <CtaWrapper projectsSubpage={pathname === '/projekty'}>

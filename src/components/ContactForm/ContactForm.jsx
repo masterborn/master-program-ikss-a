@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 // I had to disable eslint because react-hook-form requires props spreading
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { useMutation } from 'react-query';
@@ -8,28 +8,35 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { useModal } from '@root/contextProviders/useModal';
 import { useForm } from 'react-hook-form';
 import { useScroll } from '@root/contextProviders/useScroll';
+import { useWindowSize } from 'react-use';
 import CloseIcon from '../icons/svgs/coolicon.svg';
 import LoaderIcon from '../icons/svgs/loader.svg';
 import SuccessIcon from '../icons/svgs/formSuccess.svg';
 import ErrorIcon from '../icons/svgs/formError.svg';
-import { FormWrapper, Form, StyledH3, Description, Names, NameField, FormField, Label, Declaration, PrivacyLink, Info, FormSubmit, Layer, CloseButton, UserCode } from './ContactForm.styles';
+import { FormWrapper, Form, StyledH3, Description, Names, NameField, FormField, Label, Declaration, PrivacyInfo, Info, FormSubmit, Layer, CloseButton, UserCode, Reset } from './ContactForm.styles';
 import Input from '../FormElements/Input';
 
 
+const url = process.env.NEXT_PUBLIC_FORMCARRY_URL;
+
 const ContactForm = ({ formText: { fields: { title, text1: description } }, formTooltip: { fields: { text1: tooltip } }, isModal }) => {
 
-    const { formRef } = useScroll();
+    const formRef = useRef(null);
+
+    const { formWrapperRef } = useScroll();
+
+    const { height: windowHeight } = useWindowSize();
 
     const { modalOpen, handleModal } = useModal();
 
     const [closed, setClosed] = useState(false);
 
-    const [messages, setMessages] = useState({ name: false, surname: false, email: false, topic: false, content: false });
+    const [messages, setMessages] = useState({ name: false, surname: false, email: false, topic: false, content: false, privacy: false });
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-    const { isLoading, isError, isSuccess, mutate } = useMutation(async (mail) => {
-        const response = await axios.post('https://formcarry.com/s/D_0rPBQNVQl', {
+    const { isLoading, isError, isSuccess, mutate, reset: resetQuery } = useMutation(async (mail) => {
+        const response = await axios.post(url, {
             name: mail.name,
             surname: mail.surname,
             email: mail.email,
@@ -46,10 +53,13 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
     const onFormSubmit = (data) => mutate(data);
 
     const displayTooltip = (name) => {
-        setMessages(prevState => ({ ...prevState, [name]: !messages[name] }));
-        setTimeout(() => setMessages(prevState => (
-            { ...prevState, [name]: false }
-        )), 5000);
+        if (messages[name]) setMessages(prevState => ({ ...prevState, [name]: false }));
+        else {
+            setMessages(prevState => ({ ...prevState, [name]: !messages[name] }));
+            setTimeout(() => setMessages(prevState => (
+                { ...prevState, [name]: false }
+            )), 5000);
+        }
     };
 
     const getBtnContent = () => {
@@ -64,12 +74,13 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
         setTimeout(() => {
             handleModal('close');
             setClosed(false);
+            if (isError || isSuccess) resetQuery();
         }, 400);
-    }
+    };
 
     return (
-        <FormWrapper ref={formRef} modalOpen={modalOpen} isModal={isModal} >
-            <Form modalOpen={modalOpen} isModal={isModal} closed={closed} onSubmit={handleSubmit(onFormSubmit)} >
+        <FormWrapper ref={formWrapperRef} modalOpen={modalOpen} isModal={isModal} >
+            <Form modalOpen={modalOpen} isModal={isModal} closed={closed} onSubmit={handleSubmit(onFormSubmit)} ref={formRef} >
                 <StyledH3>{title}</StyledH3>
                 <Description as='div'>{documentToReactComponents(description)}</Description>
                 <Names>
@@ -79,10 +90,10 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                             id='name'
                             name='name'
                             text='Wpisz swoje imię'
-                            {...register("name", { required: true })}
+                            {...register("name", { required: true, minLength: 2, maxLength: 255 })}
                             error={!!errors.name}
                             icon={!!errors.name}
-                            message='Wpisz imię'
+                            message='Imię powinno zawierać od 2 do 255 znaków'
                             activeMessage={messages.name}
                             displayTooltip={displayTooltip}
                         />
@@ -93,10 +104,10 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                             id='surname'
                             name='surname'
                             text='Wpisz swoje nazwisko'
-                            {...register("surname", { required: true })}
+                            {...register("surname", { required: true, minLength: 2, maxLength: 255 })}
                             error={!!errors.surname}
                             icon={!!errors.surname}
-                            message='Wpisz nazwisko'
+                            message='Nazwisko powinno zawierać od 2 do 255 znaków'
                             activeMessage={messages.surname}
                             displayTooltip={displayTooltip}
                         />
@@ -111,7 +122,7 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                         {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
                         error={!!errors.email}
                         icon={!!errors.email}
-                        message='Wpisz adres e-mail'
+                        message='Wpisz adres e-mail w poprawnym formacie'
                         activeMessage={messages.email}
                         displayTooltip={displayTooltip}
                     />
@@ -122,10 +133,10 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                         id='topic'
                         name='topic'
                         text='Temat wiadomości'
-                        {...register("topic", { required: true })}
+                        {...register("topic", { required: true, minLength: 5, maxLength: 255 })}
                         error={!!errors.topic}
                         icon={!!errors.topic}
-                        message='Wpisz temat'
+                        message='Temat powinien zawierać od 5 do 255 znaków'
                         activeMessage={messages.topic}
                         displayTooltip={displayTooltip}
                     />
@@ -137,10 +148,10 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                         name='content'
                         text='O czym chcesz z nami porozmawiać?'
                         isTextArea
-                        {...register("content", { required: true })}
+                        {...register("content", { required: true, minLength: 15, maxLength: 5000 })}
                         error={!!errors.content}
                         icon={!!errors.content}
-                        message='Wpisz treść wiadomości'
+                        message='Wiadomość powinna zawierać od 15 do 5000 znaków'
                         activeMessage={messages.content}
                         displayTooltip={displayTooltip}
                     />
@@ -152,9 +163,9 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                         {...register('consent', { required: true })}
                         error={!!errors.consent}
                         icon={!!errors.consent} />
-                    <Label htmlFor='consent' as='label'>Zapoznałem się z
-                        <PrivacyLink as='a' target='_blank' href="https://www.freeprivacypolicy.com/free-privacy-policy-generator/">informacją o administratorze i przetwarzaniu danych.</PrivacyLink>
-                        <Info>{documentToReactComponents(tooltip)}</Info>
+                    <Label as='label'>Zapoznałem się z
+                        <PrivacyInfo as='span' name='privacy' onClick={() => displayTooltip('privacy')} >informacją o administratorze i przetwarzaniu danych.</PrivacyInfo>
+                        <Info activeMessage={messages.privacy} isModal={isModal}>{documentToReactComponents(tooltip)}</Info>
                     </Label>
                 </Declaration>
                 <UserCode
@@ -166,7 +177,6 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                     process={isLoading}
                     correct={isSuccess}
                     failure={isError}
-                    onClick={() => { if (isSuccess) closeModal() }}
                 >
                     {
                         getBtnContent()
@@ -176,8 +186,9 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                     <CloseButton type='button' onClick={closeModal} ><img src={CloseIcon.src} alt="close-icon" /> </CloseButton> :
                     null
                 }
+                {isSuccess && <Reset onClick={closeModal} isModal={isModal} />}
             </Form>
-            {modalOpen ? <Layer closed={closed} onClick={closeModal} /> : null}
+            {modalOpen ? <Layer closed={closed} onClick={closeModal} formHeight={formRef.current.offsetHeight} windowHeight={windowHeight} /> : null}
         </FormWrapper>
     )
 }

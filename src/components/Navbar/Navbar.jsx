@@ -29,7 +29,6 @@ const Navbar = ({ socialMedias, links }) => {
 
     const openContactModal = () => {
         setActive(false);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
         handleModal('open');
     };
 
