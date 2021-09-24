@@ -53,8 +53,17 @@ const slideUp = keyframes`
     }
 `;
 
+const rotate = keyframes`
+    from{
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+`;
+
 export const FormWrapper = styled.div`
-    position: absolute ;
+    position: ${({isModal}) => isModal ? 'fixed' : 'absolute'};
     top: ${({isModal}) => isModal ? '0' : 'auto'};
     bottom: ${({isModal}) => isModal ? '0' : '449px'};
     left: 0;
@@ -66,7 +75,12 @@ export const FormWrapper = styled.div`
     }};
     padding: 0 24px;
     z-index: ${({isModal}) => isModal ? '3' : '1'};
-    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+    display: none; 
+}
 
     @media ${({ theme }) => theme.medias.medium} {
         bottom: ${({isModal}) => isModal ? '0' : '578px'};
@@ -78,11 +92,21 @@ export const Layer = styled.div`
         z-index: -1;
         top: 0;
         left: 0;
+        height: ${({formHeight, windowHeight}) => {
+            if(windowHeight > formHeight + 368) return `${windowHeight}px`
+            return `${formHeight + 368}px`
+        }};
         width: 100%;
-        height: 100%;
         background-color: #1A2847;
         cursor: pointer;
         animation: ${({closed}) => closed ? css`${disappear} .3s .1s both` : css`${appear} .3s both` };
+
+        @media ${({theme}) => theme.medias.medium} {
+            height: ${({formHeight, windowHeight}) => {
+            if(windowHeight > formHeight) return `${windowHeight}px`
+            return `${formHeight + 66}px`
+        }};
+        }
 `;
 
 export const Form = styled.form`
@@ -91,8 +115,8 @@ export const Form = styled.form`
     display: flex;
     flex-direction: column;
     width: 748px;
-    height: 907px;
-    padding: 48px 80px;
+    height: ${({isModal}) => isModal ? '968px' : '907px'};
+    padding: ${({isModal}) => isModal ? '78px 80px' : '48px 80px'};;
     border-radius: 16px;
     box-shadow: 3.38443px 55.8976px 80px rgba(97, 121, 139, 0.07), 1.71337px 28.2982px 34.875px rgba(97, 121, 139, 0.04725), 0.676885px 11.1795px 13px rgba(97, 121, 139, 0.035), 0.148069px 2.44552px 4.625px rgba(97, 121, 139, 0.02275);
     background-color: ${getColor('white')};
@@ -174,8 +198,8 @@ export const Label = styled(SmallBodyText)`
     }
     @media ${({ theme }) => theme.medias.medium} {
         &:first-child {
-            margin-bottom: 2px;
-        }        
+            margin-bottom: 2px; 
+        }    
     }
 `;
 
@@ -195,32 +219,40 @@ export const Declaration = styled.div`
     @media ${({ theme }) => theme.medias.medium} {
         margin: 0 0 24px 3.5px;
 
-        label, a {
+        label, span {
             font-size: 12px;
             line-height: 15px;
         }
     }
 `;
 
-export const PrivacyLink = styled(SmallBodyText)`
+export const PrivacyInfo = styled(SmallBodyText)`
     color: ${getColor('steel70')};
     font-weight: 700;
     margin-left: 4px;
 
+    &:hover {
+        color: ${getColor('ikssBlue')};
+    }
+
+    @media ${({theme}) => theme.medias.medium} {
+        &:hover {
+            color: ${getColor('steel70')};
+        }
+        &:active {
+            color: ${getColor('ikssBlue')};
+        }
+    }
+
     &:hover + div {
         opacity: 1;
         z-index: 1;
-
-        @media ${({theme}) => theme.medias.medium} {
-            opacity: 0;
-            z-index: -1;
-        }
     }
 `;
 
 export const Info = styled.div`
     position: absolute;
-    bottom: 167px;
+    bottom: ${({isModal}) => isModal ? '197px' : '167px'};
     left: 234px;
     z-index: -1;
     width: 347px;
@@ -238,7 +270,10 @@ export const Info = styled.div`
     @media ${({ theme }) => theme.medias.medium} {
         width: 223px;
         bottom: 132px;
-        left: auto;
+        left: calc(50% - 112px);
+        z-index: 1;
+        opacity: 1;
+        visibility: ${({activeMessage}) => activeMessage ? 'visible' : 'hidden'};
     }
 `;
 
@@ -307,12 +342,31 @@ export const Info = styled.div`
         margin-right: ${({process}) => process ? 0 : '12px'};
         width: 24px;
         height: 24px;
-
+        animation: ${({process}) => process ? css`${rotate} 1s linear infinite` : 'none' };
+        
         @media ${({ theme }) => theme.medias.medium} {
             width: 20px;
             height: 20px;
         }
     }`;   
+
+export const Reset = styled.div`
+    position: absolute;
+    bottom: ${({isModal}) => isModal ? '78px' : '48px' };
+    left: 0;
+    width: calc(100% - 160px); 
+    height: 48px;
+    margin: 0 80px;
+    border-radius: 26px;
+    cursor: pointer;
+
+    @media ${({ theme }) => theme.medias.medium} {
+        bottom: 32px;
+        width: calc(100% - 32px);
+        margin: 0 16px;
+        height: 36px;
+    }
+`;
 
 export const CloseButton = styled.button`
     position: absolute;

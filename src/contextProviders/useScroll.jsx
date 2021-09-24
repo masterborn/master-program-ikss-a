@@ -11,11 +11,11 @@ export const ScrollProvider = ({ children }) => {
 
     const { pathname } = useRouter();
 
-    const formRef = useRef(null);
+    const formWrapperRef = useRef(null);
 
     const socialsRef = useRef(null);
 
-    const scrollToForm = () => formRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    const scrollToForm = () => formWrapperRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
 
     const handleScroll = useCallback(() => {
         if (pathname === routes.homepage) {
@@ -38,7 +38,7 @@ export const ScrollProvider = ({ children }) => {
     }, [handleScroll]);
 
 
-    return <ScrollContext.Provider value={{ visible, scrollToForm, formRef, socialsRef }}>{children}</ScrollContext.Provider>;
+    return <ScrollContext.Provider value={{ visible, scrollToForm, formWrapperRef, socialsRef }}>{children}</ScrollContext.Provider>;
 }
 
 ScrollProvider.propTypes = {

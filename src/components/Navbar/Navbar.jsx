@@ -32,15 +32,14 @@ const Navbar = ({ socialMedias, links }) => {
 
   const { visible, scrollToForm } = useScroll();
 
+  const openContactModal = () => {
+        setActive(false);
+        handleModal('open');
+    };
+
   const goToForm = () => {
     setActive(false);
     scrollToForm();
-  };
-
-  const openContactModal = () => {
-    setActive(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    handleModal('open');
   };
 
   const getActivePath = (requiredPath, currentPath) => (requiredPath === currentPath ? true : '');
