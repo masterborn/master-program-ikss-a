@@ -51,7 +51,7 @@ export const LeftBlock = styled.div`
   @media ${({ theme }) => theme.medias.medium} {
     padding: 0 24px 0 24px;
     margin-left: 0;
-    max-height: auto;
+    max-height: none;
     margin-bottom: 40px;
   }
 `;
@@ -167,6 +167,10 @@ export const HeaderSocialMediaWrapper = styled.div`
     padding: 24px 40px 24px 40px;
     border-radius: 16px;
     width: 100%;
+  }
+
+  @media(max-width: 400px) {
+    padding: 24px;
   }
 `;
 
