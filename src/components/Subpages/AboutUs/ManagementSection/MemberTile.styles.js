@@ -23,7 +23,7 @@ export const TileContainer = styled.div`
     0.676885px 11.1795px 13px rgba(97, 121, 139, 0.035),
     0.148069px 2.44552px 4.625px rgba(97, 121, 139, 0.02275);
   border-radius: 16px;
-  transition: transform 0.4s;
+  transition: transform 0.2s;
 
   &:nth-child(2), &:nth-child(5), &:nth-child(7) {
     transform: ${({isHoneycomb}) => isHoneycomb ? 'translateY(-50%)' : 'none'};
@@ -150,7 +150,7 @@ export const ArrowButton = styled.button`
   cursor: pointer;
   display: none;
   margin-left: auto;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.3s ease-in-out;
   &.opened {
     transform: rotate(180deg);
     position: absolute;
@@ -183,7 +183,7 @@ export const AdditionalInfo = styled.div`
   @media ${({ theme }) => theme.medias.medium} {
     display: ${({ isTileOpen }) => (isTileOpen ? 'flex' : 'none')};
     transform-origin: center top;
-    animation: ${({isTileOpen}) => isTileOpen ? css`${scaleUp} .2s both` : 'none'} ; 
+    animation: ${({isTileOpen}) => isTileOpen ? css`${scaleUp} .3s linear both` : 'none'} ; 
   }
 `;
 

@@ -33,9 +33,9 @@ const Navbar = ({ socialMedias, links }) => {
   const { visible, scrollToForm } = useScroll();
 
   const openContactModal = () => {
-        setActive(false);
-        handleModal('open');
-    };
+    setActive(false);
+    handleModal('open');
+  };
 
   const goToForm = () => {
     setActive(false);
@@ -92,7 +92,7 @@ const Navbar = ({ socialMedias, links }) => {
         </ContactButton>
         <Socials>{menuSocials}</Socials>
       </MobileMenuWrapper>
-      <Layer active={active} />
+      <Layer active={active} onClick={() => setActive(false)} />
     </Nav>
   );
 };

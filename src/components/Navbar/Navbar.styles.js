@@ -225,4 +225,5 @@ export const Layer = styled.div`
   background-color: #1a2847;
   opacity: ${({ active }) => (active ? '0.6' : '0')};
   transition: opacity 0.3s, visibility 0.3s;
+  cursor: pointer;
 `;
