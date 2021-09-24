@@ -10,6 +10,7 @@ import AppProviders from '@root/contextProviders/AppProviders';
 import Layout from '../components/Layout/Layout';
 
 const App = (props) => {
+
   const { Component, pageProps, commonApiElements, contactFormText, contactFormTooltip } = props;
 
   return (
