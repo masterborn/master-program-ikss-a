@@ -10,6 +10,7 @@ export const Embla = styled.div`
   border-radius: 16px;
   display: none;
   width: 100%;
+  background-color: ${getColor('white')};
 
   @media ${({ theme }) => theme.medias.medium} {
     display: block;
