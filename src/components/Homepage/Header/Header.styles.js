@@ -9,6 +9,10 @@ import {
 import { H1, H5, BodyText } from '@root/components/typography/Typography';
 import { SecondaryBigButton } from '@root/components/Button/Button.styles';
 
+export const Wrapper = styled.div`
+  background-image: ${getColor('backgroundGradient')};
+`;
+
 export const HeroSection = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -24,7 +28,6 @@ export const MainContent = styled.div`
 
   @media ${({ theme }) => theme.medias.medium} {
     flex-direction: column-reverse;
-    padding: 0 0 40px 0;
   }
 `;
 
@@ -108,6 +111,7 @@ export const HeroLink = styled(H5)`
 export const HeroBodyText = styled(BodyText)`
   margin-top: 32px;
   max-width: 416px;
+  color: ${getColor('steel')};
 
   @media (max-width: 1520px) {
     margin-top: 12px;

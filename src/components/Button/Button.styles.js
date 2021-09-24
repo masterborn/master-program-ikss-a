@@ -43,26 +43,27 @@ export const BigButton = styled.button`
 export const SecondaryBigButton = styled(BigButton)`
   border: 2px solid;
   border-color: ${getColor('navy')};
-  background-color: ${getColor('white')};
+  background-color: transparent;
   color: ${getColor('navy')};
 
   &:disabled,
   &:disabled:hover {
     color: #babec7;
     border-color: #babec7;
-    background-color: ${getColor('white')};
+    background-color: transparent;
   }
 
   &:hover {
     border-color: #3c4862;
     color: #3c4862;
     box-shadow: none;
-    background-color: ${getColor('white')};
+    background-color: transparent;
   }
 
   &:active {
     border-color: #535e75;
     color: #535e75;
+    background-color: transparent;
   }
 
   svg path {

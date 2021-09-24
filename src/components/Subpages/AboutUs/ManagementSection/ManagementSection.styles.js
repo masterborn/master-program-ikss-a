@@ -11,13 +11,19 @@ import { H3 } from '@root/components/typography/Typography';
 export const SectionWrapper = styled.section`
   display: flex;
   flex-direction: column;
-  max-width: 1200px;
-  margin: 0 auto 0 auto;
+  max-width: 1248px;
+  margin: ${({isHoneycomb}) => isHoneycomb ? '0 auto -76px' : '0 auto 164px'} ;
   justify-content: center;
   align-items: center;
+  padding: 0 24px;
+
+  @media(max-width: 1300px) {
+    padding: ${({isHoneycomb}) => isHoneycomb ? '0 18px' : '0 24px'};
+  }
 
   @media ${({ theme }) => theme.medias.medium} {
-    padding: 0 24px 0 24px;
+    padding: 0 24px;
+    margin: 0 auto;
   }
 `;
 
@@ -26,7 +32,7 @@ export const TextSection = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: ${({isHoneycomb}) => isHoneycomb ? '328px' : '64px'};
 
   @media ${({ theme }) => theme.medias.medium} {
     margin-bottom: 56px;
@@ -62,6 +68,10 @@ export const TilesWrapper = styled.div`
   justify-content: center;
   gap: 24px;
   width: 100%;
+
+  @media(max-width: 1300px) {
+    gap: 16px;
+  }
 
   @media ${({ theme }) => theme.medias.medium} {
     flex-direction: column;

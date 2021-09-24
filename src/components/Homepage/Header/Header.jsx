@@ -1,8 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
 import { useScroll } from '@root/contextProviders/useScroll';
-import PropTypes from 'prop-types';
+import PropTypes, { oneOfType } from 'prop-types';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import {
+  Wrapper,
   HeroSection,
   MainContent,
   LeftBlock,
@@ -23,12 +25,12 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
   const { socialsRef, scrollToForm } = useScroll();
 
   return (
-    <>
+    <Wrapper>
       <HeroSection>
         <MainContent>
           <LeftBlock>
             <HeroHeading>{headerTitle}</HeroHeading>
-            <HeroBodyText>{text}</HeroBodyText>
+            <HeroBodyText as='div' >{documentToReactComponents(text)}</HeroBodyText>
             <HeroButton alt="CTA" onClick={scrollToForm}>
               Skontaktuj się
             </HeroButton>
@@ -52,13 +54,13 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
           </Socials>
         </HeaderSocialMediaWrapper>
       </HeroSection>
-    </>
+    </Wrapper>
   );
 };
 
 Header.propTypes = {
   headerTitle: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.objectOf(oneOfType([PropTypes.object, PropTypes.array, PropTypes.string])).isRequired,
   video: PropTypes.string.isRequired,
   socialMedias: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
