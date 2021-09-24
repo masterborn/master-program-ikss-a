@@ -10,7 +10,6 @@ import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import ContactForm from '../ContactForm/ContactForm';
 
-
 const Layout = ({ children, commonApiElements, formContent }) => {
 
   const { pathname } = useRouter();

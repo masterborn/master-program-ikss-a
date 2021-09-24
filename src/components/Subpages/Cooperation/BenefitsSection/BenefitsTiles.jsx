@@ -13,11 +13,11 @@ const BenefitsTiles = ({ benefitsTiles }) => (
     {benefitsTiles.map(
       ({
         fields: {
-          text1: text,
+          text1,
+          title,
           image1: {
             fields: {
               file: { url },
-              title,
             },
           },
         },
@@ -26,7 +26,7 @@ const BenefitsTiles = ({ benefitsTiles }) => (
           <img src={`https://${url}`} alt="title" />
           <BenefitsTileHeading>{title}</BenefitsTileHeading>
           <BenefitsTileDescription as="div">
-            {documentToReactComponents(text)}
+            {documentToReactComponents(text1)}
           </BenefitsTileDescription>
         </BenefitsTile>
       ),

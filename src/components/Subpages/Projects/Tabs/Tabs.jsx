@@ -10,6 +10,7 @@ import {
   FirstProjectsSection,
   SecondProjectsSection,
   ResponsiveButton,
+  Wrapper,
 } from './Tabs.styles';
 import ProjectTile from './ProjectTile';
 import Cta from './Cta';
@@ -34,28 +35,28 @@ const Tabs = ({ projectsList, middleCta }) => {
     <StyledTabs>
       <StyledTabList>
         {uniqueProjectsYears.map((year) => (
-          <StyledTab>
+          <StyledTab key={year}>
             <ResponsiveButton className="tab-button">{year}</ResponsiveButton>
           </StyledTab>
         ))}
       </StyledTabList>
       {uniqueProjectsYears.map((year) => (
-        <>
+        <Wrapper key={year}>
           <StyledTabPanel>
             <FirstProjectsSection oneProject={projectsByYear[year].length === 1}>
               {projectsByYear[year].slice(0, 4).map((project) => (
-                <ProjectTile projectData={project} />
+                <ProjectTile projectData={project} key={project.title} />
               ))}
             </FirstProjectsSection>
 
             {projectsByYear[year].length >= 3 && <Cta middleCta={middleCta} />}
             <SecondProjectsSection oneProject={projectsByYear[year].length === 5}>
               {projectsByYear[year].slice(4).map((project) => (
-                <ProjectTile projectData={project} />
+                <ProjectTile projectData={project} key={project.title} />
               ))}
             </SecondProjectsSection>
           </StyledTabPanel>
-        </>
+        </Wrapper>
       ))}
     </StyledTabs>
   );

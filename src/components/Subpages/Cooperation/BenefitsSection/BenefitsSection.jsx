@@ -11,7 +11,7 @@ const BenefitsSection = ({ title, benefitsTiles }) => (
 );
 
 BenefitsSection.propTypes = {
-  title: PropTypes.objectOf(PropTypes.any).isRequired,
+  title: PropTypes.string.isRequired,
   benefitsTiles: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

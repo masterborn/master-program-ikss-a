@@ -242,3 +242,5 @@ export const SeeProjectsButton = styled(SecondaryBigButton)`
     margin: 32px 0 80px 0;
   }
 `;
+
+export const Wrapper = styled.div``;
