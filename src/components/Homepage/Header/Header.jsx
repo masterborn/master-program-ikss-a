@@ -4,7 +4,7 @@ import { useScroll } from '@root/contextProviders/useScroll';
 import PropTypes, { oneOfType } from 'prop-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import {
-  Wrapper,
+  HeaderWrapper,
   HeroSection,
   MainContent,
   LeftBlock,
@@ -25,7 +25,7 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
   const { socialsRef, scrollToForm } = useScroll();
 
   return (
-    <Wrapper>
+    <HeaderWrapper>
       <HeroSection>
         <MainContent>
           <LeftBlock>
@@ -54,7 +54,7 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
           </Socials>
         </HeaderSocialMediaWrapper>
       </HeroSection>
-    </Wrapper>
+    </HeaderWrapper>
   );
 };
 
