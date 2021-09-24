@@ -32,7 +32,12 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
               Skontaktuj się
             </HeroButton>
           </LeftBlock>
-          <StyledVideo src={`https:${video}`} muted autoPlay loop />
+          <div
+            role="tooltip"
+            aria-label="Video showing IKSS memebers and events they have organised"
+          >
+            <StyledVideo src={`https:${video}`} muted autoPlay loop />
+          </div>
         </MainContent>
         <HeaderSocialMediaWrapper>
           <Socials ref={socialsRef}>
@@ -41,7 +46,7 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
                 <StyledSocials href={url} key={title} rel="noreferrer" aria-label={title}>
                   <SocialLinkWrapper>
                     <SocialIconWrapper>
-                      <Image src={circleLogo} alt={title} layout="fill" />
+                      <Image src={circleLogo} alt="social media icon" layout="fill" />
                     </SocialIconWrapper>
                     <HeroLink>{title}</HeroLink>
                   </SocialLinkWrapper>

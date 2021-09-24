@@ -26,38 +26,51 @@ const Footer = ({ copyrightText, links, socialMedias }) => {
   };
 
   return (
-    <FooterWrapper homepage={pathname === routes.homepage}>
+    <FooterWrapper
+      homepage={pathname === routes.homepage}
+      aria-labelledby="social"
+      role="contentinfo"
+    >
       <FooterLinksWrapper homepage={pathname === routes.homepage}>
         {links.map(({ title, path }) => (
-          <Link key={title} href={path}>
+          <Link role="button" key={title} href={path} aria-label={title}>
             <ResponsiveButton>{title}</ResponsiveButton>
           </Link>
         ))}
       </FooterLinksWrapper>
-      <FooterSocialIconsWrapper>
+      <FooterSocialIconsWrapper id="social">
         {socialMedias.map(({ title, url, logo }) => (
-          <a key={title} href={url} aria-label={title}>
-            <Image src={logo} />
+          <a role="button" key={title} href={url} aria-label={title}>
+            <Image src={logo} alt="logo" />
           </a>
         ))}
       </FooterSocialIconsWrapper>
       <Link href={routes.homepage}>
-        <a href={routes.homepage}>
+        <a role="button" href={routes.homepage}>
           <LogoWrapper>
-            <Image src={ikssLogo} layout="fill" />
+            <Image role="button" aria-label="homepage" src={ikssLogo} layout="fill" alt="logo" />
           </LogoWrapper>
         </a>
       </Link>
       <SmallBodyText>{copyrightText}</SmallBodyText>
-      <NoDecorationLink href="https://masterborn.com/">
+      <NoDecorationLink
+        role="button"
+        aria-label="www.masterborn.com"
+        href="https://masterborn.com/"
+      >
         <SmallBodyText>Made with</SmallBodyText>
         <HeartWrapper>
-          <Image src={heartIcon} />
+          <Image src={heartIcon} alt="heart icon" />
         </HeartWrapper>
         <SmallBodyText>by MasterBorn Software</SmallBodyText>
       </NoDecorationLink>
-      <ButtonCircle homepage={pathname === routes.homepage} type="button" onClick={scrollToTop}>
-        <Image src={upArrow} />
+      <ButtonCircle
+        homepage={pathname === routes.homepage}
+        type="button"
+        aria-label="arrow-up"
+        onClick={scrollToTop}
+      >
+        <Image src={upArrow} alt="arrow up" />
       </ButtonCircle>
     </FooterWrapper>
   );

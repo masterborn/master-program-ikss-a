@@ -81,7 +81,11 @@ const MemberTile = ({ memberInfo }) => {
           <ButtonPlaceholder />
         )}
       </AdditionalInfo>
-      <ArrowButton onClick={handleTile} className={isTileOpen ? 'opened' : 'closed'}>
+      <ArrowButton
+        aria-label="Open to read more."
+        onClick={handleTile}
+        className={isTileOpen ? 'opened' : 'closed'}
+      >
         <Image src={arrowIcon} />
       </ArrowButton>
     </TileContainer>

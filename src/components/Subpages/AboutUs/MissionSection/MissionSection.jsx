@@ -19,7 +19,13 @@ const MissionSection = ({ missionContent: { title, text1, image1 } }) => (
         <Image src={`https:${image1.fields.file.url}`} width={483} height={245} alt="team" />
       </ImageWrapper>
       <ImageMobileWrapper>
-        <Image src={`https:${image1.fields.file.url}`} width={976} height={492} alt="team" />
+        <Image
+          src={`https:${image1.fields.file.url}`}
+          width={976}
+          height={492}
+          alt="team"
+          role="presentation"
+        />
       </ImageMobileWrapper>
       <RightSection>
         <StyledHeader>{title}</StyledHeader>

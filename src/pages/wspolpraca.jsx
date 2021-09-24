@@ -27,7 +27,7 @@ const Cooperation = ({ cooperationApiElements, partnerLogosApiElements }) => {
     'cooperation-tile-4',
     'cooperation-tile-5',
   ].map((tile) => findApiElementByIdentifier(cooperationApiElements, tile));
-  
+
   const logosSection = findApiElementByIdentifier(cooperationApiElements, 'cooperation-logos-text');
   const logosTitle = logosSection.fields.title;
   const logosDescription = documentToReactComponents(logosSection.fields.text1);

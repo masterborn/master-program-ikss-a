@@ -17,7 +17,7 @@ const Tiles = ({ tiles }) => (
         },
       }) => (
         <Tile key={heading}>
-          <img src={`https://${url}`} alt="value" />
+          <img src={`https://${url}`} alt="value" role="presentation" />
           <TileHeading>{heading}</TileHeading>
           <TileDescription as="div">{documentToReactComponents(tileDescription)}</TileDescription>
         </Tile>

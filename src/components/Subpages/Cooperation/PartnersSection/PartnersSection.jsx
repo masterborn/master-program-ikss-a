@@ -22,7 +22,7 @@ const PartnersSection = ({ partnersLogos, sectionTitle, sectionDescription }) =>
       </TextSection>
       <LogosContainer>
         {logosData.map(({ width, height, imageUrl, linkUrl, title }) => (
-          <a href={linkUrl} key={imageUrl}>
+          <a href={linkUrl} key={imageUrl} role="button">
             <Image src={`https:${imageUrl}`} alt={title} width={width} height={height} />
           </a>
         ))}
