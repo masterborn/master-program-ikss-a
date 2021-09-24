@@ -27,7 +27,7 @@ export const StyledTabs = styled(Tabs)`
   a {
     text-decoration: none;
   }
-  @media ${({ theme }) => theme.medias.medium} {
+  @media (max-width: 1300px) {
     padding: 0 24px;
   }
 `;
