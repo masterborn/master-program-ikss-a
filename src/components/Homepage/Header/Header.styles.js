@@ -9,7 +9,7 @@ import {
 import { H1, H5, BodyText } from '@root/components/typography/Typography';
 import { SecondaryBigButton } from '@root/components/Button/Button.styles';
 
-export const Wrapper = styled.div`
+export const HeaderWrapper = styled.div`
   background-image: ${getColor('backgroundGradient')};
 `;
 
