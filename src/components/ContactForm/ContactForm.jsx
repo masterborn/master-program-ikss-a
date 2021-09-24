@@ -80,13 +80,22 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
 
     return (
         <FormWrapper ref={formWrapperRef} modalOpen={modalOpen} isModal={isModal} >
-            <Form modalOpen={modalOpen} isModal={isModal} closed={closed} onSubmit={handleSubmit(onFormSubmit)} ref={formRef} >
+            <Form 
+               modalOpen={modalOpen} 
+               isModal={isModal} 
+               closed={closed} 
+               onSubmit={handleSubmit(onFormSubmit)} 
+               ref={formRef} 
+             >
                 <StyledH3>{title}</StyledH3>
                 <Description as='div'>{documentToReactComponents(description)}</Description>
                 <Names>
                     <NameField>
-                        <Label htmlFor='name' as='label'>Imię</Label>
-                        <Input contact
+                        <Label htmlFor='name' as='label'>
+                          Imię
+                        </Label>
+                        <Input 
+                            contact
                             id='name'
                             name='name'
                             text='Wpisz swoje imię'
@@ -99,7 +108,9 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                         />
                     </NameField>
                     <NameField>
-                        <Label htmlFor='surname' as='label'>Nazwisko</Label>
+                        <Label htmlFor='surname' as='label'>
+                          Nazwisko
+                        </Label>
                         <Input contact
                             id='surname'
                             name='surname'
@@ -114,8 +125,11 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                     </NameField>
                 </Names>
                 <FormField>
-                    <Label htmlFor='email' as='label'>Adres email</Label>
-                    <Input contact
+                    <Label htmlFor='email' as='label'>
+                      Adres email
+                    </Label>
+                    <Input 
+                        contact
                         id='email'
                         name='email'
                         text='Wpisz swój adres e-mail'
@@ -128,8 +142,11 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                     />
                 </FormField>
                 <FormField>
-                    <Label htmlFor='topic' as='label'>Temat</Label>
-                    <Input contact
+                    <Label htmlFor='topic' as='label'>
+                      Temat
+                    </Label>
+                    <Input 
+                        contact
                         id='topic'
                         name='topic'
                         text='Temat wiadomości'
@@ -142,8 +159,11 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                     />
                 </FormField>
                 <FormField>
-                    <Label htmlFor='content' as='label'>Treść</Label>
-                    <Input contact
+                    <Label htmlFor='content' as='label'>
+                      Treść
+                    </Label>
+                    <Input 
+                        contact
                         id='content'
                         name='content'
                         text='O czym chcesz z nami porozmawiać?'
@@ -157,15 +177,28 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
                     />
                 </FormField>
                 <Declaration>
-                    <Input checkbox
+                    <Input 
+                        checkbox
                         id='consent'
                         name='consent'
                         {...register('consent', { required: true })}
                         error={!!errors.consent}
                         icon={!!errors.consent} />
-                    <Label as='label'>Zapoznałem się z
-                        <PrivacyInfo as='span' name='privacy' onClick={() => displayTooltip('privacy')} >informacją o administratorze i przetwarzaniu danych.</PrivacyInfo>
-                        <Info activeMessage={messages.privacy} isModal={isModal}>{documentToReactComponents(tooltip)}</Info>
+                    <Label as='label'>
+                        Zapoznałem się z
+                        <PrivacyInfo 
+                            as='span' 
+                            name='privacy' 
+                            onClick={() => displayTooltip('privacy')} 
+                        >
+                            informacją o administratorze i przetwarzaniu danych.
+                        </PrivacyInfo>
+                        <Info 
+                          activeMessage={messages.privacy} 
+                          isModal={isModal}
+                        >
+                          {documentToReactComponents(tooltip)}
+                        </Info>
                     </Label>
                 </Declaration>
                 <UserCode

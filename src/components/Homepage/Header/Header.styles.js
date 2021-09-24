@@ -150,7 +150,7 @@ export const HeaderSocialMediaWrapper = styled.div`
     1.71337px 28.2982px 34.875px rgba(97, 121, 139, 0.04725),
     0.676885px 11.1795px 13px rgba(97, 121, 139, 0.035),
     0.148069px 2.44552px 4.625px rgba(97, 121, 139, 0.02275);
-  border-radius: 16px 0 0 16px;
+  border-radius: 16px 0 16px 16px;
 
   @media (max-width: 1380px) {
     width: 70%;
@@ -206,6 +206,34 @@ export const StyledSocials = styled.a`
 export const SocialLinkWrapper = styled.div`
   display: flex;
   align-items: center;
+  position: relative;
+
+  div::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    background-color: ${getColor('ikssBlue')};
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  &:hover div::after {
+    opacity: 0.15;
+  }
+
+  @media ${({ theme }) => theme.medias.medium} {
+    &:hover div::after {
+      opacity: 0;
+    }
+
+    &:active div::after {
+      opacity: 0.15;
+    }
+  }
 `;
 
 export const SocialIconWrapper = styled.div`
@@ -218,3 +246,5 @@ export const SocialIconWrapper = styled.div`
     height: 32px;
   }
 `;
+
+export const Wrapper = styled.div``;
