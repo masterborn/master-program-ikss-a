@@ -40,7 +40,11 @@ const MemberTile = ({ memberInfo }) => {
     >
       {memberInfo.image ? (
         <ImageWrapper isTileOpen={isTileOpen}>
-          <Image src={`https:${memberInfo.image.fields.file.url}`} layout="fill" />
+          <Image
+            src={`https:${memberInfo.image.fields.file.url}`}
+            layout="fill"
+            alt="Member photo"
+          />
         </ImageWrapper>
       ) : (
         <ImagePlaceholder isTileOpen={isTileOpen} />
@@ -56,7 +60,7 @@ const MemberTile = ({ memberInfo }) => {
       <AdditionalInfo isTileOpen={isTileOpen}>
         {memberInfo.phone ? (
           <Phone>
-            <Image src={phoneIcon} />
+            <Image src={phoneIcon} alt="Phone" />
             <PhoneNumber href={`tel:${memberInfo.phone}`}>{memberInfo.phone}</PhoneNumber>
           </Phone>
         ) : (
@@ -64,7 +68,7 @@ const MemberTile = ({ memberInfo }) => {
         )}
         {memberInfo.email ? (
           <Email>
-            <Image src={emailIcon} />
+            <Image src={emailIcon} alt="Mail" />
             <MembersEmail href={`mailto: ${memberInfo.email}`}>{memberInfo.email}</MembersEmail>
           </Email>
         ) : (
@@ -73,7 +77,7 @@ const MemberTile = ({ memberInfo }) => {
         {memberInfo.linkedinUrl ? (
           <StyledLink href={memberInfo.linkedinUrl}>
             <StyledLinkedinButton icon>
-              <Image src={linkedinIcon} />
+              <Image src={linkedinIcon} alt="LinkedIn" />
               <p>LinkedIn</p>
             </StyledLinkedinButton>
           </StyledLink>

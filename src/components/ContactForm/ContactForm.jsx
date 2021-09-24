@@ -68,118 +68,146 @@ const ContactForm = ({ formText: { fields: { title, text1: description } }, form
     }
 
     return (
-        <FormWrapper ref={formRef} modalOpen={modalOpen} isModal={isModal} >
-            <Form modalOpen={modalOpen} isModal={isModal} closed={closed} onSubmit={handleSubmit(onFormSubmit)} >
-                <StyledH3>{title}</StyledH3>
-                <Description as='div'>{documentToReactComponents(description)}</Description>
-                <Names>
-                    <NameField>
-                        <Label htmlFor='name' as='label'>Imię</Label>
-                        <Input contact
-                            id='name'
-                            name='name'
-                            text='Wpisz swoje imię'
-                            {...register("name", { required: true })}
-                            error={!!errors.name}
-                            icon={!!errors.name}
-                            message='Wpisz imię'
-                            activeMessage={messages.name}
-                            displayTooltip={displayTooltip}
-                        />
-                    </NameField>
-                    <NameField>
-                        <Label htmlFor='surname' as='label'>Nazwisko</Label>
-                        <Input contact
-                            id='surname'
-                            name='surname'
-                            text='Wpisz swoje nazwisko'
-                            {...register("surname", { required: true })}
-                            error={!!errors.surname}
-                            icon={!!errors.surname}
-                            message='Wpisz nazwisko'
-                            activeMessage={messages.surname}
-                            displayTooltip={displayTooltip}
-                        />
-                    </NameField>
-                </Names>
-                <FormField>
-                    <Label htmlFor='email' as='label'>Adres email</Label>
-                    <Input contact
-                        id='email'
-                        name='email'
-                        text='Wpisz swój adres e-mail'
-                        {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
-                        error={!!errors.email}
-                        icon={!!errors.email}
-                        message='Wpisz adres e-mail'
-                        activeMessage={messages.email}
-                        displayTooltip={displayTooltip}
-                    />
-                </FormField>
-                <FormField>
-                    <Label htmlFor='topic' as='label'>Temat</Label>
-                    <Input contact
-                        id='topic'
-                        name='topic'
-                        text='Temat wiadomości'
-                        {...register("topic", { required: true })}
-                        error={!!errors.topic}
-                        icon={!!errors.topic}
-                        message='Wpisz temat'
-                        activeMessage={messages.topic}
-                        displayTooltip={displayTooltip}
-                    />
-                </FormField>
-                <FormField>
-                    <Label htmlFor='content' as='label'>Treść</Label>
-                    <Input contact
-                        id='content'
-                        name='content'
-                        text='O czym chcesz z nami porozmawiać?'
-                        isTextArea
-                        {...register("content", { required: true })}
-                        error={!!errors.content}
-                        icon={!!errors.content}
-                        message='Wpisz treść wiadomości'
-                        activeMessage={messages.content}
-                        displayTooltip={displayTooltip}
-                    />
-                </FormField>
-                <Declaration>
-                    <Input checkbox
-                        id='consent'
-                        name='consent'
-                        {...register('consent', { required: true })}
-                        error={!!errors.consent}
-                        icon={!!errors.consent} />
-                    <Label htmlFor='consent' as='label'>Zapoznałem się z
-                        <PrivacyLink as='a' target='_blank' href="https://www.freeprivacypolicy.com/free-privacy-policy-generator/">informacją o administratorze i przetwarzaniu danych.</PrivacyLink>
-                        <Info>{documentToReactComponents(tooltip)}</Info>
-                    </Label>
-                </Declaration>
-                <UserCode
-                    type='text'
-                    name="userCode"
-                    id='userCode'
-                    {...register('userCode')} />
-                <FormSubmit type='submit'
-                    process={isLoading}
-                    correct={isSuccess}
-                    failure={isError}
-                    onClick={() => { if (isSuccess) closeModal() }}
-                >
-                    {
-                        getBtnContent()
-                    }
-                </FormSubmit>
-                {modalOpen ?
-                    <CloseButton type='button' onClick={closeModal} ><img src={CloseIcon.src} alt="close-icon" /> </CloseButton> :
-                    null
-                }
-            </Form>
-            {modalOpen ? <Layer closed={closed} onClick={closeModal} /> : null}
-        </FormWrapper>
-    )
+      <FormWrapper ref={formRef} modalOpen={modalOpen} isModal={isModal}>
+        <Form
+          modalOpen={modalOpen}
+          isModal={isModal}
+          closed={closed}
+          onSubmit={handleSubmit(onFormSubmit)}
+        >
+          <StyledH3>{title}</StyledH3>
+          <Description as="div">{documentToReactComponents(description)}</Description>
+          <Names>
+            <NameField>
+              <Label htmlFor="name" as="label">
+                Imię
+              </Label>
+              <Input
+                contact
+                id="name"
+                name="name"
+                text="Wpisz swoje imię"
+                {...register('name', { required: true })}
+                error={!!errors.name}
+                icon={!!errors.name}
+                message="Wpisz imię"
+                activeMessage={messages.name}
+                displayTooltip={displayTooltip}
+              />
+            </NameField>
+            <NameField>
+              <Label htmlFor="surname" as="label">
+                Nazwisko
+              </Label>
+              <Input
+                contact
+                id="surname"
+                name="surname"
+                text="Wpisz swoje nazwisko"
+                {...register('surname', { required: true })}
+                error={!!errors.surname}
+                icon={!!errors.surname}
+                message="Wpisz nazwisko"
+                activeMessage={messages.surname}
+                displayTooltip={displayTooltip}
+              />
+            </NameField>
+          </Names>
+          <FormField>
+            <Label htmlFor="email" as="label">
+              Adres email
+            </Label>
+            <Input
+              contact
+              id="email"
+              name="email"
+              text="Wpisz swój adres e-mail"
+              {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
+              error={!!errors.email}
+              icon={!!errors.email}
+              message="Wpisz adres e-mail"
+              activeMessage={messages.email}
+              displayTooltip={displayTooltip}
+            />
+          </FormField>
+          <FormField>
+            <Label htmlFor="topic" as="label">
+              Temat
+            </Label>
+            <Input
+              contact
+              id="topic"
+              name="topic"
+              text="Temat wiadomości"
+              {...register('topic', { required: true })}
+              error={!!errors.topic}
+              icon={!!errors.topic}
+              message="Wpisz temat"
+              activeMessage={messages.topic}
+              displayTooltip={displayTooltip}
+            />
+          </FormField>
+          <FormField>
+            <Label htmlFor="content" as="label">
+              Treść
+            </Label>
+            <Input
+              contact
+              id="content"
+              name="content"
+              text="O czym chcesz z nami porozmawiać?"
+              isTextArea
+              {...register('content', { required: true })}
+              error={!!errors.content}
+              icon={!!errors.content}
+              message="Wpisz treść wiadomości"
+              activeMessage={messages.content}
+              displayTooltip={displayTooltip}
+            />
+          </FormField>
+          <Declaration>
+            <Input
+              checkbox
+              id="consent"
+              name="consent"
+              {...register('consent', { required: true })}
+              error={!!errors.consent}
+              icon={!!errors.consent}
+            />
+            <Label htmlFor="consent" as="label">
+              Zapoznałem się z
+              <PrivacyLink
+                as="a"
+                rel="noreferrer"
+                target="_blank"
+                href="https://www.freeprivacypolicy.com/free-privacy-policy-generator/"
+              >
+                informacją o administratorze i przetwarzaniu danych.
+              </PrivacyLink>
+              <Info>{documentToReactComponents(tooltip)}</Info>
+            </Label>
+          </Declaration>
+          <UserCode type="text" name="userCode" id="userCode" {...register('userCode')} />
+          <FormSubmit
+            type="submit"
+            process={isLoading}
+            correct={isSuccess}
+            failure={isError}
+            onClick={() => {
+              if (isSuccess) closeModal();
+            }}
+          >
+            {getBtnContent()}
+          </FormSubmit>
+          {modalOpen ? (
+            <CloseButton type="button" onClick={closeModal}>
+              <img src={CloseIcon.src} alt="close-icon" />{' '}
+            </CloseButton>
+          ) : null}
+        </Form>
+        {modalOpen ? <Layer closed={closed} onClick={closeModal} /> : null}
+      </FormWrapper>
+    );
 }
 
 ContactForm.propTypes = {

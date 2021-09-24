@@ -215,3 +215,5 @@ export const CtaButton = styled(ResponsiveButton)`
     margin-top: 24px;
   }
 `;
+
+export const Wrapper = styled.div``
