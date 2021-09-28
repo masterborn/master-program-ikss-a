@@ -63,15 +63,15 @@ const Navbar = ({ socialMedias, links }) => {
 
   const menuSocials = socialMedias.map(({ circleLogo, url, title }) => (
     <a href={url} key={title} role="button" aria-label={title}>
-      <Image src={circleLogo} alt="logo" />
+      <Image src={circleLogo} alt="IKSS logo" />
     </a>
   ));
 
   return (
     <Nav>
       <Link href={routes.homepage}>
-        <StyledIcon role="button" aria-label="homepage">
-          <PrimaryLogo alt="logo" role="button" aria-label="homepage" />
+        <StyledIcon role="button" aria-label="Redirect to homepage">
+          <PrimaryLogo alt="IKSS logo" role="button" aria-label="homepage" />
         </StyledIcon>
       </Link>
       <MenuWrapper>

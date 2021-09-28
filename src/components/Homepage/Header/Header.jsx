@@ -35,12 +35,16 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
               Skontaktuj się
             </HeroButton>
           </LeftBlock>
-          <div
+
+          <StyledVideo
+            src={`https:${video}`}
+            muted
+            playsInline
+            autoPlay
+            loop
             role="tooltip"
             aria-label="Video showing IKSS memebers and events they have organised"
-          >
-            <StyledVideo src={`https:${video}`} muted playsInline autoPlay loop />
-          </div>
+          />
         </MainContent>
         <HeaderSocialMediaWrapper>
           <Socials ref={socialsRef}>
