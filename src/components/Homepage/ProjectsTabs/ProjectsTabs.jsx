@@ -22,6 +22,7 @@ import {
   VideoResponsive,
   ResponsiveHeader,
   ResponsiveButton,
+  Wrapper,
 } from './ProjectsTabs.styles';
 
 const ProjectsTabs = ({ projectsApiElements, latestProjectsHeader }) => {
@@ -46,8 +47,13 @@ const ProjectsTabs = ({ projectsApiElements, latestProjectsHeader }) => {
 
       {projectsData.map(
         ({ title, date, description, linkUrl, linkCaption, videoUrl, imageUrl }) => (
+<<<<<<< HEAD
           <>
             <StyledTabPanel key={title} role="tooltip" aria-label="Video showing IKSS projects">
+=======
+          <Wrapper key={title}>
+            <StyledTabPanel>
+>>>>>>> 967c34037b28c85850c78cc060a92bbc34363504
               {videoUrl ? (
                 <VideoResponsive>
                   <StyledVideo
@@ -79,14 +85,14 @@ const ProjectsTabs = ({ projectsApiElements, latestProjectsHeader }) => {
                     <a href={linkUrl}>
                       <SmallButton icon={linkUrl.includes('facebook')}>
                         {linkUrl.includes('facebook') && <FacebookIcon />}
-                        {linkCaption}
+                        {linkCaption || 'Zobacz więcej'}
                       </SmallButton>
                     </a>
                   </ButtonWrapper>
                 )}
               </StyledTabTextSection>
             </StyledTabPanel>
-          </>
+          </Wrapper>
         ),
       )}
       <a href="/projekty">

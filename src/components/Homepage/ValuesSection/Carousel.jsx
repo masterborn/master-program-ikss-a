@@ -66,6 +66,7 @@ const Carousel = ({ tiles }) => {
           <EmblaDot
             // eslint-disable-next-line react/no-array-index-key
             key={index}
+            name={`value-${index + 1}`}
             className={index === selectedIndex && 'is-selected'}
             type="button"
             role="button"

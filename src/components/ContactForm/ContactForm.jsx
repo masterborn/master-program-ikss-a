@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 // I had to disable eslint because react-hook-form requires props spreading
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { useMutation } from 'react-query';
@@ -8,6 +8,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { useModal } from '@root/contextProviders/useModal';
 import { useForm } from 'react-hook-form';
 import { useScroll } from '@root/contextProviders/useScroll';
+import { useWindowSize } from 'react-use';
 import CloseIcon from '../icons/svgs/coolicon.svg';
 import LoaderIcon from '../icons/svgs/loader.svg';
 import SuccessIcon from '../icons/svgs/formSuccess.svg';
@@ -22,14 +23,17 @@ import {
   FormField,
   Label,
   Declaration,
-  PrivacyLink,
+  PrivacyInfo,
   Info,
   FormSubmit,
   Layer,
   CloseButton,
   UserCode,
+  Reset,
 } from './ContactForm.styles';
 import Input from '../FormElements/Input';
+
+const url = process.env.NEXT_PUBLIC_FORMCARRY_URL;
 
 const ContactForm = ({
   formText: {
@@ -40,7 +44,11 @@ const ContactForm = ({
   },
   isModal,
 }) => {
-  const { formRef } = useScroll();
+  const formRef = useRef(null);
+
+  const { formWrapperRef } = useScroll();
+
+  const { height: windowHeight } = useWindowSize();
 
   const { modalOpen, handleModal } = useModal();
 
@@ -52,6 +60,7 @@ const ContactForm = ({
     email: false,
     topic: false,
     content: false,
+    privacy: false,
   });
 
   const {
@@ -61,9 +70,15 @@ const ContactForm = ({
     reset,
   } = useForm();
 
-  const { isLoading, isError, isSuccess, mutate } = useMutation(
+  const {
+    isLoading,
+    isError,
+    isSuccess,
+    mutate,
+    reset: resetQuery,
+  } = useMutation(
     async (mail) => {
-      const response = await axios.post('https://formcarry.com/s/D_0rPBQNVQl', {
+      const response = await axios.post(url, {
         name: mail.name,
         surname: mail.surname,
         email: mail.email,
@@ -82,8 +97,11 @@ const ContactForm = ({
   const onFormSubmit = (data) => mutate(data);
 
   const displayTooltip = (name) => {
-    setMessages((prevState) => ({ ...prevState, [name]: !messages[name] }));
-    setTimeout(() => setMessages((prevState) => ({ ...prevState, [name]: false })), 5000);
+    if (messages[name]) setMessages((prevState) => ({ ...prevState, [name]: false }));
+    else {
+      setMessages((prevState) => ({ ...prevState, [name]: !messages[name] }));
+      setTimeout(() => setMessages((prevState) => ({ ...prevState, [name]: false })), 5000);
+    }
   };
 
   const getBtnContent = () => {
@@ -112,16 +130,18 @@ const ContactForm = ({
     setTimeout(() => {
       handleModal('close');
       setClosed(false);
+      if (isError || isSuccess) resetQuery();
     }, 400);
   };
 
   return (
-    <FormWrapper ref={formRef} modalOpen={modalOpen} isModal={isModal}>
+    <FormWrapper ref={formWrapperRef} modalOpen={modalOpen} isModal={isModal}>
       <Form
         modalOpen={modalOpen}
         isModal={isModal}
         closed={closed}
         onSubmit={handleSubmit(onFormSubmit)}
+        ref={formRef}
         aria-label="contact form"
       >
         <StyledH3>{title}</StyledH3>
@@ -136,10 +156,10 @@ const ContactForm = ({
               id="name"
               name="name"
               text="Wpisz swoje imię"
-              {...register('name', { required: true })}
+              {...register('name', { required: true, minLength: 2, maxLength: 255 })}
               error={!!errors.name}
               icon={!!errors.name}
-              message="Wpisz imię"
+              message="Imię powinno zawierać od 2 do 255 znaków"
               activeMessage={messages.name}
               displayTooltip={displayTooltip}
               aria-required="true"
@@ -157,10 +177,10 @@ const ContactForm = ({
               id="surname"
               name="surname"
               text="Wpisz swoje nazwisko"
-              {...register('surname', { required: true })}
+              {...register('surname', { required: true, minLength: 2, maxLength: 255 })}
               error={!!errors.surname}
               icon={!!errors.surname}
-              message="Wpisz nazwisko"
+              message="Nazwisko powinno zawierać od 2 do 255 znaków"
               activeMessage={messages.surname}
               displayTooltip={displayTooltip}
               role="textbox"
@@ -183,7 +203,7 @@ const ContactForm = ({
             {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
             error={!!errors.email}
             icon={!!errors.email}
-            message="Wpisz adres e-mail"
+            message="Wpisz adres e-mail w poprawnym formacie"
             activeMessage={messages.email}
             displayTooltip={displayTooltip}
             aria-required="true"
@@ -202,10 +222,10 @@ const ContactForm = ({
             id="topic"
             name="topic"
             text="Temat wiadomości"
-            {...register('topic', { required: true })}
+            {...register('topic', { required: true, minLength: 5, maxLength: 255 })}
             error={!!errors.topic}
             icon={!!errors.topic}
-            message="Wpisz temat"
+            message="Temat powinien zawierać od 5 do 255 znaków"
             activeMessage={messages.topic}
             displayTooltip={displayTooltip}
             role="textbox"
@@ -225,10 +245,10 @@ const ContactForm = ({
             name="content"
             text="O czym chcesz z nami porozmawiać?"
             isTextArea
-            {...register('content', { required: true })}
+            {...register('content', { required: true, minLength: 15, maxLength: 5000 })}
             error={!!errors.content}
             icon={!!errors.content}
-            message="Wpisz treść wiadomości"
+            message="Wiadomość powinna zawierać od 15 do 5000 znaków"
             activeMessage={messages.content}
             displayTooltip={displayTooltip}
             aria-required="true"
@@ -245,33 +265,22 @@ const ContactForm = ({
             {...register('consent', { required: true })}
             error={!!errors.consent}
             icon={!!errors.consent}
-            aria-describedby={displayTooltip}
             aria-checked="false"
             aria-required="true"
             aria-labelledby="consent"
           />
-          <Label htmlFor="consent" as="label" role="alert" for="consent">
+          <Label as="label" role="alert" for="consent">
             Zapoznałem się z
-            <PrivacyLink
-              as="a"
-              target="_blank"
-              href="https://www.freeprivacypolicy.com/free-privacy-policy-generator/"
-            >
+            <PrivacyInfo as="span" name="privacy" onClick={() => displayTooltip('privacy')}>
               informacją o administratorze i przetwarzaniu danych.
-            </PrivacyLink>
-            <Info aria-describedby={displayTooltip}>{documentToReactComponents(tooltip)}</Info>
+            </PrivacyInfo>
+            <Info activeMessage={messages.privacy} isModal={isModal}>
+              {documentToReactComponents(tooltip)}
+            </Info>
           </Label>
         </Declaration>
         <UserCode type="text" name="userCode" id="userCode" {...register('userCode')} />
-        <FormSubmit
-          type="submit"
-          process={isLoading}
-          correct={isSuccess}
-          failure={isError}
-          onClick={() => {
-            if (isSuccess) closeModal();
-          }}
-        >
+        <FormSubmit type="submit" process={isLoading} correct={isSuccess} failure={isError}>
           {getBtnContent()}
         </FormSubmit>
         {modalOpen ? (
@@ -279,8 +288,16 @@ const ContactForm = ({
             <img src={CloseIcon.src} alt="close-icon" />{' '}
           </CloseButton>
         ) : null}
+        {isSuccess && <Reset onClick={closeModal} isModal={isModal} />}
       </Form>
-      {modalOpen ? <Layer closed={closed} onClick={closeModal} /> : null}
+      {modalOpen ? (
+        <Layer
+          closed={closed}
+          onClick={closeModal}
+          formHeight={formRef.current.offsetHeight}
+          windowHeight={windowHeight}
+        />
+      ) : null}
     </FormWrapper>
   );
 };

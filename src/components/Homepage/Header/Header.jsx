@@ -1,8 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
 import { useScroll } from '@root/contextProviders/useScroll';
-import PropTypes from 'prop-types';
+import PropTypes, { oneOfType } from 'prop-types';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import {
+  HeaderWrapper,
   HeroSection,
   MainContent,
   LeftBlock,
@@ -16,34 +18,39 @@ import {
   HeroButton,
   SocialIconWrapper,
   SocialLinkWrapper,
+  Wrapper,
 } from './Header.styles';
 
 const Header = ({ headerTitle, text, video, socialMedias }) => {
   const { socialsRef, scrollToForm } = useScroll();
 
   return (
-    <>
+    <HeaderWrapper>
       <HeroSection>
         <MainContent>
           <LeftBlock>
             <HeroHeading>{headerTitle}</HeroHeading>
-            <HeroBodyText>{text}</HeroBodyText>
+            <HeroBodyText as='div' >{documentToReactComponents(text)}</HeroBodyText>
             <HeroButton alt="CTA" onClick={scrollToForm}>
               Skontaktuj się
             </HeroButton>
           </LeftBlock>
+<<<<<<< HEAD
           <div
             role="tooltip"
             aria-label="Video showing IKSS memebers and events they have organised"
           >
             <StyledVideo src={`https:${video}`} muted autoPlay loop />
           </div>
+=======
+          <StyledVideo src={`https:${video}`} muted playsInline autoPlay loop />
+>>>>>>> 967c34037b28c85850c78cc060a92bbc34363504
         </MainContent>
         <HeaderSocialMediaWrapper>
           <Socials ref={socialsRef}>
             {socialMedias.map(({ circleLogo, url, title }) => (
-              <>
-                <StyledSocials href={url} key={title} rel="noreferrer" aria-label={title}>
+              <Wrapper key={title}>
+                <StyledSocials href={url} rel="noreferrer" aria-label={title}>
                   <SocialLinkWrapper>
                     <SocialIconWrapper>
                       <Image src={circleLogo} alt="social media icon" layout="fill" />
@@ -51,18 +58,18 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
                     <HeroLink>{title}</HeroLink>
                   </SocialLinkWrapper>
                 </StyledSocials>
-              </>
+              </Wrapper>
             ))}
           </Socials>
         </HeaderSocialMediaWrapper>
       </HeroSection>
-    </>
+    </HeaderWrapper>
   );
 };
 
 Header.propTypes = {
   headerTitle: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.objectOf(oneOfType([PropTypes.object, PropTypes.array, PropTypes.string])).isRequired,
   video: PropTypes.string.isRequired,
   socialMedias: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

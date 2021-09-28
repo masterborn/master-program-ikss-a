@@ -25,9 +25,9 @@ import {
   ButtonPlaceholder,
 } from './MemberTile.styles';
 
-const MemberTile = ({ memberInfo }) => {
+const MemberTile = ({ memberInfo, isHoneycomb }) => {
   const [isTileOpen, setIsTileOpen] = useState(false);
-  const nameSplitted = memberInfo.name.split(' ');
+  const nameSplitted = { ...memberInfo }.name.split(' ');
 
   const handleTile = () => {
     setIsTileOpen(!isTileOpen);
@@ -37,10 +37,15 @@ const MemberTile = ({ memberInfo }) => {
     <TileContainer
       className={isTileOpen ? 'opened' : 'closed'}
       onClick={!isTileOpen ? handleTile : undefined}
+      isHoneycomb={isHoneycomb}
     >
       {memberInfo.image ? (
         <ImageWrapper isTileOpen={isTileOpen}>
-          <Image src={`https:${memberInfo.image.fields.file.url}`} layout="fill" />
+          <Image
+            src={`https:${memberInfo.image.fields.file.url}`}
+            layout="fill"
+            alt="Member photo"
+          />
         </ImageWrapper>
       ) : (
         <ImagePlaceholder isTileOpen={isTileOpen} />
@@ -56,7 +61,7 @@ const MemberTile = ({ memberInfo }) => {
       <AdditionalInfo isTileOpen={isTileOpen}>
         {memberInfo.phone ? (
           <Phone>
-            <Image src={phoneIcon} />
+            <Image src={phoneIcon} alt="Phone" />
             <PhoneNumber href={`tel:${memberInfo.phone}`}>{memberInfo.phone}</PhoneNumber>
           </Phone>
         ) : (
@@ -64,7 +69,7 @@ const MemberTile = ({ memberInfo }) => {
         )}
         {memberInfo.email ? (
           <Email>
-            <Image src={emailIcon} />
+            <Image src={emailIcon} alt="Mail" />
             <MembersEmail href={`mailto: ${memberInfo.email}`}>{memberInfo.email}</MembersEmail>
           </Email>
         ) : (
@@ -73,7 +78,7 @@ const MemberTile = ({ memberInfo }) => {
         {memberInfo.linkedinUrl ? (
           <StyledLink href={memberInfo.linkedinUrl}>
             <StyledLinkedinButton icon>
-              <Image src={linkedinIcon} />
+              <Image src={linkedinIcon} alt="LinkedIn" />
               <p>LinkedIn</p>
             </StyledLinkedinButton>
           </StyledLink>
@@ -95,6 +100,7 @@ const MemberTile = ({ memberInfo }) => {
 MemberTile.propTypes = {
   memberInfo: PropTypes.objectOf(oneOfType([PropTypes.string, PropTypes.object, PropTypes.number]))
     .isRequired,
+  isHoneycomb: PropTypes.bool.isRequired
 };
 
 export default MemberTile;

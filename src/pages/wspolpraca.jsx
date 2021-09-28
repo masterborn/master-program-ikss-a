@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Head from 'next/head';
 import contentfulClient from '@root/api/contentfulClient';
 import findApiElementByIdentifier from '@root/handlers/findApiElement';
 import GenericTopSection from '@root/components/GenericTopSection/GenericTopSection';
@@ -6,6 +7,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import GenericBottomCta from '@root/components/GenericBottomCta/GenericBottomCta';
 import BenefitsSection from '@root/components/Subpages/Cooperation/BenefitsSection/BenefitsSection';
 import PartnersSection from '@root/components/Subpages/Cooperation/PartnersSection/PartnersSection';
+import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 
 const Cooperation = ({ cooperationApiElements, partnerLogosApiElements }) => {
   const topSection = findApiElementByIdentifier(cooperationApiElements, 'cooperation-top-section');
@@ -31,8 +33,14 @@ const Cooperation = ({ cooperationApiElements, partnerLogosApiElements }) => {
   const logosSection = findApiElementByIdentifier(cooperationApiElements, 'cooperation-logos-text');
   const logosTitle = logosSection.fields.title;
   const logosDescription = documentToReactComponents(logosSection.fields.text1);
+  const { title: metaTitleCooperation, text1: metaDescriptionCooperation } =
+    findApiElementByIdentifier(cooperationApiElements, 'cooperation-meta').fields;
   return (
     <>
+      <Head>
+        <title>{metaTitleCooperation}</title>
+        <meta name="description" content={documentToPlainTextString(metaDescriptionCooperation)} />
+      </Head>
       <GenericTopSection
         imageUrl={topSectionImageUrl}
         title={cooperationTitle}

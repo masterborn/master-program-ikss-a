@@ -4,7 +4,7 @@ import { getColor, getFontSize, getLineHeight } from '@root/styles/utils';
 
 export const TeamWrapper = styled.section`
   max-width: 996px;
-  margin: 164px auto 0;
+  margin: 0 auto;
   text-align: center;
 
   img {

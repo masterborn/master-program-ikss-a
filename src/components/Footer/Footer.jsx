@@ -48,7 +48,13 @@ const Footer = ({ copyrightText, links, socialMedias }) => {
       <Link href={routes.homepage}>
         <a role="button" href={routes.homepage}>
           <LogoWrapper>
-            <Image role="button" aria-label="homepage" src={ikssLogo} layout="fill" alt="logo" />
+            <Image
+              role="button"
+              aria-label="Redirect to homepage"
+              src={ikssLogo}
+              layout="fill"
+              alt="logo"
+            />
           </LogoWrapper>
         </a>
       </Link>

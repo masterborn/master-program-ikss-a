@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { getColor, getFontFamily } from './utils';
+import { getFontFamily } from './utils';
 
 const GlobalStyles = createGlobalStyle`
 
@@ -8,9 +8,6 @@ const GlobalStyles = createGlobalStyle`
   }
     
   body {
-    background: ${getColor('backgroundGradient')};
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     position: relative;
   }
 
