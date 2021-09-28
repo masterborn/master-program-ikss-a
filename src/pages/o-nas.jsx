@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Head from 'next/head';
 import contentfulClient from '@root/api/contentfulClient';
 import findApiElementByIdentifier from '@root/handlers/findApiElement';
 import GenericTopSection from '@root/components/GenericTopSection/GenericTopSection';
@@ -9,6 +10,7 @@ import MissionSection from '@root/components/Subpages/AboutUs/MissionSection/Mis
 import HistorySection from '@root/components/Subpages/AboutUs/HistorySection/HistorySection';
 import TeamSection from '@root/components/Subpages/AboutUs/TeamSection';
 import ManagementSection from '@root/components/Subpages/AboutUs/ManagementSection/ManagementSection';
+import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 
 const AboutUs = ({ aboutUsApiElements, boardMembersApiElements }) => {
   const topSection = findApiElementByIdentifier(aboutUsApiElements, 'about-us-top-section');
@@ -33,22 +35,32 @@ const AboutUs = ({ aboutUsApiElements, boardMembersApiElements }) => {
     aboutUsApiElements,
     'about-us-board-members-text',
   ).fields;
+  const { title: metaTitleAboutUs, text1: metaDescriptionAboutUs } = findApiElementByIdentifier(
+    aboutUsApiElements,
+    'about-us-meta',
+  ).fields;
 
   return (
     <>
-      <GenericTopSection
-        imageUrl={topSectionImageUrl}
-        title={subpageTitle}
-        subpageDescription={subpageDescription}
-      />
-      <MissionSection missionContent={missionContent} />
-      <HistorySection historyContent={historyContent} />
-      <ManagementSection
-        boardMembers={boardMembersApiElements}
-        boardMembersText={boardMembersText}
-      />
-      <TeamSection teamContent={teamContent} />
-      <GenericBottomCta bottomCta={bottomCta} />
+      <Head>
+        <title>{metaTitleAboutUs}</title>
+        <meta name="description" content={documentToPlainTextString(metaDescriptionAboutUs)} />
+      </Head>
+      <>
+        <GenericTopSection
+          imageUrl={topSectionImageUrl}
+          title={subpageTitle}
+          subpageDescription={subpageDescription}
+        />
+        <MissionSection missionContent={missionContent} />
+        <HistorySection historyContent={historyContent} />
+        <ManagementSection
+          boardMembers={boardMembersApiElements}
+          boardMembersText={boardMembersText}
+        />
+        <TeamSection teamContent={teamContent} />
+        <GenericBottomCta bottomCta={bottomCta} />
+      </>
     </>
   );
 };

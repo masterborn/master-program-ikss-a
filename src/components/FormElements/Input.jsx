@@ -87,15 +87,14 @@ const FormField = styled.div`
         height: 20px;
         position: absolute;
         right: 14px;
-        bottom: 14px;
+        top: 14px;
         cursor: pointer;
     }
     span {
         position: absolute;
         z-index: -1;
-        right: 42px;
-        bottom: ${({ isTextArea }) => isTextArea ? '12px' : '50%'};
-        transform: ${({ isTextArea }) => isTextArea ? 'none' : 'translateY(50%)'};
+        right: 0;
+        bottom: 100% ;
         padding: 5px;
         border-radius: 4px;
         background-color: #E8F3FD;
@@ -108,19 +107,15 @@ const FormField = styled.div`
         transition: opacity .2s, z-index .2s;
 
         @media ${({ theme }) => theme.medias.medium} {
-            opacity: ${({ activeMessage }) => activeMessage ? 1 : 0};
-            z-index: ${({ activeMessage }) => activeMessage ? 1 : -1};
+            opacity: 1;
+            z-index: 1;
+            visibility: ${({ activeMessage }) => activeMessage ? 'visible' : 'hidden'};
         }
     }
 
     button:hover+span {
         opacity: 1;
         z-index: 1;
-    }
-    button:hover {
-        @media ${({ theme }) => theme.medias.medium} {
-            pointer-events: none;
-        }
     }
 `;
 

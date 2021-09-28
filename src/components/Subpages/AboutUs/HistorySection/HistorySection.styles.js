@@ -14,6 +14,7 @@ export const HistorySectionWrapper = styled.div`
   justify-content: center;
   padding: 0 24px 0 24px;
   margin: 0 auto 148px auto;
+  max-width: 1197px;
 
   @media ${({ theme }) => theme.medias.medium} {
     display: flex;
@@ -90,6 +91,10 @@ export const StyledHistoryTextBottom = styled(BodyText)`
   text-indent: 25px;
   margin-top: -55px;
   color: ${getColor('steel')};
+
+  & p:first-child {
+    margin-bottom: 32px;
+  }
 
   @media (max-width: 1300px) {
     max-width: 448px;

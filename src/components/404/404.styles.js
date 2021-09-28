@@ -52,6 +52,7 @@ export const Description = styled.p`
 `;
 
 export const Button = styled(BigButton)`
+
     @media ${({theme}) => theme.medias.medium} {
     padding: 9px 16px;
     font-size: ${getFontSize('bodySmall')};

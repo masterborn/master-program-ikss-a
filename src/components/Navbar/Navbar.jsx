@@ -32,24 +32,23 @@ const Navbar = ({ socialMedias, links }) => {
 
   const { visible, scrollToForm } = useScroll();
 
+  const openContactModal = () => {
+    setActive(false);
+    handleModal('open');
+  };
+
   const goToForm = () => {
     setActive(false);
     scrollToForm();
-  };
-
-  const openContactModal = () => {
-    setActive(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    handleModal('open');
   };
 
   const getActivePath = (requiredPath, currentPath) => (requiredPath === currentPath ? true : '');
 
   const menuLinks = links.map(({ title, path }) => (
     <li key={title}>
+
       <Link href={path} role="navigation">
-        <StyledLink
-          role="button"
+        <StyledLink  role="button"
           aria-label={title}
           onClick={() => {
             if (active) setActive(false);
@@ -64,15 +63,15 @@ const Navbar = ({ socialMedias, links }) => {
 
   const menuSocials = socialMedias.map(({ circleLogo, url, title }) => (
     <a href={url} key={title} role="button" aria-label={title}>
-      <Image src={circleLogo} alt="logo" />
+      <Image src={circleLogo} alt="IKSS logo" />
     </a>
   ));
 
   return (
     <Nav>
       <Link href={routes.homepage}>
-        <StyledIcon role="button" aria-label="homepage">
-          <PrimaryLogo alt="logo" role="button" aria-label="homepage" />
+        <StyledIcon role="button" aria-label="Redirect to homepage">
+          <PrimaryLogo alt="IKSS logo" role="button" aria-label="homepage" />
         </StyledIcon>
       </Link>
       <MenuWrapper>
@@ -95,7 +94,7 @@ const Navbar = ({ socialMedias, links }) => {
         </ContactButton>
         <Socials>{menuSocials}</Socials>
       </MobileMenuWrapper>
-      <Layer active={active} />
+      <Layer active={active} onClick={() => setActive(false)} />
     </Nav>
   );
 };

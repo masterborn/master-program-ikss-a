@@ -70,7 +70,7 @@ const Footer = ({ copyrightText, links, socialMedias }) => {
         aria-label="arrow-up"
         onClick={scrollToTop}
       >
-        <Image src={upArrow} alt="arrow up" />
+        <Image src={upArrow} alt="Scroll up" />
       </ButtonCircle>
     </FooterWrapper>
   );

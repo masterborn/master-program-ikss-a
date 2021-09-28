@@ -2,18 +2,22 @@ import styled from 'styled-components';
 import { getColor } from '@root/styles/utils';
 import { H1 } from '../typography/Typography';
 
+export const Wrapper = styled.div`
+  background-image: ${getColor('backgroundGradient')};
+`;
+
 export const TopSectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 995px;
   margin: ${({ projectsSubpage }) =>
-    projectsSubpage ? '64px auto 80px auto' : '64px auto 148px auto'};
+    projectsSubpage ? '0 auto 80px auto' : '0 auto 148px auto'};
   align-items: center;
   justify-content: center;
 
   @media ${({ theme }) => theme.medias.medium} {
     margin: ${({ projectsSubpage }) =>
-      projectsSubpage ? '32px auto 40px auto' : '32px auto 80px auto'};
+      projectsSubpage ? '0 auto 40px auto' : '0 auto 80px auto'};
     padding: 0 24px;
   }
 `;
@@ -46,9 +50,11 @@ export const ImageContainer = styled.div`
   position: relative;
   height: 142px;
   width: 230px;
+  margin-top: 64px;
 
   @media ${({ theme }) => theme.medias.medium} {
     height: 112px;
     width: 181px;
+    margin-top: 32px;
   }
 `;

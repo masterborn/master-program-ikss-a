@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import {
   getColor,
   getFontSize,
@@ -25,12 +25,39 @@ export const TileContainer = styled.div`
   border-radius: 16px;
   transition: transform 0.2s;
 
+  &:nth-child(2), &:nth-child(5), &:nth-child(7) {
+    transform: ${({isHoneycomb}) => isHoneycomb ? 'translateY(-50%)' : 'none'};
+    
+    &:hover {
+    transform: ${({isHoneycomb}) => isHoneycomb ? 'translateY(-50%) scale(1.05)' : 'scale(1.05)'} ;
+    }
+   
+    @media ${({ theme }) => theme.medias.medium} {
+      transform: none;
+
+      &:hover {
+      transform: none;
+      }
+    }
+  }
+
   &:hover {
     transform: scale(1.05);
   }
 
+  @media(max-width: 1300px) {
+    width: ${({isHoneycomb}) => isHoneycomb ? '344px' : '384px'} ;
+    padding: ${({isHoneycomb}) => isHoneycomb ? '32px 18px 40px 18px' : '32px 24px 40px 24px'} ;
+  }
+
+  @media(max-width: 1150px) {
+    width: ${({isHoneycomb}) => isHoneycomb ? '312px' : '384px'} ;
+    padding: ${({isHoneycomb}) => isHoneycomb ? '32px 12px 40px 12px' : '32px 24px 40px 24px'} ;
+  }
+
   @media ${({ theme }) => theme.medias.medium} {
     width: 100%;
+    padding: 20px;
 
     &.closed {
       flex-direction: row;
@@ -123,7 +150,7 @@ export const ArrowButton = styled.button`
   cursor: pointer;
   display: none;
   margin-left: auto;
-  transition: transform 0.4s ease-in-out;
+  transition: transform 0.3s ease-in-out;
   &.opened {
     transform: rotate(180deg);
     position: absolute;
@@ -136,6 +163,17 @@ export const ArrowButton = styled.button`
   }
 `;
 
+const scaleUp = keyframes`
+    from {
+      transform: scaleY(0.9);
+      opacity: 0;
+    }
+    to {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+`;
+
 export const AdditionalInfo = styled.div`
   display: flex;
   flex-direction: column;
@@ -144,6 +182,8 @@ export const AdditionalInfo = styled.div`
 
   @media ${({ theme }) => theme.medias.medium} {
     display: ${({ isTileOpen }) => (isTileOpen ? 'flex' : 'none')};
+    transform-origin: center top;
+    animation: ${({isTileOpen}) => isTileOpen ? css`${scaleUp} .3s linear both` : 'none'} ; 
   }
 `;
 

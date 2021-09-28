@@ -9,6 +9,10 @@ import {
 import { H1, H5, BodyText } from '@root/components/typography/Typography';
 import { SecondaryBigButton } from '@root/components/Button/Button.styles';
 
+export const HeaderWrapper = styled.div`
+  background-image: ${getColor('backgroundGradient')};
+`;
+
 export const HeroSection = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -24,7 +28,6 @@ export const MainContent = styled.div`
 
   @media ${({ theme }) => theme.medias.medium} {
     flex-direction: column-reverse;
-    padding: 0 0 40px 0;
   }
 `;
 
@@ -48,7 +51,7 @@ export const LeftBlock = styled.div`
   @media ${({ theme }) => theme.medias.medium} {
     padding: 0 24px 0 24px;
     margin-left: 0;
-    max-height: auto;
+    max-height: none;
     margin-bottom: 40px;
   }
 `;
@@ -108,6 +111,7 @@ export const HeroLink = styled(H5)`
 export const HeroBodyText = styled(BodyText)`
   margin-top: 32px;
   max-width: 416px;
+  color: ${getColor('steel')};
 
   @media (max-width: 1520px) {
     margin-top: 12px;
@@ -146,7 +150,7 @@ export const HeaderSocialMediaWrapper = styled.div`
     1.71337px 28.2982px 34.875px rgba(97, 121, 139, 0.04725),
     0.676885px 11.1795px 13px rgba(97, 121, 139, 0.035),
     0.148069px 2.44552px 4.625px rgba(97, 121, 139, 0.02275);
-  border-radius: 16px 0 0 16px;
+  border-radius: 16px 0 16px 16px;
 
   @media (max-width: 1380px) {
     width: 70%;
@@ -163,6 +167,10 @@ export const HeaderSocialMediaWrapper = styled.div`
     padding: 24px 40px 24px 40px;
     border-radius: 16px;
     width: 100%;
+  }
+
+  @media(max-width: 400px) {
+    padding: 24px;
   }
 `;
 
@@ -202,6 +210,34 @@ export const StyledSocials = styled.a`
 export const SocialLinkWrapper = styled.div`
   display: flex;
   align-items: center;
+  position: relative;
+
+  div::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    background-color: ${getColor('ikssBlue')};
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  &:hover div::after {
+    opacity: 0.15;
+  }
+
+  @media ${({ theme }) => theme.medias.medium} {
+    &:hover div::after {
+      opacity: 0;
+    }
+
+    &:active div::after {
+      opacity: 0.15;
+    }
+  }
 `;
 
 export const SocialIconWrapper = styled.div`
@@ -214,3 +250,5 @@ export const SocialIconWrapper = styled.div`
     height: 32px;
   }
 `;
+
+export const Wrapper = styled.div``;

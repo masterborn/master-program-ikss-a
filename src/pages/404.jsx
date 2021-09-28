@@ -16,5 +16,4 @@ const NotFound = () => (
     </Wrapper >
 );
 
-
 export default NotFound;

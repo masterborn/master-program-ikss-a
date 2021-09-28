@@ -14,15 +14,21 @@ const ManagementSection = ({ boardMembers, boardMembersText }) => {
   const sortedBoardMembers = [...boardMembers].sort(compareProjectsOrder);
   const sectionTitle = boardMembersText.title;
   const sectionDescription = documentToReactComponents(boardMembersText.text1);
+
+  const getHoneycombLayout = (arr) => {
+    if (arr.length === 7) return true
+    return false
+  };
+  const honeycomb = getHoneycombLayout(sortedBoardMembers);
   return (
-    <SectionWrapper>
-      <TextSection>
+    <SectionWrapper isHoneycomb={honeycomb}>
+      <TextSection isHoneycomb={honeycomb} >
         <StyledHeader>{sectionTitle}</StyledHeader>
         <StyledBodyText>{sectionDescription}</StyledBodyText>
       </TextSection>
       <TilesWrapper>
         {sortedBoardMembers.map((member) => (
-          <MemberTile key={member.fields.name} memberInfo={member.fields} />
+          <MemberTile key={member.fields.name} memberInfo={member.fields} isHoneycomb={honeycomb} />
         ))}
       </TilesWrapper>
     </SectionWrapper>
