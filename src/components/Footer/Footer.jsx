@@ -44,7 +44,7 @@ const Footer = ({ copyrightText, links, socialMedias }) => {
       <Link href={routes.homepage}>
         <a href={routes.homepage} aria-label="Redirect to homepage">
           <LogoWrapper>
-            <Image src={ikssLogo} layout="fill" alt="Ikss logo" />
+            <Image src={ikssLogo} layout="fill" alt="IKSS logo" />
           </LogoWrapper>
         </a>
       </Link>
