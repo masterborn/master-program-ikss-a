@@ -47,13 +47,8 @@ const ProjectsTabs = ({ projectsApiElements, latestProjectsHeader }) => {
 
       {projectsData.map(
         ({ title, date, description, linkUrl, linkCaption, videoUrl, imageUrl }) => (
-<<<<<<< HEAD
-          <>
-            <StyledTabPanel key={title} role="tooltip" aria-label="Video showing IKSS projects">
-=======
-          <Wrapper key={title}>
+          <Wrapper key={title} role="tooltip" aria-label="Video showing IKSS projects">
             <StyledTabPanel>
->>>>>>> 967c34037b28c85850c78cc060a92bbc34363504
               {videoUrl ? (
                 <VideoResponsive>
                   <StyledVideo
