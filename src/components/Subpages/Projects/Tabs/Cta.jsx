@@ -6,10 +6,7 @@ import { CtaButton, StyledCtaSection, StyledCtaText } from './Tabs.styles';
 const Cta = ({ middleCta }) => {
   const { handleModal } = useModal();
 
-  const openForm = () => {
-    handleModal('open');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const openForm = () => handleModal('open');
 
   return (
     <StyledCtaSection>
