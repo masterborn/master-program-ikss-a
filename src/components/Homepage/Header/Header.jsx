@@ -30,12 +30,20 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
         <MainContent>
           <LeftBlock>
             <HeroHeading>{headerTitle}</HeroHeading>
-            <HeroBodyText as='div' >{documentToReactComponents(text)}</HeroBodyText>
+            <HeroBodyText as="div">{documentToReactComponents(text)}</HeroBodyText>
             <HeroButton alt="CTA" onClick={scrollToForm}>
               Skontaktuj się
             </HeroButton>
           </LeftBlock>
-          <StyledVideo src={`https:${video}`} muted playsInline autoPlay loop />
+          <StyledVideo
+            src={`https:${video}`}
+            muted
+            playsInline
+            autoPlay
+            loop
+            role="tooltip"
+            aria-label="Video showing IKSS memebers and events they have organised"
+          />
         </MainContent>
         <HeaderSocialMediaWrapper>
           <Socials ref={socialsRef}>
@@ -60,7 +68,8 @@ const Header = ({ headerTitle, text, video, socialMedias }) => {
 
 Header.propTypes = {
   headerTitle: PropTypes.string.isRequired,
-  text: PropTypes.objectOf(oneOfType([PropTypes.object, PropTypes.array, PropTypes.string])).isRequired,
+  text: PropTypes.objectOf(oneOfType([PropTypes.object, PropTypes.array, PropTypes.string]))
+    .isRequired,
   video: PropTypes.string.isRequired,
   socialMedias: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

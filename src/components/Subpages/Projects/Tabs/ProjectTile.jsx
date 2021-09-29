@@ -19,7 +19,14 @@ const ProjectTile = ({ projectData }) => {
 
   return (
     <ProjectWrapper>
-      <StyledImage key={imageUrl} width="997px" height="579px" alt={title} src={imageUrl} />
+      <StyledImage
+        key={imageUrl}
+        width="997px"
+        height="579px"
+        alt={title}
+        src={imageUrl}
+        role="presentation"
+      />
       <StyledTabTextSection>
         <TitleWithDateContainer>
           <ProjectTitle>{title}</ProjectTitle>
@@ -28,7 +35,7 @@ const ProjectTile = ({ projectData }) => {
         <ProjectDescription>{description}</ProjectDescription>
         {linkUrl && (
           <ButtonWrapper>
-            <a href={linkUrl}>
+            <a href={linkUrl} role="button">
               <SmallButton icon={linkContainsFacebook}>
                 {linkContainsFacebook && <FacebookIcon />}
                 {linkCaption || 'Zobacz więcej'}

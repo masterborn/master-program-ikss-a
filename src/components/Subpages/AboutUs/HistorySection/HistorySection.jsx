@@ -24,10 +24,22 @@ const HistorySection = ({ historyContent: { title, text1, text2, image1, image2 
         <StyledHistoryTextTop as="div">{documentToReactComponents(text1)}</StyledHistoryTextTop>
       </StyledTopSectionText>
       <TopImageWrapper>
-        <Image src={`https:${image1.fields.file.url}`} width={483} height={352} alt="team" />
+        <Image
+          src={`https:${image1.fields.file.url}`}
+          width={483}
+          height={352}
+          alt="team"
+          role="presentation"
+        />
       </TopImageWrapper>
       <TopImageMobileWrapper>
-        <Image src={`https:${image1.fields.file.url}`} width={976} height={708} alt="team" />
+        <Image
+          src={`https:${image1.fields.file.url}`}
+          width={976}
+          height={708}
+          alt="team"
+          role="presentation"
+        />
       </TopImageMobileWrapper>
     </TopSection>
 

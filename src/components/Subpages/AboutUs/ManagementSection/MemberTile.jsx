@@ -45,6 +45,7 @@ const MemberTile = ({ memberInfo, isHoneycomb }) => {
             src={`https:${memberInfo.image.fields.file.url}`}
             layout="fill"
             alt="Member photo"
+            aria-label="Member photo"
           />
         </ImageWrapper>
       ) : (
@@ -61,7 +62,7 @@ const MemberTile = ({ memberInfo, isHoneycomb }) => {
       <AdditionalInfo isTileOpen={isTileOpen}>
         {memberInfo.phone ? (
           <Phone>
-            <Image src={phoneIcon} alt="Phone" />
+            <Image src={phoneIcon} alt="Phone" aria-label="phone number" />
             <PhoneNumber href={`tel:${memberInfo.phone}`}>{memberInfo.phone}</PhoneNumber>
           </Phone>
         ) : (
@@ -69,7 +70,7 @@ const MemberTile = ({ memberInfo, isHoneycomb }) => {
         )}
         {memberInfo.email ? (
           <Email>
-            <Image src={emailIcon} alt="Mail" />
+            <Image src={emailIcon} alt="Mail" aria-label="email address" />
             <MembersEmail href={`mailto: ${memberInfo.email}`}>{memberInfo.email}</MembersEmail>
           </Email>
         ) : (
@@ -86,8 +87,12 @@ const MemberTile = ({ memberInfo, isHoneycomb }) => {
           <ButtonPlaceholder />
         )}
       </AdditionalInfo>
-      <ArrowButton onClick={handleTile} className={isTileOpen ? 'opened' : 'closed'}>
-        <Image src={arrowIcon} />
+      <ArrowButton
+        onClick={handleTile}
+        className={isTileOpen ? 'opened' : 'closed'}
+        aria-label="Open to read more or close to read less"
+      >
+        <Image src={arrowIcon} aria-label="arrow icon" />
       </ArrowButton>
     </TileContainer>
   );
@@ -96,7 +101,7 @@ const MemberTile = ({ memberInfo, isHoneycomb }) => {
 MemberTile.propTypes = {
   memberInfo: PropTypes.objectOf(oneOfType([PropTypes.string, PropTypes.object, PropTypes.number]))
     .isRequired,
-  isHoneycomb: PropTypes.bool.isRequired
+  isHoneycomb: PropTypes.bool.isRequired,
 };
 
 export default MemberTile;
