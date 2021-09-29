@@ -10,7 +10,6 @@ import AppProviders from '@root/contextProviders/AppProviders';
 import Layout from '../components/Layout/Layout';
 
 const App = (props) => {
-
   const { Component, pageProps, commonApiElements, contactFormText, contactFormTooltip } = props;
 
   return (
@@ -18,7 +17,7 @@ const App = (props) => {
       <Head>
         <title>App Name</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-        <link rel="shortcut icon" href="/favicon.png" />
+        <link rel="icon" type="image/svg+xml" href="/favicon-ikss.svg" sizes="any" />
         <link
           href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800;900&display=swap"
           rel="stylesheet"
