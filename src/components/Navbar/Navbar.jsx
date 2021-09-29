@@ -46,8 +46,10 @@ const Navbar = ({ socialMedias, links }) => {
 
   const menuLinks = links.map(({ title, path }) => (
     <li key={title}>
-      <Link href={path}>
+      <Link href={path} role="navigation">
         <StyledLink
+          role="button"
+          aria-label={title}
           onClick={() => {
             if (active) setActive(false);
           }}
@@ -60,16 +62,16 @@ const Navbar = ({ socialMedias, links }) => {
   ));
 
   const menuSocials = socialMedias.map(({ circleLogo, url, title }) => (
-    <a href={url} key={title} aria-label={title} rel="noreferrer">
+    <a href={url} key={title} role="button" aria-label={title} rel="noreferrer">
       <Image src={circleLogo} alt={title} />
     </a>
   ));
 
   return (
     <Nav>
-      <Link href={routes.homepage} aria-label="Redirect to homepage" >
+      <Link href={routes.homepage} role="button" aria-label="Redirect to homepage">
         <StyledIcon>
-          <PrimaryLogo alt="Ikss logo" />
+          <PrimaryLogo alt="Ikss logo" aria-label="Ikss logo" />
         </StyledIcon>
       </Link>
       <MenuWrapper>

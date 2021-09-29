@@ -69,6 +69,8 @@ const Carousel = ({ tiles }) => {
             name={`value-${index + 1}`}
             className={index === selectedIndex && 'is-selected'}
             type="button"
+            role="button"
+            aria-label="Carousel widget.Use left and right dots to navigate between the slides."
             onClick={() => scrollTo(index)}
           />
         ))}

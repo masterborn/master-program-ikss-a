@@ -23,7 +23,7 @@ const BenefitsTiles = ({ benefitsTiles }) => (
         },
       }) => (
         <BenefitsTile key={url}>
-          <img src={`https://${url}`} alt="title" />
+          <img src={`https://${url}`} alt="title" role="presentation" />
           <BenefitsTileHeading>{title}</BenefitsTileHeading>
           <BenefitsTileDescription as="div">
             {documentToReactComponents(text1)}
