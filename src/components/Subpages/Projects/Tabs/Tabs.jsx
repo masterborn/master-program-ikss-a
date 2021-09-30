@@ -49,7 +49,7 @@ const Tabs = ({ projectsList, middleCta }) => {
               ))}
             </FirstProjectsSection>
 
-            {projectsByYear[year].length >= 3 && <Cta middleCta={middleCta} />}
+            {projectsByYear[year].length >= 5 && <Cta middleCta={middleCta} />}
             <SecondProjectsSection oneProject={projectsByYear[year].length === 5}>
               {projectsByYear[year].slice(4).map((project) => (
                 <ProjectTile projectData={project} key={project.title} />
