@@ -67,7 +67,7 @@ export const ResponsiveButton = styled(BigButton)`
     height: 36px;
     padding: 9px 16px;
     line-height: 18px;
-    font-size: ${getFontSize('bodySmall')};
+    font-size: 10px;
   }
 `;
 
@@ -216,4 +216,4 @@ export const CtaButton = styled(ResponsiveButton)`
   }
 `;
 
-export const Wrapper = styled.div``
+export const Wrapper = styled.div``;
