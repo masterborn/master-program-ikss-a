@@ -14,7 +14,7 @@ export const HistorySectionWrapper = styled.div`
   justify-content: center;
   padding: 0 24px 0 24px;
   margin: 0 auto 148px auto;
-  max-width: 1197px;
+  max-width: 1245px;
 
   @media ${({ theme }) => theme.medias.medium} {
     display: flex;
@@ -34,27 +34,27 @@ export const TopSection = styled.div`
 `;
 
 export const StyledTopSectionText = styled.div`
+  max-width: 658px;
   margin-right: 56px;
+
+  @media (max-width: 1300px) {
+    max-width: 448px;
+  }
   @media ${({ theme }) => theme.medias.medium} {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-right: 0;
+    max-width: none;
   }
 `;
 
 export const StyledHistoryTextTop = styled(BodyText)`
-  max-width: 658px;
   color: ${getColor('steel')};
-
-  @media (max-width: 1300px) {
-    max-width: 448px;
-  }
 
   @media ${({ theme }) => theme.medias.medium} {
     margin-bottom: 40px;
     font-size: ${getFontSize('bodySmall')};
-    max-width: 100%;
   }
 `;
 

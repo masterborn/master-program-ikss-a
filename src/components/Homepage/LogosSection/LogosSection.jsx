@@ -36,7 +36,7 @@ const LogosSection = ({ logosHeader, logosText, partnerLogos }) => {
 
 LogosSection.propTypes = {
   logosHeader: PropTypes.string.isRequired,
-  logosText: PropTypes.arrayOf(PropTypes.object).isRequired,
+  logosText: PropTypes.string.isRequired,
   partnerLogos: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

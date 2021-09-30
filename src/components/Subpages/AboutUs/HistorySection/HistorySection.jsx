@@ -42,7 +42,6 @@ const HistorySection = ({ historyContent: { title, text1, text2, image1, image2 
         />
       </TopImageMobileWrapper>
     </TopSection>
-
     <BottomSection>
       <StyledHistoryTextBottom as="div">{documentToReactComponents(text2)}</StyledHistoryTextBottom>
       <BottomImageWrapper>
