@@ -37,10 +37,7 @@ const Home = ({
   );
 
   const {
-    fields: {
-      text1,
-      title,
-    },
+    fields: { text1, title },
   } = homeTopSection;
 
   const { title: metaTitleHomepage, text1: metaDescriptionHomepage } = findApiElementByIdentifier(

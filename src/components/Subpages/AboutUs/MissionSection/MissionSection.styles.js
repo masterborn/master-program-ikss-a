@@ -10,10 +10,11 @@ import {
 
 export const MissionSectionWrapper = styled.div`
   display: flex;
-  max-width: 1197px;
+  max-width: 1245px;
   justify-content: center;
   margin: 0 auto 148px auto;
   align-items: center;
+  padding: 0 24px;
   @media ${({ theme }) => theme.medias.medium} {
     margin-bottom: 0;
     padding: 0 24px 0 24px;

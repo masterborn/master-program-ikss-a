@@ -33,10 +33,12 @@ export const BigButton = styled.button`
 
   svg {
     margin-right: 8px;
+    height: 23px;
   }
 
   svg path {
     fill: ${getColor('white')};
+    height: 18px;
   }
 `;
 
@@ -92,6 +94,7 @@ export const SmallButton = styled(BigButton)`
 
   svg {
     margin-right: 5px;
+    height: 17px;
   }
 `;
 
@@ -103,5 +106,6 @@ export const SecondarySmallButton = styled(SecondaryBigButton)`
 
   svg {
     margin-right: 5px;
+    height: 17px;
   }
 `;

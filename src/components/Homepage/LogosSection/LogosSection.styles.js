@@ -24,9 +24,10 @@ export const LogosTextWrapper = styled.div`
   justify-content: center;
   align-items: center;
   max-width: 635px;
-  margin: 0 auto 42px auto;
+  margin: 0 auto 80px;
 
   @media ${({ theme }) => theme.medias.medium} {
+    margin-bottom: 32px;
     line-height: 32px;
   }
 `;

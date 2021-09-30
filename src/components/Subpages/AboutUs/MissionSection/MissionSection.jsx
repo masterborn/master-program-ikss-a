@@ -13,32 +13,30 @@ import {
 } from '@root/components/Subpages/AboutUs/MissionSection/MissionSection.styles';
 
 const MissionSection = ({ missionContent: { title, text1, image1 } }) => (
-  <div>
-    <MissionSectionWrapper>
-      <ImageWrapper>
-        <Image
-          src={`https:${image1.fields.file.url}`}
-          width={483}
-          height={245}
-          alt="team"
-          role="presentation"
-        />
-      </ImageWrapper>
-      <ImageMobileWrapper>
-        <Image
-          src={`https:${image1.fields.file.url}`}
-          width={976}
-          height={492}
-          alt="team"
-          role="presentation"
-        />
-      </ImageMobileWrapper>
-      <RightSection>
-        <StyledHeader>{title}</StyledHeader>
-        <StyledMissionText as="div">{documentToReactComponents(text1)}</StyledMissionText>
-      </RightSection>
-    </MissionSectionWrapper>
-  </div>
+  <MissionSectionWrapper>
+    <ImageWrapper>
+      <Image
+        src={`https:${image1.fields.file.url}`}
+        width={483}
+        height={245}
+        alt="team"
+        role="presentation"
+      />
+    </ImageWrapper>
+    <ImageMobileWrapper>
+      <Image
+        src={`https:${image1.fields.file.url}`}
+        width={976}
+        height={492}
+        alt="team"
+        role="presentation"
+      />
+    </ImageMobileWrapper>
+    <RightSection>
+      <StyledHeader>{title}</StyledHeader>
+      <StyledMissionText as="div">{documentToReactComponents(text1)}</StyledMissionText>
+    </RightSection>
+  </MissionSectionWrapper>
 );
 export default MissionSection;
 
