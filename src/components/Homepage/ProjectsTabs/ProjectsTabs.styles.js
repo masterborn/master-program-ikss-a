@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Image from 'next/image';
 import { Tab, TabList, TabPanel } from 'react-tabs';
 import {
   getColor,
@@ -200,7 +199,8 @@ export const StyledVideo = styled.iframe`
   position: absolute;
 `;
 
-export const StyledImage = styled(Image)`
+export const StyledImage = styled.img`
+  width: 100%;
   border-radius: 16px 16px 0 0;
 `;
 
@@ -223,6 +223,9 @@ export const ResponsiveHeader = styled(H3)`
 `;
 
 export const ResponsiveButton = styled(BigButton)`
+  &:hover {
+    opacity: 0.8;
+  }
   @media ${({ theme }) => theme.medias.medium} {
     height: 36px;
     padding: 9px 16px;

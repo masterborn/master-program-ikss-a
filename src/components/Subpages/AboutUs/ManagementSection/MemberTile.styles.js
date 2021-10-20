@@ -25,18 +25,21 @@ export const TileContainer = styled.div`
   border-radius: 16px;
   transition: transform 0.2s;
 
-  &:nth-child(2), &:nth-child(5), &:nth-child(7) {
-    transform: ${({isHoneycomb}) => isHoneycomb ? 'translateY(-50%)' : 'none'};
-    
+  &:nth-child(2),
+  &:nth-child(5),
+  &:nth-child(7) {
+    transform: ${({ isHoneycomb }) => (isHoneycomb ? 'translateY(-50%)' : 'none')};
+
     &:hover {
-    transform: ${({isHoneycomb}) => isHoneycomb ? 'translateY(-50%) scale(1.05)' : 'scale(1.05)'} ;
+      transform: ${({ isHoneycomb }) =>
+        isHoneycomb ? 'translateY(-50%) scale(1.05)' : 'scale(1.05)'};
     }
-   
+
     @media ${({ theme }) => theme.medias.medium} {
       transform: none;
 
       &:hover {
-      transform: none;
+        transform: none;
       }
     }
   }
@@ -45,14 +48,14 @@ export const TileContainer = styled.div`
     transform: scale(1.05);
   }
 
-  @media(max-width: 1300px) {
-    width: ${({isHoneycomb}) => isHoneycomb ? '344px' : '384px'} ;
-    padding: ${({isHoneycomb}) => isHoneycomb ? '32px 18px 40px 18px' : '32px 24px 40px 24px'} ;
+  @media (max-width: 1300px) {
+    width: ${({ isHoneycomb }) => (isHoneycomb ? '344px' : '384px')};
+    padding: ${({ isHoneycomb }) => (isHoneycomb ? '32px 18px 40px 18px' : '32px 24px 40px 24px')};
   }
 
-  @media(max-width: 1150px) {
-    width: ${({isHoneycomb}) => isHoneycomb ? '312px' : '384px'} ;
-    padding: ${({isHoneycomb}) => isHoneycomb ? '32px 12px 40px 12px' : '32px 24px 40px 24px'} ;
+  @media (max-width: 1150px) {
+    width: ${({ isHoneycomb }) => (isHoneycomb ? '312px' : '384px')};
+    padding: ${({ isHoneycomb }) => (isHoneycomb ? '32px 12px 40px 12px' : '32px 24px 40px 24px')};
   }
 
   @media ${({ theme }) => theme.medias.medium} {
@@ -174,6 +177,17 @@ const scaleUp = keyframes`
     }
 `;
 
+const scaleDown = keyframes`
+    from {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+    to {
+      transform: scaleY(0.9);
+      opacity: 0;
+    }
+`;
+
 export const AdditionalInfo = styled.div`
   display: flex;
   flex-direction: column;
@@ -183,7 +197,17 @@ export const AdditionalInfo = styled.div`
   @media ${({ theme }) => theme.medias.medium} {
     display: ${({ isTileOpen }) => (isTileOpen ? 'flex' : 'none')};
     transform-origin: center top;
-    animation: ${({isTileOpen}) => isTileOpen ? css`${scaleUp} .3s linear both` : 'none'} ; 
+    animation: ${({ isTileOpen, isClosing }) => {
+      if (isClosing)
+        return css`
+          ${scaleDown} .2s linear both
+        `;
+      if (isTileOpen)
+        return css`
+          ${scaleUp} .3s linear both
+        `;
+      return 'none';
+    }};
   }
 `;
 

@@ -19,14 +19,7 @@ const ProjectTile = ({ projectData }) => {
 
   return (
     <ProjectWrapper>
-      <StyledImage
-        key={imageUrl}
-        width="997px"
-        height="579px"
-        alt={title}
-        src={imageUrl}
-        role="presentation"
-      />
+      <StyledImage key={imageUrl} alt={title} src={imageUrl} role="presentation" />
       <StyledTabTextSection>
         <TitleWithDateContainer>
           <ProjectTitle>{title}</ProjectTitle>

@@ -60,14 +60,7 @@ const ProjectsTabs = ({ projectsApiElements, latestProjectsHeader }) => {
                   />
                 </VideoResponsive>
               ) : (
-                <StyledImage
-                  key={imageUrl}
-                  width="997px"
-                  height="579px"
-                  alt={title}
-                  src={imageUrl}
-                  role="presentation"
-                />
+                <StyledImage key={imageUrl} alt={title} src={imageUrl} role="presentation" />
               )}
               <StyledTabTextSection>
                 <TitleWithDateContainer>

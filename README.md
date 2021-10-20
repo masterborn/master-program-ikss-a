@@ -14,11 +14,13 @@
 ## Table of Contents
 
 - [About the Project](#about-the-project)
-  - [Built With](#built-with)
+- [Built With](#built-with)
+- [Libraries used](#libraries-used)
 - [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Running the project](#running-the-project)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Running the project](#running-the-project)
+- [Live](#live)
 
 ## About The Project
 
@@ -28,10 +30,20 @@ About app
 
 - [React](https://reactjs.org/)
 - [Next.js](https://nextjs.org)
-- [TypeScript](https://www.typescriptlang.org/)
 - [StyledComponents](https://styled-components.com/)
-- [tailwind](https://tailwindcss.com/)
 - [Sentry](https://sentry.io/)
+
+### Libraries used
+
+- react-hook-form
+- react-query
+- react-tabs
+- embla-carousel
+- react-use
+- smoothscroll-polyfill
+- axios
+- contentful
+- svgr
 
 ## Getting Started
 
@@ -56,3 +68,7 @@ Run `npm run dev` command.
 ### GitFlow
 
 gitflow test
+
+## Live
+
+https://master-program-ikss-a.vercel.app/

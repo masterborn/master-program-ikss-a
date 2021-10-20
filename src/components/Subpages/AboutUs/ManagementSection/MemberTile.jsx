@@ -27,10 +27,19 @@ import {
 
 const MemberTile = ({ memberInfo, isHoneycomb }) => {
   const [isTileOpen, setIsTileOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
   const nameSplitted = { ...memberInfo }.name.split(' ');
 
   const handleTile = () => {
     setIsTileOpen(!isTileOpen);
+  };
+
+  const closeTile = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      handleTile();
+      setIsClosing(false);
+    }, 200);
   };
 
   return (
@@ -59,7 +68,7 @@ const MemberTile = ({ memberInfo, isHoneycomb }) => {
         </MemberName>
         {memberInfo.role ? <MemberRole>{memberInfo.role}</MemberRole> : <RolePlaceholder />}
       </NameWithRole>
-      <AdditionalInfo isTileOpen={isTileOpen}>
+      <AdditionalInfo isTileOpen={isTileOpen} isClosing={isClosing}>
         {memberInfo.phone ? (
           <Phone>
             <Image src={phoneIcon} alt="Phone" aria-label="phone number" />
@@ -88,7 +97,7 @@ const MemberTile = ({ memberInfo, isHoneycomb }) => {
         )}
       </AdditionalInfo>
       <ArrowButton
-        onClick={handleTile}
+        onClick={isTileOpen ? closeTile : handleTile}
         className={isTileOpen ? 'opened' : 'closed'}
         aria-label="Open to read more or close to read less"
       >

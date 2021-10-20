@@ -6,52 +6,55 @@ import routes from '@root/handlers/routes';
 const ScrollContext = React.createContext({});
 
 export const ScrollProvider = ({ children }) => {
+  const [visible, setVisible] = useState(false);
 
-    const [visible, setVisible] = useState(false);
+  const { pathname } = useRouter();
 
-    const { pathname } = useRouter();
+  const formWrapperRef = useRef(null);
 
-    const formWrapperRef = useRef(null);
+  const socialsRef = useRef(null);
 
-    const socialsRef = useRef(null);
+  const scrollToForm = () =>
+    formWrapperRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-    const scrollToForm = () => formWrapperRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+  const handleScroll = useCallback(() => {
+    if (pathname === routes.homepage) {
+      if (
+        socialsRef.current &&
+        window.scrollY >= socialsRef.current.offsetTop + socialsRef.current.offsetHeight / 2 + 10
+      ) {
+        setVisible(true);
+      } else setVisible(false);
+    } else if (pathname !== routes.homepage) {
+      if (window.scrollY >= window.innerHeight / 2) {
+        setVisible(true);
+      } else setVisible(false);
+    }
+  }, [pathname]);
 
-    const handleScroll = useCallback(() => {
-        if (pathname === routes.homepage) {
-            if (socialsRef.current && window.scrollY >= socialsRef.current.offsetTop + socialsRef.current.offsetHeight / 2 + 10) {
-                setVisible(true);
-            } else setVisible(false)
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
 
-        } else if (pathname !== routes.homepage) {
-            if (window.scrollY >= window.innerHeight / 2) {
-                setVisible(true)
-            }
-            else setVisible(false)
-        }
-    }, [pathname]);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
 
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [handleScroll]);
-
-
-    return <ScrollContext.Provider value={{ visible, scrollToForm, formWrapperRef, socialsRef }}>{children}</ScrollContext.Provider>;
-}
+  return (
+    <ScrollContext.Provider value={{ visible, scrollToForm, formWrapperRef, socialsRef }}>
+      {children}
+    </ScrollContext.Provider>
+  );
+};
 
 ScrollProvider.propTypes = {
-    children: PropTypes.node.isRequired
-}
-
+  children: PropTypes.node.isRequired,
+};
 
 export const useScroll = () => {
-    const scrollContext = useContext(ScrollContext);
+  const scrollContext = useContext(ScrollContext);
 
-    if (!scrollContext) {
-        throw Error('useScroll needs to be used inside ScrollProvider')
-    }
+  if (!Object.keys(scrollContext).length) {
+    throw Error('useScroll needs to be used inside ScrollProvider');
+  }
 
-    return scrollContext
-}
+  return scrollContext;
+};
