@@ -108,6 +108,10 @@ export const StyledLink = styled.a`
   font-weight: 700;
   cursor: pointer;
 
+  &:hover {
+    color: ${({ active }) => (active ? getColor('navy') : getColor('steel70'))};
+  }
+
   @media ${({ theme }) => theme.medias.medium} {
     padding-left: 24px;
     line-height: 56px;
@@ -137,7 +141,7 @@ export const Socials = styled.div`
       top: 0;
       left: 0;
       border-radius: 50%;
-      background-color: ${getColor('ikssBlue')};
+      background-color: #d1e7fb;
       opacity: 0;
       transition: opacity 0.3s;
     }

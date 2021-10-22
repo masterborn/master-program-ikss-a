@@ -2,15 +2,8 @@ import styled from 'styled-components';
 import { getColor } from '@root/styles/utils';
 
 export const Embla = styled.div`
-  overflow: hidden;
-  box-shadow: 3.38443px 55.8976px 80px rgba(97, 121, 139, 0.07),
-    1.71337px 28.2982px 34.875px rgba(97, 121, 139, 0.04725),
-    0.676885px 11.1795px 13px rgba(97, 121, 139, 0.035),
-    0.148069px 2.44552px 4.625px rgba(97, 121, 139, 0.02275);
-  border-radius: 16px;
   display: none;
   width: 100%;
-  background-color: ${getColor('white')};
 
   @media ${({ theme }) => theme.medias.medium} {
     display: block;
@@ -27,7 +20,17 @@ export const EmblaContainer = styled.div`
 
 export const EmblaSlide = styled.div`
   position: relative;
+  box-shadow: 3.38443px 55.8976px 80px rgba(97, 121, 139, 0.07),
+    1.71337px 28.2982px 34.875px rgba(97, 121, 139, 0.04725),
+    0.676885px 11.1795px 13px rgba(97, 121, 139, 0.035),
+    0.148069px 2.44552px 4.625px rgba(97, 121, 139, 0.02275);
+  border-radius: 16px;
+  background-color: ${getColor('white')};
   flex: 0 0 100%;
+
+  &:nth-child(2) {
+    margin: 0 24px;
+  }
 `;
 
 export const EmblaDots = styled.div`

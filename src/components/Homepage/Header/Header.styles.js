@@ -169,7 +169,7 @@ export const HeaderSocialMediaWrapper = styled.div`
     width: 100%;
   }
 
-  @media(max-width: 400px) {
+  @media (max-width: 400px) {
     padding: 24px;
   }
 `;
@@ -220,7 +220,7 @@ export const SocialLinkWrapper = styled.div`
     top: 0;
     left: 0;
     border-radius: 50%;
-    background-color: ${getColor('ikssBlue')};
+    background-color: #d1e7fb;
     opacity: 0;
     transition: opacity 0.3s;
   }
