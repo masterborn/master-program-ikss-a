@@ -15,8 +15,7 @@ import {
 
 const ProjectTile = ({ projectData }) => {
   const { title, date, description, linkUrl, linkCaption, imageUrl } = projectData;
-  const linkContainsFacebook = linkUrl.includes('facebook');
-
+  const linkContainsFacebook = linkUrl?.includes('facebook');
   return (
     <ProjectWrapper>
       <StyledImage key={imageUrl} alt={title} src={imageUrl} role="presentation" />
