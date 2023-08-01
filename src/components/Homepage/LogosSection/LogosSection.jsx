@@ -2,6 +2,7 @@ import Image from 'next/image';
 import PropTypes from 'prop-types';
 import compareProjectsOrder from '@root/handlers/compareProjectsOrder';
 import getLogosData from '@root/handlers/getLogosData';
+import { limitLogoSize } from '@utils/limitLogoSize';
 import {
   LogosSectionWrapper,
   LogosSectionHeader,
@@ -26,7 +27,7 @@ const LogosSection = ({ logosHeader, logosText, partnerLogos }) => {
       <PartnerLogosWrapper>
         {logosData.map(({ width, height, imageUrl, linkUrl, title }) => (
           <a href={linkUrl} key={title}>
-            <Image src={`https:${imageUrl}`} alt={title} width={width} height={height} />
+            <Image src={`https:${imageUrl}`} alt={title} width={limitLogoSize(width)} height={limitLogoSize(height)} />
           </a>
         ))}
       </PartnerLogosWrapper>

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import Image from 'next/image';
 import getLogosData from '@root/handlers/getLogosData';
 import compareProjectsOrder from '@root/handlers/compareProjectsOrder';
+import { limitLogoSize } from '@utils/limitLogoSize';
 import {
   SectionWrapper,
   TextSection,
@@ -27,8 +28,8 @@ const PartnersSection = ({ partnersLogos, sectionTitle, sectionDescription }) =>
               src={`https:${imageUrl}`}
               alt={title}
               aria-label="partner logo"
-              width={width}
-              height={height}
+              width={limitLogoSize(width)}
+              height={limitLogoSize(height)}
             />
           </a>
         ))}

@@ -4,11 +4,9 @@ import logo from '../../../public/primary-logo.svg';
 import ImageWrapper from '../wrappers/ImageWrapper';
 
 const PrimaryLogo = ({ width, height, margin }) => (
-  <>
-    <ImageWrapper margin={margin}>
-      <Image width={width} height={height} src={logo} />
-    </ImageWrapper>
-  </>
+  <ImageWrapper margin={margin}>
+    <Image width={width} height={height} src={logo} />
+  </ImageWrapper>
 );
 
 PrimaryLogo.propTypes = {
@@ -18,8 +16,8 @@ PrimaryLogo.propTypes = {
 };
 
 PrimaryLogo.defaultProps = {
-  width: '78px',
-  height: '49px',
+  width: 78,
+  height: 49,
   margin: '0 0 0 0',
 };
 
