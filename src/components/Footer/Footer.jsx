@@ -45,7 +45,7 @@ const Footer = ({ copyrightText, links, socialMedias }) => {
           </a>
         ))}
       </FooterSocialIconsWrapper>
-      <Link href={routes.homepage}>
+      <Link legacyBehavior href={routes.homepage}>
         <a href={routes.homepage} role="button" aria-label="Redirect to homepage">
           <LogoWrapper>
             <Image

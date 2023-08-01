@@ -46,7 +46,7 @@ const Navbar = ({ socialMedias, links }) => {
 
   const menuLinks = links.map(({ title, path }) => (
     <li key={title}>
-      <Link href={path} role="navigation">
+      <Link legacyBehavior href={path} role="navigation">
         <StyledLink
           role="button"
           aria-label={title}
@@ -69,9 +69,9 @@ const Navbar = ({ socialMedias, links }) => {
 
   return (
     <Nav>
-      <Link href={routes.homepage} role="button" aria-label="Redirect to homepage">
+      <Link legacyBehavior href={routes.homepage} role="button" aria-label="Redirect to homepage">
         <StyledIcon>
-          <PrimaryLogo alt="Ikss logo" aria-label="Ikss logo" />
+          <PrimaryLogo width="20px" alt="Ikss logo" aria-label="Ikss logo" />
         </StyledIcon>
       </Link>
       <MenuWrapper>
