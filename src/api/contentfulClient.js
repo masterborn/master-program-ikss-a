@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import mergeAssets from '@root/handlers/mergeAssets';
 
 const ACCESS_TOKEN = process.env.NEXT_PUBLIC_CONTENTFUL_API_TOKEN;

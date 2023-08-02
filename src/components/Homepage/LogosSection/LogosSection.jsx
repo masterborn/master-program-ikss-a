@@ -1,8 +1,10 @@
 import Image from 'next/image';
 import PropTypes from 'prop-types';
+
 import compareProjectsOrder from '@root/handlers/compareProjectsOrder';
 import getLogosData from '@root/handlers/getLogosData';
 import { limitLogoSize } from '@utils/limitLogoSize';
+
 import {
   LogosSectionWrapper,
   LogosSectionHeader,
@@ -15,7 +17,7 @@ const LogosSection = ({ logosHeader, logosText, partnerLogos }) => {
   const sortedPartnerLogos = [...partnerLogos].sort(compareProjectsOrder);
 
   const homepageLogos = sortedPartnerLogos.filter(
-    (element) => element.fields.showOnHomepage === true,
+    (element) => element.fields.showOnHomepage === true
   );
   const logosData = getLogosData(homepageLogos);
   return (

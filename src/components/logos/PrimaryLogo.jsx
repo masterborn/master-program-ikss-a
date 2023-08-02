@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import PropTypes from 'prop-types';
+
 import logo from '../../../public/primary-logo.svg';
 import ImageWrapper from '../wrappers/ImageWrapper';
 

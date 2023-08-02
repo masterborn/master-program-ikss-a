@@ -1,7 +1,10 @@
-import PropTypes, { oneOfType } from 'prop-types';
+import React from 'react';
+
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Image from 'next/image';
-import React from 'react';
+import PropTypes, { oneOfType } from 'prop-types';
+
+
 import {
   HistorySectionWrapper,
   TopSection,

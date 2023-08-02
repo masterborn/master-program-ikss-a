@@ -1,10 +1,13 @@
 import { useState } from 'react';
+
 import Image from 'next/image';
 import PropTypes, { oneOfType } from 'prop-types';
-import arrowIcon from '../../../icons/svgs/grey-down-arrow.svg';
+
 import phoneIcon from '../../../icons/svgs/blue-phone-icon.svg';
 import emailIcon from '../../../icons/svgs/email-blue-icon.svg';
+import arrowIcon from '../../../icons/svgs/grey-down-arrow.svg';
 import linkedinIcon from '../../../icons/svgs/linkedin-dark-icon.svg';
+
 import {
   TileContainer,
   ImageWrapper,

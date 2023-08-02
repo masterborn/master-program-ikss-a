@@ -1,8 +1,10 @@
-import PropTypes from 'prop-types';
 import Image from 'next/image';
-import getLogosData from '@root/handlers/getLogosData';
+import PropTypes from 'prop-types';
+
 import compareProjectsOrder from '@root/handlers/compareProjectsOrder';
+import getLogosData from '@root/handlers/getLogosData';
 import { limitLogoSize } from '@utils/limitLogoSize';
+
 import {
   SectionWrapper,
   TextSection,

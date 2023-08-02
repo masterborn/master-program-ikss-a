@@ -1,12 +1,15 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { Hydrate } from 'react-query/hydration';
-import { ReactQueryDevtools } from 'react-query/devtools';
+
 import Head from 'next/head';
+import { ReactQueryDevtools } from 'react-query/devtools';
+import { Hydrate } from 'react-query/hydration';
+
 import contentfulClient from '@root/api/contentfulClient';
-import findApiElementByIdentifier from '@root/handlers/findApiElement';
 import AppProviders from '@root/contextProviders/AppProviders';
+import findApiElementByIdentifier from '@root/handlers/findApiElement';
+
 import Layout from '../components/Layout/Layout';
 
 const App = (props) => {

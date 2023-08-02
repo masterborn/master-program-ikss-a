@@ -1,11 +1,14 @@
 import React, { useRef } from 'react';
-import { theme } from "@root/styles/theme";
+
+import PropTypes from 'prop-types';
+import { QueryClient, QueryClientProvider } from "react-query";
 import { ThemeProvider } from "styled-components";
+
 import { ModalProvider } from "@root/contextProviders/useModal";
 import { ScrollProvider } from "@root/contextProviders/useScroll";
-import { QueryClient, QueryClientProvider } from "react-query";
 import GlobalStyles from '@root/styles/GlobalStyles';
-import PropTypes from 'prop-types';
+import { theme } from "@root/styles/theme";
+
 
 const AppProviders = ({ children }) => {
   const queryClientRef = useRef();

@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+
+import { BigButton } from '@root/components/Button/Button.styles';
 import {
   getColor,
   getFontSize,
@@ -6,7 +8,7 @@ import {
   getLineHeight,
   getLetterSpacing,
 } from '@root/styles/utils';
-import { BigButton } from '@root/components/Button/Button.styles';
+
 import { H3 } from '../typography/Typography';
 
 export const CtaWrapper = styled.div`

@@ -1,7 +1,9 @@
 import styled from "styled-components";
+
 import { getColor, getLineHeight, getFontSize, getFontWeight, getLetterSpacing } from "@root/styles/utils";
-import { H1 } from "../typography/Typography";
+
 import { BigButton } from "../Button/Button.styles";
+import { H1 } from "../typography/Typography";
 
 export const Wrapper = styled.div`
     display: flex;

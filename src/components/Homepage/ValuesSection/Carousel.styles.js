@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { getColor } from '@root/styles/utils';
 
 export const Embla = styled.div`

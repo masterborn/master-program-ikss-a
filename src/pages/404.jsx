@@ -1,6 +1,8 @@
-import { Wrapper, ImageWrapper, StyledHeader, Description, Button } from '@root/components/404/404.styles';
 import Link from 'next/dist/client/link';
 import Image from 'next/image';
+
+import { Wrapper, ImageWrapper, StyledHeader, Description, Button } from '@root/components/404/404.styles';
+
 import errorPage from '../components/icons/svgs/errorPage.svg';
 
 const NotFound = () => (

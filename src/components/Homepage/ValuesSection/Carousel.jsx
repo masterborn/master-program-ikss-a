@@ -1,8 +1,9 @@
 import { useState, useCallback, useEffect } from 'react';
-import PropTypes from 'prop-types';
+
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { useEmblaCarousel } from 'embla-carousel/react';
-import { Tile, TileDescription, TileHeading } from './ValuesSection.styles';
+import PropTypes from 'prop-types';
+
 import {
   Embla,
   EmblaContainer,
@@ -11,6 +12,7 @@ import {
   EmblaDot,
   EmblaViewport,
 } from './Carousel.styles';
+import { Tile, TileDescription, TileHeading } from './ValuesSection.styles';
 
 const Carousel = ({ tiles }) => {
   const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false });
@@ -56,7 +58,7 @@ const Carousel = ({ tiles }) => {
                     </TileDescription>
                   </Tile>
                 </EmblaSlide>
-              ),
+              )
             )}
           </EmblaContainer>
         </EmblaViewport>

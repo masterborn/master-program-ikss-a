@@ -1,14 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import findApiElementByIdentifier from '@root/handlers/findApiElement';
-import getSocialMedias from '@root/handlers/getSocialMedias';
-import getPaths from '@root/handlers/getPaths';
+
 import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import smoothscroll from 'smoothscroll-polyfill';
+
+import findApiElementByIdentifier from '@root/handlers/findApiElement';
+import getPaths from '@root/handlers/getPaths';
+import getSocialMedias from '@root/handlers/getSocialMedias';
 import routes from '@root/handlers/routes';
-import Navbar from '../Navbar/Navbar';
-import Footer from '../Footer/Footer';
+
 import ContactForm from '../ContactForm/ContactForm';
+import Footer from '../Footer/Footer';
+import Navbar from '../Navbar/Navbar';
 
 const Layout = ({ children, commonApiElements, formContent }) => {
 
@@ -41,7 +44,7 @@ const Layout = ({ children, commonApiElements, formContent }) => {
 Layout.propTypes = {
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
   commonApiElements: PropTypes.arrayOf(PropTypes.object).isRequired,
-  formContent: PropTypes.arrayOf(PropTypes.object).isRequired
+  formContent: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Layout;

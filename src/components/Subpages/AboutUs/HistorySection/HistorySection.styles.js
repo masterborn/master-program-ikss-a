@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { H2, BodyText } from '@root/components/typography/Typography';
 import {
   getColor,

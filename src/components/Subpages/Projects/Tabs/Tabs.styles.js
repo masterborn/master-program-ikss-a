@@ -1,5 +1,9 @@
-import styled from 'styled-components';
+import dynamic from 'next/dynamic';
 import { Tab, TabList, TabPanel } from 'react-tabs';
+import styled from 'styled-components';
+
+import { BigButton } from '@root/components/Button/Button.styles';
+import { H3, H4, H5 } from '@root/components/typography/Typography';
 import {
   getColor,
   getFontSize,
@@ -7,13 +11,12 @@ import {
   getLetterSpacing,
   getLineHeight,
 } from '@root/styles/utils';
-import { H3, H4, H5 } from '@root/components/typography/Typography';
-import dynamic from 'next/dynamic';
-import { BigButton } from '@root/components/Button/Button.styles';
+
+
 
 const Tabs = dynamic(
   import('react-tabs').then((mod) => mod.Tabs),
-  { ssr: false },
+  { ssr: false }
 );
 
 export const StyledTabs = styled(Tabs)`

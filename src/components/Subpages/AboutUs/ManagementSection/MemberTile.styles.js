@@ -1,4 +1,7 @@
 import styled, { keyframes, css } from 'styled-components';
+
+import { SecondarySmallButton } from '@root/components/Button/Button.styles';
+import { H4, H5 } from '@root/components/typography/Typography';
 import {
   getColor,
   getFontSize,
@@ -6,8 +9,6 @@ import {
   getLineHeight,
   getLetterSpacing,
 } from '@root/styles/utils';
-import { H4, H5 } from '@root/components/typography/Typography';
-import { SecondarySmallButton } from '@root/components/Button/Button.styles';
 
 export const TileContainer = styled.div`
   background-color: ${getColor('white')};

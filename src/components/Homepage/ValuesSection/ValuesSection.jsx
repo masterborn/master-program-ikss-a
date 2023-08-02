@@ -1,9 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { ValuesWrapper, Heading, Description } from './ValuesSection.styles';
-import Tiles from './Tiles';
+import PropTypes from 'prop-types';
+
 import Carousel from './Carousel';
+import Tiles from './Tiles';
+import { ValuesWrapper, Heading, Description } from './ValuesSection.styles';
 
 const ValuesSection = ({ valuesHeader: { title, text1: description }, valuesTiles }) => (
   <ValuesWrapper>

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { H3, BodyText } from '@root/components/typography/Typography';
 import { getColor, getFontSize, getFontWeight, getLineHeight } from '@root/styles/utils';
 

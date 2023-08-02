@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+
+import { H3, H5, BodyText } from '@root/components/typography/Typography';
 import {
   getColor,
   getFontWeight,
@@ -6,7 +8,6 @@ import {
   getLetterSpacing,
   getLineHeight,
 } from '@root/styles/utils';
-import { H3, H5, BodyText } from '@root/components/typography/Typography';
 
 export const BenefitsSectionWrapper = styled.section`
   display: flex;

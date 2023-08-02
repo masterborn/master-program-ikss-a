@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback, useContext, useRef } from 'react';
+
 import { useRouter } from 'next/dist/client/router';
 import PropTypes from 'prop-types';
+
 import routes from '@root/handlers/routes';
 
 const ScrollContext = React.createContext({});

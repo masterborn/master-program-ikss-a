@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+
+import { SecondaryBigButton } from '@root/components/Button/Button.styles';
+import { H1, H5, BodyText } from '@root/components/typography/Typography';
 import {
   getColor,
   getFontSize,
@@ -6,8 +9,6 @@ import {
   getLetterSpacing,
   getFontWeight,
 } from '@root/styles/utils';
-import { H1, H5, BodyText } from '@root/components/typography/Typography';
-import { SecondaryBigButton } from '@root/components/Button/Button.styles';
 
 export const HeaderWrapper = styled.div`
   background-image: ${getColor('backgroundGradient')};

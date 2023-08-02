@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
-import PropTypes from 'prop-types';
-import { useRouter } from 'next/router';
+
 import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
+
 import { useModal } from '@root/contextProviders/useModal';
 import { useScroll } from '@root/contextProviders/useScroll';
 import routes from '@root/handlers/routes';
-import PrimaryLogo from '../logos/PrimaryLogo';
-import Coolicon from '../icons/svgs/coolicon.svg';
+
 import Bars from '../icons/svgs/bars.svg';
+import Coolicon from '../icons/svgs/coolicon.svg';
+import PrimaryLogo from '../logos/PrimaryLogo';
+
 import {
   Nav,
   LinksList,
@@ -107,7 +111,7 @@ Navbar.propTypes = {
       circleLogo: PropTypes.objectOf(PropTypes.any).isRequired,
       title: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired,
-    }),
+    })
   ).isRequired,
   links: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
 };

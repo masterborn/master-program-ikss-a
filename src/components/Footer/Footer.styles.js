@@ -1,5 +1,7 @@
 import styled from 'styled-components';
+
 import { getColor, getFontSize } from '@root/styles/utils';
+
 import { BigButton } from '../Button/Button.styles';
 
 export const FooterWrapper = styled.footer`

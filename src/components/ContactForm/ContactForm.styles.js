@@ -1,7 +1,9 @@
 import styled, { css, keyframes } from 'styled-components';
+
 import { getColor, getFontSize, getLineHeight } from '@root/styles/utils';
-import { BodyText, H3, SmallBodyText } from '../typography/Typography';
+
 import { BigButton } from '../Button/Button.styles';
+import { BodyText, H3, SmallBodyText } from '../typography/Typography';
 
 // I know I could use animation-direction: reverse, but it didn't work properly here when prop value changed
 const appear = keyframes`

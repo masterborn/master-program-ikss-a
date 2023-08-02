@@ -1,7 +1,11 @@
 import 'react-tabs/style/react-tabs.css';
-import getProjectsData from '@root/handlers/getProjectsData';
-import compareProjectsOrder from '@root/handlers/compareProjectsOrder';
 import PropTypes from 'prop-types';
+
+import compareProjectsOrder from '@root/handlers/compareProjectsOrder';
+import getProjectsData from '@root/handlers/getProjectsData';
+
+import Cta from './Cta';
+import ProjectTile from './ProjectTile';
 import {
   StyledTabs,
   StyledTab,
@@ -12,8 +16,6 @@ import {
   ResponsiveButton,
   Wrapper,
 } from './Tabs.styles';
-import ProjectTile from './ProjectTile';
-import Cta from './Cta';
 
 const Tabs = ({ projectsList, middleCta }) => {
   const sortedProjectsList = [...projectsList].sort(compareProjectsOrder);
@@ -27,7 +29,7 @@ const Tabs = ({ projectsList, middleCta }) => {
 
   for (let i = 0; i < uniqueProjectsYears.length; i += 1) {
     projectsByYear[uniqueProjectsYears[i]] = projectsData.filter(
-      (project) => project.date.slice(0, 4) === uniqueProjectsYears[i],
+      (project) => project.date.slice(0, 4) === uniqueProjectsYears[i]
     );
   }
 

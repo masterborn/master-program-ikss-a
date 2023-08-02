@@ -1,7 +1,9 @@
+import { useRouter } from 'next/dist/client/router';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
-import { useRouter } from 'next/dist/client/router';
+
 import routes from '@root/handlers/routes';
+
 import {
   Wrapper,
   TopSectionWrapper,

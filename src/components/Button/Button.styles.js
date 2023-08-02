@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { getFontSize, getColor } from '@root/styles/utils';
 
 export const BigButton = styled.button`

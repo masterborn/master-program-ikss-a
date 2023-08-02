@@ -1,7 +1,9 @@
 import 'react-tabs/style/react-tabs.css';
 import PropTypes, { oneOfType } from 'prop-types';
-import { FacebookIcon } from '@root/components/icons';
+
 import { SmallButton } from '@root/components/Button/Button.styles';
+import { FacebookIcon } from '@root/components/icons';
+
 import {
   StyledTabTextSection,
   TitleWithDateContainer,
