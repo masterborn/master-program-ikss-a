@@ -1,16 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Head from 'next/head';
-import contentfulClient from '@root/api/contentfulClient';
-import findApiElementByIdentifier from '@root/handlers/findApiElement';
-import GenericTopSection from '@root/components/GenericTopSection/GenericTopSection';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import GenericBottomCta from '@root/components/GenericBottomCta/GenericBottomCta';
-import MissionSection from '@root/components/Subpages/AboutUs/MissionSection/MissionSection';
-import HistorySection from '@root/components/Subpages/AboutUs/HistorySection/HistorySection';
-import TeamSection from '@root/components/Subpages/AboutUs/TeamSection';
-import ManagementSection from '@root/components/Subpages/AboutUs/ManagementSection/ManagementSection';
+
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import Head from 'next/head';
+import PropTypes from 'prop-types';
+
+import contentfulClient from '@root/api/contentfulClient';
+import GenericBottomCta from '@root/components/GenericBottomCta/GenericBottomCta';
+import GenericTopSection from '@root/components/GenericTopSection/GenericTopSection';
+import HistorySection from '@root/components/Subpages/AboutUs/HistorySection/HistorySection';
+import ManagementSection from '@root/components/Subpages/AboutUs/ManagementSection/ManagementSection';
+import MissionSection from '@root/components/Subpages/AboutUs/MissionSection/MissionSection';
+import TeamSection from '@root/components/Subpages/AboutUs/TeamSection';
+import findApiElementByIdentifier from '@root/handlers/findApiElement';
+
 
 const AboutUs = ({ aboutUsApiElements, boardMembersApiElements }) => {
   const topSection = findApiElementByIdentifier(aboutUsApiElements, 'about-us-top-section');
@@ -23,21 +26,21 @@ const AboutUs = ({ aboutUsApiElements, boardMembersApiElements }) => {
 
   const missionContent = findApiElementByIdentifier(
     aboutUsApiElements,
-    'about-us-content-1',
+    'about-us-content-1'
   ).fields;
 
   const historyContent = findApiElementByIdentifier(
     aboutUsApiElements,
-    'about-us-content-2',
+    'about-us-content-2'
   ).fields;
 
   const boardMembersText = findApiElementByIdentifier(
     aboutUsApiElements,
-    'about-us-board-members-text',
+    'about-us-board-members-text'
   ).fields;
   const { title: metaTitleAboutUs, text1: metaDescriptionAboutUs } = findApiElementByIdentifier(
     aboutUsApiElements,
-    'about-us-meta',
+    'about-us-meta'
   ).fields;
 
   return (
