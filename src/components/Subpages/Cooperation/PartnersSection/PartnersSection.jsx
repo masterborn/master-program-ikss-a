@@ -21,7 +21,7 @@ const PartnersSection = ({ partnersLogos, sectionTitle, sectionDescription }) =>
     <SectionWrapper>
       <TextSection>
         <StyledHeader>{sectionTitle}</StyledHeader>
-        <StyledBodyText>{sectionDescription}</StyledBodyText>
+        {sectionDescription && <StyledBodyText>{sectionDescription}</StyledBodyText>}
       </TextSection>
       <LogosContainer>
         {logosData.map(({ width, height, imageUrl, linkUrl, title }) => (
@@ -43,7 +43,7 @@ const PartnersSection = ({ partnersLogos, sectionTitle, sectionDescription }) =>
 PartnersSection.propTypes = {
   partnersLogos: PropTypes.arrayOf(PropTypes.object).isRequired,
   sectionTitle: PropTypes.string.isRequired,
-  sectionDescription: PropTypes.arrayOf(PropTypes.object).isRequired,
+  sectionDescription: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default PartnersSection;

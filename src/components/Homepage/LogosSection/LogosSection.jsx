@@ -24,7 +24,7 @@ const LogosSection = ({ logosHeader, logosText, partnerLogos }) => {
     <LogosSectionWrapper>
       <LogosTextWrapper>
         <LogosSectionHeader>{logosHeader}</LogosSectionHeader>
-        <StyledBodyText as="div">{logosText}</StyledBodyText>
+        {logosText && <StyledBodyText as="div">{logosText}</StyledBodyText>}
       </LogosTextWrapper>
       <PartnerLogosWrapper>
         {logosData.map(({ width, height, imageUrl, linkUrl, title }) => (
@@ -39,7 +39,7 @@ const LogosSection = ({ logosHeader, logosText, partnerLogos }) => {
 
 LogosSection.propTypes = {
   logosHeader: PropTypes.string.isRequired,
-  logosText: PropTypes.string.isRequired,
+  logosText: PropTypes.string,
   partnerLogos: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

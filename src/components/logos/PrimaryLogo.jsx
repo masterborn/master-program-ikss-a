@@ -11,8 +11,8 @@ const PrimaryLogo = ({ width, height, margin }) => (
 );
 
 PrimaryLogo.propTypes = {
-  width: PropTypes.string,
-  height: PropTypes.string,
+  width: PropTypes.number,
+  height: PropTypes.number,
   margin: PropTypes.string,
 };
 

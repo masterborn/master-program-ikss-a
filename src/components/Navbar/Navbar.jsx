@@ -75,7 +75,7 @@ const Navbar = ({ socialMedias, links }) => {
     <Nav>
       <Link legacyBehavior href={routes.homepage} role="button" aria-label="Redirect to homepage">
         <StyledIcon>
-          <PrimaryLogo width="20px" alt="Ikss logo" aria-label="Ikss logo" />
+          <PrimaryLogo alt="Ikss logo" aria-label="Ikss logo" />
         </StyledIcon>
       </Link>
       <MenuWrapper>
