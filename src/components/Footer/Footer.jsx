@@ -36,7 +36,7 @@ const Footer = ({ copyrightText, links, socialMedias }) => {
     >
       <FooterLinksWrapper homepage={pathname === routes.homepage}>
         {links.map(({ title, path }) => (
-          <Link role="button" key={title} href={path} aria-label={title}>
+          <Link legacyBehavior key={title} href={path} aria-label={title}>
             <ResponsiveButton>{title}</ResponsiveButton>
           </Link>
         ))}
