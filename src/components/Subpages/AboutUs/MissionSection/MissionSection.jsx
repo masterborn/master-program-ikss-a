@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Image from 'next/image';
 import PropTypes, { oneOfType } from 'prop-types';
