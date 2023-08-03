@@ -12,8 +12,6 @@ import {
   getLineHeight,
 } from '@root/styles/utils';
 
-
-
 const Tabs = dynamic(
   import('react-tabs').then((mod) => mod.Tabs),
   { ssr: false }
