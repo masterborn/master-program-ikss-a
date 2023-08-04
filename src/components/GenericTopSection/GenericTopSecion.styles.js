@@ -1,5 +1,7 @@
 import styled from 'styled-components';
+
 import { getColor } from '@root/styles/utils';
+
 import { H1 } from '../typography/Typography';
 
 export const Wrapper = styled.div`

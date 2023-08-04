@@ -1,10 +1,13 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import 'react-tabs/style/react-tabs.css';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
-import getProjectsData from '@root/handlers/getProjectsData';
-import compareProjectsOrder from '@root/handlers/compareProjectsOrder';
-import { FacebookIcon } from '@root/components/icons';
+
 import { SmallButton } from '@root/components/Button/Button.styles';
+import { FacebookIcon } from '@root/components/icons';
+import compareProjectsOrder from '@root/handlers/compareProjectsOrder';
+import getProjectsData from '@root/handlers/getProjectsData';
+
 import {
   StyledTabs,
   StyledTab,
@@ -81,11 +84,11 @@ const ProjectsTabs = ({ projectsApiElements, latestProjectsHeader }) => {
               </StyledTabTextSection>
             </StyledTabPanel>
           </Wrapper>
-        ),
+        )
       )}
-      <a href="/projekty">
+      <Link href="/projekty">
         <SeeProjectsButton>Zobacz wszystkie projekty</SeeProjectsButton>
-      </a>
+      </Link>
     </StyledTabs>
   );
 };

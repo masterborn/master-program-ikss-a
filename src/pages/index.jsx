@@ -1,15 +1,17 @@
 /* eslint-disable import/no-unresolved */
-import PropTypes from 'prop-types';
+import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Head from 'next/head';
+import PropTypes from 'prop-types';
+
 import contentfulClient from '@root/api/contentfulClient';
 import Header from '@root/components/Homepage/Header/Header';
-import getSocialMedias from '@root/handlers/getSocialMedias';
-import findApiElementByIdentifier from '@root/handlers/findApiElement';
+import LogosSection from '@root/components/Homepage/LogosSection/LogosSection';
 import ProjectsTabs from '@root/components/Homepage/ProjectsTabs/ProjectsTabs';
 import ValuesSection from '@root/components/Homepage/ValuesSection/ValuesSection';
-import LogosSection from '@root/components/Homepage/LogosSection/LogosSection';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
+import findApiElementByIdentifier from '@root/handlers/findApiElement';
+import getSocialMedias from '@root/handlers/getSocialMedias';
+
 
 const Home = ({
   homeApiElements,
@@ -20,20 +22,20 @@ const Home = ({
   const homeTopSection = findApiElementByIdentifier(homeApiElements, 'homepage-top-section');
   const latestProjectsHeader = findApiElementByIdentifier(
     homeApiElements,
-    'homepage-projects-title',
+    'homepage-projects-title'
   ).fields.title;
   const topSectionVideoUrl = homeTopSection.fields.image1.fields.file.url;
   const socialMedias = getSocialMedias(commonApiElements);
 
   const valuesHeader = findApiElementByIdentifier(homeApiElements, 'homepage-values').fields;
   const valuesTiles = ['homepage-tile-1', 'homepage-tile-2', 'homepage-tile-3'].map((tile) =>
-    findApiElementByIdentifier(homeApiElements, tile),
+    findApiElementByIdentifier(homeApiElements, tile)
   );
 
   const logosHeader = findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields
     .title;
   const logosText = documentToReactComponents(
-    findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields.text1,
+    findApiElementByIdentifier(homeApiElements, 'homepage-partners-text').fields.text1
   );
 
   const {
@@ -42,7 +44,7 @@ const Home = ({
 
   const { title: metaTitleHomepage, text1: metaDescriptionHomepage } = findApiElementByIdentifier(
     homeApiElements,
-    'homepage-meta',
+    'homepage-meta'
   ).fields;
 
   return (

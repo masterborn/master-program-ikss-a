@@ -1,7 +1,8 @@
-import PropTypes, { oneOfType } from 'prop-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import PropTypes, { oneOfType } from 'prop-types';
+
 import compareProjectsOrder from '@root/handlers/compareProjectsOrder';
-import MemberTile from './MemberTile';
+
 import {
   SectionWrapper,
   StyledHeader,
@@ -9,6 +10,7 @@ import {
   TextSection,
   TilesWrapper,
 } from './ManagementSection.styles';
+import MemberTile from './MemberTile';
 
 const ManagementSection = ({ boardMembers, boardMembersText }) => {
   const sortedBoardMembers = [...boardMembers].sort(compareProjectsOrder);

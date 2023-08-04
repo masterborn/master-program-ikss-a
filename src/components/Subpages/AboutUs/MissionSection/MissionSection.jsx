@@ -1,8 +1,8 @@
-/* eslint-disable react/no-unused-prop-types */
-import PropTypes, { oneOfType } from 'prop-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Image from 'next/image';
-import React from 'react';
+import PropTypes, { oneOfType } from 'prop-types';
+
+
 import {
   MissionSectionWrapper,
   StyledMissionText,

@@ -4,24 +4,22 @@ on: [push]
 
 jobs:
   test:
-
+    timeout-minutes: 15
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js 14
-        uses: actions/setup-node@v2
+      - name: Check out code 💻
+        uses: actions/checkout@v3
         with:
-          node-version: '14'
+          fetch-depth: 2
 
-      - name: Cache node modules
-        uses: actions/cache@v1
+      - name: Setup Node.js environment ⚙️
+        uses: actions/setup-node@v3
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Install packages
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies 🧱
         run: npm ci
 
       - name: Run linter

@@ -1,6 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import PropTypes from 'prop-types';
+
 import {
   BenefitsTilesWrapper,
   BenefitsTile,
@@ -29,7 +31,7 @@ const BenefitsTiles = ({ benefitsTiles }) => (
             {documentToReactComponents(text1)}
           </BenefitsTileDescription>
         </BenefitsTile>
-      ),
+      )
     )}
   </BenefitsTilesWrapper>
 );

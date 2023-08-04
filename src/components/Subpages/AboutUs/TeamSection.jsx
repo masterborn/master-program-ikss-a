@@ -1,5 +1,6 @@
-import PropTypes, { oneOfType } from 'prop-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import PropTypes, { oneOfType } from 'prop-types';
+
 import { TeamWrapper, TeamHeading, TeamDescription } from './TeamSection.styles';
 
 const TeamSection = ({

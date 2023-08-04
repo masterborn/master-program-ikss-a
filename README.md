@@ -13,13 +13,15 @@
 
 ## Table of Contents
 
-- [About the Project](#about-the-project)
-- [Built With](#built-with)
-- [Libraries used](#libraries-used)
+- [Table of Contents](#table-of-contents)
+- [About The Project](#about-the-project)
+  - [Built With](#built-with)
+  - [Libraries used](#libraries-used)
 - [Getting Started](#getting-started)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Running the project](#running-the-project)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Running the project](#running-the-project)
+  - [GitFlow](#gitflow)
 - [Live](#live)
 
 ## About The Project
@@ -31,7 +33,6 @@ About app
 - [React](https://reactjs.org/)
 - [Next.js](https://nextjs.org)
 - [StyledComponents](https://styled-components.com/)
-- [Sentry](https://sentry.io/)
 
 ### Libraries used
 

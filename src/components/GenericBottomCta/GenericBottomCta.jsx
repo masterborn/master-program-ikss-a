@@ -1,9 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
+
 import { useModal } from '@root/contextProviders/useModal';
 import routes from '@root/handlers/routes';
+
 import {
   CtaWrapper,
   StyledBodyText,

@@ -1,13 +1,13 @@
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 class ApiError extends Error {
-  config: AxiosRequestConfig;
+  config?: AxiosRequestConfig;
 
   data: AxiosResponse['data'];
 
   status: AxiosResponse['status'] | null;
 
-  headers: AxiosResponse['headers'];
+  headers: AxiosResponse['headers'] | null;
 
   code: number | null;
 
@@ -18,7 +18,9 @@ class ApiError extends Error {
     this.data = error?.response?.data || null;
     this.status = error?.response?.status || null;
     this.headers = error?.response?.headers || null;
-    this.code = error?.response?.data ? error.response.data.code : null;
+    this.code = error?.response?.data
+      ? (error?.response?.data as AxiosResponse['data']).code
+      : null;
   }
 }
 

@@ -1,5 +1,7 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
+
 import { BenefitsSectionWrapper, BenefitsHeading } from './BenefitsSection.styles';
 import BenefitsTiles from './BenefitsTiles';
 

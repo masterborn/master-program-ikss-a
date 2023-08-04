@@ -1,8 +1,15 @@
-import Link from 'next/link';
 import Image from 'next/image';
-import PropTypes from 'prop-types';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
+
 import routes from '@root/handlers/routes';
+
+import heartIcon from '../icons/svgs/heart-icon.svg';
+import ikssLogo from '../icons/svgs/logo-no-background-white.svg';
+import upArrow from '../icons/svgs/up-arrow.svg';
+import { SmallBodyText } from '../typography/Typography';
+
 import {
   FooterWrapper,
   ResponsiveButton,
@@ -13,10 +20,6 @@ import {
   NoDecorationLink,
   ButtonCircle,
 } from './Footer.styles';
-import ikssLogo from '../icons/svgs/logo-no-background-white.svg';
-import { SmallBodyText } from '../typography/Typography';
-import heartIcon from '../icons/svgs/heart-icon.svg';
-import upArrow from '../icons/svgs/up-arrow.svg';
 
 const Footer = ({ copyrightText, links, socialMedias }) => {
   const { pathname } = useRouter();
@@ -33,7 +36,7 @@ const Footer = ({ copyrightText, links, socialMedias }) => {
     >
       <FooterLinksWrapper homepage={pathname === routes.homepage}>
         {links.map(({ title, path }) => (
-          <Link role="button" key={title} href={path} aria-label={title}>
+          <Link legacyBehavior key={title} href={path} aria-label={title}>
             <ResponsiveButton>{title}</ResponsiveButton>
           </Link>
         ))}
@@ -45,7 +48,7 @@ const Footer = ({ copyrightText, links, socialMedias }) => {
           </a>
         ))}
       </FooterSocialIconsWrapper>
-      <Link href={routes.homepage}>
+      <Link legacyBehavior href={routes.homepage}>
         <a href={routes.homepage} role="button" aria-label="Redirect to homepage">
           <LogoWrapper>
             <Image

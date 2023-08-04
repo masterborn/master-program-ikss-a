@@ -1,8 +1,11 @@
 import React from 'react';
-import Image from 'next/image';
-import { useScroll } from '@root/contextProviders/useScroll';
-import PropTypes, { oneOfType } from 'prop-types';
+
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import Image from 'next/image';
+import PropTypes, { oneOfType } from 'prop-types';
+
+import { useScroll } from '@root/contextProviders/useScroll';
+
 import {
   HeaderWrapper,
   HeroSection,

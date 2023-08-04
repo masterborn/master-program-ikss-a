@@ -1,26 +1,28 @@
-import PropTypes from 'prop-types';
-import Head from 'next/head';
-import contentfulClient from '@root/api/contentfulClient';
-import findApiElementByIdentifier from '@root/handlers/findApiElement';
-import GenericTopSection from '@root/components/GenericTopSection/GenericTopSection';
+import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import Head from 'next/head';
+import PropTypes from 'prop-types';
+
+import contentfulClient from '@root/api/contentfulClient';
 import GenericBottomCta from '@root/components/GenericBottomCta/GenericBottomCta';
+import GenericTopSection from '@root/components/GenericTopSection/GenericTopSection';
 import BenefitsSection from '@root/components/Subpages/Cooperation/BenefitsSection/BenefitsSection';
 import PartnersSection from '@root/components/Subpages/Cooperation/PartnersSection/PartnersSection';
-import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
+import findApiElementByIdentifier from '@root/handlers/findApiElement';
+
 
 const Cooperation = ({ cooperationApiElements, partnerLogosApiElements }) => {
   const topSection = findApiElementByIdentifier(cooperationApiElements, 'cooperation-top-section');
   const bottomCta = findApiElementByIdentifier(
     cooperationApiElements,
-    'cooperation-bottom-cta',
+    'cooperation-bottom-cta'
   ).fields;
   const topSectionImageUrl = topSection.fields.image1.fields.file.url;
   const cooperationTitle = topSection.fields.title;
   const description = documentToReactComponents(topSection.fields.text1);
   const benefitsTitle = findApiElementByIdentifier(
     cooperationApiElements,
-    'cooperation-tiles-title',
+    'cooperation-tiles-title'
   ).fields.title;
   const benefitsTiles = [
     'cooperation-tile-1',

@@ -1,9 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
 // I had to disable eslint because react-hook-form requires props spreading
 import React from 'react';
-import styled from "styled-components";
-import { getColor, getFontSize, getFontWeight, getLetterSpacing } from "@root/styles/utils";
+
 import PropTypes from 'prop-types';
+import styled from "styled-components";
+
+import { getColor, getFontSize, getFontWeight, getLetterSpacing } from "@root/styles/utils";
 
 const InputField = styled.input`
     width: 100%;
@@ -170,6 +172,8 @@ const Input = React.forwardRef(({ text, icon, error, name, id, checkbox, disable
     );
 });
 
+Input.displayName = 'Input';
+
 Input.defaultProps = {
     text: 'Placeholder text...',
     checkbox: false,
@@ -180,7 +184,7 @@ Input.defaultProps = {
     isTextArea: false,
     message: '',
     activeMessage: false,
-    displayTooltip: () => { }
+    displayTooltip: () => { },
 }
 
 Input.propTypes = {
@@ -195,7 +199,7 @@ Input.propTypes = {
     isTextArea: PropTypes.bool,
     message: PropTypes.string,
     activeMessage: PropTypes.bool,
-    displayTooltip: PropTypes.func
+    displayTooltip: PropTypes.func,
 }
 
 export default Input;

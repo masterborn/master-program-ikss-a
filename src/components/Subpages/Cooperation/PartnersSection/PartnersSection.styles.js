@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+
+import { H3 } from '@root/components/typography/Typography';
 import {
   getColor,
   getFontSize,
@@ -6,7 +8,6 @@ import {
   getLineHeight,
   getLetterSpacing,
 } from '@root/styles/utils';
-import { H3 } from '@root/components/typography/Typography';
 
 export const SectionWrapper = styled.section`
   display: flex;

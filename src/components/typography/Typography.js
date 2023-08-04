@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { getFontWeight, getFontSize, getLetterSpacing, getLineHeight } from '../../styles/utils';
 
 export const H1 = styled.h1`

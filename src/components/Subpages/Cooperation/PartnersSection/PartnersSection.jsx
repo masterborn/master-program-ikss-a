@@ -1,7 +1,10 @@
-import PropTypes from 'prop-types';
 import Image from 'next/image';
-import getLogosData from '@root/handlers/getLogosData';
+import PropTypes from 'prop-types';
+
 import compareProjectsOrder from '@root/handlers/compareProjectsOrder';
+import getLogosData from '@root/handlers/getLogosData';
+import { limitLogoSize } from '@utils/limitLogoSize';
+
 import {
   SectionWrapper,
   TextSection,
@@ -18,7 +21,7 @@ const PartnersSection = ({ partnersLogos, sectionTitle, sectionDescription }) =>
     <SectionWrapper>
       <TextSection>
         <StyledHeader>{sectionTitle}</StyledHeader>
-        <StyledBodyText>{sectionDescription}</StyledBodyText>
+        {sectionDescription && <StyledBodyText>{sectionDescription}</StyledBodyText>}
       </TextSection>
       <LogosContainer>
         {logosData.map(({ width, height, imageUrl, linkUrl, title }) => (
@@ -27,8 +30,8 @@ const PartnersSection = ({ partnersLogos, sectionTitle, sectionDescription }) =>
               src={`https:${imageUrl}`}
               alt={title}
               aria-label="partner logo"
-              width={width}
-              height={height}
+              width={limitLogoSize(width)}
+              height={limitLogoSize(height)}
             />
           </a>
         ))}
@@ -40,7 +43,7 @@ const PartnersSection = ({ partnersLogos, sectionTitle, sectionDescription }) =>
 PartnersSection.propTypes = {
   partnersLogos: PropTypes.arrayOf(PropTypes.object).isRequired,
   sectionTitle: PropTypes.string.isRequired,
-  sectionDescription: PropTypes.arrayOf(PropTypes.object).isRequired,
+  sectionDescription: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default PartnersSection;

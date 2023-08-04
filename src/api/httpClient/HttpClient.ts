@@ -1,4 +1,5 @@
 import axios, { AxiosError, AxiosInstance } from 'axios';
+
 import ApiError from './models/ApiError';
 
 class HttpClient {

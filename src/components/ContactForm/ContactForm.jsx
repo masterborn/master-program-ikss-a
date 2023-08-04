@@ -1,18 +1,24 @@
 /* eslint-disable react/jsx-props-no-spreading */
 // I had to disable eslint because react-hook-form requires props spreading
 import React, { useState, useRef } from 'react';
+
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { useMutation } from 'react-query';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { useModal } from '@root/contextProviders/useModal';
 import { useForm } from 'react-hook-form';
-import { useScroll } from '@root/contextProviders/useScroll';
+import { useMutation } from 'react-query';
 import { useWindowSize } from 'react-use';
+
+import { useModal } from '@root/contextProviders/useModal';
+import { useScroll } from '@root/contextProviders/useScroll';
+
+
+import Input from '../FormElements/Input';
 import CloseIcon from '../icons/svgs/coolicon.svg';
-import LoaderIcon from '../icons/svgs/loader.svg';
-import SuccessIcon from '../icons/svgs/formSuccess.svg';
 import ErrorIcon from '../icons/svgs/formError.svg';
+import SuccessIcon from '../icons/svgs/formSuccess.svg';
+import LoaderIcon from '../icons/svgs/loader.svg';
+
 import {
   FormWrapper,
   Form,
@@ -31,7 +37,6 @@ import {
   UserCode,
   Reset,
 } from './ContactForm.styles';
-import Input from '../FormElements/Input';
 
 const url = process.env.NEXT_PUBLIC_FORMCARRY_URL;
 
@@ -91,7 +96,7 @@ const ContactForm = ({
     },
     {
       retry: false,
-    },
+    }
   );
 
   const onFormSubmit = (data) => mutate(data);

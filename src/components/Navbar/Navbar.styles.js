@@ -1,5 +1,7 @@
 import styled from 'styled-components';
+
 import { getColor } from '@root/styles/utils';
+
 import { SmallButton } from '../Button/Button.styles';
 
 export const Nav = styled.nav`

@@ -1,5 +1,6 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import PropTypes from 'prop-types';
+
 import { TilesWrapper, Tile, TileHeading, TileDescription } from './ValuesSection.styles';
 
 const Tiles = ({ tiles }) => (
@@ -21,7 +22,7 @@ const Tiles = ({ tiles }) => (
           <TileHeading>{heading}</TileHeading>
           <TileDescription as="div">{documentToReactComponents(tileDescription)}</TileDescription>
         </Tile>
-      ),
+      )
     )}
   </TilesWrapper>
 );
